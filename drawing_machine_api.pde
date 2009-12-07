@@ -179,11 +179,13 @@ void keyPressed()
   
   if (key == 'm')
   {
-    testCurve();
-    
-    testShape();
-    
+    testShape();    
     testLine();
+  }
+  
+  if (key == 'l')
+  {
+    testCurve2();
   }
 }
 
@@ -313,6 +315,32 @@ void testCurve()
   ellipse(850 + pnt.x, 50 + pnt.y, 3,3);
   p.addPoint(850 + pnt.x, 50 + pnt.y);
   p.addPoint(850 + pnt.x + random(5), 50 + pnt.y + random(5));*/
+  
+  canvas.curve(p);
+}
+
+void testCurve2()
+{
+  Path p = new Path();
+ 
+  fill(255, 0 , 0);
+  
+  float left = width * 0.1;
+  float top = height * 0.5;
+  
+  for (int i = 0; i < 10 ; i++)
+  {
+    
+    ellipse(left, top, 3,3);
+    p.addPoint(left, top);
+    
+    left += random(50,150);
+    top += random(-150,150);
+    
+    left = constrain(left, 0, width);
+    top = constrain(top,0,height);
+    
+  }
   
   canvas.curve(p);
 }

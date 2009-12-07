@@ -42,8 +42,8 @@ public class dmBrush extends AbstractBrush
     this.motionCompleted = false;
     
     this.motion.vel.mult(0);
-    //this.motion.maxforce = 1.9;
-    //this.motion.maxspeed = 13;
+    this.motion.maxforce = 1.7;
+    this.motion.maxspeed = 13;
     println("motion moveTo started");
   }
   
@@ -54,8 +54,8 @@ public class dmBrush extends AbstractBrush
     
     this.motion.vel.mult(0);
     this.motionCompleted = false;
-    //this.motion.maxforce = 1.9;
-    //this.motion.maxspeed = 13;
+    this.motion.maxforce = 1.7;
+    this.motion.maxspeed = 13;
     println("motion lineTo started");
   }
   
@@ -67,8 +67,8 @@ public class dmBrush extends AbstractBrush
     //this.motion.vel.mult(0);
     this.motionCompleted = false;
     this.motion.pathProgress = 0;
-    //this.motion.maxforce = 30;
-    //this.motion.maxspeed = 30;
+    this.motion.maxforce = 25;
+    this.motion.maxspeed = 17;
     
     
     if (path.points.size() > 1)

@@ -95,7 +95,7 @@ class Boid {
       // How far away are we from the path?
       float d = PVector.dist(predictLoc,normal);
       // Did we beat the record and find the closest line segment?
-      if (d < record && abs(PVector.angleBetween(line, this.vel)) < PI / 6) {
+      if (d < record/* && abs(PVector.angleBetween(line, this.vel)) < PI*/) {
         record = d;
         pathProgress = i;
         println("segment " + pathProgress);
