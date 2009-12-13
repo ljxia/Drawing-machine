@@ -20,6 +20,9 @@ boolean SHOW_TOOL = true;
 
 boolean debug = false;
 
+Path testCurve = null;
+boolean recreateCurve = false;
+
 void setup() 
 {
   size(screen.width,screen.height);
@@ -175,6 +178,12 @@ void keyPressed()
   if (key == 'r')
   {
     canvas.clearCommands();
+    recreateCurve = true;
+  }
+  
+  if (key == 'n')
+  {
+    testLine();
   }
   
   if (key == 'm')
@@ -186,6 +195,11 @@ void keyPressed()
   if (key == 'l')
   {
     testCurve2();
+  }
+  
+  if (key == 'q')
+  {
+    testCircles();
   }
 }
 
@@ -206,22 +220,22 @@ void testLine()
     noStroke();
     fill(255, 0 , 0);
     ellipse(50 + i * 50, 100,3,3);
-    ellipse(50 + i * 50, 300,3,3);
+    ellipse(50 + i * 50, 100 + (8 - i) * 50,3,3);
     canvas.moveTo(new Vec3D( 50 + i * 50, 100, 0));      
-    canvas.lineTo(new Vec3D( 50 + i * 50, 300, 0));
+    canvas.lineTo(new Vec3D( 50 + i * 50, 100 + (8 - i) * 50, 0));
   }
   
-  for (int i = 0; i < 6 ; i++)
+  for (int i = 0; i < 8 ; i++)
   {
     brush.setSize(random(2,5));
     noStroke();
     fill(255, 0 , 0);
     ellipse(550, 50 + i * 50,3,3);
-    ellipse(800, 50 + i * 50,3,3);
+    ellipse(550 + (8 - i) * 50, 50 + i * 50,3,3);
     
     canvas.moveTo(new Vec3D(550, 50 + i * 50, 0));
     
-    canvas.lineTo(new Vec3D(800, 50 + i * 50, 0));
+    canvas.lineTo(new Vec3D(550 + (8 - i) * 50, 50 + i * 50, 0));
   }
 }
 void testShape()
@@ -256,23 +270,14 @@ void testCurve()
   ellipse(920, 120, 3,3);
   p.addPoint(920, 120);
   
-  
-  
   ellipse(1000, 260, 3,3);
   p.addPoint(1000, 260);
-  
-/*  ellipse(1100, 150, 3,3);
-  p.addPoint(1100, 150);*/
-  
   
   ellipse(1100, 320, 3,3);
   p.addPoint(1100, 320);
   
   ellipse(1200, 325, 3,3);
   p.addPoint(1200, 325);
-  
-/*  ellipse(1300, 300, 3,3);
-  p.addPoint(1300, 300);*/
   
   ellipse(1300, 260, 3,3);
   p.addPoint(1300, 260);
@@ -283,64 +288,56 @@ void testCurve()
   ellipse(1350, 210, 3,3);
   p.addPoint(1350, 210);
   
-  /*ellipse(1010, 310, 3,3);
-    p.addPoint(1010, 310);*/
-  
-/*  PVector pnt = new PVector(random(10), random(10));
-  
-  fill(255, 0 , 0);
-  ellipse(850 + pnt.x, 50 + pnt.y, 3,3);
-  p.addPoint(850 + pnt.x, 50 + pnt.y);
-  
-  
-  pnt = new PVector(random(10,100), random(10,100));
-  
-  fill(255, 0 , 0);
-  ellipse(850 + pnt.x, 50 + pnt.y, 3,3);
-  p.addPoint(850 + pnt.x, 50 + pnt.y);
-  
-  for (int i = 0; i < 5 ; i++)
-  {
-    pnt = new PVector(random(100,200), random(100,200));
-
-    fill(255, 0 , 0);
-    ellipse(850 + pnt.x, 50 + pnt.y, 3,3);
-    p.addPoint(850 + pnt.x, 50 + pnt.y);
-  }
-  
-  
-  pnt = new PVector(random(200,300), random(200,300));
-  
-  fill(255, 0 , 0);
-  ellipse(850 + pnt.x, 50 + pnt.y, 3,3);
-  p.addPoint(850 + pnt.x, 50 + pnt.y);
-  p.addPoint(850 + pnt.x + random(5), 50 + pnt.y + random(5));*/
-  
   canvas.curve(p);
 }
 
 void testCurve2()
 {
-  Path p = new Path();
- 
-  fill(255, 0 , 0);
-  
-  float left = width * 0.1;
-  float top = height * 0.5;
-  
-  for (int i = 0; i < 10 ; i++)
+  if (testCurve == null || recreateCurve)
   {
+    testCurve = new Path();
+
+    fill(255, 0 , 0);
+
+    float left = width * 0.1;
+    float top = height * 0.5;
+
+    for (int i = 0; i < 10 ; i++)
+    {
+
+      ellipse(left, top, 3,3);
+      testCurve.addPoint(left, top);
+
+      left += random(50,150);
+      top += random(-150,150);
+
+      left = constrain(left, 0, width);
+      top = constrain(top,0,height);
+
+    }
     
-    ellipse(left, top, 3,3);
-    p.addPoint(left, top);
-    
-    left += random(50,150);
-    top += random(-150,150);
-    
-    left = constrain(left, 0, width);
-    top = constrain(top,0,height);
-    
+    recreateCurve = false;
   }
   
-  canvas.curve(p);
+  canvas.getBrush().setGray(random(0,200));
+  canvas.curve(testCurve);
+}
+
+void testCircles()
+{
+  int number_of_circle = int(random(10,40));
+  
+  for (int i = 0; i < number_of_circle ; i++)
+  {
+    float x = random(width);
+    float y = random(height);
+    float r = random(30,150);
+    brush.setSize(random(1,4));
+    
+    //stroke(120);
+    //noFill();
+    //ellipse(x, y, r * 2, r * 2);
+    canvas.circle(new Vec3D(x, y, 0), r);
+  }
+  
 }

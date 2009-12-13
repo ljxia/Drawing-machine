@@ -8,6 +8,11 @@ class dmCanvas
     this.commands = new ArrayList();
   }
 
+  dmBrush getBrush()
+  {
+    return this._brush;
+  }
+
   void setBrush(dmBrush b)
   {
     this._brush = b;

@@ -1,5 +1,12 @@
 public class dmBrush extends AbstractBrush
 { 
+  float FORCE_STRAIGHT = 1.7;
+  float SPEED_STRAIGHT = 13;
+  
+  float FORCE_CURVE = 25;
+  float SPEED_CURVE = 17;
+  
+  
   public VerletParticle tail;
   public VerletParticle left;
   public VerletParticle right;
@@ -13,7 +20,12 @@ public class dmBrush extends AbstractBrush
   public Vec3D motionEnd = null;
   public Path motionCurve = null;
   
+  public float localSpeedVar = 1.0;
+  
   boolean closeShape = false;
+  
+  
+  
 
   dmBrush(Vec3D center, VerletPhysics physics, float _size)
   {
@@ -42,8 +54,9 @@ public class dmBrush extends AbstractBrush
     this.motionCompleted = false;
     
     this.motion.vel.mult(0);
-    this.motion.maxforce = 1.7;
-    this.motion.maxspeed = 13;
+    
+    this.motion.maxforce = FORCE_STRAIGHT;
+    this.motion.maxspeed = SPEED_STRAIGHT * localSpeedVar;
     println("motion moveTo started");
   }
   
@@ -54,8 +67,10 @@ public class dmBrush extends AbstractBrush
     
     this.motion.vel.mult(0);
     this.motionCompleted = false;
-    this.motion.maxforce = 1.7;
-    this.motion.maxspeed = 13;
+    
+    this.motion.maxforce = FORCE_STRAIGHT;
+    this.motion.maxspeed = SPEED_STRAIGHT * localSpeedVar;
+    
     println("motion lineTo started");
   }
   
@@ -67,9 +82,8 @@ public class dmBrush extends AbstractBrush
     //this.motion.vel.mult(0);
     this.motionCompleted = false;
     this.motion.pathProgress = 0;
-    this.motion.maxforce = 25;
-    this.motion.maxspeed = 17;
-    
+    this.motion.maxforce = FORCE_CURVE;
+    this.motion.maxspeed = SPEED_CURVE;
     
     if (path.points.size() > 1)
     {
@@ -79,8 +93,9 @@ public class dmBrush extends AbstractBrush
       PVector aug = PVector.sub(b,a);
       aug.normalize();
       this.motion.vel.add(aug);
+      this.motion.vel.x = this.motion.vel.x * (1 + random(-0.4, 0.4));
+      this.motion.vel.y = this.motion.vel.y * (1 + random(-0.4, 0.4));
     }
-    
     
     println("motion drawAlong started");
   }
@@ -91,7 +106,7 @@ public class dmBrush extends AbstractBrush
 
 /*    this.automated = true;*/
 
-    this.motion = new Boid(new PVector(this.anchor.x, this.anchor.y), 13, 1.7);
+    this.motion = new Boid(new PVector(this.anchor.x, this.anchor.y), SPEED_STRAIGHT,FORCE_STRAIGHT);
 
     this.tail = new VerletParticle(this.anchor);
     this.tail.y += this.getSize() * 3;
@@ -147,7 +162,7 @@ public class dmBrush extends AbstractBrush
     this.last_left = new Vec3D(this.left);
     this.last_right = new Vec3D(this.right);
     
-    if (this.motion != null && this.motionEnd != null && !motionCompleted)
+    if (this.motion != null && this.motionEnd != null && !motionCompleted) // line to and move to
     {
       if (this.motion.arrive(new PVector(motionEnd.x, motionEnd.y)))
       {
@@ -158,9 +173,9 @@ public class dmBrush extends AbstractBrush
       }      
       this.setPos(this.motion.loc);
     }
-    else if (this.motion != null && this.motionCurve != null && !motionCompleted)
+    else if (this.motion != null && this.motionCurve != null && !motionCompleted) // curve following
     {
-      if (this.motion.follow(motionCurve, closeShape) || this.motion.travelLength > (1.2 * this.motionCurve.length()))
+      if (this.motion.follow(motionCurve, closeShape) || this.motion.travelLength > (1.3 * this.motionCurve.length()))
       {
         
         if (this.motion.travelLength > (0.5 * this.motionCurve.length()))
