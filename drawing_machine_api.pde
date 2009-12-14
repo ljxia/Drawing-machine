@@ -35,6 +35,9 @@ float SPEED_CURVE = 17;
 void setup() 
 {
   size(screen.width,screen.height);
+  
+  //size(1280, 720);
+  
   frameRate(60);
   //size(1024,768,JAVA2D);
   background(100);
@@ -224,7 +227,7 @@ void testLine()
 {
   for (int i = 0; i < 8 ; i++)
   {
-    canvas.getBrush().setSize(random(2,5));
+    canvas.changeSize(random(2,5));
     //canvas.rectangle(new Vec3D(random(0, width - 200), random(0, height - 200), 0), random(50,200), random(50,200));
     noStroke();
     fill(255, 0 , 0);
@@ -236,7 +239,7 @@ void testLine()
   
   for (int i = 0; i < 8 ; i++)
   {
-    brush.setSize(random(2,5));
+    canvas.changeSize(random(2,5));
     noStroke();
     fill(255, 0 , 0);
     ellipse(550, 50 + i * 50,3,3);
@@ -251,7 +254,7 @@ void testShape()
 {
   for (int i = 0; i < 7 ; i++)
   {
-    canvas.getBrush().setSize(random(2,5));
+    canvas.changeSize(random(2,5));
     stroke(255,0,0);
     noFill();
     rect(50 + i * 200, 400,150,170);
@@ -328,13 +331,13 @@ void testCurve2()
     recreateCurve = false;
   }
   
-  canvas.getBrush().setGray(random(0,200));
+  canvas.changeColor(random(0,200));
   canvas.curve(testCurve);
 }
 
 void testCircles()
 {
-  int number_of_circle = 500;//int(random(10,40));
+  int number_of_circle = int(random(10,40));
   
   for (int i = 0; i < number_of_circle ; i++)
   {
