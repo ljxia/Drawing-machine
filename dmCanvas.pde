@@ -18,6 +18,32 @@ class dmCanvas
     this._brush = b;
   }
   
+  
+  void changeColor(float _gray)
+  {
+    dmCommand cmd = new dmCommand("color");
+    TColor _color = TColor.newRGBA(_gray / 255, _gray / 255,_gray / 255,1);
+    cmd.params.put("color", _color);
+    this.commands.add(cmd);
+    println("command in queue:" + this.commands.size());
+  }
+  
+  void changeColor(TColor _color)
+  {
+    dmCommand cmd = new dmCommand("color");
+    cmd.params.put("color", _color);
+    this.commands.add(cmd);
+    println("command in queue:" + this.commands.size());
+  }
+  
+  void changeSize(float _size)
+  {
+    dmCommand cmd = new dmCommand("size");
+    cmd.params.put("size", _size);
+    this.commands.add(cmd);
+    println("command in queue:" + this.commands.size());
+  }
+  
   void moveTo(Vec3D pos)
   {
     dmCommand cmd = new dmCommand("move");
@@ -57,7 +83,7 @@ class dmCanvas
   
   void circle(Vec3D center, float _radius)
   {
-    float steps = 18;
+    float steps = constrain (map(_radius,30,1000, 6,120), 6, 120);
     
     float theta = random(0, 2 * PI);
     
@@ -131,6 +157,16 @@ class dmCanvas
           //path.display();
           this._brush.drawAlong(path);
           println("draw along path - node count " + path.points.size());
+      }
+      else if (cmd.name.equals("color"))
+      {
+          TColor c = (TColor)cmd.params.get("color");
+          this._brush.setColor(c);
+      }
+      else if (cmd.name.equals("size"))
+      {
+          float s = float(cmd.params.get("size").toString());
+          this._brush.setSize(s);
       }
     }
     

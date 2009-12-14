@@ -1,11 +1,5 @@
 public class dmBrush extends AbstractBrush
 { 
-  float FORCE_STRAIGHT = 1.7;
-  float SPEED_STRAIGHT = 13;
-  
-  float FORCE_CURVE = 25;
-  float SPEED_CURVE = 17;
-  
   
   public VerletParticle tail;
   public VerletParticle left;
@@ -221,6 +215,9 @@ public class dmBrush extends AbstractBrush
       //fill(0,10);
       //stroke(this._color.toARGB());
       fill(this._color.toARGB());
+      
+      //rect(width - 40, 40,20,20);
+      
       beginShape();
       vertex(tail.x, tail.y);
       vertex(left.x, left.y);

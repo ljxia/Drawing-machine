@@ -121,6 +121,12 @@ public class AbstractBrush
   {
     this._color = TColor.newRGBA(shade / 255, shade / 255,shade / 255,1);
   }
+  
+  void setColor(TColor c)
+  {
+    this._color = c;
+  }
+  
   void setColor(float r, float g, float b, float a)
   {
     this._color = TColor.newRGBA(r,g,b,a);

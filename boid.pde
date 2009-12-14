@@ -79,6 +79,21 @@ class Boid {
       // Look at a line segment
       PVector a = (PVector) p.points.get(i);
       PVector b = (PVector) p.points.get(i+1);
+      
+      // the length of current segment we're following, if too short the max force should be decreased
+      float segmentLength = PVector.dist(a, b);
+      
+      
+     if (segmentLength < 80 && segmentLength > 0)
+      {
+        this.maxforce = map(segmentLength,0,80, 0.6 * FORCE_CURVE, FORCE_CURVE);
+        this.maxspeed = map(segmentLength,0,80, 0.7 * SPEED_CURVE, SPEED_CURVE);
+      }
+      else
+      {
+        this.maxforce = FORCE_CURVE;
+        this.maxspeed = SPEED_CURVE;
+      }
 
       // Get the normal point to that line
       PVector normal = getNormalPoint(predictLoc,a,b);

@@ -8,20 +8,29 @@ import toxi.physics.*;
 import toxi.physics.constraints.*;
 
 dmBrush brush;
+dmCanvas canvas;
+
 VerletPhysics world;
 
 int brush_size = 3;
 float brush_shade = 0;
 
 PFont font;
-dmCanvas canvas;
 
-boolean SHOW_TOOL = true;
+
+boolean SHOW_TOOL = false;
 
 boolean debug = false;
 
 Path testCurve = null;
 boolean recreateCurve = false;
+
+
+float FORCE_STRAIGHT = 1.7;
+float SPEED_STRAIGHT = 13;
+
+float FORCE_CURVE = 25;
+float SPEED_CURVE = 17;
 
 void setup() 
 {
@@ -215,7 +224,7 @@ void testLine()
 {
   for (int i = 0; i < 8 ; i++)
   {
-    brush.setSize(random(2,5));
+    canvas.getBrush().setSize(random(2,5));
     //canvas.rectangle(new Vec3D(random(0, width - 200), random(0, height - 200), 0), random(50,200), random(50,200));
     noStroke();
     fill(255, 0 , 0);
@@ -242,7 +251,7 @@ void testShape()
 {
   for (int i = 0; i < 7 ; i++)
   {
-    brush.setSize(random(2,5));
+    canvas.getBrush().setSize(random(2,5));
     stroke(255,0,0);
     noFill();
     rect(50 + i * 200, 400,150,170);
@@ -325,15 +334,15 @@ void testCurve2()
 
 void testCircles()
 {
-  int number_of_circle = int(random(10,40));
+  int number_of_circle = 500;//int(random(10,40));
   
   for (int i = 0; i < number_of_circle ; i++)
   {
     float x = random(width);
     float y = random(height);
-    float r = random(30,150);
-    brush.setSize(random(1,4));
-    
+    float r = random(10,250);
+    canvas.changeSize(random(1,map(r,10,250,5,13)));
+    canvas.changeColor(r);
     //stroke(120);
     //noFill();
     //ellipse(x, y, r * 2, r * 2);
