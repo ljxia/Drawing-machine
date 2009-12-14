@@ -37,7 +37,7 @@ void setup()
   size(screen.width,screen.height);
   frameRate(60);
   //size(1024,768,JAVA2D);
-  background(255);
+  background(100);
   smooth();
   
   //hint( ENABLE_OPENGL_4X_SMOOTH );
@@ -69,12 +69,12 @@ void draw()
   {
     canvas.update();
     canvas.draw(0,0);
-    try
+/*    try
     {
       wait(100);
     }
     catch(Exception e)
-    {}
+    {}*/
     
   }
   
@@ -341,12 +341,13 @@ void testCircles()
     float x = random(width);
     float y = random(height);
     float r = random(10,250);
-    canvas.changeSize(random(1,map(r,10,250,5,13)));
-    canvas.changeColor(r);
+    canvas.changeSize(random(1,map(r,10,250,7,20)));
+    canvas.changeColor(random(30,255));
     //stroke(120);
     //noFill();
     //ellipse(x, y, r * 2, r * 2);
     canvas.circle(new Vec3D(x, y, 0), r);
+    println("circles left: " + (number_of_circle - i - 1));
   }
   
 }
