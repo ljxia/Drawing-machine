@@ -40,7 +40,7 @@ void setup()
   
   frameRate(60);
   //size(1024,768,JAVA2D);
-  background(100);
+  background(255);
   smooth();
   
   //hint( ENABLE_OPENGL_4X_SMOOTH );
@@ -201,7 +201,7 @@ void keyPressed()
   if (key == 'm')
   {
     testShape();    
-    testLine();
+    //testLine();
   }
   
   if (key == 'l')
@@ -337,7 +337,7 @@ void testCurve2()
 
 void testCircles()
 {
-  int number_of_circle = int(random(10,40));
+  int number_of_circle = 500;//int(random(10,40));
   
   for (int i = 0; i < number_of_circle ; i++)
   {

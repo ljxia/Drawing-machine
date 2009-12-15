@@ -19,4 +19,9 @@ class dmEvaluationRule
   {
     return 0;
   }
+  
+  dmCommand suggest()
+  {
+    return null;
+  }
 }
