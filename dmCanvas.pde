@@ -83,7 +83,7 @@ class dmCanvas
   
   void circle(Vec3D center, float _radius)
   {
-    float steps = constrain (map(_radius,30,1000, 6,120), 6, 120);
+    float steps = constrain (map(_radius,30,1000, 24,120), 24, 120);
     
     float theta = random(0, 2 * PI);
     

@@ -227,7 +227,7 @@ void testLine()
 {
   for (int i = 0; i < 8 ; i++)
   {
-    canvas.changeSize(random(2,5));
+    canvas.changeSize(random(2,4));
     //canvas.rectangle(new Vec3D(random(0, width - 200), random(0, height - 200), 0), random(50,200), random(50,200));
     noStroke();
     fill(255, 0 , 0);
@@ -239,7 +239,7 @@ void testLine()
   
   for (int i = 0; i < 8 ; i++)
   {
-    canvas.changeSize(random(2,5));
+    canvas.changeSize(random(2,4));
     noStroke();
     fill(255, 0 , 0);
     ellipse(550, 50 + i * 50,3,3);
@@ -254,7 +254,7 @@ void testShape()
 {
   for (int i = 0; i < 7 ; i++)
   {
-    canvas.changeSize(random(2,5));
+    canvas.changeSize(random(2,4));
     stroke(255,0,0);
     noFill();
     rect(50 + i * 200, 400,150,170);

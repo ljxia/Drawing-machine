@@ -222,7 +222,7 @@ class Boid {
   }
   
   boolean arrive(PVector target) {
-    return arrive(target,0.0003);
+    return arrive(target,0.0010);
   }
 
   // A method that calculates a steering vector towards a target

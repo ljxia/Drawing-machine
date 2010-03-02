@@ -122,13 +122,13 @@ public class dmBrush extends AbstractBrush
     this.tips.add(this.right);
 
 
-    VerletSpring tailSpring = new VerletConstrainedSpring(this.anchor, this.tail, this.anchor.distanceTo(this.tail), 0.005);
-    VerletSpring leftSpring = new VerletConstrainedSpring(this.anchor, this.left, this.anchor.distanceTo(this.left), 0.1);
-    VerletSpring rightSpring = new VerletConstrainedSpring(this.anchor, this.right, this.anchor.distanceTo(this.right), 0.1);
+    VerletSpring tailSpring = new VerletConstrainedSpring(this.anchor, this.tail, this.anchor.distanceTo(this.tail),1.4);
+    VerletSpring leftSpring = new VerletConstrainedSpring(this.anchor, this.left, this.anchor.distanceTo(this.left), 1);
+    VerletSpring rightSpring = new VerletConstrainedSpring(this.anchor, this.right, this.anchor.distanceTo(this.right), 1);
 
-    VerletSpring headpring = new VerletSpring(this.left, this.right, this.left.distanceTo(this.right), 0.05);
-    VerletSpring leftSideSpring = new VerletSpring(this.tail, this.left, this.tail.distanceTo(this.left), 0.05);
-    VerletSpring rightSideSpring = new VerletSpring(this.tail, this.right, this.tail.distanceTo(this.right), 0.05);
+    VerletSpring headpring = new VerletSpring(this.left, this.right, this.left.distanceTo(this.right), 0.5);
+    VerletSpring leftSideSpring = new VerletSpring(this.tail, this.left, this.tail.distanceTo(this.left), 0.5);
+    VerletSpring rightSideSpring = new VerletSpring(this.tail, this.right, this.tail.distanceTo(this.right), 0.5);
 
     this.world.addSpring(tailSpring);
     this.world.addSpring(leftSpring);

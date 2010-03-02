@@ -46,7 +46,7 @@ public class AbstractBrush
     
     this.tips = new ArrayList(); 
     this.springs = new ArrayList(); 
-    this._color = TColor.BLACK;
+    this._color = TColor.BLACK.copy();
     
     this.reset();
   }
