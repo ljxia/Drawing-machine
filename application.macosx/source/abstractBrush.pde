@@ -19,9 +19,9 @@ public class AbstractBrush
   AbstractBrush(VerletPhysics physics)
   {
     this.world = physics;
-    this.anchor = new VerletParticle(0,0,0,1);
+    this.anchor = new VerletParticle(0,0,0);
     this.world.addParticle(this.anchor);
-    this.target = new VerletParticle(0,0,0,1);
+    this.target = new VerletParticle(0,0,0);
     this.world.addParticle(this.target);
     
     this.world.addSpring(new VerletConstrainedSpring(this.anchor, this.target, 0, 0.5));
@@ -82,35 +82,29 @@ public class AbstractBrush
     // to be implemented
   }
   
-  boolean moveTo(PVector target)
+  void moveTo(PVector target)
   {
-    return moveTo(target.x, target.y);
+    moveTo(target.x, target.y);
   }
   
-  boolean moveTo(Vec3D target)
+  void moveTo(Vec3D target)
   {
-    return moveTo(target.x, target.y);
+    moveTo(target.x, target.y);
   }
   
-  boolean moveTo(float x, float y)
+  void moveTo(float x, float y)
   {
-    if (this.target.distanceTo(new Vec3D(x,y,0)) > 0)
+    this.target.x = x;
+    this.target.y = y;
+    
+    if (this.anchor.distanceTo(this.target) > 2)
     {
-      this.target.x = x;
-      this.target.y = y;
-
-      if (this.anchor.distanceTo(this.target) > 2)
-      {
-        this.target.lock();
-        return false;
-      }
-      else
-      {
-        this.target.unlock();
-        return true;
-      }
+      this.target.lock();
     }
-    return true;
+    else
+    {
+      this.target.unlock();
+    }
   }
   
   void draw()

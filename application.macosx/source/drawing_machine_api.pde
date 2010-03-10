@@ -36,7 +36,7 @@ void setup()
 {
   size(screen.width,screen.height);
   
-  //size(1440, 900);
+  //size(1280, 720);
   
   frameRate(60);
   //size(1024,768,JAVA2D);
@@ -182,12 +182,9 @@ void keyPressed()
   
   if (key == 'd')
   {
-/*    float distance = random(50,350);
+    float distance = random(50,350);
     float theta = random(0,1) * 2 * PI;
     brush.lineTo(new Vec3D( constrain(brush.anchor.x + distance * cos(theta), 0, width), constrain(brush.anchor.y + distance * sin(theta), 0 ,height), 0));
-*/  
-
-  debug = !debug;
   }
   
   if (key == 'r')
@@ -216,7 +213,6 @@ void keyPressed()
   {
     testCircles();
   }
-  
 }
 
 void mouseReleased()

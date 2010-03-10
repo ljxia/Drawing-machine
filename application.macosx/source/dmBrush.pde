@@ -38,20 +38,10 @@ public class dmBrush extends AbstractBrush
   
   void setPos(PVector _target)
   {
-    if (super.moveTo(_target))
-    {
-      if (!this.tail.isLocked())
-      {
-        this.tail.lock();
-      }
-    }
-    else
-    {
-      this.tail.unlock();
-    }
+    super.moveTo(_target);
   }
   
-  boolean moveTo(Vec3D _target)
+  void moveTo(Vec3D _target)
   {
    this.motionEnd = new Vec3D(_target);
     
@@ -62,7 +52,6 @@ public class dmBrush extends AbstractBrush
     this.motion.maxforce = FORCE_STRAIGHT;
     this.motion.maxspeed = SPEED_STRAIGHT * localSpeedVar;
     println("motion moveTo started");
-    return true;
   }
   
   void lineTo(Vec3D _target)
@@ -115,19 +104,16 @@ public class dmBrush extends AbstractBrush
 
     this.tail = new VerletParticle(this.anchor);
     this.tail.y += this.getSize() * 3;
-    this.tail.setWeight(10);
     this.world.addParticle(this.tail);
 
     this.left = new VerletParticle(this.anchor);
     this.left.x -= this.getSize() * 0.8;
     this.left.y -= this.getSize() * 0.5;
-    this.left.setWeight(20);
     this.world.addParticle(this.left);
 
     this.right = new VerletParticle(this.anchor);
     this.right.x += this.getSize() * 0.8;
     this.right.y -= this.getSize() * 0.5;
-    this.right.setWeight(10);
     this.world.addParticle(this.right);
 
 
@@ -140,9 +126,9 @@ public class dmBrush extends AbstractBrush
     VerletSpring leftSpring = new VerletConstrainedSpring(this.anchor, this.left, this.anchor.distanceTo(this.left), 1);
     VerletSpring rightSpring = new VerletConstrainedSpring(this.anchor, this.right, this.anchor.distanceTo(this.right), 1);
 
-    VerletSpring headpring = new VerletSpring(this.left, this.right, this.left.distanceTo(this.right), 0.1);
-    VerletSpring leftSideSpring = new VerletSpring(this.tail, this.left, this.tail.distanceTo(this.left), 0.1);
-    VerletSpring rightSideSpring = new VerletSpring(this.tail, this.right, this.tail.distanceTo(this.right), 0.1);
+    VerletSpring headpring = new VerletSpring(this.left, this.right, this.left.distanceTo(this.right), 0.5);
+    VerletSpring leftSideSpring = new VerletSpring(this.tail, this.left, this.tail.distanceTo(this.left), 0.5);
+    VerletSpring rightSideSpring = new VerletSpring(this.tail, this.right, this.tail.distanceTo(this.right), 0.5);
 
     this.world.addSpring(tailSpring);
     this.world.addSpring(leftSpring);
@@ -225,20 +211,10 @@ public class dmBrush extends AbstractBrush
   {
     if (this.automated || mousePressed)
     {
-      
-      if (!debug)
-      {
-        noStroke();
-        fill(this._color.toARGB());
-        //fill(0,10);
-        //stroke(this._color.toARGB());
-      }
-      else
-      {
-        stroke(100);
-        noFill();
-      }
-      
+      noStroke();
+      //fill(0,10);
+      //stroke(this._color.toARGB());
+      fill(this._color.toARGB());
       
       //rect(width - 40, 40,20,20);
       
@@ -247,13 +223,6 @@ public class dmBrush extends AbstractBrush
       vertex(left.x, left.y);
       vertex(right.x, right.y);
       endShape(CLOSE);
-
-      if (debug)
-      {
-        stroke(this._color.toARGB(),60);
-        fill(this._color.toARGB(),20);
-      }
-      
 
       beginShape();
       vertex(tail.x, tail.y);
@@ -270,34 +239,14 @@ public class dmBrush extends AbstractBrush
       endShape(CLOSE);
     }
     
+     //noStroke();
+     //fill(255,0,0);
     
-    if (false && debug)
-    {
-      noStroke();
-       fill(255,0,0);
-       ellipse(this.anchor.x, this.anchor.y, 5,5);
+    //ellipse(this.anchor.x, this.anchor.y, 2,2);
 
-       noStroke();
-       fill(0,255,0);
-       ellipse(this.target.x, this.target.y, 5,5);
-
-
-       fill(0,0,255);
-       ellipse(this.motion.loc.x, this.motion.loc.y, 2,2);
-
-       stroke(150);
-       noFill();
-       if (mousePressed)
-       {
-         line(this.target.x, this.target.y, this.anchor.x, this.anchor.y);
-       }
-       else
-       {
-         line(this.anchor.x, this.anchor.y, this.motion.loc.x, this.motion.loc.y);
-       }  
-    }
-     
-     
+    //stroke(0,0,255);
+    //noFill();
+    //ellipse(this.motion.loc.x, this.motion.loc.y, 5,5);
 
     
   }
