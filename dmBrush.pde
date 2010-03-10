@@ -115,19 +115,19 @@ public class dmBrush extends AbstractBrush
 
     this.tail = new VerletParticle(this.anchor);
     this.tail.y += this.getSize() * 3;
-    this.tail.setWeight(10);
+    this.tail.setWeight(5);
     this.world.addParticle(this.tail);
 
     this.left = new VerletParticle(this.anchor);
     this.left.x -= this.getSize() * 0.8;
     this.left.y -= this.getSize() * 0.5;
-    this.left.setWeight(20);
+    this.left.setWeight(5);
     this.world.addParticle(this.left);
 
     this.right = new VerletParticle(this.anchor);
     this.right.x += this.getSize() * 0.8;
     this.right.y -= this.getSize() * 0.5;
-    this.right.setWeight(10);
+    this.right.setWeight(5);
     this.world.addParticle(this.right);
 
 

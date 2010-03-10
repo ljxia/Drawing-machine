@@ -9,10 +9,11 @@ import toxi.physics.constraints.*;
 
 dmBrush brush;
 dmCanvas canvas;
+dmLineTraining trainLine;
 
 VerletPhysics world;
 
-int brush_size = 3;
+int brush_size = 8;
 float brush_shade = 0;
 
 PFont font;
@@ -21,6 +22,7 @@ PFont font;
 boolean SHOW_TOOL = false;
 
 boolean debug = false;
+boolean clearbg = false;
 
 Path testCurve = null;
 boolean recreateCurve = false;
@@ -55,14 +57,18 @@ void setup()
   canvas = new dmCanvas(width, height);
   canvas.setBrush(brush);
   
-  
+  trainLine = new dmLineTraining();
   
 }
 
 void draw() 
 {
-  fill(255);
-  //rect(-1, -1 ,width + 1,height + 1);
+  if (clearbg)
+  {
+    fill(255);
+    rect(-1, -1 ,width + 1,height + 1);
+  }
+  
   world.update();
   brush.setPos(mouseX, mouseY);
   //brush.draw(); 
@@ -86,6 +92,7 @@ void draw()
   
   
   if (SHOW_TOOL) drawTools();
+  if (trainLine.active){trainLine.display();}
 }
 
 void test()
@@ -172,7 +179,16 @@ void keyPressed()
   
   if (key == 't')
   {
-    SHOW_TOOL = !SHOW_TOOL;
+    //SHOW_TOOL = !SHOW_TOOL;
+    if (!trainLine.active)
+    {
+      trainLine.activate();
+    }
+    else
+    {
+      trainLine.active = false;
+    }
+    
   }
   
   if (key == 'a')
@@ -215,6 +231,11 @@ void keyPressed()
   if (key == 'q')
   {
     testCircles();
+  }
+  
+  if (key == 'b')
+  {
+    clearbg = !clearbg;
   }
   
 }
@@ -261,13 +282,13 @@ void testShape()
     canvas.changeSize(random(2,4));
     stroke(255,0,0);
     noFill();
-    rect(50 + i * 200, 400,150,170);
-    canvas.rectangle(new Vec3D( 50 + i * 200, 400, 0), 150,170);
+    rect(50 + i * 200, 100,150,170);
+    canvas.rectangle(new Vec3D( 50 + i * 200, 100, 0), 150,170);
     
     stroke(255,0,0);
     noFill();
-    ellipse(125 + i * 200, 700,150,150);
-    canvas.circle(new Vec3D(125 + i * 200, 700, 0), 75);
+    ellipse(125 + i * 200, 400,150,150);
+    canvas.circle(new Vec3D(125 + i * 200, 400, 0), 75);
   }
   
   for (int i = 0; i < 7 ; i++)

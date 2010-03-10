@@ -19,7 +19,7 @@ public class AbstractBrush
   AbstractBrush(VerletPhysics physics)
   {
     this.world = physics;
-    this.anchor = new VerletParticle(0,0,0,1);
+    this.anchor = new VerletParticle(0,0,0,10);
     this.world.addParticle(this.anchor);
     this.target = new VerletParticle(0,0,0,1);
     this.world.addParticle(this.target);
