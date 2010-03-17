@@ -1,4 +1,4 @@
-public class AbstractBrush
+public class dmAbstractBrush
 {
   public VerletParticle anchor;
   public VerletParticle target;
@@ -17,7 +17,7 @@ public class AbstractBrush
   
   protected Integrator _scale;
   
-  AbstractBrush(VerletPhysics physics)
+  dmAbstractBrush(VerletPhysics physics)
   {
     this.world = physics;
     this.anchor = new VerletParticle(0,0,0,10);
@@ -35,7 +35,7 @@ public class AbstractBrush
     this.reset();
   }
   
-  AbstractBrush(Vec3D center, VerletPhysics physics, float _size)
+  dmAbstractBrush(Vec3D center, VerletPhysics physics, float _size)
   {
     this.world = physics;
     this.anchor = new VerletParticle(center);

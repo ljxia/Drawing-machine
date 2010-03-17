@@ -1,4 +1,4 @@
-public class dmBrush extends AbstractBrush
+public class dmBrush extends dmAbstractBrush
 { 
   
   public VerletParticle tail;
