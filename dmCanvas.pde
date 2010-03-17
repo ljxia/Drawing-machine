@@ -23,7 +23,6 @@ class dmCanvas
   {
     //global
     CTL_BRUSH_SHADE = _gray;
-    controlWindow.update();
     
     dmCommand cmd = new dmCommand("color");
     TColor _color = TColor.newRGBA(_gray / 255, _gray / 255,_gray / 255,1);
@@ -44,7 +43,6 @@ class dmCanvas
   {
     //global
     CTL_BRUSH_SIZE = _size;
-    controlWindow.update();
     
     dmCommand cmd = new dmCommand("size");
     cmd.params.put("size", _size);
@@ -216,11 +214,13 @@ class dmCanvas
       {
           TColor c = (TColor)cmd.params.get("color");
           this._brush.setColor(c);
+          println("change color " + c.red() + "," + c.green() + "," + c.blue());
       }
       else if (cmd.name.equals("size"))
       {
           float s = float(cmd.params.get("size").toString());
-          this._brush.setSize(s);
+          this._brush.setSize(s, true);
+          println("change size " + s);
       }
       else if (cmd.name.equals("trace"))
       {

@@ -262,6 +262,7 @@ public class dmBrush extends dmAbstractBrush
       if (!CTL_DEBUG_MODE)
       {
         noStroke();
+        //stroke(this._color.toARGB(), 60);
         fill(this._color.toARGB());
         //fill(0,10);
         //stroke(this._color.toARGB());

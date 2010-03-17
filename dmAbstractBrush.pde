@@ -55,6 +55,18 @@ public class dmAbstractBrush
     this.reset();
   }
   
+  void setSize(float new_size, boolean force)
+  {
+    if (force)
+    {
+      this._scale.set(new_size);
+    }
+    else
+    {
+      this.setSize(new_size);
+    }
+  }
+  
   void setSize(float new_size)
   {
     this._scale.target(new_size);
@@ -115,7 +127,7 @@ public class dmAbstractBrush
       this.target.x = x;
       this.target.y = y;
 
-      if (this.anchor.distanceTo(this.target) > 2)
+      if (this.anchor.distanceTo(this.target) > 4)
       {
         this.target.lock();
         return false;
