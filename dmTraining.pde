@@ -15,7 +15,15 @@ class dmTraining
   
   void reset()
   {
-    this.trail.clear();
+    this.reset(true);
+  }
+  
+  void reset(boolean clearTrail)
+  {
+    if (clearTrail)
+    {
+      this.trail.clear();
+    }
     this.isLogging = false;
     this.startLog = -1;
     this.lastLog = -1;
@@ -38,7 +46,12 @@ class dmTraining
   
   void log(float _x, float _y)
   {
-    this.trail.add(new Vec3D(_x, _y, 0));
+    this.log(_x,_y,0);
+  }
+  
+  void log(float _x, float _y, float _z)
+  {
+    this.trail.add(new Vec3D(_x, _y, _z));
   }
   
   void start()

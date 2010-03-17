@@ -3,12 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>dmComposer.pde</string>
+	<string>dmCanvas.pde</string>
 	<key>documents</key>
 	<array>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>drawing_machine_api</string>
 			<key>regexFolderFilter</key>
@@ -21,15 +19,15 @@
 			<array>
 				<dict>
 					<key>filename</key>
-					<string>abstractBrush.pde</string>
+					<string>dmAbstractBrush.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T16:51:15Z</date>
+					<date>2010-03-17T17:42:15Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>dmBrush.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T16:51:04Z</date>
+					<date>2010-03-17T17:52:37Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -44,7 +42,9 @@
 					<key>filename</key>
 					<string>dmCanvas.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T16:51:52Z</date>
+					<date>2010-03-17T18:11:17Z</date>
+					<key>selected</key>
+					<true/>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -116,13 +116,13 @@
 					<key>filename</key>
 					<string>dmLineTraining.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T16:51:00Z</date>
+					<date>2010-03-17T18:06:47Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>dmTraining.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T16:49:45Z</date>
+					<date>2010-03-17T18:08:21Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -135,11 +135,9 @@
 			<array>
 				<dict>
 					<key>filename</key>
-					<string>dmComposer.pde</string>
+					<string>dmAbstractComposer.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T17:28:20Z</date>
-					<key>selected</key>
-					<true/>
+					<date>2010-03-17T17:40:20Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -166,33 +164,89 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>README</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>10</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>boid.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>209</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>176</integer>
+		</dict>
+		<key>dmAbstractBrush.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>16</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>dmAbstractComposer.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>12</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>dmBrush.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>53</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>176</integer>
+				<integer>180</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>143</integer>
+			<integer>80</integer>
 		</dict>
 		<key>dmCanvas.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>7</integer>
+				<integer>39</integer>
 				<key>line</key>
-				<integer>162</integer>
+				<integer>112</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>45</integer>
+			<integer>75</integer>
 		</dict>
 		<key>dmCommand.pde</key>
 		<dict>
@@ -202,20 +256,6 @@
 				<integer>1</integer>
 				<key>line</key>
 				<integer>11</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>dmComposer.pde</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -241,9 +281,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>40</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>69</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -255,9 +295,23 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>5</integer>
+				<integer>22</integer>
 				<key>line</key>
-				<integer>28</integer>
+				<integer>48</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>drawing_machine_api.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>17</integer>
+				<key>line</key>
+				<integer>56</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -281,7 +335,15 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>dmComposer.pde</string>
+		<string>dmAbstractComposer.pde</string>
+		<string>dmAbstractBrush.pde</string>
+		<string>dmBrush.pde</string>
+		<string>dmLineTraining.pde</string>
+		<string>dmTraining.pde</string>
+		<string>dmCanvas.pde</string>
+		<string>dmCommand.pde</string>
+		<string>README</string>
+		<string>dmEvaluation.pde</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
@@ -325,13 +387,6 @@
 			<dict/>
 		</dict>
 		<key>Training</key>
-		<dict>
-			<key>isExpanded</key>
-			<true/>
-			<key>subItems</key>
-			<dict/>
-		</dict>
-		<key>drawing_machine_api</key>
 		<dict>
 			<key>isExpanded</key>
 			<true/>

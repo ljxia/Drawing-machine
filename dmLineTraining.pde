@@ -6,8 +6,6 @@ class dmLineTraining extends dmTraining
   int margin = 50;
   int side = 400;
   
-  int feedbackIndex = 0;
-  
   dmLineTraining()
   {
     super();
@@ -15,6 +13,7 @@ class dmLineTraining extends dmTraining
     this.margin = 50;
     this.side = (width - 50 * 3) / 2;
     
+    this.reset();
     this.generatePoints();
   }
   
@@ -27,20 +26,14 @@ class dmLineTraining extends dmTraining
   void activate()
   {
     generatePoints();
-    while (this.startPoint.distanceTo(this.endPoint) < 30)
+    while (this.startPoint.distanceTo(this.endPoint) < 15)
     {
       generatePoints();
     }
     this.active = true;
     this.reset();
   }
-  
-  void reset()
-  {
-    this.feedbackIndex = 0;
-    super.reset();
-  }
-  
+
   void update()
   {
     if (this.active)
@@ -51,16 +44,31 @@ class dmLineTraining extends dmTraining
       }
       else //accept logging
       {
+        boolean paused = false;
         if (mousePressed)
         {
+          if (!this.isLogging) //previously not logging, is a pause
+          {
+            paused = true;
+          }
           this.start();
         }
         else
         {
           this.stop();
         }
+        
+        if (this.startLog < 0)
+        {
+          this.startLog = millis();
+        }
 
-        super.update();
+        if (this.isLogging)
+        {
+          this.log(mouseX, mouseY, paused ? 1 : 0);
+          println("Line Training Log: " + mouseX + "," + mouseY);
+          this.lastLog = millis();
+        }
       }
     }
   }
@@ -70,7 +78,8 @@ class dmLineTraining extends dmTraining
     PointList pl = (PointList)this.trail;
     pl = pl.addSelf(new Vec3D(side + margin, 0, 0));
     canvas.trace(pl);
-    this.lastLog = -1;
+    
+    this.reset();
   }
   
   void display()

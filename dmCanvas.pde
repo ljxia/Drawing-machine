@@ -75,12 +75,47 @@ class dmCanvas
   
   void trace(PointList pl)
   {
-    this.moveTo(pl.get(0));
+    int from = 0;
+    int to = 1;
+    dmCommand cmd;
+    PointList segment;
     
-    dmCommand cmd = new dmCommand("trace");
-    cmd.params.put("trace", pl);
-    this.commands.add(cmd);
-    println("command in queue:" + this.commands.size());
+    for (; to < pl.size(); to ++)
+    {
+      if (pl.get(to).z > 0) //found a pause
+      {
+        this.moveTo(pl.get(from));
+        
+        cmd = new dmCommand("trace");
+        segment = new PointList();
+        for (int i = from; i < to; i++)
+        {
+          segment.add(pl.get(i));
+        }
+        cmd.params.put("trace", segment);
+        this.commands.add(cmd);
+        println("command in queue:" + this.commands.size());
+        
+        from = to;
+      }
+    }
+    
+    if (from < to)
+    {
+      this.moveTo(pl.get(from));
+      
+      cmd = new dmCommand("trace");
+      segment = new PointList();
+      for (int i = from; i < to; i++)
+      {
+        segment.add(pl.get(i));
+      }
+      cmd.params.put("trace", segment);
+      this.commands.add(cmd);
+      println("command in queue:" + this.commands.size());
+    }
+    
+    
   }
   
   void follow(Path path, boolean closeShape)

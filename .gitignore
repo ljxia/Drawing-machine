@@ -1,3 +1,5 @@
 .DS_Store
 application.macosx
 application.macosx/*
+applet
+applet/*
