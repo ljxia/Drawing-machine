@@ -54,7 +54,7 @@ void setup()
   
   brush.setGray(brush_shade);
   brush.setAlpha(0.95);
-  brush.setSize(2);
+  brush.setSize(5);
   canvas = new dmCanvas(width, height);
   canvas.setBrush(brush);
   
