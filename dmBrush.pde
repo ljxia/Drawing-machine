@@ -14,10 +14,11 @@ public class dmBrush extends AbstractBrush
   public Vec3D motionEnd = null;
   public Path motionCurve = null;
   
+  public PointList trail = null;
+  
   public float localSpeedVar = 1.0;
   
-  boolean closeShape = false;
-  
+  private boolean closeShape = false;
   
   
 
@@ -104,6 +105,15 @@ public class dmBrush extends AbstractBrush
     
     println("motion drawAlong started");
   }
+  
+  void trace(PointList pl)
+  {
+    this.automated = true;
+    this.trail = pl;
+    this.motionCompleted = false;
+    
+    println("motion trace started");
+  }
 
   void reset()
   {
@@ -158,12 +168,21 @@ public class dmBrush extends AbstractBrush
     this.springs.add(headpring);      
     this.springs.add(leftSideSpring); 
     this.springs.add(rightSideSpring);
+    
+    this.springLengths.add(tailSpring.restLength);     
+    this.springLengths.add(leftSpring.restLength);     
+    this.springLengths.add(rightSpring.restLength);    
+    this.springLengths.add(headpring.restLength);      
+    this.springLengths.add(leftSideSpring.restLength); 
+    this.springLengths.add(rightSideSpring.restLength);
 
     this.update();
   }
 
   void update()
   {
+    super.update();
+    
     this.motion.run();
     
     this.last_tail = new Vec3D(this.tail);
@@ -206,7 +225,21 @@ public class dmBrush extends AbstractBrush
       }
       this.setPos(this.motion.loc);
     }
-    
+    else if (this.trail != null)
+    {
+      if (this.trail.size() > 0)
+      {
+        Vec3D pos = this.trail.remove(0);
+        this.setPos(pos);
+      }
+      else
+      {
+        this.trail = null;
+        this.motionCompleted= true;
+        this.automated = false;
+        println("trace completed");
+      }
+    }
     
       
   }

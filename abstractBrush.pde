@@ -10,11 +10,12 @@ public class AbstractBrush
   
   public ArrayList tips;
   public ArrayList springs;
+  protected ArrayList springLengths;
   
-  private float _size = 10;
+  private float _size = 1;
   public TColor _color;
   
-  
+  protected Integrator _scale;
   
   AbstractBrush(VerletPhysics physics)
   {
@@ -27,8 +28,10 @@ public class AbstractBrush
     this.world.addSpring(new VerletConstrainedSpring(this.anchor, this.target, 0, 0.5));
     
     this.tips = new ArrayList();
-     this.springs = new ArrayList();
+    this.springs = new ArrayList();
+    this.springLengths = new ArrayList();
     this._color = TColor.newRandom();
+    this._scale = new Integrator(1,0.3,0.1);
     this.reset();
   }
   
@@ -46,27 +49,27 @@ public class AbstractBrush
     
     this.tips = new ArrayList(); 
     this.springs = new ArrayList(); 
+    this.springLengths = new ArrayList();
     this._color = TColor.BLACK.copy();
-    
+    this._scale = new Integrator(1,0.3,0.1);
     this.reset();
   }
   
   void setSize(float new_size)
   {
-    
-    for (int i = 0; i < this.springs.size() ; i++)
-    {
-      VerletSpring sp = ((VerletSpring)this.springs.get(i));
-      sp.restLength = sp.restLength * new_size / this._size;
-      this.springs.set(i, sp);
-    }
-    
-    this._size = new_size;
+    this._scale.target(new_size);
+    println("size: " + this._size + ", scale: " + this._scale.get());
+    //this._size = new_size;
   }
   
   float getSize()
   {
-    return this._size;
+    return this._size * this._scale.get();
+  }
+  
+  float getScale()
+  {
+    return this._scale.get();
   }
   
   void reset()
@@ -80,6 +83,19 @@ public class AbstractBrush
       this.world.removeSpring((VerletSpring)this.springs.get(i));
     }
     // to be implemented
+  }
+  
+  void update()
+  {
+    this._scale.update();
+    
+    for (int i = 0; i < this.springs.size() ; i++)
+    {
+      VerletSpring sp = ((VerletSpring)this.springs.get(i));
+      float sl = float(this.springLengths.get(i).toString());
+      sp.restLength = sl * this._scale.get();
+      this.springs.set(i, sp);
+    }
   }
   
   boolean moveTo(PVector target)

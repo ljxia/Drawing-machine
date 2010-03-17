@@ -13,7 +13,7 @@ dmLineTraining trainLine;
 
 VerletPhysics world;
 
-int brush_size = 8;
+float brush_size = 1;
 float brush_shade = 0;
 
 PFont font;
@@ -36,12 +36,13 @@ float SPEED_CURVE = 17;
 
 void setup() 
 {
-  size(screen.width,screen.height);
+  //size(screen.width,screen.height);
+  //size(1024,768);
   
-  //size(1440, 900);
+  size(1440, 900);
   
   frameRate(60);
-  //size(1024,768,JAVA2D);
+  
   background(255);
   smooth();
   
@@ -52,8 +53,8 @@ void setup()
   brush = new dmBrush(new Vec3D(width/2, height/2, 0), world, brush_size);
   
   brush.setGray(brush_shade);
-  brush.setAlpha(0.85);
-  
+  brush.setAlpha(0.95);
+  brush.setSize(2);
   canvas = new dmCanvas(width, height);
   canvas.setBrush(brush);
   
@@ -70,6 +71,9 @@ void draw()
   }
   
   world.update();
+  trainLine.update();
+  
+  
   brush.setPos(mouseX, mouseY);
   //brush.draw(); 
 
@@ -138,7 +142,7 @@ void keyPressed()
   
   if (key == '+' || key == '=')
   {
-    if (brush_size < 13)
+    if (brush_size < 15)
     {
       brush_size++;
       brush.setSize(brush_size);
@@ -187,6 +191,8 @@ void keyPressed()
     else
     {
       trainLine.active = false;
+      fill(255);
+      rect(-1, -1 ,width + 1,height + 1);
     }
     
   }

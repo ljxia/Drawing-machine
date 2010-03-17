@@ -72,6 +72,17 @@ class dmCanvas
     lineTo(corner.add((_width), (_height), 0));
   }
   
+  
+  void trace(PointList pl)
+  {
+    this.moveTo(pl.get(0));
+    
+    dmCommand cmd = new dmCommand("trace");
+    cmd.params.put("trace", pl);
+    this.commands.add(cmd);
+    println("command in queue:" + this.commands.size());
+  }
+  
   void follow(Path path, boolean closeShape)
   {
     dmCommand cmd = new dmCommand("follow");
@@ -168,6 +179,11 @@ class dmCanvas
           float s = float(cmd.params.get("size").toString());
           this._brush.setSize(s);
       }
+      else if (cmd.name.equals("trace"))
+      {
+        PointList trace = (PointList)cmd.params.get("trace");
+        this._brush.trace(trace);
+      }
     }
     
     
@@ -184,6 +200,6 @@ class dmCanvas
   {
     noStroke();
     fill(255);
-    rect(0,0,width, height);
+    rect(-1,-1,width + 1, height + 1);
   }
 }

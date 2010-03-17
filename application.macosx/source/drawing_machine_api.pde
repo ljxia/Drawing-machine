@@ -140,7 +140,7 @@ void keyPressed()
   
   if (key == '-')
   {
-    if (brush_size > 2)
+    if (brush_size > 1)
     {
       brush_size--;
       brush.setSize(brush_size);
