@@ -118,6 +118,12 @@
 			<key>name</key>
 			<string>Evaluation</string>
 		</dict>
+		<dict>
+			<key>children</key>
+			<array/>
+			<key>name</key>
+			<string>data</string>
+		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>241</integer>
@@ -150,20 +156,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>33</integer>
-		</dict>
-		<key>application.macosx/source/drawing_machine_api.pde</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>22</integer>
-				<key>line</key>
-				<integer>142</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>103</integer>
 		</dict>
 		<key>boid.pde</key>
 		<dict>
@@ -299,7 +291,6 @@
 		<string>Integrator.pde</string>
 		<string>dmEvaluation.pde</string>
 		<string>dmCanvas.pde</string>
-		<string>application.macosx/source/drawing_machine_api.pde</string>
 		<string>dmLineTraining.pde</string>
 		<string>dmBrush.pde</string>
 		<string>abstractBrush.pde</string>
