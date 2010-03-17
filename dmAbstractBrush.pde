@@ -58,7 +58,7 @@ public class dmAbstractBrush
   void setSize(float new_size)
   {
     this._scale.target(new_size);
-    println("size: " + this._size + ", scale: " + this._scale.get());
+    //println("size: " + this._size + ", scale: " + this._scale.get());
     //this._size = new_size;
   }
   

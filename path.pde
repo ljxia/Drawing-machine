@@ -52,7 +52,7 @@ class Path {
   void display() {
 
     // Draw the radius as thick lines and circles
-    if (debug) {
+    if (CTL_DEBUG_MODE) {
       // Draw end points
       for (int i = 0; i < points.size(); i++) {
         PVector point = (PVector) points.get(i);

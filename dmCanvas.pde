@@ -21,6 +21,10 @@ class dmCanvas
   
   void changeColor(float _gray)
   {
+    //global
+    CTL_BRUSH_SHADE = _gray;
+    controlWindow.update();
+    
     dmCommand cmd = new dmCommand("color");
     TColor _color = TColor.newRGBA(_gray / 255, _gray / 255,_gray / 255,1);
     cmd.params.put("color", _color);
@@ -38,6 +42,10 @@ class dmCanvas
   
   void changeSize(float _size)
   {
+    //global
+    CTL_BRUSH_SIZE = _size;
+    controlWindow.update();
+    
     dmCommand cmd = new dmCommand("size");
     cmd.params.put("size", _size);
     this.commands.add(cmd);

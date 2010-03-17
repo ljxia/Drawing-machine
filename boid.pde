@@ -58,7 +58,7 @@ class Boid {
     PVector predictLoc = PVector.add(loc, predict);
 
     // Draw the predicted location
-    if (debug) {
+    if (CTL_DEBUG_MODE) {
       fill(0);
       stroke(0,0,255);
       line(loc.x,loc.y,predictLoc.x, predictLoc.y);
@@ -136,7 +136,7 @@ class Boid {
     }
 
     // Draw the debugging stuff
-    if (debug && target != null) {
+    if (CTL_DEBUG_MODE && target != null) {
       // Draw normal location
       noFill();
       stroke(255,0,0);

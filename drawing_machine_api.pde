@@ -7,52 +7,85 @@ import toxi.geom.util.*;
 import toxi.physics.*;
 import toxi.physics.constraints.*;
 
+import controlP5.*;
+
+ControlP5 controlP5;
+ControlWindow controlWindow;
+
 dmBrush brush;
 dmCanvas canvas;
 dmLineTraining trainLine;
 
 VerletPhysics world;
-
-float brush_size = 1;
-float brush_shade = 0;
-
 PFont font;
 
+/*control params*/
 
-boolean SHOW_TOOL = false;
+public float CTL_BRUSH_SIZE = 1;
+public float CTL_BRUSH_SHADE = 0;
+public boolean CTL_DEBUG_MODE = false;
+public boolean CTL_CLEAR_BACKGROUND = false;
+public boolean CTL_SHOW_TOOL = false;
 
-boolean debug = false;
-boolean clearbg = false;
+public float FORCE_STRAIGHT = 1.7;
+public float SPEED_STRAIGHT = 13;
+
+public float FORCE_CURVE = 25;
+public float SPEED_CURVE = 17;
 
 Path testCurve = null;
 boolean recreateCurve = false;
 
+void setupControls()
+{
+  controlP5 = new ControlP5(this);
+  controlP5.setAutoInitialization(true);
+  
+  controlP5.setAutoDraw(true);
+  
+  controlWindow = controlP5.addControlWindow("controlP5window",100,100,250,200);
+  controlWindow.setBackground(color(0));
+  controlWindow.setUpdateMode(ControlWindow.NORMAL);
+  controlWindow.hideCoordinates();
+  
+  controlP5.addSlider("CTL_BRUSH_SIZE",   1,  20,   20, 20, 100,  10).setWindow(controlWindow);
+  controlP5.addSlider("CTL_BRUSH_SHADE",  0,  255,  20, 40, 100,  10).setWindow(controlWindow);
+  
+  controlP5.addToggle("CTL_DEBUG_MODE",       false,  20,   60, 10, 10).setWindow(controlWindow);
+  controlP5.addToggle("CTL_CLEAR_BACKGROUND", false,  100,  60, 10, 10).setWindow(controlWindow);
+}
 
-float FORCE_STRAIGHT = 1.7;
-float SPEED_STRAIGHT = 13;
-
-float FORCE_CURVE = 25;
-float SPEED_CURVE = 17;
+void updateControls()
+{
+  controlP5.controller("CTL_BRUSH_SIZE").setValue(CTL_BRUSH_SIZE);
+  controlP5.controller("CTL_BRUSH_SHADE").setValue(CTL_BRUSH_SHADE);
+  
+  ((Toggle)controlP5.controller("CTL_DEBUG_MODE")).setState(CTL_DEBUG_MODE);
+  ((Toggle)controlP5.controller("CTL_CLEAR_BACKGROUND")).setState(CTL_CLEAR_BACKGROUND);
+}
 
 void setup() 
 {
   //size(screen.width,screen.height);
-  //size(1024,768);
-  
+  //size(1024,768);  
   size(1440, 900);
   
-  frameRate(60);
-  
+  frameRate(60);  
   background(255);
   smooth();
+  
+  /* controls */
+  setupControls();
+  
+  /* initialize */
   
   //hint( ENABLE_OPENGL_4X_SMOOTH );
   font = loadFont("04b-03-8.vlw");
   textFont(font);
   world = new VerletPhysics(new Vec3D(0,0,0),25,10,0.1);
-  brush = new dmBrush(new Vec3D(width/2, height/2, 0), world, brush_size);
+  brush = new dmBrush(new Vec3D(width/2, height/2, 0), world, CTL_BRUSH_SIZE);
   
-  brush.setGray(brush_shade);
+  brush.setGray(CTL_BRUSH_SHADE);
   brush.setAlpha(0.95);
   brush.setSize(5);
   canvas = new dmCanvas(width, height);
@@ -62,18 +95,22 @@ void setup()
   
 }
 
+
+
 void draw() 
 {
-  if (clearbg)
+  if (CTL_CLEAR_BACKGROUND)
   {
-    fill(255);
-    rect(-1, -1 ,width + 1,height + 1);
+    canvas.clear();
   }
   
   world.update();
   trainLine.update();
   
+  updateControls();
   
+  brush.setSize(CTL_BRUSH_SIZE);
+  brush.setGray(CTL_BRUSH_SHADE);
   brush.setPos(mouseX, mouseY);
   //brush.draw(); 
 
@@ -82,21 +119,17 @@ void draw()
   {
     canvas.update();
     canvas.draw(0,0);
-/*    try
-    {
-      wait(100);
-    }
-    catch(Exception e)
-    {}*/
+
+    /*  
+    try {wait(100);}
+    catch(Exception e){}
+    */
     
   }
   
-  
-  //test();
-  
-  
-  if (SHOW_TOOL) drawTools();
+  if (CTL_SHOW_TOOL) drawTools();
   if (trainLine.active){trainLine.display();}
+  
 }
 
 void test()
@@ -125,9 +158,9 @@ void drawTools()
   
   textSize(8);
   text("brush size", 20, 22);
-  fill(brush_shade);
+  fill(CTL_BRUSH_SHADE);
   ellipseMode(CENTER);
-  ellipse(90, 18, brush_size, brush_size);
+  ellipse(90, 18, CTL_BRUSH_SIZE, CTL_BRUSH_SIZE);
 }
 
 void keyPressed()
@@ -142,37 +175,37 @@ void keyPressed()
   
   if (key == '+' || key == '=')
   {
-    if (brush_size < 15)
+    if (CTL_BRUSH_SIZE < 15)
     {
-      brush_size++;
-      brush.setSize(brush_size);
+      CTL_BRUSH_SIZE++;
+      //brush.setSize(CTL_BRUSH_SIZE);
     }
   }
   
   if (key == '-')
   {
-    if (brush_size > 2)
+    if (CTL_BRUSH_SIZE > 2)
     {
-      brush_size--;
-      brush.setSize(brush_size);
+      CTL_BRUSH_SIZE--;
+      //brush.setSize(CTL_BRUSH_SIZE);
     }
   }
   
   if (key == '[')
   {
-    if (brush_shade > 0)
+    if (CTL_BRUSH_SHADE > 0)
     {
-      brush_shade -= 5;
-      brush.setGray(brush_shade);
+      CTL_BRUSH_SHADE -= 5;
+      //brush.setGray(CTL_BRUSH_SHADE);
     }
   }
   
   if (key == ']')
   {
-    if (brush_shade < 255)
+    if (CTL_BRUSH_SHADE < 255)
     {
-      brush_shade += 5;
-      brush.setGray(brush_shade);
+      CTL_BRUSH_SHADE += 5;
+      //brush.setGray(CTL_BRUSH_SHADE);
     }
   }
   
@@ -183,7 +216,7 @@ void keyPressed()
   
   if (key == 't')
   {
-    //SHOW_TOOL = !SHOW_TOOL;
+    //CTL_SHOW_TOOL = !CTL_SHOW_TOOL;
     if (!trainLine.active)
     {
       trainLine.activate();
@@ -197,19 +230,9 @@ void keyPressed()
     
   }
   
-  if (key == 'a')
-  {
-    brush.automate(!brush.automated); 
-  }
-  
   if (key == 'd')
   {
-/*    float distance = random(50,350);
-    float theta = random(0,1) * 2 * PI;
-    brush.lineTo(new Vec3D( constrain(brush.anchor.x + distance * cos(theta), 0, width), constrain(brush.anchor.y + distance * sin(theta), 0 ,height), 0));
-*/  
-
-  debug = !debug;
+    CTL_DEBUG_MODE = !CTL_DEBUG_MODE;
   }
   
   if (key == 'r')
@@ -241,7 +264,7 @@ void keyPressed()
   
   if (key == 'b')
   {
-    clearbg = !clearbg;
+    CTL_CLEAR_BACKGROUND = !CTL_CLEAR_BACKGROUND;
   }
   
 }

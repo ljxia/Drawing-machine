@@ -259,7 +259,7 @@ public class dmBrush extends dmAbstractBrush
     if (this.automated || mousePressed)
     {
       
-      if (!debug)
+      if (!CTL_DEBUG_MODE)
       {
         noStroke();
         fill(this._color.toARGB());
@@ -281,7 +281,7 @@ public class dmBrush extends dmAbstractBrush
       vertex(right.x, right.y);
       endShape(CLOSE);
 
-      if (debug)
+      if (CTL_DEBUG_MODE)
       {
         stroke(this._color.toARGB(),60);
         fill(this._color.toARGB(),20);
@@ -304,7 +304,7 @@ public class dmBrush extends dmAbstractBrush
     }
     
     
-    if (false && debug)
+    if (false && CTL_DEBUG_MODE)
     {
       noStroke();
        fill(255,0,0);
