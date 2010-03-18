@@ -1,3 +1,5 @@
+Path testCurve = null;
+
 void test()
 {
   noStroke();
@@ -37,6 +39,7 @@ void testLine()
     canvas.lineTo(new Vec3D(550 + (8 - i) * 50, 50 + i * 50, 0));
   }
 }
+
 void testShape()
 {
   for (int i = 0; i < 7 ; i++)
@@ -58,6 +61,7 @@ void testShape()
     
   }
 }
+
 void testCurve()
 {
   Path p = new Path();

@@ -66,7 +66,7 @@ class dmLineTraining extends dmTraining
         if (this.isLogging)
         {
           this.log(mouseX, mouseY, paused ? 1 : 0);
-          println("Line Training Log: " + mouseX + "," + mouseY);
+          //println("Line Training Log: " + mouseX + "," + mouseY);
           this.lastLog = millis();
         }
       }

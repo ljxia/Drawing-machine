@@ -28,7 +28,8 @@ public float SPEED_STRAIGHT = 13;
 public float FORCE_CURVE = 25;
 public float SPEED_CURVE = 17;
 
-Path testCurve = null;
+/*temp*/
+
 boolean recreateCurve = false;
 
 void setup() 

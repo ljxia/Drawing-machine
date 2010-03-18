@@ -25,7 +25,7 @@ public class dmAbstractBrush
     this.target = new VerletParticle(0,0,0,1);
     this.world.addParticle(this.target);
     
-    this.world.addSpring(new VerletConstrainedSpring(this.anchor, this.target, 0, 0.5));
+    this.world.addSpring(new VerletConstrainedSpring(this.anchor, this.target, 0, 0.3));
     
     this.tips = new ArrayList();
     this.springs = new ArrayList();
@@ -43,7 +43,7 @@ public class dmAbstractBrush
     this.target = new VerletParticle(center);
     this.world.addParticle(this.target);
     
-    this.world.addSpring(new VerletConstrainedSpring(this.anchor, this.target, 0, 0.5));
+    this.world.addSpring(new VerletConstrainedSpring(this.anchor, this.target, 0, 0.3));
     
     this._size = _size;
     
@@ -76,7 +76,7 @@ public class dmAbstractBrush
   
   float getSize()
   {
-    return this._size * this._scale.get();
+    return this._size;// * this._scale.get();
   }
   
   float getScale()
