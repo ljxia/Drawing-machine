@@ -24,11 +24,15 @@ void setupControls()
 
 void updateControls()
 {
-  controlP5.controller("CTL_BRUSH_SIZE").setValue(CTL_BRUSH_SIZE);
-  controlP5.controller("CTL_BRUSH_SHADE").setValue(CTL_BRUSH_SHADE);
-  
-  ((Toggle)controlP5.controller("CTL_DEBUG_MODE")).setState(CTL_DEBUG_MODE);
-  ((Toggle)controlP5.controller("CTL_CLEAR_BACKGROUND")).setState(CTL_CLEAR_BACKGROUND);
+  try
+  {
+    controlP5.controller("CTL_BRUSH_SIZE").setValue(CTL_BRUSH_SIZE);
+    controlP5.controller("CTL_BRUSH_SHADE").setValue(CTL_BRUSH_SHADE);
+
+    ((Toggle)controlP5.controller("CTL_DEBUG_MODE")).setState(CTL_DEBUG_MODE);
+    ((Toggle)controlP5.controller("CTL_CLEAR_BACKGROUND")).setState(CTL_CLEAR_BACKGROUND);    
+  }
+  catch(java.lang.NullPointerException e){}
 }
 
 void keyPressed()

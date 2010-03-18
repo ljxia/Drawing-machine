@@ -41,6 +41,14 @@ public class dmBrush extends dmAbstractBrush
   {
     if (super.moveTo(_target))
     {
+      if (this.tail.getWeight() > 1)
+      {
+        this.left.setWeight(0.1);
+        this.right.setWeight(0.1);
+        this.tail.setWeight(0.1);
+        this.anchor.setWeight(0.001);
+      }
+      
       if (!this.tail.isLocked())
       {
         this.tail.lock();
@@ -48,7 +56,12 @@ public class dmBrush extends dmAbstractBrush
     }
     else
     {
-      this.tail.unlock();
+      this.left.setWeight(5);
+      this.right.setWeight(5);
+      this.tail.setWeight(5);
+      this.anchor.setWeight(10);
+      
+      this.tail.unlock();      
     }
   }
   

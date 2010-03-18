@@ -150,7 +150,7 @@ void testHttpRequest()
 {
   HttpRequest req = new HttpRequest();
   //String u = "http://itp.nyu.edu/~lx243/sensornet/index.php/api/stats/0013A200403D8A20";
-  String u = "http://localhost/~liangjie/impersonal/index.php";
+  String u = "http://localhost/~liangjie/impersonal/index.php/learn/interpolation";
   
   
   try
