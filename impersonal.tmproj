@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Integrator.pde</string>
+	<string>drawing_machine_api.pde</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,19 +21,21 @@
 					<key>filename</key>
 					<string>ui.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T23:21:35Z</date>
+					<date>2010-03-18T18:18:59Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>tests.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T23:22:07Z</date>
+					<date>2010-03-18T18:09:02Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>drawing_machine_api.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T23:23:00Z</date>
+					<date>2010-03-18T18:19:38Z</date>
+					<key>selected</key>
+					<true/>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -48,13 +50,13 @@
 					<key>filename</key>
 					<string>dmAbstractBrush.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T22:48:43Z</date>
+					<date>2010-03-18T16:47:43Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>dmBrush.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T23:19:05Z</date>
+					<date>2010-03-18T02:08:34Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -105,7 +107,7 @@
 					<key>filename</key>
 					<string>dmLineTraining.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T18:06:47Z</date>
+					<date>2010-03-18T01:26:02Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -141,7 +143,7 @@
 					<key>filename</key>
 					<string>boid.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T16:51:30Z</date>
+					<date>2010-03-18T17:26:41Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -160,9 +162,15 @@
 			<array>
 				<dict>
 					<key>filename</key>
+					<string>HttpRequest.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-18T18:16:29Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
 					<string>Integrator.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T16:57:01Z</date>
+					<date>2010-03-17T23:25:53Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -175,28 +183,28 @@
 	<integer>241</integer>
 	<key>metaData</key>
 	<dict>
+		<key>HttpRequest.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>9</integer>
+				<key>line</key>
+				<integer>74</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>66</integer>
+		</dict>
 		<key>Integrator.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>18</integer>
+				<integer>37</integer>
 				<key>line</key>
-				<integer>6</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>README</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>10</integer>
-				<key>line</key>
-				<integer>0</integer>
+				<integer>2</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -208,28 +216,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>11</integer>
 				<key>line</key>
-				<integer>141</integer>
+				<integer>115</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>29</integer>
 		</dict>
 		<key>dmAbstractBrush.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>49</integer>
+				<integer>85</integer>
 				<key>line</key>
-				<integer>129</integer>
+				<integer>27</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>119</integer>
+			<integer>13</integer>
 		</dict>
 		<key>dmAbstractComposer.pde</key>
 		<dict>
@@ -250,14 +258,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>36</integer>
+				<integer>119</integer>
 				<key>line</key>
-				<integer>293</integer>
+				<integer>148</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>152</integer>
+			<integer>109</integer>
 		</dict>
 		<key>dmCanvas.pde</key>
 		<dict>
@@ -334,14 +342,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>64</integer>
+				<integer>67</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>20</integer>
 		</dict>
 		<key>path.pde</key>
 		<dict>
@@ -362,46 +370,40 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>61</integer>
 				<key>line</key>
-				<integer>142</integer>
+				<integer>152</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>107</integer>
 		</dict>
 		<key>ui.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>70</integer>
 				<key>line</key>
-				<integer>164</integer>
+				<integer>12</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>98</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>dmAbstractComposer.pde</string>
-		<string>Integrator.pde</string>
 		<string>drawing_machine_api.pde</string>
-		<string>tests.pde</string>
-		<string>ui.pde</string>
-		<string>boid.pde</string>
-		<string>dmAbstractBrush.pde</string>
-		<string>dmBrush.pde</string>
 		<string>dmLineTraining.pde</string>
-		<string>dmTraining.pde</string>
-		<string>dmCanvas.pde</string>
-		<string>dmCommand.pde</string>
-		<string>README</string>
-		<string>dmEvaluation.pde</string>
+		<string>dmBrush.pde</string>
+		<string>dmAbstractBrush.pde</string>
+		<string>ui.pde</string>
+		<string>HttpRequest.pde</string>
+		<string>tests.pde</string>
+		<string>boid.pde</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
@@ -467,6 +469,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{1200, 59}, {1515, 1345}}</string>
+	<string>{{935, 73}, {1515, 1345}}</string>
 </dict>
 </plist>

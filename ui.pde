@@ -10,12 +10,12 @@ void setupControls()
   
   controlP5.setAutoDraw(true);
   
-  controlWindow = controlP5.addControlWindow("controlP5window",100,100,250,500);
+  controlWindow = controlP5.addControlWindow("controlP5window",100,100,250,height);
   controlWindow.setBackground(color(100));
   controlWindow.setUpdateMode(ControlWindow.NORMAL);
   controlWindow.hideCoordinates();
   
-  controlP5.addSlider("CTL_BRUSH_SIZE",   1,  50, CTL_BRUSH_SIZE,   20, 20, 100,  10).setWindow(controlWindow);
+  controlP5.addSlider("CTL_BRUSH_SIZE",   1,  40, CTL_BRUSH_SIZE,   20, 20, 100,  10).setWindow(controlWindow);
   controlP5.addSlider("CTL_BRUSH_SHADE",  0,  255,CTL_BRUSH_SHADE,  20, 40, 100,  10).setWindow(controlWindow);
   
   controlP5.addToggle("CTL_DEBUG_MODE",       CTL_DEBUG_MODE,  20,   60, 10, 10).setWindow(controlWindow);
@@ -43,7 +43,7 @@ void keyPressed()
   
   if (key == '+' || key == '=')
   {
-    if (CTL_BRUSH_SIZE < 15)
+    if (CTL_BRUSH_SIZE < 40)
     {
       CTL_BRUSH_SIZE++;
       //brush.setSize(CTL_BRUSH_SIZE);
@@ -135,6 +135,10 @@ void keyPressed()
     CTL_CLEAR_BACKGROUND = !CTL_CLEAR_BACKGROUND;
   }
   
+  if (key == '1')
+  {
+    testHttpRequest();
+  }
 }
 
 void mouseReleased()

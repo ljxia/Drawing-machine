@@ -60,7 +60,6 @@ void setup()
   canvas.setBrush(brush);
   
   trainLine = new dmLineTraining();
-  
 }
 
 

@@ -145,3 +145,33 @@ void testCircles()
   }
   
 }
+
+void testHttpRequest()
+{
+  HttpRequest req = new HttpRequest();
+  //String u = "http://itp.nyu.edu/~lx243/sensornet/index.php/api/stats/0013A200403D8A20";
+  String u = "http://localhost/~liangjie/impersonal/index.php";
+  
+  
+  try
+  {
+    Hashtable params = new Hashtable();
+    params.put("apple",URLEncoder.encode("pie","UTF-8"));
+    params.put("test",URLEncoder.encode("bingo","UTF-8"));
+    params.put("mod",URLEncoder.encode("flash","UTF-8"));
+    println("request sent");
+    println("------------");
+  
+    println(req.send(u,"POST",params,null));
+    println("----------------");
+    println("request finished");
+    println("----------------");
+  }
+  catch (Exception e)
+  {
+    println("request failed");
+    println("--------------");
+  }
+  
+  
+}

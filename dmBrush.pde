@@ -130,13 +130,13 @@ public class dmBrush extends dmAbstractBrush
 
     this.left = new VerletParticle(this.anchor);
     this.left.x -= this.getSize() * 0.8;
-    this.left.y -= this.getSize() * 0.45;
+    this.left.y -= this.getSize() * 0.5;
     this.left.setWeight(5);
     this.world.addParticle(this.left);
 
     this.right = new VerletParticle(this.anchor);
     this.right.x += this.getSize() * 0.8;
-    this.right.y -= this.getSize() * 0.45;
+    this.right.y -= this.getSize() * 0.5;
     this.right.setWeight(5);
     this.world.addParticle(this.right);
 
@@ -146,7 +146,7 @@ public class dmBrush extends dmAbstractBrush
     this.tips.add(this.right);
 
 
-    VerletSpring tailSpring = new VerletConstrainedSpring(this.anchor, this.tail, this.anchor.distanceTo(this.tail),0.1);
+    VerletSpring tailSpring = new VerletConstrainedSpring(this.anchor, this.tail, this.anchor.distanceTo(this.tail),0.5);
     VerletSpring leftSpring = new VerletConstrainedSpring(this.anchor, this.left, this.anchor.distanceTo(this.left), 0.5);
     VerletSpring rightSpring = new VerletConstrainedSpring(this.anchor, this.right, this.anchor.distanceTo(this.right), 0.5);
 

@@ -113,7 +113,7 @@ class Boid {
       if (d < record/* && abs(PVector.angleBetween(line, this.vel)) < PI*/) {
         record = d;
         pathProgress = i;
-        println("segment " + pathProgress);
+        // println("segment " + pathProgress);
         if (i == p.points.size() - 2)
         {
           isTail = true;
