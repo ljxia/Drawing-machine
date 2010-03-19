@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>log.pde</string>
+	<string>dmLineTraining.pde</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -27,7 +27,7 @@
 					<key>filename</key>
 					<string>tests.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-18T20:19:37Z</date>
+					<date>2010-03-19T21:29:41Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -69,7 +69,7 @@
 					<key>filename</key>
 					<string>dmCanvas.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T22:42:26Z</date>
+					<date>2010-03-19T21:48:44Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -105,7 +105,9 @@
 					<key>filename</key>
 					<string>dmLineTraining.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-19T21:14:55Z</date>
+					<date>2010-03-19T21:51:23Z</date>
+					<key>selected</key>
+					<true/>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -186,9 +188,7 @@
 					<key>filename</key>
 					<string>log.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-19T21:22:17Z</date>
-					<key>selected</key>
-					<true/>
+					<date>2010-03-19T21:26:36Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -209,7 +209,7 @@
 					<key>filename</key>
 					<string>dmLineMemory.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-19T21:22:17Z</date>
+					<date>2010-03-19T21:49:55Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -227,14 +227,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>13</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>101</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>39</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>101</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>101</integer>
+			</dict>
 		</dict>
 		<key>Integrator.pde</key>
 		<dict>
@@ -269,14 +285,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>137</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>29</integer>
+			<integer>82</integer>
 		</dict>
 		<key>dmAbstractBrush.pde</key>
 		<dict>
@@ -339,14 +355,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>41</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>120</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>157</integer>
+			<integer>68</integer>
 		</dict>
 		<key>dmCommand.pde</key>
 		<dict>
@@ -395,9 +411,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>39</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>14</integer>
+				<integer>13</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -409,14 +425,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>59</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>89</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>29</integer>
+			<integer>69</integer>
 		</dict>
 		<key>dmTraining.pde</key>
 		<dict>
@@ -451,9 +467,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>10</integer>
+				<integer>29</integer>
 				<key>line</key>
-				<integer>17</integer>
+				<integer>12</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -479,9 +495,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>10</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>164</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -520,6 +536,7 @@
 		<string>Integrator.pde</string>
 		<string>HttpRequest.pde</string>
 		<string>tests.pde</string>
+		<string>dmCanvas.pde</string>
 		<string>boid.pde</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
@@ -593,6 +610,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{935, 73}, {1515, 1345}}</string>
+	<string>{{440, 44}, {1515, 1345}}</string>
 </dict>
 </plist>
