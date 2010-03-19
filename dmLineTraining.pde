@@ -6,12 +6,18 @@ class dmLineTraining extends dmTraining
   int margin = 50;
   int side = 400;
   
+  private Vec3D boundOffsetA;
+  private Vec3D boundOffsetB;
+  
   dmLineTraining()
   {
     super();
     
     this.margin = 50;
     this.side = (width - 50 * 3) / 2;
+    
+    this.boundOffsetA = new Vec3D(this.margin, (height - side) / 2, 0);
+    this.boundOffsetB = new Vec3D(margin + side + margin, (height - side) / 2, 0);
     
     this.reset();
     this.generatePoints();
@@ -30,6 +36,11 @@ class dmLineTraining extends dmTraining
     {
       generatePoints();
     }
+    
+    debug("Start: " + startPoint.toString());
+    debug("End: " + startPoint.toString());
+    debug("Normalized: " + endPoint.sub(startPoint).normalize().toString());
+    debug("Orientation: " + endPoint.sub(startPoint).normalize().angleBetween(new Vec3D(1,0,0)) * 180 / PI);
     this.active = true;
     this.reset();
   }
@@ -65,8 +76,8 @@ class dmLineTraining extends dmTraining
 
         if (this.isLogging)
         {
-          this.log(mouseX, mouseY, paused ? 1 : 0);
-          //println("Line Training Log: " + mouseX + "," + mouseY);
+          this.log(mouseX - this.boundOffsetA.x, mouseY - this.boundOffsetA.y, paused ? 1 : 0);
+          //debug("Line Training Log: " + mouseX + "," + mouseY);
           this.lastLog = millis();
         }
       }
@@ -75,9 +86,10 @@ class dmLineTraining extends dmTraining
   
   void feedback()
   {
-    PointList pl = (PointList)this.trail;
-    pl = pl.addSelf(new Vec3D(side + margin, 0, 0));
-    canvas.trace(pl);
+    PointList pl = this.trail.subSelf(this.startPoint);
+    canvas.trace(pl, this.boundOffsetB.add(this.startPoint));
+
+    this.save();
     
     this.reset();
   }
@@ -86,8 +98,8 @@ class dmLineTraining extends dmTraining
   {
     stroke(200);
     noFill();
-    rect(margin, (height - side) / 2, side, side);
-    rect(margin + side + margin, (height - side) / 2, side, side);
+    rect(this.boundOffsetA.x, this.boundOffsetA.y, side, side);
+    rect(this.boundOffsetB.x, this.boundOffsetB.y, side, side);
     
     if (this.active)
     {
@@ -95,10 +107,38 @@ class dmLineTraining extends dmTraining
       fill(255,0,0);
       
       pushMatrix();
-      translate(margin, (height - side) / 2);
+      translate(this.boundOffsetA.x, this.boundOffsetA.y);
       ellipse(this.startPoint.x, this.startPoint.y, 5,5);
+      
+      fill(0,0,255);
+      
       ellipse(this.endPoint.x, this.endPoint.y, 5,5);
       popMatrix();
+      
+      pushMatrix();
+      fill(255,0,0);
+      translate(this.boundOffsetB.x, this.boundOffsetB.y);
+      rect(this.startPoint.x, this.startPoint.y, 3,3);
+      
+      fill(0,0,255);
+      
+      rect(this.endPoint.x, this.endPoint.y, 3,3);
+      popMatrix();
     }
+  }
+
+
+  boolean save()
+  {
+    dmLineMemory mem = new dmLineMemory();
+    String result = mem.memorize(this);
+    
+    debug(result);
+    
+    if (result.equals("ok"))
+    {
+      return true;
+    }
+    return false;
   }
 }

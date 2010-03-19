@@ -39,7 +39,7 @@ class dmTraining
     if (this.isLogging)
     {
       this.log(mouseX, mouseY);
-      println("Training Log: " + mouseX + "," + mouseY);
+      debug("Training Log: " + mouseX + "," + mouseY);
       this.lastLog = millis();
     }
   }
@@ -68,4 +68,7 @@ class dmTraining
   {
     
   }
+  
+  boolean save(){return false;}
+  boolean load(){return false;}
 }

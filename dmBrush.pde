@@ -75,7 +75,7 @@ public class dmBrush extends dmAbstractBrush
     
     this.motion.maxforce = FORCE_STRAIGHT;
     this.motion.maxspeed = SPEED_STRAIGHT * localSpeedVar;
-    println("motion moveTo started");
+    debug("motion moveTo started");
     return true;
   }
   
@@ -90,7 +90,7 @@ public class dmBrush extends dmAbstractBrush
     this.motion.maxforce = FORCE_STRAIGHT;
     this.motion.maxspeed = SPEED_STRAIGHT * localSpeedVar;
     
-    println("motion lineTo started");
+    debug("motion lineTo started");
   }
   
   void drawAlong(Path path)
@@ -116,7 +116,7 @@ public class dmBrush extends dmAbstractBrush
       this.motion.vel.y = this.motion.vel.y * (1 + random(-0.4, 0.4));
     }
     
-    println("motion drawAlong started");
+    debug("motion drawAlong started");
   }
   
   void trace(PointList pl)
@@ -125,7 +125,7 @@ public class dmBrush extends dmAbstractBrush
     this.trail = pl;
     this.motionCompleted = false;
     
-    println("motion trace started");
+    debug("motion trace started");
   }
 
   void reset()
@@ -209,7 +209,7 @@ public class dmBrush extends dmAbstractBrush
         motionCompleted = true;
         this.motionEnd = null;
         this.automated = false;
-        println("motion completed");
+        debug("motion completed");
       }      
       this.setPos(this.motion.loc);
     }
@@ -223,7 +223,7 @@ public class dmBrush extends dmAbstractBrush
           motionCompleted = true;
 
           this.automated = false;
-          println("motion completed");
+          debug("motion completed");
 
           if (this.motion.travelLength < (1.2 * this.motionCurve.length()) && random(0,1) < 0.6)
           {
@@ -250,7 +250,7 @@ public class dmBrush extends dmAbstractBrush
         this.trail = null;
         this.motionCompleted= true;
         this.automated = false;
-        println("trace completed");
+        debug("trace completed");
       }
     }
     

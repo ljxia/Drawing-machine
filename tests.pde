@@ -141,7 +141,7 @@ void testCircles()
     //noFill();
     //ellipse(x, y, r * 2, r * 2);
     canvas.circle(new Vec3D(x, y, 0), r);
-    println("circles left: " + (number_of_circle - i - 1));
+    debug("circles left: " + (number_of_circle - i - 1));
   }
   
 }
@@ -159,18 +159,18 @@ void testHttpRequest()
     params.put("apple",URLEncoder.encode("pie","UTF-8"));
     params.put("test",URLEncoder.encode("bingo","UTF-8"));
     params.put("mod",URLEncoder.encode("flash","UTF-8"));
-    println("request sent");
-    println("------------");
+    debug("request sent");
+    debug("------------");
   
-    println(req.send(u,"POST",params,null));
-    println("----------------");
-    println("request finished");
-    println("----------------");
+    debug(req.send(u,"POST",params,null));
+    debug("----------------");
+    debug("request finished");
+    debug("----------------");
   }
   catch (Exception e)
   {
-    println("request failed");
-    println("--------------");
+    debug("request failed");
+    debug("--------------");
   }
   
   

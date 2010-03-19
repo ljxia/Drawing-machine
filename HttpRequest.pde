@@ -8,7 +8,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 
 
-class HttpRequest
+public class HttpRequest
 {
   private String defaultContentEncoding;
 
@@ -23,7 +23,7 @@ class HttpRequest
     Enumeration enumerator = null;
     if (method.equalsIgnoreCase("GET") && parameters != null) 
     {
-      //println("composing url");
+      //debug("composing url");
       
       StringBuffer param = new StringBuffer();
       int i = 0;
@@ -41,7 +41,7 @@ class HttpRequest
       urlString += param;
     }
     
-    //println("complete url: " + urlString);
+    //debug("complete url: " + urlString);
     
     URL url = new URL(urlString);
     urlConnection = (HttpURLConnection) url.openConnection();
@@ -51,7 +51,7 @@ class HttpRequest
     urlConnection.setDoInput(true);
     urlConnection.setUseCaches(false);
     
-    //println("set property");
+    //debug("set property");
 
     if (properties != null)
     {
@@ -63,7 +63,7 @@ class HttpRequest
       }      
     }
 
-    //println("set param");
+    debug("set param");
 
     if (method.equalsIgnoreCase("POST") && parameters != null) 
     {
@@ -78,7 +78,7 @@ class HttpRequest
         i++;
       }
       
-      //println(param.toString());
+      debug(param.toString());
       
       urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
       urlConnection.setRequestProperty("Content-Length", "" + Integer.toString(param.toString().getBytes().length));
@@ -90,8 +90,8 @@ class HttpRequest
       wr.close();
     }
     
-    //println("send request");
-    //println("---------------");
+    debug("send request");
+    //debug("---------------");
     return this.getContent(urlString, urlConnection);
   }
 
@@ -99,7 +99,7 @@ class HttpRequest
   {
     try 
     {
-      //println(urlConnection.getRequestMethod());
+      //debug(urlConnection.getRequestMethod());
       
       InputStream in = urlConnection.getInputStream();
       BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));

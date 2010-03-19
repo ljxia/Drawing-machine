@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>drawing_machine_api.pde</string>
+	<string>log.pde</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,21 +21,19 @@
 					<key>filename</key>
 					<string>ui.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-18T18:18:59Z</date>
+					<date>2010-03-18T21:03:15Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>tests.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-18T18:09:02Z</date>
+					<date>2010-03-18T20:19:37Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>drawing_machine_api.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-18T18:19:38Z</date>
-					<key>selected</key>
-					<true/>
+					<date>2010-03-18T19:37:18Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -56,7 +54,7 @@
 					<key>filename</key>
 					<string>dmBrush.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-18T02:08:34Z</date>
+					<date>2010-03-18T22:59:18Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -107,7 +105,7 @@
 					<key>filename</key>
 					<string>dmLineTraining.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-18T01:26:02Z</date>
+					<date>2010-03-19T21:14:55Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -129,6 +127,12 @@
 					<string>dmAbstractComposer.pde</string>
 					<key>lastUsed</key>
 					<date>2010-03-17T17:40:20Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>dmInspiration.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-19T17:48:57Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -164,7 +168,7 @@
 					<key>filename</key>
 					<string>HttpRequest.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-18T18:16:29Z</date>
+					<date>2010-03-19T20:45:50Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -172,11 +176,46 @@
 					<key>lastUsed</key>
 					<date>2010-03-17T23:25:53Z</date>
 				</dict>
+				<dict>
+					<key>filename</key>
+					<string>JsonUtil.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-19T18:03:46Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>log.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-19T21:22:17Z</date>
+					<key>selected</key>
+					<true/>
+				</dict>
 			</array>
 			<key>expanded</key>
 			<true/>
 			<key>name</key>
 			<string>lib</string>
+		</dict>
+		<dict>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>filename</key>
+					<string>dmAbstractMemory.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-19T20:57:48Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>dmLineMemory.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-19T21:22:17Z</date>
+				</dict>
+			</array>
+			<key>expanded</key>
+			<true/>
+			<key>name</key>
+			<string>Memory</string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -188,14 +227,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>9</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>74</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>66</integer>
+			<integer>39</integer>
 		</dict>
 		<key>Integrator.pde</key>
 		<dict>
@@ -211,14 +250,28 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>JsonUtil.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>boid.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>11</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>115</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -230,14 +283,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>85</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>27</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>13</integer>
+			<integer>0</integer>
 		</dict>
 		<key>dmAbstractComposer.pde</key>
 		<dict>
@@ -253,28 +306,42 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>dmAbstractMemory.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>dmBrush.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>119</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>148</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>109</integer>
+			<integer>22</integer>
 		</dict>
 		<key>dmCanvas.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>37</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>221</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -309,6 +376,34 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>dmInspiration.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>dmLineMemory.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>39</integer>
+				<key>line</key>
+				<integer>14</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>dmLineTraining.pde</key>
 		<dict>
 			<key>caret</key>
@@ -328,9 +423,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>48</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -351,6 +446,20 @@
 			<key>firstVisibleLine</key>
 			<integer>20</integer>
 		</dict>
+		<key>log.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>10</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>path.pde</key>
 		<dict>
 			<key>caret</key>
@@ -370,23 +479,23 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>61</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>152</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>107</integer>
+			<integer>111</integer>
 		</dict>
 		<key>ui.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>70</integer>
+				<integer>42</integer>
 				<key>line</key>
-				<integer>12</integer>
+				<integer>34</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -401,6 +510,14 @@
 		<string>dmBrush.pde</string>
 		<string>dmAbstractBrush.pde</string>
 		<string>ui.pde</string>
+		<string>dmTraining.pde</string>
+		<string>dmAbstractMemory.pde</string>
+		<string>dmAbstractComposer.pde</string>
+		<string>dmInspiration.pde</string>
+		<string>dmLineMemory.pde</string>
+		<string>log.pde</string>
+		<string>JsonUtil.pde</string>
+		<string>Integrator.pde</string>
 		<string>HttpRequest.pde</string>
 		<string>tests.pde</string>
 		<string>boid.pde</string>
@@ -440,6 +557,13 @@
 			<dict/>
 		</dict>
 		<key>Evaluation</key>
+		<dict>
+			<key>isExpanded</key>
+			<true/>
+			<key>subItems</key>
+			<dict/>
+		</dict>
+		<key>Memory</key>
 		<dict>
 			<key>isExpanded</key>
 			<true/>

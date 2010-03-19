@@ -113,7 +113,7 @@ class Boid {
       if (d < record/* && abs(PVector.angleBetween(line, this.vel)) < PI*/) {
         record = d;
         pathProgress = i;
-        // println("segment " + pathProgress);
+        // debug("segment " + pathProgress);
         if (i == p.points.size() - 2)
         {
           isTail = true;
@@ -122,7 +122,7 @@ class Boid {
         {
           isTail = false;
         }
-        //println("check tail!");
+        //debug("check tail!");
         // If so the target we want to steer towards is the normal
         target = normal;
         segment = line;
@@ -154,7 +154,7 @@ class Boid {
       target.add(dir);
       if (isTail)
       {
-        //println("is tail!");
+        //debug("is tail!");
         return true;
 /*        if (close)
         {

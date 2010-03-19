@@ -28,7 +28,7 @@ class dmCanvas
     TColor _color = TColor.newRGBA(_gray / 255, _gray / 255,_gray / 255,1);
     cmd.params.put("color", _color);
     this.commands.add(cmd);
-    println("command in queue:" + this.commands.size());
+    debug("command in queue:" + this.commands.size());
   }
   
   void changeColor(TColor _color)
@@ -36,7 +36,7 @@ class dmCanvas
     dmCommand cmd = new dmCommand("color");
     cmd.params.put("color", _color);
     this.commands.add(cmd);
-    println("command in queue:" + this.commands.size());
+    debug("command in queue:" + this.commands.size());
   }
   
   void changeSize(float _size)
@@ -47,7 +47,7 @@ class dmCanvas
     dmCommand cmd = new dmCommand("size");
     cmd.params.put("size", _size);
     this.commands.add(cmd);
-    println("command in queue:" + this.commands.size());
+    debug("command in queue:" + this.commands.size());
   }
   
   void moveTo(Vec3D pos)
@@ -55,7 +55,7 @@ class dmCanvas
     dmCommand cmd = new dmCommand("move");
     cmd.params.put("target", pos);
     this.commands.add(cmd);
-    println("command in queue:" + this.commands.size());
+    debug("command in queue:" + this.commands.size());
   }
 
   void lineTo(Vec3D pos)
@@ -63,7 +63,7 @@ class dmCanvas
     dmCommand cmd = new dmCommand("line");
     cmd.params.put("target", pos);
     this.commands.add(cmd);
-    println("command in queue:" + this.commands.size());
+    debug("command in queue:" + this.commands.size());
   }
   
   void rectangle(Vec3D corner, float _width, float _height)
@@ -78,8 +78,12 @@ class dmCanvas
     lineTo(corner.add((_width), (_height), 0));
   }
   
-  
   void trace(PointList pl)
+  {
+    this.trace(pl, new Vec3D(0,0,0));
+  }
+  
+  void trace(PointList pl, Vec3D offset)
   {
     int from = 0;
     int to = 1;
@@ -90,17 +94,17 @@ class dmCanvas
     {
       if (pl.get(to).z > 0) //found a pause
       {
-        this.moveTo(pl.get(from));
+        this.moveTo(pl.get(from).add(offset));
         
         cmd = new dmCommand("trace");
         segment = new PointList();
         for (int i = from; i < to; i++)
         {
-          segment.add(pl.get(i));
+          segment.add(pl.get(i).add(offset));
         }
         cmd.params.put("trace", segment);
         this.commands.add(cmd);
-        println("command in queue:" + this.commands.size());
+        debug("command in queue:" + this.commands.size());
         
         from = to;
       }
@@ -108,17 +112,17 @@ class dmCanvas
     
     if (from < to)
     {
-      this.moveTo(pl.get(from));
+      this.moveTo(pl.get(from).add(offset));
       
       cmd = new dmCommand("trace");
       segment = new PointList();
       for (int i = from; i < to; i++)
       {
-        segment.add(pl.get(i));
+        segment.add(pl.get(i).add(offset));
       }
       cmd.params.put("trace", segment);
       this.commands.add(cmd);
-      println("command in queue:" + this.commands.size());
+      debug("command in queue:" + this.commands.size());
     }
     
     
@@ -130,7 +134,7 @@ class dmCanvas
     cmd.params.put("path", path);
     cmd.params.put("close", closeShape);
     this.commands.add(cmd);
-    println("command in queue:" + this.commands.size());
+    debug("command in queue:" + this.commands.size());
   }
   
   void circle(Vec3D center, float _radius)
@@ -184,21 +188,21 @@ class dmCanvas
       dmCommand cmd = (dmCommand)this.commands.remove(0);
       
       
-      println("----");
-      print(millis() + ": ");
+      debug("----");
+      
       if (cmd.name.equals("move"))
       {
           Vec3D target = (Vec3D)cmd.params.get("target");
           this._brush.resetTravelLength();
           this._brush.moveTo(target);
-          println("move to " + target.x + ", " + target.y);
+          debug("move to " + target.x + ", " + target.y);
       }
       else if (cmd.name.equals("line"))
       {
           Vec3D target = (Vec3D)cmd.params.get("target");
           this._brush.resetTravelLength();
           this._brush.lineTo(target);
-          println("line to " + target.x + ", " + target.y);
+          debug("line to " + target.x + ", " + target.y);
       }
       else if (cmd.name.equals("follow"))
       {
@@ -208,19 +212,19 @@ class dmCanvas
           this._brush.closeShape = closeShape;
           //path.display();
           this._brush.drawAlong(path);
-          println("draw along path - node count " + path.points.size());
+          debug("draw along path - node count " + path.points.size());
       }
       else if (cmd.name.equals("color"))
       {
           TColor c = (TColor)cmd.params.get("color");
           this._brush.setColor(c);
-          println("change color " + c.red() + "," + c.green() + "," + c.blue());
+          debug("change color " + c.red() + "," + c.green() + "," + c.blue());
       }
       else if (cmd.name.equals("size"))
       {
           float s = float(cmd.params.get("size").toString());
           this._brush.setSize(s, true);
-          println("change size " + s);
+          debug("change size " + s);
       }
       else if (cmd.name.equals("trace"))
       {

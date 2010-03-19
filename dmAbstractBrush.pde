@@ -70,7 +70,7 @@ public class dmAbstractBrush
   void setSize(float new_size)
   {
     this._scale.target(new_size);
-    //println("size: " + this._size + ", scale: " + this._scale.get());
+    //debug("size: " + this._size + ", scale: " + this._scale.get());
     //this._size = new_size;
   }
   
@@ -143,12 +143,12 @@ public class dmAbstractBrush
   
   void draw()
   {
-    println("abstract draw");
+    debug("abstract draw");
   }
   
   void draw(PGraphics canvas)
   {
-    println("abstract draw on canvas");
+    debug("abstract draw on canvas");
   }
   
   void setGray(float shade)
