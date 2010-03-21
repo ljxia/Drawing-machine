@@ -21,7 +21,8 @@ class dmLineMemory extends dmAbstractMemory
   {
     Hashtable params = new Hashtable();
     params.put("vector",vector);
-    super.recall(params);
-    return new PointList();
+    String result = super.recall(params);
+    //debug(result);
+    return JsonUtil.decodePointList(result);
   }
 }

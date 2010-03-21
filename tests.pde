@@ -180,3 +180,16 @@ void testJson()
   debug(v.toString());
   debug(v.x + ", " + v.y + ", " + v.z);
 }
+
+void testLoadInterpolation()
+{
+  dmLineMemory memory = new dmLineMemory();
+  PointList pl = memory.recall(new Vec3D());
+  if (pl != null)
+  {
+    //debug(pl.toString());
+    canvas.trace(pl, new Vec3D(mouseX, mouseY, 0));
+  }
+  
+  
+}

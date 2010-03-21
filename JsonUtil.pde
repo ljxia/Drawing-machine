@@ -21,13 +21,16 @@ static class JsonUtil
     PointList pl = new PointList();
     try
     {
-      JSONArray json = new JSONArray(input);
-      
-      for (int i = 0; i < json.length() ; i++)
+      JSONObject json = new JSONObject(input);
+      //println(json.getString("trail"));
+      JSONArray array = new JSONArray(json.getString("trail"));
+      //println(array.length() + array.toString());
+      for (int i = 0; i < array.length() ; i++)
       {
-        Vec3D v = JsonUtil.decodeVec3D(json.getString(i));
+        Vec3D v = JsonUtil.decodeVec3D(array.getString(i));
         if (v != null)
         {
+          println(v.toString());
           pl.add(v);
         }
       } 
@@ -36,6 +39,7 @@ static class JsonUtil
     }
     catch(JSONException e)
     {
+      println(e.getMessage());
       return null;
     }
     

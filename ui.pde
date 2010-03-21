@@ -148,6 +148,11 @@ void keyPressed()
   {
     testJson();
   }
+  
+  if (key == '3')
+  {
+    testLoadInterpolation();
+  }
 }
 
 void mouseReleased()
