@@ -17,8 +17,11 @@ class dmLineMemory extends dmAbstractMemory
     return super.memorize();
   }
   
-  Object recall()
+  PointList recall(Vec3D vector)
   {
-    return null;
+    Hashtable params = new Hashtable();
+    params.put("vector",vector);
+    super.recall(params);
+    return new PointList();
   }
 }

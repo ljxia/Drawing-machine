@@ -1,16 +1,28 @@
 abstract class dmAbstractMemory
 {
-  public String serverUrlBase = "http://localhost/~liangjie/impersonal/index.php/learn/";
+  public String serverUrlBase = "http://localhost/~liangjie/impersonal/index.php/";
   protected String serverMethod = "abstract"; 
   private Hashtable _data;
   
   dmAbstractMemory(){_data = new Hashtable();}
-  abstract Object recall();
+  
+  public String recall(Hashtable params)
+  {
+    HttpRequest req = new HttpRequest();
+    String url = serverUrlBase + serverMethod + "/get";
+    debug("-----------------");
+    debug("load from url: " + url);
+    try
+    {
+      return req.send(url,"POST",params,null);
+    }
+    catch (Exception e){return "error: " + e.getMessage();}
+  }
  
   public String memorize()
   {
     HttpRequest req = new HttpRequest();
-    String url = serverUrlBase + serverMethod;
+    String url = serverUrlBase + "learn/" + serverMethod;
     debug("-----------------");
     debug("ping url: " + url);
     try

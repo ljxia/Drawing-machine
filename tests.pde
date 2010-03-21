@@ -172,6 +172,11 @@ void testHttpRequest()
     debug("request failed");
     debug("--------------");
   }
-  
-  
+}
+
+void testJson()
+{
+  Vec3D v = JsonUtil.decodeVec3D("{x:" + random(1000) + ", y:" + random(1000) + ",z:" + random(1000) + "}");
+  debug(v.toString());
+  debug(v.x + ", " + v.y + ", " + v.z);
 }

@@ -143,6 +143,11 @@ void keyPressed()
   {
     testHttpRequest();
   }
+  
+  if (key == '2')
+  {
+    testJson();
+  }
 }
 
 void mouseReleased()
