@@ -190,6 +190,4 @@ void testLoadInterpolation()
     //debug(pl.toString());
     canvas.trace(pl, new Vec3D(mouseX, mouseY, 0));
   }
-  
-  
 }

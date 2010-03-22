@@ -1,6 +1,6 @@
 abstract class dmAbstractMemory
 {
-  public String serverUrlBase = "http://localhost/~liangjie/impersonal/index.php/";
+  public String serverUrlBase = Config.API_URL;
   protected String serverMethod = "abstract"; 
   private Hashtable _data;
   
