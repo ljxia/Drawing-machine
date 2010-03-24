@@ -272,7 +272,19 @@ class dmCanvas
 
   private PointList loadLineInterpolation(Vec3D vector)
   {
-    return new PointList();
+    dmLineMemory memory = new dmLineMemory();
+    PointList pl = memory.recall(vector);
+    
+    // should return origin vector data and dump it into the memory, 
+    // so that the canvas knows how to rotate the interpolation for current vector
+    
+    if (pl != null)
+    {
+      //debug(pl.toString());
+      return pl;
+    }
+    
+    return null;
   }
 
 }
