@@ -141,4 +141,22 @@ class dmLineTraining extends dmTraining
     }
     return false;
   }
+  
+  float trailDeviation()
+  {
+    float dev = 0;
+    Vec3D vector = this.endPoint.sub(this.startPoint);
+    
+    if (this.trail != null && this.trail.size() > 0)
+    {
+      for (int i = 0; i < this.trail.size() ; i++)
+      {
+        Vec3D segment = this.trail.get(i);
+        dev += sin(vector.angleBetween(segment, true)) * segment.magnitude();
+      }
+      
+      return dev / this.trail.size();
+    }
+    return 0;
+  }
 }

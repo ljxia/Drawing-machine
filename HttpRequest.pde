@@ -78,7 +78,7 @@ public class HttpRequest
         i++;
       }
       
-      debug(param.toString());
+      //debug(param.toString());
       
       urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
       urlConnection.setRequestProperty("Content-Length", "" + Integer.toString(param.toString().getBytes().length));

@@ -193,6 +193,17 @@ class dmCanvas
       if (cmd.name.equals("move"))
       {
           Vec3D target = (Vec3D)cmd.params.get("target");
+          
+          if (CTL_USE_TRAINED_INTERPOLATION >= random(1))
+          {
+            PointList pl = loadLineInterpolation(target.sub(this._brush.getPos()));
+            this._brush.setInterpolation(pl);
+          }
+          else
+          {
+            this._brush.clearInterpolation();
+          }
+          
           this._brush.resetTravelLength();
           this._brush.moveTo(target);
           debug("move to " + target.x + ", " + target.y);
@@ -200,6 +211,17 @@ class dmCanvas
       else if (cmd.name.equals("line"))
       {
           Vec3D target = (Vec3D)cmd.params.get("target");
+          
+          if (CTL_USE_TRAINED_INTERPOLATION >= random(1))
+          {
+            PointList pl = loadLineInterpolation(target.sub(this._brush.getPos()));
+            this._brush.setInterpolation(pl);
+          }
+          else
+          {
+            this._brush.clearInterpolation();
+          }
+          
           this._brush.resetTravelLength();
           this._brush.lineTo(target);
           debug("line to " + target.x + ", " + target.y);
@@ -232,9 +254,6 @@ class dmCanvas
         this._brush.trace(trace);
       }
     }
-    
-    
-    
   }
 
   void draw(int x, int y)
@@ -249,4 +268,11 @@ class dmCanvas
     fill(255);
     rect(-1,-1,width + 1, height + 1);
   }
+
+
+  private PointList loadLineInterpolation(Vec3D vector)
+  {
+    return new PointList();
+  }
+
 }

@@ -3,6 +3,24 @@ import controlP5.*;
 ControlP5 controlP5;
 ControlWindow controlWindow;
 
+/*control params*/
+
+public float CTL_BRUSH_SIZE = 1;
+public float CTL_BRUSH_SHADE = 0;
+public boolean CTL_DEBUG_MODE = false;
+public boolean CTL_CLEAR_BACKGROUND = false;
+public boolean CTL_SHOW_TOOL = false;
+public boolean CTL_SHOW_BRUSH = false;
+
+public float CTL_USE_TRAINED_INTERPOLATION = 0.8;
+
+
+public float FORCE_STRAIGHT = 1.7;
+public float SPEED_STRAIGHT = 13;
+
+public float FORCE_CURVE = 25;
+public float SPEED_CURVE = 17;
+
 void setupControls()
 {
   controlP5 = new ControlP5(this);
@@ -10,16 +28,20 @@ void setupControls()
   
   controlP5.setAutoDraw(true);
   
-  controlWindow = controlP5.addControlWindow("controlP5window",100,100,250,height);
+  controlWindow = controlP5.addControlWindow("controlP5window",screen.width - 450,200,(screen.height - height) / 2,height);
   controlWindow.setBackground(color(100));
   controlWindow.setUpdateMode(ControlWindow.NORMAL);
   controlWindow.hideCoordinates();
   
   controlP5.addSlider("CTL_BRUSH_SIZE",   1,  40, CTL_BRUSH_SIZE,   20, 20, 100,  10).setWindow(controlWindow);
   controlP5.addSlider("CTL_BRUSH_SHADE",  0,  255,CTL_BRUSH_SHADE,  20, 40, 100,  10).setWindow(controlWindow);
+  controlP5.addSlider("CTL_USE_TRAINED_INTERPOLATION",  0,  1,CTL_USE_TRAINED_INTERPOLATION,  20, 60, 100,  10).setWindow(controlWindow);
   
-  controlP5.addToggle("CTL_DEBUG_MODE",       CTL_DEBUG_MODE,  20,   60, 10, 10).setWindow(controlWindow);
-  controlP5.addToggle("CTL_CLEAR_BACKGROUND", CTL_CLEAR_BACKGROUND,  100,  60, 10, 10).setWindow(controlWindow);
+  controlP5.addToggle("CTL_DEBUG_MODE",       CTL_DEBUG_MODE,  20,   80, 10, 10).setWindow(controlWindow);
+  controlP5.addToggle("CTL_CLEAR_BACKGROUND", CTL_CLEAR_BACKGROUND,  100,  80, 10, 10).setWindow(controlWindow);
+  
+  controlP5.addToggle("CTL_SHOW_BRUSH",       CTL_SHOW_BRUSH,  20,   110, 10, 10).setWindow(controlWindow);
+  
 }
 
 void updateControls()
@@ -28,9 +50,11 @@ void updateControls()
   {
     controlP5.controller("CTL_BRUSH_SIZE").setValue(CTL_BRUSH_SIZE);
     controlP5.controller("CTL_BRUSH_SHADE").setValue(CTL_BRUSH_SHADE);
+    controlP5.controller("CTL_USE_TRAINED_INTERPOLATION").setValue(CTL_USE_TRAINED_INTERPOLATION);
 
     ((Toggle)controlP5.controller("CTL_DEBUG_MODE")).setState(CTL_DEBUG_MODE);
-    ((Toggle)controlP5.controller("CTL_CLEAR_BACKGROUND")).setState(CTL_CLEAR_BACKGROUND);    
+    ((Toggle)controlP5.controller("CTL_CLEAR_BACKGROUND")).setState(CTL_CLEAR_BACKGROUND);   
+    ((Toggle)controlP5.controller("CTL_SHOW_BRUSH")).setState(CTL_SHOW_BRUSH);    
   }
   catch(java.lang.NullPointerException e){}
 }

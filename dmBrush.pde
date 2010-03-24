@@ -19,12 +19,22 @@ public class dmBrush extends dmAbstractBrush
   public float localSpeedVar = 1.0;
   
   private boolean closeShape = false;
-  
+  private PointList _lineInterpolation = null;
   
 
   dmBrush(Vec3D center, VerletPhysics physics, float _size)
   {
     super(center,physics,_size);
+  }
+
+  void clearInterpolation()
+  {
+    this._lineInterpolation = null;
+  }
+  
+  void setInterpolation(PointList pl)
+  {
+    this._lineInterpolation = pl;
   }
   
   void setPos(int x, int y)
@@ -67,25 +77,24 @@ public class dmBrush extends dmAbstractBrush
   
   boolean moveTo(Vec3D _target)
   {
-   this.motionEnd = new Vec3D(_target);
-    
-    this.motionCompleted = false;
-    
     this.motion.vel.mult(0);
+    this.motionCompleted = false;
+    this.motionEnd = new Vec3D(_target);
     
     this.motion.maxforce = FORCE_STRAIGHT;
     this.motion.maxspeed = SPEED_STRAIGHT * localSpeedVar;
     debug("motion moveTo started");
+    
     return true;
   }
   
   void lineTo(Vec3D _target)
   {
     this.automated = true;
-    this.motionEnd = new Vec3D(_target);
-    
+        
     this.motion.vel.mult(0);
     this.motionCompleted = false;
+    this.motionEnd = new Vec3D(_target);
     
     this.motion.maxforce = FORCE_STRAIGHT;
     this.motion.maxspeed = SPEED_STRAIGHT * localSpeedVar;
@@ -270,8 +279,7 @@ public class dmBrush extends dmAbstractBrush
   void draw()
   {
     if (this.automated || mousePressed)
-    {
-      
+    {      
       if (!CTL_DEBUG_MODE)
       {
         noStroke();
@@ -315,6 +323,12 @@ public class dmBrush extends dmAbstractBrush
       vertex(last_left.x, last_left.y);
       vertex(left.x, left.y);
       endShape(CLOSE);
+    }
+    else if (CTL_SHOW_BRUSH)
+    {
+      noStroke();
+      fill(255,0,0);
+      ellipse(this.anchor.x, this.anchor.y, 3,3);
     }
     
     

@@ -55,6 +55,11 @@ public class dmAbstractBrush
     this.reset();
   }
   
+  Vec3D getPos()
+  {
+    return (Vec3D)this.anchor;
+  }
+  
   void setSize(float new_size, boolean force)
   {
     if (force)

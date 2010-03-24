@@ -14,20 +14,6 @@ dmLineTraining trainLine;
 VerletPhysics world;
 PFont font;
 
-/*control params*/
-
-public float CTL_BRUSH_SIZE = 1;
-public float CTL_BRUSH_SHADE = 0;
-public boolean CTL_DEBUG_MODE = false;
-public boolean CTL_CLEAR_BACKGROUND = false;
-public boolean CTL_SHOW_TOOL = false;
-
-public float FORCE_STRAIGHT = 1.7;
-public float SPEED_STRAIGHT = 13;
-
-public float FORCE_CURVE = 25;
-public float SPEED_CURVE = 17;
-
 /*temp*/
 
 boolean recreateCurve = false;
