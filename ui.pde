@@ -28,7 +28,7 @@ void setupControls()
   
   controlP5.setAutoDraw(true);
   
-  controlWindow = controlP5.addControlWindow("controlP5window",screen.width - 450,200,(screen.height - height) / 2,height);
+  controlWindow = controlP5.addControlWindow("controlP5window",screen.width - 250,0,250,height);
   controlWindow.setBackground(color(100));
   controlWindow.setUpdateMode(ControlWindow.NORMAL);
   controlWindow.hideCoordinates();

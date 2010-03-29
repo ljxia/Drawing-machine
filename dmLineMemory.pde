@@ -10,7 +10,7 @@ class dmLineMemory extends dmAbstractMemory
     Vec3D vector = training.endPoint.sub(training.startPoint);
     float orientation = vector.angleBetween(new Vec3D(1,0,0), true) * 180 / PI;
     
-    if (vector.y < 0) orientation = 360 - orientation;
+    if (vector.y > 0) orientation = 360 - orientation;
     
     this.setData("vector", vector.toString());
     this.setData("deviation", training.trailDeviation());
@@ -30,7 +30,7 @@ class dmLineMemory extends dmAbstractMemory
     Hashtable params = new Hashtable();
     float orientation = vector.angleBetween(new Vec3D(1,0,0), true) * 180 / PI;
     
-    if (vector.y < 0) orientation = 360 - orientation;
+    if (vector.y > 0) orientation = 360 - orientation;
     
     params.put("vector",vector);
     params.put("orientation", orientation);

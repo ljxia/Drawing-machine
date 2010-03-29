@@ -3,25 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>dmCanvas.pde</string>
+	<string>dmLineMemory.pde</string>
 	<key>documents</key>
 	<array>
-		<dict>
-			<key>name</key>
-			<string>drawing_machine_api</string>
-			<key>regexFolderFilter</key>
-			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>sourceDirectory</key>
-			<string></string>
-		</dict>
 		<dict>
 			<key>children</key>
 			<array>
 				<dict>
 					<key>filename</key>
-					<string>ui.pde</string>
+					<string>drawing_machine_api.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-24T05:29:18Z</date>
+					<date>2010-03-29T17:36:40Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -31,9 +23,9 @@
 				</dict>
 				<dict>
 					<key>filename</key>
-					<string>drawing_machine_api.pde</string>
+					<string>ui.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-18T19:37:18Z</date>
+					<date>2010-03-29T17:38:03Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -69,9 +61,7 @@
 					<key>filename</key>
 					<string>dmCanvas.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-24T05:46:49Z</date>
-					<key>selected</key>
-					<true/>
+					<date>2010-03-28T04:11:33Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -84,42 +74,6 @@
 			<true/>
 			<key>name</key>
 			<string>Canvas</string>
-		</dict>
-		<dict>
-			<key>children</key>
-			<array>
-				<dict>
-					<key>filename</key>
-					<string>dmEvaluation.pde</string>
-					<key>lastUsed</key>
-					<date>2010-03-17T16:52:51Z</date>
-				</dict>
-			</array>
-			<key>expanded</key>
-			<true/>
-			<key>name</key>
-			<string>Evaluation</string>
-		</dict>
-		<dict>
-			<key>children</key>
-			<array>
-				<dict>
-					<key>filename</key>
-					<string>dmLineTraining.pde</string>
-					<key>lastUsed</key>
-					<date>2010-03-24T05:13:49Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>dmTraining.pde</string>
-					<key>lastUsed</key>
-					<date>2010-03-17T18:08:21Z</date>
-				</dict>
-			</array>
-			<key>expanded</key>
-			<true/>
-			<key>name</key>
-			<string>Training</string>
 		</dict>
 		<dict>
 			<key>children</key>
@@ -141,6 +95,91 @@
 			<true/>
 			<key>name</key>
 			<string>Composition</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>drawing_machine_api</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>filename</key>
+					<string>dmEvaluation.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-17T16:52:51Z</date>
+				</dict>
+			</array>
+			<key>expanded</key>
+			<true/>
+			<key>name</key>
+			<string>Evaluation</string>
+		</dict>
+		<dict>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>filename</key>
+					<string>config.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-22T03:57:58Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>HttpRequest.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-19T20:45:50Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>Integrator.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-17T23:25:53Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>JsonUtil.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-21T19:14:15Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>log.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-19T21:26:36Z</date>
+				</dict>
+			</array>
+			<key>expanded</key>
+			<true/>
+			<key>name</key>
+			<string>lib</string>
+		</dict>
+		<dict>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>filename</key>
+					<string>dmAbstractMemory.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-24T05:05:49Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>dmLineMemory.pde</string>
+					<key>lastUsed</key>
+					<date>2010-03-29T17:44:31Z</date>
+					<key>selected</key>
+					<true/>
+				</dict>
+			</array>
+			<key>expanded</key>
+			<true/>
+			<key>name</key>
+			<string>Memory</string>
 		</dict>
 		<dict>
 			<key>children</key>
@@ -168,60 +207,21 @@
 			<array>
 				<dict>
 					<key>filename</key>
-					<string>HttpRequest.pde</string>
+					<string>dmLineTraining.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-19T20:45:50Z</date>
+					<date>2010-03-24T05:13:49Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
-					<string>Integrator.pde</string>
+					<string>dmTraining.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-17T23:25:53Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>JsonUtil.pde</string>
-					<key>lastUsed</key>
-					<date>2010-03-21T19:14:15Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>log.pde</string>
-					<key>lastUsed</key>
-					<date>2010-03-19T21:26:36Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>config.pde</string>
-					<key>lastUsed</key>
-					<date>2010-03-22T03:57:58Z</date>
+					<date>2010-03-17T18:08:21Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
 			<true/>
 			<key>name</key>
-			<string>lib</string>
-		</dict>
-		<dict>
-			<key>children</key>
-			<array>
-				<dict>
-					<key>filename</key>
-					<string>dmAbstractMemory.pde</string>
-					<key>lastUsed</key>
-					<date>2010-03-24T05:05:49Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>dmLineMemory.pde</string>
-					<key>lastUsed</key>
-					<date>2010-03-24T05:42:15Z</date>
-				</dict>
-			</array>
-			<key>expanded</key>
-			<true/>
-			<key>name</key>
-			<string>Memory</string>
+			<string>Training</string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -359,14 +359,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>45</integer>
+				<integer>64</integer>
 				<key>line</key>
-				<integer>274</integer>
+				<integer>231</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>214</integer>
+			<integer>205</integer>
 		</dict>
 		<key>dmCommand.pde</key>
 		<dict>
@@ -415,9 +415,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>14</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>36</integer>
+				<integer>32</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -457,9 +457,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>25</integer>
 				<key>line</key>
-				<integer>15</integer>
+				<integer>22</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -529,9 +529,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>38</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>39</integer>
+				<integer>2</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -561,8 +561,6 @@
 		<string>boid.pde</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
-	<false/>
-	<key>showFileHierarchyPanel</key>
 	<true/>
 	<key>treeState</key>
 	<dict>
@@ -631,6 +629,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{244, 4}, {1450, 1414}}</string>
+	<string>{{862, 4}, {1450, 1414}}</string>
 </dict>
 </plist>

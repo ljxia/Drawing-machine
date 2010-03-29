@@ -20,9 +20,9 @@ boolean recreateCurve = false;
 
 void setup() 
 {
-  //size(screen.width,screen.height);
+  size(screen.width - 250,screen.height);
   //size(1024,768);  
-  size(1440, 900);
+  //size(1440, 900);
   
   frameRate(60);  
   background(255);
