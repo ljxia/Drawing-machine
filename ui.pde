@@ -9,7 +9,7 @@ public float CTL_BRUSH_SIZE = 1;
 public float CTL_BRUSH_SHADE = 0;
 public boolean CTL_DEBUG_MODE = false;
 public boolean CTL_CLEAR_BACKGROUND = false;
-public boolean CTL_SHOW_TOOL = false;
+public boolean CTL_SHOW_TOOL = true;
 public boolean CTL_SHOW_BRUSH = false;
 public boolean CTL_AUTORUN = true;
 public boolean CTL_USE_MOUSE = false;
@@ -214,19 +214,22 @@ void mouseReleased()
 
 void drawTools()
 {
+  pushMatrix();
+  translate(0,height - 80 + 1);
   
-/*  fill(255,10);
-  rect(0,0,width,40);*/
+  noStroke();
+  fill(180);
+  rect(0,0,width,80);
   
-  stroke(200);
-  fill(255);
-  rect(-1,-1,120,40);
   noStroke();
   fill(0);
   
   textSize(8);
-  text("brush size", 20, 22);
+  text("brush size", 20, 40);
+  
   fill(CTL_BRUSH_SHADE);
   ellipseMode(CENTER);
-  ellipse(90, 18, CTL_BRUSH_SIZE, CTL_BRUSH_SIZE);
+  ellipse(90, 40, CTL_BRUSH_SIZE, CTL_BRUSH_SIZE);
+  
+  popMatrix();
 }

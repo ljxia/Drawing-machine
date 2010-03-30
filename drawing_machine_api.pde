@@ -20,9 +20,10 @@ boolean recreateCurve = false;
 
 void setup() 
 {
-  size(screen.width - 250,screen.height);
+  size(screen.width - 250,screen.height - 60);
   //size(1024,768);  
   //size(1440, 900);
+  info("init world:" + width + ", " + height);
   
   frameRate(60);  
   background(255);
@@ -42,7 +43,7 @@ void setup()
   brush.setGray(CTL_BRUSH_SHADE);
   brush.setAlpha(0.95);
   brush.setSize(5);
-  canvas = new dmCanvas(width, height);
+  canvas = new dmCanvas(width, height - 80);
   canvas.setBrush(brush);
   
   trainLine = new dmLineTraining();
@@ -52,6 +53,8 @@ void setup()
 
 void draw() 
 {
+  translate(0, 0);
+  
   updateControls();
   
   if (CTL_CLEAR_BACKGROUND)
@@ -70,7 +73,7 @@ void draw()
   for (int i = 0; i < 1 ; i++)
   {
     canvas.update();
-    canvas.draw(0,0);
+    canvas.draw(0, 0);
 
     /*  
     try {wait(100);}

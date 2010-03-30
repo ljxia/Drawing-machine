@@ -2,10 +2,18 @@ class dmCanvas
 {
   dmBrush _brush;
   ArrayList commands;
+  int width = 0;
+  int height = 0;
+  Vec3D corner = new Vec3D();
 
   dmCanvas(int w, int h)
   {
     this.commands = new ArrayList();
+    this.width = w;
+    this.height = h;
+    
+    info("init canvas:" + this.width + ", " + this.height);
+    corner.set(0,0,0);
   }
 
   dmBrush getBrush()
@@ -293,14 +301,20 @@ class dmCanvas
       
       if (CTL_USE_MOUSE)
       {
-        this._brush.setPos(mouseX, mouseY);
+        this._brush.setPos(mouseX - int(this.corner.x), mouseY - int(this.corner.y));
       }
   }
 
   public void draw(int x, int y)
   {
+    this.corner.set(x,y,0);
+    
     this._brush.draw();
     this._brush.update();
+    
+    stroke(210);
+    noFill();
+    rect(0, 0, this.width, this.height);
   }
 
   public void clear()
