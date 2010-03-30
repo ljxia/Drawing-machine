@@ -21,6 +21,10 @@ boolean recreateCurve = false;
 void setup() 
 {
   size(screen.width - 250,screen.height - 60);
+  
+  /*  log */
+   initLog();
+   
   //size(1024,768);  
   //size(1440, 900);
   info("init world:" + width + ", " + height);
@@ -31,6 +35,8 @@ void setup()
   
   /* controls */
   setupControls();
+  
+ 
   
   /* initialize */
   
@@ -48,8 +54,6 @@ void setup()
   
   trainLine = new dmLineTraining();
 }
-
-
 
 void draw() 
 {
@@ -85,6 +89,11 @@ void draw()
   if (CTL_SHOW_TOOL) drawTools();
   if (trainLine.active){trainLine.display();}
   
+}
+
+void stop()
+{
+  destroyLog();
 }
 
 
