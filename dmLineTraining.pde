@@ -1,4 +1,4 @@
-class dmLineTraining extends dmTraining
+class dmLineTraining extends dmAbstractTraining
 {
   Vec3D startPoint;
   Vec3D endPoint;

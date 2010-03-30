@@ -32,12 +32,33 @@ class dmLineMemory extends dmAbstractMemory
     
     if (vector.y > 0) orientation = 360 - orientation;
     
-    params.put("vector",vector);
+    params.put("vector",vector.toString());
     params.put("orientation", orientation);
     params.put("length",vector.magnitude());
     
-    String result = super.recall(params);
-    //debug(result);
-    return JsonUtil.decodePointList(result);
+    String input = super.recall(params);
+    //debug(input);
+    try
+    {
+      JSONObject json = new JSONObject(input);
+      this.setData("id",json.getString("id"));
+      this.setData("vector",json.getString("vector"));
+      this.setData("length",json.getString("length"));
+      this.setData("deviation",json.getString("deviation"));
+      this.setData("steps",json.getString("steps"));
+      this.setData("orientation",json.getString("orientation"));
+      
+      debug("loaded interpolation: " + this.getData("id").toString());
+      
+      
+      this.setData("trail", JsonUtil.decodePointList(json.getString("trail")));
+      
+      return (PointList)this.getData("trail");
+    }
+    catch(JSONException e)
+    {
+      debug(e.getMessage());
+      return null;
+    }
   }
 }

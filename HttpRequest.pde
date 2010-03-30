@@ -63,7 +63,7 @@ public class HttpRequest
       }      
     }
 
-    debug("set param");
+    //debug("set param");
 
     if (method.equalsIgnoreCase("POST") && parameters != null) 
     {

@@ -183,11 +183,35 @@ void testJson()
 
 void testLoadInterpolation()
 {
-  dmLineMemory memory = new dmLineMemory();
-  PointList pl = memory.recall(new Vec3D());
-  if (pl != null)
+  for (int count = 0; count < 30 ; count++)
   {
-    //debug(pl.toString());
-    canvas.trace(pl, new Vec3D(mouseX, mouseY, 0));
+    Vec3D startPoint = new Vec3D(random(width), random(height), 0);
+
+    dmLineMemory memory = new dmLineMemory();
+
+    Vec3D vec = new Vec3D(random(-400,400),random(-400,400),0);
+    float orientation = vec.angleBetween(new Vec3D(1,0,0), true) * 180 / PI;  
+    if (vec.y > 0) orientation = 360 - orientation;
+
+
+    stroke(0,255,255);
+    noFill();
+    line(startPoint.x, startPoint.y, startPoint.x + vec.x, startPoint.y + vec.y);
+
+    PointList pl = memory.recall(vec);
+    if (pl != null)
+    {
+      //debug(pl.toString());
+      float factor = vec.magnitude() / float(memory.getData("length").toString());
+      float angle = float(memory.getData("orientation").toString()) - orientation;
+      pl = pl.scaleSelf(factor);
+      for (int i = 0; i < pl.size() ; i++)
+      {
+        Vec3D pnt = pl.get(i);
+        pnt = pnt.rotateZ(radians(angle));
+      }
+      canvas.trace(pl, startPoint);
+    }
   }
+  
 }

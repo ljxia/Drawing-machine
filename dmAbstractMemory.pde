@@ -12,6 +12,7 @@ abstract class dmAbstractMemory
     String url = serverUrlBase + serverMethod + "/get";
     debug("-----------------");
     debug("load from url: " + url);
+    debug("POST param:" + params.toString());
     try
     {
       return req.send(url,"POST",params,null);
@@ -35,5 +36,5 @@ abstract class dmAbstractMemory
   public void setData(String dataKey, Object dataValue){this._data.put(dataKey, dataValue);}
   public void setData(Hashtable data){this._data = data;}
   public Hashtable getData(){return this._data;}
-  public String getData(String datakey){return this._data.get(datakey).toString();}
+  public Object getData(String datakey){return this._data.get(datakey);}
 }

@@ -12,7 +12,7 @@ public boolean CTL_CLEAR_BACKGROUND = false;
 public boolean CTL_SHOW_TOOL = false;
 public boolean CTL_SHOW_BRUSH = false;
 
-public float CTL_USE_TRAINED_INTERPOLATION = 0.8;
+public float CTL_USE_TRAINED_INTERPOLATION = 0.0;
 
 
 public float FORCE_STRAIGHT = 1.7;
