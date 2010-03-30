@@ -32,6 +32,18 @@ class Boid {
     //borders();
     //render();
   }
+  
+  void stopAt(float x, float y)
+  {
+    this.stop();
+    this.loc = new PVector(x,y);
+  }
+  
+  void stop()
+  {
+    this.acc.mult(0);
+    this.vel.mult(0);
+  }
 
   // Method to update location
   void update() {

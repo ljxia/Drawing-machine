@@ -21,9 +21,8 @@ void testLine()
     noStroke();
     fill(255, 0 , 0);
     ellipse(50 + i * 50, 100,3,3);
-    ellipse(50 + i * 50, 100 + (8 - i) * 50,3,3);
-    canvas.moveTo(new Vec3D( 50 + i * 50, 100, 0));      
-    canvas.lineTo(new Vec3D( 50 + i * 50, 100 + (8 - i) * 50, 0));
+    ellipse(50 + i * 50, 100 + (8 - i) * 50,3,3);    
+    canvas.line(new Vec3D( 50 + i * 50, 100, 0), new Vec3D( 50 + i * 50, 100 + (8 - i) * 50, 0));
   }
   
   for (int i = 0; i < 8 ; i++)
@@ -34,9 +33,7 @@ void testLine()
     ellipse(550, 50 + i * 50,3,3);
     ellipse(550 + (8 - i) * 50, 50 + i * 50,3,3);
     
-    canvas.moveTo(new Vec3D(550, 50 + i * 50, 0));
-    
-    canvas.lineTo(new Vec3D(550 + (8 - i) * 50, 50 + i * 50, 0));
+    canvas.line(new Vec3D(550, 50 + i * 50, 0), new Vec3D(550 + (8 - i) * 50, 50 + i * 50, 0));
   }
 }
 
@@ -183,16 +180,13 @@ void testJson()
 
 void testLoadInterpolation()
 {
-  for (int count = 0; count < 30 ; count++)
+  for (int count = 0; count < 5 ; count++)
   {
     Vec3D startPoint = new Vec3D(random(width), random(height), 0);
 
     dmLineMemory memory = new dmLineMemory();
 
     Vec3D vec = new Vec3D(random(-400,400),random(-400,400),0);
-    float orientation = vec.angleBetween(new Vec3D(1,0,0), true) * 180 / PI;  
-    if (vec.y > 0) orientation = 360 - orientation;
-
 
     stroke(0,255,255);
     noFill();
@@ -202,16 +196,29 @@ void testLoadInterpolation()
     if (pl != null)
     {
       //debug(pl.toString());
-      float factor = vec.magnitude() / float(memory.getData("length").toString());
-      float angle = float(memory.getData("orientation").toString()) - orientation;
-      pl = pl.scaleSelf(factor);
-      for (int i = 0; i < pl.size() ; i++)
-      {
-        Vec3D pnt = pl.get(i);
-        pnt = pnt.rotateZ(radians(angle));
-      }
+      
+      Vec3D refVec = JsonUtil.decodeVec3D(memory.getData("vector").toString());
+      pl = rotatePointList(pl, refVec, vec);
+      
       canvas.trace(pl, startPoint);
     }
   }
-  
+}
+
+void testLineWithInterpolation()
+{
+  for (int count = 0; count < 5 ; count++)
+  {
+    Vec3D startPoint = new Vec3D(random(width), random(height), 0);
+
+    dmLineMemory memory = new dmLineMemory();
+
+    Vec3D vec = new Vec3D(random(-400,400),random(-400,400),0);
+
+    stroke(0,100,0);
+    noFill();
+    line(startPoint.x, startPoint.y, startPoint.x + vec.x, startPoint.y + vec.y);
+
+    canvas.line(startPoint, startPoint.add(vec));
+  }
 }

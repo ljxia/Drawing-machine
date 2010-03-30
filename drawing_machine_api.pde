@@ -64,7 +64,6 @@ void draw()
   
   brush.setSize(CTL_BRUSH_SIZE);
   brush.setGray(CTL_BRUSH_SHADE);
-  brush.setPos(mouseX, mouseY);
   //brush.draw(); 
 
 

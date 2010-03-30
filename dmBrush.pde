@@ -20,7 +20,7 @@ public class dmBrush extends dmAbstractBrush
   
   private boolean closeShape = false;
   private PointList _lineInterpolation = null;
-  
+  private Vec3D _offset = null;
 
   dmBrush(Vec3D center, VerletPhysics physics, float _size)
   {
@@ -49,6 +49,7 @@ public class dmBrush extends dmAbstractBrush
   
   void setPos(PVector _target)
   {
+    this.anchor.unlock();
     if (super.moveTo(_target))
     {
       if (this.tail.getWeight() > 1)
@@ -75,11 +76,18 @@ public class dmBrush extends dmAbstractBrush
     }
   }
   
-  boolean moveTo(Vec3D _target)
+  boolean moveTo(Vec3D _target, Vec3D offset)
   {
+    this.anchor.unlock();
+    if (this.anchor.distanceTo(_target.add(offset)) < 5)
+    {
+      //if already close enough, dont bother doing anything
+      return true;
+    }
+    
     this.motion.vel.mult(0);
     this.motionCompleted = false;
-    this.motionEnd = new Vec3D(_target);
+    this.motionEnd = new Vec3D(_target.add(offset));
     
     this.motion.maxforce = FORCE_STRAIGHT;
     this.motion.maxspeed = SPEED_STRAIGHT * localSpeedVar;
@@ -90,6 +98,7 @@ public class dmBrush extends dmAbstractBrush
   
   void lineTo(Vec3D _target)
   {
+    this.anchor.unlock();
     this.automated = true;
         
     this.motion.vel.mult(0);
@@ -104,6 +113,7 @@ public class dmBrush extends dmAbstractBrush
   
   void drawAlong(Path path)
   {
+    this.anchor.unlock();
     this.automated = true;
     this.motionCurve = path;
     
@@ -128,11 +138,22 @@ public class dmBrush extends dmAbstractBrush
     debug("motion drawAlong started");
   }
   
-  void trace(PointList pl)
+  void trace(PointList pl, Vec3D offset)
   {
     this.automated = true;
     this.trail = pl;
     this.motionCompleted = false;
+    this._offset = offset.copy();
+/*    
+    if (!delayOffset)
+    {
+      this._offset = offset.copy();
+    }
+    else
+    {
+      this._offset = this.getPos().copy();
+    }
+*/
     
     debug("motion trace started");
   }
@@ -211,11 +232,31 @@ public class dmBrush extends dmAbstractBrush
     this.last_left = new Vec3D(this.left);
     this.last_right = new Vec3D(this.right);
     
-    if (this.motion != null && this.motionEnd != null && !motionCompleted) // line to and move to
+    if (this.trail != null)
+    {
+      if (this.trail.size() > 0)
+      {
+        Vec3D pos = this.trail.remove(0);
+        this.setPos(pos.add(this._offset));
+        this.motion.stopAt(pos.x + this._offset.x, pos.y + this._offset.y);
+      }
+      else
+      {
+        this.trail = null;
+        this.motionCompleted= true;
+        this.automated = false;
+        
+        this._offset.scaleSelf(0);
+        
+        debug("trace completed");
+      }
+    }
+    else if (this.motion != null && this.motionEnd != null && !motionCompleted) // line to and move to
     {
       if (this.motion.arrive(new PVector(motionEnd.x, motionEnd.y)))
       {
         motionCompleted = true;
+        this.anchor.lock();
         this.motionEnd = null;
         this.automated = false;
         debug("motion completed");
@@ -230,7 +271,7 @@ public class dmBrush extends dmAbstractBrush
         if (this.motion.travelLength > (0.5 * this.motionCurve.length()))
         {
           motionCompleted = true;
-
+          this.anchor.lock();
           this.automated = false;
           debug("motion completed");
 
@@ -247,20 +288,12 @@ public class dmBrush extends dmAbstractBrush
       }
       this.setPos(this.motion.loc);
     }
-    else if (this.trail != null)
+    
+    if (this.motion != null && motionCompleted)
     {
-      if (this.trail.size() > 0)
-      {
-        Vec3D pos = this.trail.remove(0);
-        this.setPos(pos);
-      }
-      else
-      {
-        this.trail = null;
-        this.motionCompleted= true;
-        this.automated = false;
-        debug("trace completed");
-      }
+      //non-boid movement
+      //sync motion location to current brushh location
+      this.motion.stopAt(this.anchor.x, this.anchor.y);
     }
     
       
@@ -324,11 +357,15 @@ public class dmBrush extends dmAbstractBrush
       vertex(left.x, left.y);
       endShape(CLOSE);
     }
-    else if (CTL_SHOW_BRUSH)
+    
+    if (CTL_SHOW_BRUSH)
     {
       noStroke();
       fill(255,0,0);
-      ellipse(this.anchor.x, this.anchor.y, 3,3);
+      ellipse(this.anchor.x, this.anchor.y, 4,4);
+      
+      fill(0,200,0);
+      rect(this.motion.loc.x, this.motion.loc.y, 8,8);
     }
     
     

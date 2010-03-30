@@ -13,13 +13,13 @@ class dmCanvas
     return this._brush;
   }
 
-  void setBrush(dmBrush b)
+  public void setBrush(dmBrush b)
   {
     this._brush = b;
   }
   
   
-  void changeColor(float _gray)
+  public void changeColor(float _gray)
   {
     //global
     CTL_BRUSH_SHADE = _gray;
@@ -31,7 +31,7 @@ class dmCanvas
     debug("command in queue:" + this.commands.size());
   }
   
-  void changeColor(TColor _color)
+  public void changeColor(TColor _color)
   {
     dmCommand cmd = new dmCommand("color");
     cmd.params.put("color", _color);
@@ -39,7 +39,7 @@ class dmCanvas
     debug("command in queue:" + this.commands.size());
   }
   
-  void changeSize(float _size)
+  public void changeSize(float _size)
   {
     //global
     CTL_BRUSH_SIZE = _size;
@@ -50,40 +50,72 @@ class dmCanvas
     debug("command in queue:" + this.commands.size());
   }
   
-  void moveTo(Vec3D pos)
+  public void line(Vec3D from, Vec3D to)
+  {
+    if (CTL_USE_TRAINED_INTERPOLATION >= random(1))
+    {
+      PointList pl = loadLineInterpolation(to.sub(from));
+      //this._brush.setInterpolation(pl);
+      this.trace(pl, from);
+    }
+    else
+    {
+      this.moveTo(from);
+      this.moveTo(from);
+      this.lineTo(to);
+    }
+  }
+  
+  private void moveTo(Vec3D pos)
+  {
+    this.moveTo(pos, new Vec3D(0,0,0));
+  }
+  
+  private void moveTo(Vec3D pos, Vec3D offset)
   {
     dmCommand cmd = new dmCommand("move");
     cmd.params.put("target", pos);
+    cmd.params.put("offset", offset);
+
     this.commands.add(cmd);
     debug("command in queue:" + this.commands.size());
   }
 
-  void lineTo(Vec3D pos)
+  private void lineTo(Vec3D pos)
   {
+    //this._brush.clearInterpolation();
     dmCommand cmd = new dmCommand("line");
     cmd.params.put("target", pos);
     this.commands.add(cmd);
     debug("command in queue:" + this.commands.size());
   }
   
-  void rectangle(Vec3D corner, float _width, float _height)
+  public void rectangle(Vec3D corner, float _width, float _height)
   {
-    moveTo(corner);
+/*    moveTo(corner);
     moveTo(corner);
     lineTo(corner.add(0, (_height), 0));
+    
     moveTo(corner);
     lineTo(corner.add((_width), 0, 0));
+    
     lineTo(corner.add((_width), (_height), 0));
+    
     moveTo(corner.add(0, (_height), 0));
-    lineTo(corner.add((_width), (_height), 0));
+    lineTo(corner.add((_width), (_height), 0));*/
+    
+    this.line(corner, corner.add(0, (_height), 0));
+    this.line(corner, corner.add((_width), 0, 0));
+    this.line(corner.add((_width), 0, 0), corner.add((_width), (_height), 0));
+    this.line(corner.add(0, (_height), 0), corner.add((_width), (_height), 0));
   }
   
-  void trace(PointList pl)
+  public void trace(PointList pl)
   {
     this.trace(pl, new Vec3D(0,0,0));
   }
   
-  void trace(PointList pl, Vec3D offset)
+  public void trace(PointList pl, Vec3D offset)
   {
     int from = 0;
     int to = 1;
@@ -94,15 +126,19 @@ class dmCanvas
     {
       if (pl.get(to).z > 0) //found a pause
       {
-        this.moveTo(pl.get(from).add(offset));
+        //this.moveTo(pl.get(from).add(offset));
+        this.moveTo(pl.get(from), offset);
         
         cmd = new dmCommand("trace");
         segment = new PointList();
         for (int i = from; i < to; i++)
         {
-          segment.add(pl.get(i).add(offset));
+          //segment.add(pl.get(i).add(offset));
+          segment.add(pl.get(i));
         }
         cmd.params.put("trace", segment);
+        cmd.params.put("offset", offset.copy());
+        //cmd.params.put("delayOffset", delayOffset);
         this.commands.add(cmd);
         debug("command in queue:" + this.commands.size());
         
@@ -112,15 +148,17 @@ class dmCanvas
     
     if (from < to)
     {
-      this.moveTo(pl.get(from).add(offset));
+      this.moveTo(pl.get(from), offset);
       
       cmd = new dmCommand("trace");
       segment = new PointList();
       for (int i = from; i < to; i++)
       {
-        segment.add(pl.get(i).add(offset));
+        segment.add(pl.get(i));
       }
       cmd.params.put("trace", segment);
+      cmd.params.put("offset", offset.copy());
+      //cmd.params.put("delayOffset", delayOffset);
       this.commands.add(cmd);
       debug("command in queue:" + this.commands.size());
     }
@@ -128,7 +166,7 @@ class dmCanvas
     
   }
   
-  void follow(Path path, boolean closeShape)
+  public void follow(Path path, boolean closeShape)
   {
     dmCommand cmd = new dmCommand("follow");
     cmd.params.put("path", path);
@@ -137,7 +175,7 @@ class dmCanvas
     debug("command in queue:" + this.commands.size());
   }
   
-  void circle(Vec3D center, float _radius)
+  public void circle(Vec3D center, float _radius)
   {
     float steps = constrain (map(_radius,30,1000, 24,120), 24, 120);
     
@@ -159,7 +197,7 @@ class dmCanvas
     this.follow(path, true);
   }
   
-  void curve(Path path)
+  public void curve(Path path)
   {
     if (path.points != null && path.points.size() > 1)
     {
@@ -175,53 +213,34 @@ class dmCanvas
     
   }
   
-  void clearCommands()
+  public void clearCommands()
   {
     this.commands.clear();
   }
 
-  void update()
+
+  public boolean popCommand()
   {
-    //
     if (this._brush.motionCompleted && !this.commands.isEmpty())
     {
       dmCommand cmd = (dmCommand)this.commands.remove(0);
-      
-      
+    
       debug("----");
-      
+    
       if (cmd.name.equals("move"))
       {
           Vec3D target = (Vec3D)cmd.params.get("target");
-          
-          if (CTL_USE_TRAINED_INTERPOLATION >= random(1))
-          {
-            PointList pl = loadLineInterpolation(target.sub(this._brush.getPos()));
-            this._brush.setInterpolation(pl);
-          }
-          else
-          {
-            this._brush.clearInterpolation();
-          }
-          
+          Vec3D offset = (Vec3D)cmd.params.get("offset");
+          //Boolean delayOffset = (Boolean)cmd.params.get("delayOffset");
+        
           this._brush.resetTravelLength();
-          this._brush.moveTo(target);
-          debug("move to " + target.x + ", " + target.y);
+          this._brush.moveTo(target, offset);
+          debug("move to " + (target.x + offset.x) + ", " + (target.y + offset.y));
       }
       else if (cmd.name.equals("line"))
       {
           Vec3D target = (Vec3D)cmd.params.get("target");
-          
-          if (CTL_USE_TRAINED_INTERPOLATION >= random(1))
-          {
-            PointList pl = loadLineInterpolation(target.sub(this._brush.getPos()));
-            this._brush.setInterpolation(pl);
-          }
-          else
-          {
-            this._brush.clearInterpolation();
-          }
-          
+        
           this._brush.resetTravelLength();
           this._brush.lineTo(target);
           debug("line to " + target.x + ", " + target.y);
@@ -251,18 +270,40 @@ class dmCanvas
       else if (cmd.name.equals("trace"))
       {
         PointList trace = (PointList)cmd.params.get("trace");
-        this._brush.trace(trace);
+        Vec3D offset = (Vec3D)cmd.params.get("offset");
+        //Boolean delayOffset = (Boolean)cmd.params.get("delayOffset");
+        this._brush.trace(trace, offset);
       }
+      
+      return true;
     }
+    return false;
   }
 
-  void draw(int x, int y)
+  public void update()
+  {
+    //
+      if (CTL_AUTORUN)
+      {
+        if (popCommand())
+        {
+          CTL_USE_MOUSE = false;
+        }
+      }
+      
+      if (CTL_USE_MOUSE)
+      {
+        this._brush.setPos(mouseX, mouseY);
+      }
+  }
+
+  public void draw(int x, int y)
   {
     this._brush.draw();
     this._brush.update();
   }
 
-  void clear()
+  public void clear()
   {
     noStroke();
     fill(255);
@@ -274,13 +315,15 @@ class dmCanvas
   {
     dmLineMemory memory = new dmLineMemory();
     PointList pl = memory.recall(vector);
-    
-    // should return origin vector data and dump it into the memory, 
-    // so that the canvas knows how to rotate the interpolation for current vector
-    
+
     if (pl != null)
     {
-      //debug(pl.toString());
+      // origin vector data is dumped the memory, 
+      // so that the canvas knows how to rotate the interpolation for current vector
+      
+      Vec3D refVec = JsonUtil.decodeVec3D(memory.getData("vector").toString());
+      pl = rotatePointList(pl, refVec, vector);
+
       return pl;
     }
     

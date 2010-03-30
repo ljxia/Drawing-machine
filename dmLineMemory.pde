@@ -43,10 +43,9 @@ class dmLineMemory extends dmAbstractMemory
       JSONObject json = new JSONObject(input);
       this.setData("id",json.getString("id"));
       this.setData("vector",json.getString("vector"));
-      this.setData("length",json.getString("length"));
+
       this.setData("deviation",json.getString("deviation"));
       this.setData("steps",json.getString("steps"));
-      this.setData("orientation",json.getString("orientation"));
       
       debug("loaded interpolation: " + this.getData("id").toString());
       

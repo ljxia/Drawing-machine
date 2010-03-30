@@ -11,8 +11,10 @@ public boolean CTL_DEBUG_MODE = false;
 public boolean CTL_CLEAR_BACKGROUND = false;
 public boolean CTL_SHOW_TOOL = false;
 public boolean CTL_SHOW_BRUSH = false;
+public boolean CTL_AUTORUN = true;
+public boolean CTL_USE_MOUSE = false;
 
-public float CTL_USE_TRAINED_INTERPOLATION = 0.0;
+public float CTL_USE_TRAINED_INTERPOLATION = 0.8;
 
 
 public float FORCE_STRAIGHT = 1.7;
@@ -37,11 +39,13 @@ void setupControls()
   controlP5.addSlider("CTL_BRUSH_SHADE",  0,  255,CTL_BRUSH_SHADE,  20, 40, 100,  10).setWindow(controlWindow);
   controlP5.addSlider("CTL_USE_TRAINED_INTERPOLATION",  0,  1,CTL_USE_TRAINED_INTERPOLATION,  20, 60, 100,  10).setWindow(controlWindow);
   
-  controlP5.addToggle("CTL_DEBUG_MODE",       CTL_DEBUG_MODE,  20,   80, 10, 10).setWindow(controlWindow);
+  controlP5.addToggle("CTL_DEBUG_MODE",       CTL_DEBUG_MODE,         20,   80, 10, 10).setWindow(controlWindow);
   controlP5.addToggle("CTL_CLEAR_BACKGROUND", CTL_CLEAR_BACKGROUND,  100,  80, 10, 10).setWindow(controlWindow);
   
   controlP5.addToggle("CTL_SHOW_BRUSH",       CTL_SHOW_BRUSH,  20,   110, 10, 10).setWindow(controlWindow);
+  controlP5.addToggle("CTL_AUTORUN",          CTL_AUTORUN,    100,   110, 10, 10).setWindow(controlWindow);
   
+  controlP5.addToggle("CTL_USE_MOUSE",       CTL_USE_MOUSE,  20,   140, 10, 10).setWindow(controlWindow);
 }
 
 void updateControls()
@@ -54,7 +58,9 @@ void updateControls()
 
     ((Toggle)controlP5.controller("CTL_DEBUG_MODE")).setState(CTL_DEBUG_MODE);
     ((Toggle)controlP5.controller("CTL_CLEAR_BACKGROUND")).setState(CTL_CLEAR_BACKGROUND);   
-    ((Toggle)controlP5.controller("CTL_SHOW_BRUSH")).setState(CTL_SHOW_BRUSH);    
+    ((Toggle)controlP5.controller("CTL_SHOW_BRUSH")).setState(CTL_SHOW_BRUSH); 
+    ((Toggle)controlP5.controller("CTL_AUTORUN")).setState(CTL_AUTORUN);
+    ((Toggle)controlP5.controller("CTL_USE_MOUSE")).setState(CTL_USE_MOUSE);    
   }
   catch(java.lang.NullPointerException e){}
 }
@@ -163,6 +169,15 @@ void keyPressed()
     CTL_CLEAR_BACKGROUND = !CTL_CLEAR_BACKGROUND;
   }
   
+  if (key == '0')
+  {
+    if (!CTL_AUTORUN)
+    {
+      canvas.popCommand();
+    }
+    
+  }
+  
   if (key == '1')
   {
     testHttpRequest();
@@ -177,6 +192,16 @@ void keyPressed()
   {
     testLoadInterpolation();
   }
+  
+  if (key == '4')
+  {
+    testLineWithInterpolation();
+  }
+}
+
+void mouseMoved()
+{
+  CTL_USE_MOUSE = true;
 }
 
 void mouseReleased()
