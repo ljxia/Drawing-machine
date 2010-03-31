@@ -4,3 +4,4 @@ application.macosx/*
 applet
 applet/*
 lib/config.pde
+log/*.log

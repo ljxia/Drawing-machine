@@ -62,9 +62,7 @@ class dmCanvas
   {
     if (CTL_USE_TRAINED_INTERPOLATION >= random(1))
     {
-      PointList pl = loadLineInterpolation(to.sub(from));
-      //this._brush.setInterpolation(pl);
-      this.trace(pl, from);
+      this.interpolate(from, to);
     }
     else
     {
@@ -116,6 +114,16 @@ class dmCanvas
     this.line(corner, corner.add((_width), 0, 0));
     this.line(corner.add((_width), 0, 0), corner.add((_width), (_height), 0));
     this.line(corner.add(0, (_height), 0), corner.add((_width), (_height), 0));
+  }
+
+  public void interpolate(Vec3D from, Vec3D to)
+  {
+    dmCommand cmd = new dmCommand("interpolate");
+    cmd.params.put("from", from);
+    cmd.params.put("to", to);
+
+    this.commands.add(cmd);
+    debug("command in queue:" + this.commands.size());
   }
   
   public void trace(PointList pl)
@@ -279,8 +287,74 @@ class dmCanvas
       {
         PointList trace = (PointList)cmd.params.get("trace");
         Vec3D offset = (Vec3D)cmd.params.get("offset");
-        //Boolean delayOffset = (Boolean)cmd.params.get("delayOffset");
         this._brush.trace(trace, offset);
+      }
+      else if (cmd.name.equals("interpolate"))
+      {
+        Vec3D fromPos = (Vec3D)cmd.params.get("from");
+        Vec3D toPos = (Vec3D)cmd.params.get("to");
+        
+        PointList pl = loadLineInterpolation(toPos.sub(fromPos));
+        
+        if (pl != null)
+        {
+          int from = 0;
+          int to = 1;
+          dmCommand newCmd;
+          PointList segment;
+          ArrayList newCommands = new ArrayList();
+
+          // go through the point list to find segments
+          for (; to < pl.size(); to ++)
+          {
+            if (pl.get(to).z > 0) //found a pause
+            {
+              // move to first point
+              newCmd = new dmCommand("move");
+              newCmd.params.put("target", pl.get(from));
+              newCmd.params.put("offset", fromPos);
+              newCommands.add(newCmd);
+
+              // trace the segment
+              newCmd = new dmCommand("trace");
+              segment = new PointList();
+              for (int i = from; i < to; i++)
+              {
+                segment.add(pl.get(i));
+              }
+              newCmd.params.put("trace", segment);
+              newCmd.params.put("offset", fromPos.copy());
+              newCommands.add(newCmd);
+
+              from = to;
+            }
+          }
+
+          // last segment
+          if (from < to)
+          {
+            // move to first point
+            newCmd = new dmCommand("move");
+            newCmd.params.put("target", pl.get(from));
+            newCmd.params.put("offset", fromPos);
+            newCommands.add(newCmd);
+
+            // trace the segment
+            newCmd = new dmCommand("trace");
+            segment = new PointList();
+            for (int i = from; i < to; i++)
+            {
+              segment.add(pl.get(i));
+            }
+            newCmd.params.put("trace", segment);
+            newCmd.params.put("offset", fromPos.copy());
+            newCommands.add(newCmd);
+          }
+
+          //extract current commands to several trace commands
+          this.commands.addAll(0, newCommands);  
+        }
+        
       }
       
       return true;
