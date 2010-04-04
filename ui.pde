@@ -29,9 +29,13 @@ void setupControls()
   controlP5.setAutoInitialization(true);
   
   controlP5.setAutoDraw(true);
+  controlP5.setColorActive(color(255,50,50));
+  controlP5.setColorBackground(color(200));
+  controlP5.setColorForeground(color(255,180,180));
+  controlP5.setColorLabel(color(30));
   
   controlWindow = controlP5.addControlWindow("controlP5window",screen.width - 250,0,250,height);
-  controlWindow.setBackground(color(100));
+  controlWindow.setBackground(color(255));
   controlWindow.setUpdateMode(ControlWindow.NORMAL);
   controlWindow.hideCoordinates();
   
@@ -197,6 +201,26 @@ void keyPressed()
   {
     testLineWithInterpolation();
   }
+  
+  if (key == ',')
+  {
+    testPushBuffer();
+  }
+  
+  if (key == '.')
+  {
+    testPopBuffer();
+  }
+  
+  if (key == 'z')
+  {
+    canvas.popBuffer();
+  }
+}
+
+void mousePressed()
+{
+  canvas.pushBuffer();
 }
 
 void mouseMoved()

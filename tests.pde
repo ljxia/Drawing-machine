@@ -222,3 +222,13 @@ void testLineWithInterpolation()
     canvas.line(startPoint, startPoint.add(vec));
   }
 }
+
+void testPushBuffer()
+{
+  canvas.pushBuffer();
+}
+
+void testPopBuffer()
+{
+  canvas.popBuffer();
+}

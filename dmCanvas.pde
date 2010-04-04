@@ -5,6 +5,7 @@ class dmCanvas
   int width = 0;
   int height = 0;
   Vec3D corner = new Vec3D();
+  PImage buffer = null;
 
   dmCanvas(int w, int h)
   {
@@ -12,8 +13,29 @@ class dmCanvas
     this.width = w;
     this.height = h;
     
+    this.buffer = createImage(this.width, this.height, ARGB);
+    
     info("init canvas:" + this.width + ", " + this.height);
     corner.set(0,0,0);
+  }
+
+  public void pushBuffer()
+  {
+    loadPixels();
+    //this.buffer.loadPixels();
+    for (int i = 0; i < this.buffer.pixels.length; i++) {
+      this.buffer.pixels[i] = pixels[i]; 
+    }
+    
+    this.buffer.updatePixels();
+  }
+  
+  public void popBuffer()
+  {
+    if (this.buffer != null)
+    {
+      image(buffer, this.corner.x, this.corner.y);
+    }
   }
 
   dmBrush getBrush()
@@ -239,6 +261,8 @@ class dmCanvas
   {
     if (this._brush.motionCompleted && !this.commands.isEmpty())
     {
+      canvas.pushBuffer();
+      
       dmCommand cmd = (dmCommand)this.commands.remove(0);
     
       debug("----");

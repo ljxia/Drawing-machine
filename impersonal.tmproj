@@ -13,19 +13,19 @@
 					<key>filename</key>
 					<string>drawing_machine_api.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-30T17:07:45Z</date>
+					<date>2010-04-04T19:22:39Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>tests.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-30T15:58:28Z</date>
+					<date>2010-04-04T19:38:34Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>ui.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-30T17:12:22Z</date>
+					<date>2010-04-04T19:43:16Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -40,7 +40,7 @@
 					<key>filename</key>
 					<string>dmAbstractBrush.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-30T16:29:42Z</date>
+					<date>2010-04-04T19:06:52Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -61,7 +61,7 @@
 					<key>filename</key>
 					<string>dmCanvas.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-30T17:12:41Z</date>
+					<date>2010-04-04T19:46:38Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -126,7 +126,7 @@
 					<key>filename</key>
 					<string>config.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-22T03:57:58Z</date>
+					<date>2010-03-30T22:52:55Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -156,7 +156,7 @@
 					<key>filename</key>
 					<string>log.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-19T21:26:36Z</date>
+					<date>2010-03-30T20:31:04Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -219,7 +219,7 @@
 					<key>filename</key>
 					<string>dmLineTraining.pde</string>
 					<key>lastUsed</key>
-					<date>2010-03-30T01:09:26Z</date>
+					<date>2010-03-30T18:42:28Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -246,19 +246,47 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>config.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>dmAbstractBrush.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>7</integer>
 				<key>line</key>
-				<integer>129</integer>
+				<integer>81</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>71</integer>
+		</dict>
+		<key>dmAbstractTraining.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>18</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>dmBrush.pde</key>
 		<dict>
@@ -279,14 +307,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>71</integer>
+				<integer>6</integer>
 				<key>line</key>
-				<integer>273</integer>
+				<integer>264</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>244</integer>
+			<integer>203</integer>
 		</dict>
 		<key>dmCommand.pde</key>
 		<dict>
@@ -321,9 +349,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>4</integer>
+				<integer>82</integer>
 				<key>line</key>
-				<integer>14</integer>
+				<integer>19</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -335,14 +363,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>25</integer>
 				<key>line</key>
-				<integer>65</integer>
+				<integer>52</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>20</integer>
+			<integer>11</integer>
 		</dict>
 		<key>helpers.pde</key>
 		<dict>
@@ -352,6 +380,20 @@
 				<integer>3</integer>
 				<key>line</key>
 				<integer>20</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>log.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>34</integer>
+				<key>line</key>
+				<integer>10</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -377,44 +419,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>16</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>217</integer>
+				<integer>232</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>154</integer>
+			<integer>0</integer>
 		</dict>
 		<key>ui.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>12</integer>
+				<integer>22</integer>
 				<key>line</key>
-				<integer>203</integer>
+				<integer>222</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>157</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>203</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>15</integer>
-				<key>line</key>
-				<integer>203</integer>
-			</dict>
+			<integer>179</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -422,7 +448,11 @@
 		<string>tests.pde</string>
 		<string>dmCanvas.pde</string>
 		<string>drawing_machine_api.pde</string>
+		<string>dmAbstractTraining.pde</string>
+		<string>dmLineTraining.pde</string>
 		<string>ui.pde</string>
+		<string>log.pde</string>
+		<string>config.pde</string>
 		<string>dmBrush.pde</string>
 		<string>dmAbstractBrush.pde</string>
 		<string>boid.pde</string>
@@ -499,6 +529,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{583, 4}, {1283, 1414}}</string>
+	<string>{{807, 0}, {1282, 1418}}</string>
 </dict>
 </plist>
