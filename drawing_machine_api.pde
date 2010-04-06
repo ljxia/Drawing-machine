@@ -7,6 +7,7 @@ import toxi.geom.util.*;
 import toxi.physics.*;
 import toxi.physics.constraints.*;
 
+dmComposer impersonal;
 dmBrush brush;
 dmCanvas canvas;
 dmLineTraining trainLine;
@@ -23,7 +24,7 @@ void setup()
   size(screen.width - 250,screen.height - 60);
   
   /*  log */
-   initLog();
+  initLog();
    
   //size(1024,768);  
   //size(1440, 900);
@@ -52,7 +53,10 @@ void setup()
   canvas = new dmCanvas(width, height - 80);
   canvas.setBrush(brush);
   
+  impersonal = new dmComposer(canvas);
+  
   trainLine = new dmLineTraining();
+  trainLine.setCanvas(canvas);
 }
 
 void draw() 
@@ -73,18 +77,7 @@ void draw()
   brush.setGray(CTL_BRUSH_SHADE);
   //brush.draw(); 
 
-
-  for (int i = 0; i < 1 ; i++)
-  {
-    canvas.update();
-    canvas.draw(0, 0);
-
-    /*  
-    try {wait(100);}
-    catch(Exception e){}
-    */
-    
-  }
+  impersonal.draw();
   
   if (CTL_SHOW_TOOL) drawTools();
   if (trainLine.active){trainLine.display();}

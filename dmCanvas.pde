@@ -16,7 +16,7 @@ class dmCanvas
     this.buffer = createImage(this.width, this.height, ARGB);
     
     info("init canvas:" + this.width + ", " + this.height);
-    corner.set(0,0,0);
+    this.corner.set(0,0,0);
   }
 
   public void pushBuffer()
@@ -46,6 +46,7 @@ class dmCanvas
   public void setBrush(dmBrush b)
   {
     this._brush = b;
+    this._brush.parentCanvas = this;
   }
   
   
@@ -261,7 +262,7 @@ class dmCanvas
   {
     if (this._brush.motionCompleted && !this.commands.isEmpty())
     {
-      canvas.pushBuffer();
+      this.pushBuffer();
       
       dmCommand cmd = (dmCommand)this.commands.remove(0);
     

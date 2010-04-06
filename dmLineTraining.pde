@@ -86,12 +86,15 @@ class dmLineTraining extends dmAbstractTraining
   
   void feedback()
   {
-    PointList pl = this.trail.subSelf(this.startPoint);
-    canvas.trace(pl, this.boundOffsetB.add(this.startPoint));
+    if (this.canvas != null)
+    {
+      PointList pl = this.trail.subSelf(this.startPoint);
+      this.canvas.trace(pl, this.boundOffsetB.add(this.startPoint));
 
-    this.save();
-    
-    this.reset();
+      this.save();
+
+      this.reset();
+    }
   }
   
   void display()

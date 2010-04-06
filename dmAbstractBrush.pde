@@ -1,5 +1,6 @@
 public class dmAbstractBrush
 {
+  public dmCanvas parentCanvas;
   public VerletParticle anchor;
   public VerletParticle target;
   public VerletPhysics world;
@@ -19,6 +20,8 @@ public class dmAbstractBrush
   
   dmAbstractBrush(VerletPhysics physics)
   {
+    this.parentCanvas = null;
+    
     this.world = physics;
     this.anchor = new VerletParticle(0,0,0,10);
     this.world.addParticle(this.anchor);
@@ -37,6 +40,8 @@ public class dmAbstractBrush
   
   dmAbstractBrush(Vec3D center, VerletPhysics physics, float _size)
   {
+    this.parentCanvas = null;
+    
     this.world = physics;
     this.anchor = new VerletParticle(center);
     this.world.addParticle(this.anchor);

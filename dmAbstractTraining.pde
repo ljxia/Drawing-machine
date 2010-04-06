@@ -1,5 +1,6 @@
 class dmAbstractTraining
 {
+  protected dmCanvas canvas = null;
   public boolean active = false;
   public PointList trail;
   
@@ -11,6 +12,11 @@ class dmAbstractTraining
   {
     this.active = false;
     this.trail = new PointList();
+  }
+  
+  void setCanvas(dmCanvas c)
+  {
+    this.canvas = c;
   }
   
   void reset()

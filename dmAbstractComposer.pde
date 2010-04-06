@@ -1,19 +1,22 @@
 class dmAbstractComposer
 {
-  protected dmCanvas _canvas;
+  protected dmCanvas canvas;
   
   dmAbstractComposer(dmCanvas canvas)
   {
-    this._canvas = canvas;
+    this.canvas = canvas;
   }
   
   void draw()
   {
     this.update();
+    this.canvas.draw(0,0);
   }
   
   private void update()
   {
+    this.canvas.update();
+    
     this.review();
     if (!this.isDone())
     {
