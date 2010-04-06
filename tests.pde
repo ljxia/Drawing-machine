@@ -232,3 +232,19 @@ void testPopBuffer()
 {
   canvas.popBuffer();
 }
+
+void testPGraphics()
+{
+  PGraphics buffer = createGraphics(400, 300, P2D);
+  buffer.beginDraw();
+  buffer.noStroke();
+  buffer.rectMode(CENTER);
+  for (int i = 0; i < 1000 ; i++)
+  {
+     buffer.fill(random(255),random(255),random(255),random(250));
+     buffer.rect(random(400), random(300), random(10,100), random(10, 100));
+  }
+  buffer.endDraw();
+  image(buffer,0,0);
+  buffer.save("buffer.png");
+}

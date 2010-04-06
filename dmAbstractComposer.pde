@@ -1,6 +1,9 @@
+import java.util.Hashtable;
+
 class dmAbstractComposer
 {
   protected dmCanvas canvas;
+  protected float gaugeMotivation;
   
   dmAbstractComposer(dmCanvas canvas)
   {
@@ -13,7 +16,7 @@ class dmAbstractComposer
     this.canvas.draw(0,0);
   }
   
-  private void update()
+  protected void update()
   {
     this.canvas.update();
     
@@ -24,17 +27,17 @@ class dmAbstractComposer
     }
   }
   
-  private void review()
+  protected void review()
   {
     
   }
   
-  private boolean isDone()
+  protected boolean isDone()
   {
     return false;
   }
   
-  private void compose()
+  protected void compose()
   {
     //generate new commands
   }

@@ -21,23 +21,26 @@ boolean recreateCurve = false;
 
 void setup() 
 {
-  size(screen.width - 250,screen.height - 60);
+  /*  sketch */
   
-  /*  log */
-  initLog();
-   
+  size(screen.width - 250,screen.height - 60);
   //size(1024,768);  
   //size(1440, 900);
-  info("init world:" + width + ", " + height);
-  
+
   frameRate(60);  
   background(255);
   smooth();
+
+  
+  /*  log */
+  
+  initLog();
+
+  info("init world:" + width + ", " + height);
+  
   
   /* controls */
   setupControls();
-  
- 
   
   /* initialize */
   
@@ -45,11 +48,12 @@ void setup()
   font = loadFont("04b-03-8.vlw");
   textFont(font);
   world = new VerletPhysics(new Vec3D(0,0,0),25,10,0.1);
-  brush = new dmBrush(new Vec3D(width/2, height/2, 0), world, CTL_BRUSH_SIZE);
   
+  brush = new dmBrush(new Vec3D(width/2, height/2, 0), world, CTL_BRUSH_SIZE);  
   brush.setGray(CTL_BRUSH_SHADE);
   brush.setAlpha(0.95);
-  brush.setSize(5);
+  brush.setSize(5, true);
+
   canvas = new dmCanvas(width, height - 80);
   canvas.setBrush(brush);
   

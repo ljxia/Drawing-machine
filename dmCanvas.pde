@@ -37,6 +37,14 @@ class dmCanvas
       image(buffer, this.corner.x, this.corner.y);
     }
   }
+  
+  public void dumpBuffer()
+  {
+    if (this.buffer != null)
+    {
+      this.buffer.save("buffer.png");
+    }
+  }
 
   dmBrush getBrush()
   {

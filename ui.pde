@@ -117,7 +117,9 @@ void keyPressed()
   
   if (key == 's')
   {
-    saveFrame("images/sketch-#####.png");
+    //saveFrame("images/sketch-#####.png");
+    impersonal.canvas.pushBuffer();
+    impersonal.canvas.dumpBuffer();
   }
   
   if (key == 't')
@@ -143,7 +145,7 @@ void keyPressed()
   
   if (key == 'r')
   {
-    canvas.clearCommands();
+    impersonal.canvas.clearCommands();
     recreateCurve = true;
   }
   
@@ -177,7 +179,7 @@ void keyPressed()
   {
     if (!CTL_AUTORUN)
     {
-      canvas.popCommand();
+      impersonal.canvas.popCommand();
     }
     
   }
@@ -200,6 +202,11 @@ void keyPressed()
   if (key == '4')
   {
     testLineWithInterpolation();
+  }
+  
+  if (key == '5')
+  {
+    testPGraphics();
   }
   
   if (key == ',')
