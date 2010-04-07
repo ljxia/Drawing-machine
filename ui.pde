@@ -71,13 +71,24 @@ void updateControls()
 
 void keyPressed()
 {
-  if (key == 'c' || key == ' ')
+  if (key == 'c')
   {
     fill(255);
     rect(-1, -1 ,width + 1,height + 1);
     canvas.clear();
   }
   
+  if (key == ' ')
+  {
+    if (impersonal.paused)
+    {
+      impersonal.play();
+    }
+    else
+    {
+      impersonal.pause();
+    }
+  }
   
   if (key == '+' || key == '=')
   {
@@ -127,10 +138,14 @@ void keyPressed()
     //CTL_SHOW_TOOL = !CTL_SHOW_TOOL;
     if (!trainLine.active)
     {
+      impersonal.canvas.clear();
+      impersonal.pause();
       trainLine.activate();
     }
     else
     {
+      impersonal.canvas.clear();
+      impersonal.play();
       trainLine.active = false;
       fill(255);
       rect(-1, -1 ,width + 1,height + 1);

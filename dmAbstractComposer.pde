@@ -4,18 +4,24 @@ class dmAbstractComposer
 {
   protected dmCanvas canvas;
   
+  public boolean paused = false;
   
   protected float startTime;
+  protected float pauseTime;
+  
+  protected float pauseLength;
+  
   protected boolean inMotion = false;
   
   protected float gaugeUptime;
   protected float gaugeStepCount;
   protected float gaugeMotivation;
+  protected float gaugeCommandQueue;
   
   protected float thresholdUptime;
   protected float thresholdStepCount;
   protected float thresholdMotivation;
-  
+  protected float thresholdCommandQueue;
   
   private Vec3D refPoint = null;
   
@@ -25,9 +31,11 @@ class dmAbstractComposer
     this.canvas = canvas;
     
     
+    
     thresholdUptime = 5 * 60 * 1000;
     thresholdStepCount = 500;
     thresholdMotivation = 100;
+    thresholdCommandQueue = 50;
     
     this.reset();
   }
@@ -36,6 +44,8 @@ class dmAbstractComposer
   {
     this.canvas.clear();
     this.startTime = millis();
+    this.pauseTime = 0;
+    this.pauseLength = 0;
     
     this.thresholdUptime = random(1, 5) * 60 * 1000;
     this.thresholdStepCount = random(10,500);
@@ -70,7 +80,7 @@ class dmAbstractComposer
     fill(255,100,100);
     rect(20, vertical, map(this.gaugeUptime, 0, this.thresholdUptime, 0, 90), 10);
     
-    vertical += 20;
+    vertical += 15;
     
     fill(0);
     textAlign(RIGHT);
@@ -82,7 +92,7 @@ class dmAbstractComposer
     fill(255,100,100);
     rect(20, vertical, map(this.gaugeStepCount, 0, this.thresholdStepCount, 0, 90), 10);
     
-    vertical += 20;
+    vertical += 15;
     
     fill(0);
     textAlign(RIGHT);
@@ -91,6 +101,16 @@ class dmAbstractComposer
     rect(20, vertical, 90, 10);
     fill(255,100,100);
     rect(20, vertical, map(this.gaugeMotivation, 0, this.thresholdMotivation, 0, 90), 10);
+    
+    vertical += 15;
+    
+    fill(0);
+    textAlign(RIGHT);
+    text("CMD QUEUE: " + int(this.gaugeCommandQueue), 0, vertical + 8);
+    fill(200);
+    rect(20, vertical, 90, 10);
+    fill(255,100,100);
+    rect(20, vertical, map(this.gaugeCommandQueue, 0, this.thresholdCommandQueue, 0, 90), 10);
     
     textAlign(CORNER);
     popMatrix();
@@ -101,31 +121,39 @@ class dmAbstractComposer
     this.canvas.update();
     this.updateGauges();
     
-    if (this.inMotion && !this.canvas.inMotion())
+    if (!paused)
     {
-      this.gaugeStepCount++;
-    }
-    
-    this.inMotion = this.canvas.inMotion();
-    
-    if (!this.inMotion)
-    {
-      this.review();
-      if (!this.isDone())
+      if (this.inMotion && !this.canvas.inMotion())
       {
-        this.compose();
+        this.gaugeStepCount++;
       }
-      else
+
+      this.inMotion = this.canvas.inMotion();
+
+      if (!this.inMotion)
       {
-        this.save();
-        this.reset();
-      }
+        this.review();
+        if (!this.isDone())
+        {
+          this.compose();
+        }
+        else
+        {
+          this.save();
+          this.reset();
+        }
+      } 
     }
   }
   
   protected void updateGauges()
   {
-    this.gaugeUptime = millis() - this.startTime;
+    if (!paused)
+    {
+      this.gaugeUptime = millis() - this.startTime - this.pauseLength;
+    }
+    
+    this.gaugeCommandQueue = this.canvas.commands.size();
   }
   
   protected void save()
@@ -186,5 +214,17 @@ class dmAbstractComposer
     }
     canvas.line(startPoint, startPoint.add(vec));
     
+  }
+  
+  void pause()
+  {
+    paused = true;
+    pauseTime = millis();
+  }
+  
+  void play()
+  {
+    paused = false;
+    pauseLength = pauseLength + (millis() - pauseTime);
   }
 }
