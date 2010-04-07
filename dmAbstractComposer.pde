@@ -23,11 +23,13 @@ class dmAbstractComposer
   dmAbstractComposer(dmCanvas canvas)
   {
     this.canvas = canvas;
-    this.reset();
+    
     
     thresholdUptime = 5 * 60 * 1000;
     thresholdStepCount = 500;
     thresholdMotivation = 100;
+    
+    this.reset();
   }
   
   void reset()
@@ -36,6 +38,7 @@ class dmAbstractComposer
     this.startTime = millis();
     
     this.thresholdUptime = random(1, 5) * 60 * 1000;
+    this.thresholdStepCount = random(10,500);
     
     this.gaugeUptime = -1;
     this.gaugeStepCount = 0;
@@ -53,12 +56,15 @@ class dmAbstractComposer
     pushMatrix();
     translate(x,y);
     
-    textAlign(RIGHT);
+    
     
     int vertical = 10;
     
-    fill(0);    
+    fill(0);
+    textAlign(RIGHT);
     text("UP TIME: " + int(this.gaugeUptime / 1000), 0, vertical + 8);
+    textAlign(LEFT);
+    text(int(this.thresholdUptime / 1000), 120, vertical + 8);
     fill(200);
     rect(20, vertical, 90, 10);
     fill(255,100,100);
@@ -67,7 +73,10 @@ class dmAbstractComposer
     vertical += 20;
     
     fill(0);
+    textAlign(RIGHT);
     text("STEP COUNT: " + int(this.gaugeStepCount), 0, vertical + 8);
+    textAlign(LEFT);
+    text(int(this.thresholdStepCount), 120, vertical + 8);
     fill(200);
     rect(20, vertical, 90, 10);
     fill(255,100,100);
@@ -76,6 +85,7 @@ class dmAbstractComposer
     vertical += 20;
     
     fill(0);
+    textAlign(RIGHT);
     text("MOTIVATION: " + int(this.gaugeMotivation), 0, vertical + 8);
     fill(200);
     rect(20, vertical, 90, 10);
@@ -89,6 +99,7 @@ class dmAbstractComposer
   protected void update()
   {
     this.canvas.update();
+    this.updateGauges();
     
     if (this.inMotion && !this.canvas.inMotion())
     {
@@ -129,7 +140,7 @@ class dmAbstractComposer
   
   protected void review()
   {
-    this.updateGauges();
+    
   }
   
   protected boolean isDone()
