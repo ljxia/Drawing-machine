@@ -14,7 +14,7 @@ public boolean CTL_SHOW_BRUSH = false;
 public boolean CTL_AUTORUN = true;
 public boolean CTL_USE_MOUSE = false;
 
-public float CTL_USE_TRAINED_INTERPOLATION = 0.8;
+public float CTL_USE_TRAINED_INTERPOLATION = 0.95;
 
 
 public float FORCE_STRAIGHT = 1.7;
@@ -139,6 +139,7 @@ void keyPressed()
     if (!trainLine.active)
     {
       impersonal.canvas.clear();
+      impersonal.canvas.clearCommands();
       impersonal.pause();
       trainLine.activate();
     }
@@ -269,7 +270,7 @@ void drawTools()
   translate(0,height - 80 + 1);
   
   noStroke();
-  fill(180);
+  fill(220);
   rect(0,0,width,80);
   
   noStroke();

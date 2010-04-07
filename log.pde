@@ -38,7 +38,7 @@ void writeLog(String message, String severity)
   SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
   String timestamp = df.format(new Date());
   
-  println(timestamp + " [" + severity + "] " + message);
+  //println(timestamp + " [" + severity + "] " + message);
   logFile.write(timestamp + " [" + severity + "] " + message + "\r\n");
   logFile.flush();
 }

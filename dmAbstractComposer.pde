@@ -47,8 +47,8 @@ class dmAbstractComposer
     this.pauseTime = 0;
     this.pauseLength = 0;
     
-    this.thresholdUptime = random(1, 5) * 60 * 1000;
-    this.thresholdStepCount = random(10,500);
+    this.thresholdUptime = random(1, 10) * 60 * 1000;
+    this.thresholdStepCount = random(10,1000);
     
     this.gaugeUptime = -1;
     this.gaugeStepCount = 0;
@@ -177,11 +177,19 @@ class dmAbstractComposer
     {
       return true;
     }
+    else if (this.gaugeStepCount > this.thresholdStepCount)
+    {
+      return true;
+    }
     return false;
   }
   
   protected void compose()
   {
+    if (this.canvas.commands.size() > 5)
+    {
+      return;
+    }
     // take one command and execute
     
     // or, drop one or all commands in the queue
@@ -191,7 +199,7 @@ class dmAbstractComposer
     // FOR NOW: Generate a random line command
     Vec3D startPoint = null;
     
-    if (random(1) < 0.6 && refPoint != null && refPoint.distanceTo(new Vec3D(this.canvas.width / 2, this.canvas.height / 2, 0)) < this.canvas.width / 2)
+    if (random(1) < 0.8 && refPoint != null && refPoint.distanceTo(new Vec3D(this.canvas.width / 2, this.canvas.height / 2, 0)) < this.canvas.width / 2)
     {
       startPoint = new Vec3D(refPoint);
     }
@@ -205,9 +213,18 @@ class dmAbstractComposer
     float lngth = random(10, this.canvas.width / 3);
     refPoint = startPoint.add(vec.scale(lngth * random(1)));
     vec.scaleSelf(lngth);
-    CTL_BRUSH_SIZE = random(map(lngth,10,this.canvas.width / 3,1,8));
     
-    if (random(1) < 0.15)
+    if (random(1) < 0.95)
+    {
+      CTL_BRUSH_SIZE = random(map(lngth,10,this.canvas.width / 3,1,8));
+    }
+    else if (lngth < 100)
+    {
+      CTL_BRUSH_SIZE = random(10,20);
+    }
+    
+    CTL_BRUSH_SHADE = int(random(6)) * 50 + 5;
+    if (random(1) < 0.30)
     {
       // chance to draw line twice
       canvas.line(startPoint, startPoint.add(vec));

@@ -71,7 +71,7 @@ class dmCanvas
     TColor _color = TColor.newRGBA(_gray / 255, _gray / 255,_gray / 255,1);
     cmd.params.put("color", _color);
     this.commands.add(cmd);
-    debug("command in queue:" + this.commands.size());
+    //debug("command in queue:" + this.commands.size());
   }
   
   public void changeColor(TColor _color)
@@ -79,7 +79,7 @@ class dmCanvas
     dmCommand cmd = new dmCommand("color");
     cmd.params.put("color", _color);
     this.commands.add(cmd);
-    debug("command in queue:" + this.commands.size());
+    //debug("command in queue:" + this.commands.size());
   }
   
   public void changeSize(float _size)
@@ -90,7 +90,7 @@ class dmCanvas
     dmCommand cmd = new dmCommand("size");
     cmd.params.put("size", _size);
     this.commands.add(cmd);
-    debug("command in queue:" + this.commands.size());
+    //debug("command in queue:" + this.commands.size());
   }
   
   public void line(Vec3D from, Vec3D to)
@@ -119,7 +119,7 @@ class dmCanvas
     cmd.params.put("offset", offset);
 
     this.commands.add(cmd);
-    debug("command in queue:" + this.commands.size());
+    //debug("command in queue:" + this.commands.size());
   }
 
   private void lineTo(Vec3D pos)
@@ -128,7 +128,7 @@ class dmCanvas
     dmCommand cmd = new dmCommand("line");
     cmd.params.put("target", pos);
     this.commands.add(cmd);
-    debug("command in queue:" + this.commands.size());
+    //debug("command in queue:" + this.commands.size());
   }
   
   public void rectangle(Vec3D corner, float _width, float _height)
@@ -158,7 +158,7 @@ class dmCanvas
     cmd.params.put("to", to);
 
     this.commands.add(cmd);
-    debug("command in queue:" + this.commands.size());
+    //debug("command in queue:" + this.commands.size());
   }
   
   public void trace(PointList pl)
@@ -191,7 +191,7 @@ class dmCanvas
         cmd.params.put("offset", offset.copy());
         //cmd.params.put("delayOffset", delayOffset);
         this.commands.add(cmd);
-        debug("command in queue:" + this.commands.size());
+        //debug("command in queue:" + this.commands.size());
         
         from = to;
       }
@@ -211,7 +211,7 @@ class dmCanvas
       cmd.params.put("offset", offset.copy());
       //cmd.params.put("delayOffset", delayOffset);
       this.commands.add(cmd);
-      debug("command in queue:" + this.commands.size());
+      //debug("command in queue:" + this.commands.size());
     }
     
     
@@ -223,7 +223,7 @@ class dmCanvas
     cmd.params.put("path", path);
     cmd.params.put("close", closeShape);
     this.commands.add(cmd);
-    debug("command in queue:" + this.commands.size());
+    //debug("command in queue:" + this.commands.size());
   }
   
   public void circle(Vec3D center, float _radius)
