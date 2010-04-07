@@ -248,3 +248,8 @@ void testPGraphics()
   image(buffer,0,0);
   buffer.save("buffer.png");
 }
+
+void testEmail()
+{
+  sendMail(savePath("buffer.png"));
+}

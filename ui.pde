@@ -223,6 +223,11 @@ void keyPressed()
   {
     canvas.popBuffer();
   }
+  
+  if (key == 'e')
+  {
+    testEmail();
+  }
 }
 
 void mousePressed()

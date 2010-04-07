@@ -38,7 +38,6 @@ void setup()
 
   info("init world:" + width + ", " + height);
   
-  
   /* controls */
   setupControls();
   

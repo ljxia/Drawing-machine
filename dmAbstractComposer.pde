@@ -35,6 +35,8 @@ class dmAbstractComposer
     this.canvas.clear();
     this.startTime = millis();
     
+    this.thresholdUptime = random(1, 5) * 60 * 1000;
+    
     this.gaugeUptime = -1;
     this.gaugeStepCount = 0;
     this.gaugeMotivation = 100;
@@ -121,6 +123,8 @@ class dmAbstractComposer
     String name = "drawings/" + df.format(new Date()) + ".png";
     this.canvas.pushBuffer();
     this.canvas.dumpBuffer(name);
+    
+    sendMail(savePath(name));
   }
   
   protected void review()
