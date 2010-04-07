@@ -35,7 +35,10 @@ void error(String message)
 
 void writeLog(String message, String severity)
 {
-  println(millis() + " [" + severity + "] " + message);
-  logFile.write(millis() + " [" + severity + "] " + message + "\r\n");
+  SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+  String timestamp = df.format(new Date());
+  
+  println(timestamp + " [" + severity + "] " + message);
+  logFile.write(timestamp + " [" + severity + "] " + message + "\r\n");
   logFile.flush();
 }
