@@ -5,3 +5,5 @@ applet
 applet/*
 lib/config.pde
 log/*.log
+drawings/*
+buffer*.png

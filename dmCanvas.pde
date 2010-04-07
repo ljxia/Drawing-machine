@@ -38,12 +38,16 @@ class dmCanvas
     }
   }
   
-  public void dumpBuffer()
+  public void dumpBuffer(String name)
   {
     if (this.buffer != null)
     {
-      this.buffer.save("buffer.png");
+      this.buffer.save(name);
     }
+  }
+  public void dumpBuffer()
+  {
+    dumpBuffer("buffer.png");
   }
 
   dmBrush getBrush()
@@ -264,7 +268,11 @@ class dmCanvas
   {
     this.commands.clear();
   }
-
+  
+  public boolean inMotion()
+  {
+    return !this._brush.motionCompleted;
+  }
 
   public boolean popCommand()
   {
@@ -428,7 +436,7 @@ class dmCanvas
   {
     noStroke();
     fill(255);
-    rect(-1,-1,width + 1, height + 1);
+    rect(-1,-1,this.width + 1, this.height + 1);
   }
 
 

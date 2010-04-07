@@ -67,6 +67,8 @@ public class dmAbstractBrush
   
   void setSize(float new_size, boolean force)
   {
+    //TODO: affect CTL_BRUSH_SIZE wisely
+    
     if (force)
     {
       this._scale.set(new_size);

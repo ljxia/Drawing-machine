@@ -52,7 +52,8 @@ void setup()
   brush = new dmBrush(new Vec3D(width/2, height/2, 0), world, CTL_BRUSH_SIZE);  
   brush.setGray(CTL_BRUSH_SHADE);
   brush.setAlpha(0.95);
-  brush.setSize(5, true);
+
+  CTL_BRUSH_SIZE = 5;
 
   canvas = new dmCanvas(width, height - 80);
   canvas.setBrush(brush);
@@ -84,8 +85,10 @@ void draw()
   impersonal.draw();
   
   if (CTL_SHOW_TOOL) drawTools();
-  if (trainLine.active){trainLine.display();}
   
+  impersonal.drawGauge(width - 200, height - 80 + 1);
+  
+  if (trainLine.active){trainLine.display();}
 }
 
 void stop()
