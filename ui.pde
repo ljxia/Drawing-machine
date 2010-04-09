@@ -136,20 +136,18 @@ void keyPressed()
   if (key == 't')
   {
     //CTL_SHOW_TOOL = !CTL_SHOW_TOOL;
+    impersonal.canvas.clear();
+    
     if (!trainLine.active)
     {
-      impersonal.canvas.clear();
       impersonal.canvas.clearCommands();
       impersonal.pause();
       trainLine.activate();
     }
     else
     {
-      impersonal.canvas.clear();
       impersonal.play();
-      trainLine.active = false;
-      fill(255);
-      rect(-1, -1 ,width + 1,height + 1);
+      trainLine.deactivate();
     }
     
   }

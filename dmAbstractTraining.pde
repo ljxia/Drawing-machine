@@ -60,6 +60,16 @@ class dmAbstractTraining
     this.trail.add(new Vec3D(_x, _y, _z));
   }
   
+  void activate()
+  {
+    this.active = true;
+  }
+  
+  void deactivate()
+  {
+    this.active = false;
+  }
+  
   void start()
   {
     this.isLogging = true;

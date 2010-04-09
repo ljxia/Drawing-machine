@@ -41,7 +41,9 @@ class dmLineTraining extends dmAbstractTraining
     debug("End: " + startPoint.toString());
     debug("Normalized: " + endPoint.sub(startPoint).normalize().toString());
     debug("Orientation: " + endPoint.sub(startPoint).normalize().angleBetween(new Vec3D(1,0,0)) * 180 / PI);
-    this.active = true;
+    
+    super.activate();
+    
     this.reset();
   }
 
@@ -92,7 +94,7 @@ class dmLineTraining extends dmAbstractTraining
       this.canvas.trace(pl, this.boundOffsetB.add(this.startPoint));
 
       this.save();
-
+      this.stop();
       this.reset();
     }
   }

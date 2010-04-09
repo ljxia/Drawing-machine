@@ -1,0 +1,4 @@
+class dmStructureTraining extends dmAbstractTraining
+{
+  
+}
