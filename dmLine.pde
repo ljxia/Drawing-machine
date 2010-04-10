@@ -1,6 +1,6 @@
-class dmLineMemory extends dmAbstractMemory
+class dmLine extends dmAbstractMemory
 {
-  dmLineMemory()
+  dmLine()
   {
     this.serverMethod = "interpolation";
   }

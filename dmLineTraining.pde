@@ -19,7 +19,6 @@ class dmLineTraining extends dmAbstractTraining
     this.boundOffsetA = new Vec3D(this.margin, (height - side) / 2, 0);
     this.boundOffsetB = new Vec3D(margin + side + margin, (height - side) / 2, 0);
     
-    this.reset();
     this.generatePoints();
   }
   
@@ -43,8 +42,6 @@ class dmLineTraining extends dmAbstractTraining
     debug("Orientation: " + endPoint.sub(startPoint).normalize().angleBetween(new Vec3D(1,0,0)) * 180 / PI);
     
     super.activate();
-    
-    this.reset();
   }
 
   void update()
@@ -135,7 +132,7 @@ class dmLineTraining extends dmAbstractTraining
 
   boolean save()
   {
-    dmLineMemory mem = new dmLineMemory();
+    dmLine mem = new dmLine();
     String result = mem.memorize(this);
     
     debug(result);

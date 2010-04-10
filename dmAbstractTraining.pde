@@ -12,6 +12,15 @@ class dmAbstractTraining
   {
     this.active = false;
     this.trail = new PointList();
+    this.reset();
+  }
+  
+  dmAbstractTraining(dmCanvas c)
+  {
+    this.active = false;
+    this.trail = new PointList();
+    this.canvas = c;
+    this.reset();
   }
   
   void setCanvas(dmCanvas c)
@@ -63,11 +72,13 @@ class dmAbstractTraining
   void activate()
   {
     this.active = true;
+    this.reset();
   }
   
   void deactivate()
   {
     this.active = false;
+    this.reset();
   }
   
   void start()

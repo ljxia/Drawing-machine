@@ -442,7 +442,7 @@ class dmCanvas
 
   private PointList loadLineInterpolation(Vec3D vector)
   {
-    dmLineMemory memory = new dmLineMemory();
+    dmLine memory = new dmLine();
     PointList pl = memory.recall(vector);
 
     if (pl != null)

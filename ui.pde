@@ -53,14 +53,16 @@ void setupControls()
   
   
   Radio r = controlP5.addRadio("stateChange",20,20);
-  r.setWindow(controlWindow);
+  
   //r.deactivateAll(); // use deactiveAll to not make the first radio button active.
   r.add("COMPOSE",101);
   r.add("INTERPOLATION TRAINING",102);
   r.add("PATTERN TRAINING",103);
   r.add("STRUCTURE TRAINING",104);
   r.add("EXTERNAL MEMORY TRAINING",105);
-  r.add("DO NOTHING", 106);
+  r.add("DO NOTHING", 100);
+  r.setWindow(controlWindow);
+  
 }
 
 void updateControls()
@@ -101,21 +103,26 @@ void startPatternTraining()
   impersonal.canvas.clear();
 }
 
-void stateChange(int theID) {
+public void stateChange(int theID) {
   switch(theID) {
     case(101):
       startComposing();  
+      
+      info("Switch to Composing");
       break;  
     case(102):
       startLineTraining();
+      
+      info("Switch to Line Training");
       break;
     default:
       trainLine.deactivate();
       impersonal.canvas.clearCommands();
       impersonal.pause();
+      
+      info("Do Nothing");
       break;
   }
-  println("a radio event.");
 }
 
 void keyPressed()
@@ -301,10 +308,6 @@ void mouseMoved()
 
 void mouseReleased()
 {
-  //test();
-  //brush.setSize(random(3,1));
-  
-  //brush.shuffleColor();
 }
 
 void drawTools()

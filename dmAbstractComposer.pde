@@ -207,10 +207,10 @@ class dmAbstractComposer
     {
       startPoint = new Vec3D(random(this.canvas.width), random(this.canvas.height), 0);
     }
-    dmLineMemory memory = new dmLineMemory();
+    dmLine memory = new dmLine();
 
     Vec3D vec = Vec3D.randomVector();
-    float lngth = random(10, this.canvas.width / 2);
+    float lngth = random(10, this.canvas.width / 3);
     refPoint = startPoint.add(vec.scale(lngth * random(1)));
     vec.scaleSelf(lngth);
     

@@ -184,7 +184,7 @@ void testLoadInterpolation()
   {
     Vec3D startPoint = new Vec3D(random(width), random(height), 0);
 
-    dmLineMemory memory = new dmLineMemory();
+    dmLine memory = new dmLine();
 
     Vec3D vec = new Vec3D(random(-400,400),random(-400,400),0);
 
@@ -211,7 +211,7 @@ void testLineWithInterpolation()
   {
     Vec3D startPoint = new Vec3D(random(width), random(height), 0);
 
-    dmLineMemory memory = new dmLineMemory();
+    dmLine memory = new dmLine();
 
     Vec3D vec = new Vec3D(random(-400,400),random(-400,400),0);
 

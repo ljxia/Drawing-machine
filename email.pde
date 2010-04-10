@@ -12,7 +12,7 @@ public class Auth extends Authenticator {
   public PasswordAuthentication getPasswordAuthentication() {
     String username, password;
     username = "lithiumnoid@gmail.com";
-    password = "";
+    password = "impersonal";
     debug("authenticating... ");
     return new PasswordAuthentication(username, password);
   }
