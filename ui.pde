@@ -39,17 +39,28 @@ void setupControls()
   controlWindow.setUpdateMode(ControlWindow.NORMAL);
   controlWindow.hideCoordinates();
   
-  controlP5.addSlider("CTL_BRUSH_SIZE",   1,  40, CTL_BRUSH_SIZE,   20, 20, 100,  10).setWindow(controlWindow);
-  controlP5.addSlider("CTL_BRUSH_SHADE",  0,  255,CTL_BRUSH_SHADE,  20, 40, 100,  10).setWindow(controlWindow);
-  controlP5.addSlider("CTL_USE_TRAINED_INTERPOLATION",  0,  1,CTL_USE_TRAINED_INTERPOLATION,  20, 60, 100,  10).setWindow(controlWindow);
+  controlP5.addSlider("CTL_BRUSH_SIZE",   1,  40, CTL_BRUSH_SIZE,   20, 120, 100,  10).setWindow(controlWindow);
+  controlP5.addSlider("CTL_BRUSH_SHADE",  0,  255,CTL_BRUSH_SHADE,  20, 140, 100,  10).setWindow(controlWindow);
+  controlP5.addSlider("CTL_USE_TRAINED_INTERPOLATION",  0,  1,CTL_USE_TRAINED_INTERPOLATION,  20, 160, 100,  10).setWindow(controlWindow);
   
-  controlP5.addToggle("CTL_DEBUG_MODE",       CTL_DEBUG_MODE,         20,   80, 10, 10).setWindow(controlWindow);
-  controlP5.addToggle("CTL_CLEAR_BACKGROUND", CTL_CLEAR_BACKGROUND,  100,  80, 10, 10).setWindow(controlWindow);
+  controlP5.addToggle("CTL_DEBUG_MODE",       CTL_DEBUG_MODE,         20,   180, 10, 10).setWindow(controlWindow);
+  controlP5.addToggle("CTL_CLEAR_BACKGROUND", CTL_CLEAR_BACKGROUND,  100,  180, 10, 10).setWindow(controlWindow);
   
-  controlP5.addToggle("CTL_SHOW_BRUSH",       CTL_SHOW_BRUSH,  20,   110, 10, 10).setWindow(controlWindow);
-  controlP5.addToggle("CTL_AUTORUN",          CTL_AUTORUN,    100,   110, 10, 10).setWindow(controlWindow);
+  controlP5.addToggle("CTL_SHOW_BRUSH",       CTL_SHOW_BRUSH,  20,   210, 10, 10).setWindow(controlWindow);
+  controlP5.addToggle("CTL_AUTORUN",          CTL_AUTORUN,    100,   210, 10, 10).setWindow(controlWindow);
   
-  controlP5.addToggle("CTL_USE_MOUSE",       CTL_USE_MOUSE,  20,   140, 10, 10).setWindow(controlWindow);
+  controlP5.addToggle("CTL_USE_MOUSE",       CTL_USE_MOUSE,  20,   240, 10, 10).setWindow(controlWindow);
+  
+  
+  Radio r = controlP5.addRadio("stateChange",20,20);
+  r.setWindow(controlWindow);
+  //r.deactivateAll(); // use deactiveAll to not make the first radio button active.
+  r.add("COMPOSE",101);
+  r.add("INTERPOLATION TRAINING",102);
+  r.add("PATTERN TRAINING",103);
+  r.add("STRUCTURE TRAINING",104);
+  r.add("EXTERNAL MEMORY TRAINING",105);
+  r.add("DO NOTHING", 106);
 }
 
 void updateControls()
@@ -69,6 +80,44 @@ void updateControls()
   catch(java.lang.NullPointerException e){}
 }
 
+void startComposing()
+{
+  trainLine.deactivate(); 
+  impersonal.play();
+  impersonal.canvas.clear();
+}
+
+void startLineTraining()
+{
+  impersonal.pause();
+  impersonal.canvas.clearCommands();
+  impersonal.canvas.clear();
+  
+  trainLine.activate();    
+}
+
+void startPatternTraining()
+{
+  impersonal.canvas.clear();
+}
+
+void stateChange(int theID) {
+  switch(theID) {
+    case(101):
+      startComposing();  
+      break;  
+    case(102):
+      startLineTraining();
+      break;
+    default:
+      trainLine.deactivate();
+      impersonal.canvas.clearCommands();
+      impersonal.pause();
+      break;
+  }
+  println("a radio event.");
+}
+
 void keyPressed()
 {
   if (key == 'c')
@@ -86,6 +135,8 @@ void keyPressed()
     }
     else
     {
+      impersonal.canvas.clear();
+      impersonal.canvas.clearCommands();
       impersonal.pause();
     }
   }
@@ -135,19 +186,13 @@ void keyPressed()
   
   if (key == 't')
   {
-    //CTL_SHOW_TOOL = !CTL_SHOW_TOOL;
-    impersonal.canvas.clear();
-    
     if (!trainLine.active)
     {
-      impersonal.canvas.clearCommands();
-      impersonal.pause();
-      trainLine.activate();
+      startLineTraining();
     }
     else
     {
-      impersonal.play();
-      trainLine.deactivate();
+      startComposing();
     }
     
   }

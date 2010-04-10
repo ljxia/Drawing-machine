@@ -427,16 +427,16 @@ class dmCanvas
     this._brush.draw();
     this._brush.update();
     
-    stroke(210);
-    noFill();
-    rect(0, 0, this.width, this.height);
+    //stroke(210);
+    //noFill();
+    //rect(0, 0, this.width, this.height);
   }
 
   public void clear()
   {
     noStroke();
     fill(255);
-    rect(-1,-1,this.width + 1, this.height + 1);
+    rect(0,0,this.width + 1, this.height + 1);
   }
 
 

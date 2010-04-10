@@ -1,3 +1,5 @@
+import hypermedia.video.*;
+
 import processing.opengl.*;
 
 import toxi.color.*;

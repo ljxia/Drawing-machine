@@ -12,7 +12,7 @@ public class Auth extends Authenticator {
   public PasswordAuthentication getPasswordAuthentication() {
     String username, password;
     username = "lithiumnoid@gmail.com";
-    password = "password";
+    password = "";
     debug("authenticating... ");
     return new PasswordAuthentication(username, password);
   }
@@ -39,7 +39,7 @@ void sendMail(String filename) {
     MimeMessage msg=new MimeMessage(session);
     msg.setFrom(new InternetAddress("lithiumnoid@gmail.com", "lithium"));
     msg.addRecipient(Message.RecipientType.TO,new InternetAddress("430prudev@tumblr.com"));
-    msg.setSubject("New Drawing");
+    msg.setSubject("");
     BodyPart messageBodyPart = new MimeBodyPart();
  // Fill the message
     messageBodyPart.setText("Sent from impersonal");
