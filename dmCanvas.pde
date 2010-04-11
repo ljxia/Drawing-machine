@@ -61,6 +61,14 @@ class dmCanvas
     this._brush.parentCanvas = this;
   }
   
+  public void setPlaybackMode(boolean playback)
+  {
+    dmCommand cmd = new dmCommand("playback");
+    cmd.params.put("playback", playback ? 1 : 0);
+    this.commands.add(cmd);
+    //debug("command in queue:" + this.commands.size());
+  }
+  
   
   public void changeColor(float _gray)
   {
@@ -283,8 +291,13 @@ class dmCanvas
       dmCommand cmd = (dmCommand)this.commands.remove(0);
     
       debug("----");
-    
-      if (cmd.name.equals("move"))
+      
+      if (cmd.name.equals("playback"))
+      {
+        CTL_PLAYBACK = float(cmd.params.get("playback").toString()) > 0;
+        debug("set playback mode: " + (CTL_PLAYBACK ? "ON" : "OFF"));
+      }
+      else if (cmd.name.equals("move"))
       {
           Vec3D target = (Vec3D)cmd.params.get("target");
           Vec3D offset = (Vec3D)cmd.params.get("offset");
@@ -315,20 +328,25 @@ class dmCanvas
       else if (cmd.name.equals("color"))
       {
           TColor c = (TColor)cmd.params.get("color");
-          this._brush.setColor(c);
           debug("change color " + c.red() + "," + c.green() + "," + c.blue());
+          
+          this._brush.setColor(c);
+          
       }
       else if (cmd.name.equals("size"))
       {
           float s = float(cmd.params.get("size").toString());
-          this._brush.setSize(s, true);
           debug("change size " + s);
+          
+          this._brush.setSize(s, true);
+          
       }
       else if (cmd.name.equals("trace"))
       {
         PointList trace = (PointList)cmd.params.get("trace");
         Vec3D offset = (Vec3D)cmd.params.get("offset");
         this._brush.trace(trace, offset);
+        debug("tracing...");
       }
       else if (cmd.name.equals("interpolate"))
       {

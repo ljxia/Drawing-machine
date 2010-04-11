@@ -39,6 +39,8 @@ public class Integrator {
 
   public void set(float v) {
     value = v;
+    targeting = false;
+    target = v;
   }
 
   

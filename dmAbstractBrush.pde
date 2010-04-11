@@ -72,6 +72,8 @@ public class dmAbstractBrush
     if (force)
     {
       this._scale.set(new_size);
+      this.update();
+      debug("brush size force changed to " + new_size);
     }
     else
     {
@@ -94,6 +96,11 @@ public class dmAbstractBrush
   float getScale()
   {
     return this._scale.get();
+  }
+  
+  TColor getColor()
+  {
+    return this._color;
   }
   
   void reset()
@@ -120,6 +127,11 @@ public class dmAbstractBrush
       sp.restLength = sl * this._scale.get();
       this.springs.set(i, sp);
     }
+    if (CTL_PLAYBACK)
+    {
+      debug("all brush strings are updated with new scale: " + this._scale.get());
+    }
+    
   }
   
   boolean moveTo(PVector target)
@@ -171,6 +183,8 @@ public class dmAbstractBrush
   void setColor(TColor c)
   {
     this._color = c;
+    
+    debug("brush color changed to " + this._color.toString());
   }
   
   void setColor(float r, float g, float b, float a)

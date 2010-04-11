@@ -14,6 +14,8 @@ public boolean CTL_SHOW_BRUSH = false;
 public boolean CTL_AUTORUN = true;
 public boolean CTL_USE_MOUSE = false;
 
+public boolean CTL_PLAYBACK = false;
+
 public float CTL_USE_TRAINED_INTERPOLATION = 0.95;
 
 
@@ -50,7 +52,7 @@ void setupControls()
   controlP5.addToggle("CTL_AUTORUN",          CTL_AUTORUN,    100,   210, 10, 10).setWindow(controlWindow);
   
   controlP5.addToggle("CTL_USE_MOUSE",       CTL_USE_MOUSE,  20,   240, 10, 10).setWindow(controlWindow);
-  
+  controlP5.addToggle("CTL_PLAYBACK",       CTL_PLAYBACK,  100,   240, 10, 10).setWindow(controlWindow);
   
   Radio r = controlP5.addRadio("stateChange",20,20);
   
@@ -78,6 +80,7 @@ void updateControls()
     ((Toggle)controlP5.controller("CTL_SHOW_BRUSH")).setState(CTL_SHOW_BRUSH); 
     ((Toggle)controlP5.controller("CTL_AUTORUN")).setState(CTL_AUTORUN);
     ((Toggle)controlP5.controller("CTL_USE_MOUSE")).setState(CTL_USE_MOUSE);    
+    ((Toggle)controlP5.controller("CTL_PLAYBACK")).setState(CTL_PLAYBACK);    
   }
   catch(java.lang.NullPointerException e){}
 }
@@ -85,6 +88,8 @@ void updateControls()
 void startComposing()
 {
   trainLine.deactivate(); 
+  trainPattern.deactivate(); 
+  
   impersonal.play();
   impersonal.canvas.clear();
 }
@@ -95,12 +100,20 @@ void startLineTraining()
   impersonal.canvas.clearCommands();
   impersonal.canvas.clear();
   
+  trainPattern.deactivate(); 
+  
   trainLine.activate();    
 }
 
 void startPatternTraining()
 {
+  impersonal.pause();
+  impersonal.canvas.clearCommands();
   impersonal.canvas.clear();
+  
+  trainLine.deactivate(); 
+  
+  trainPattern.activate(); 
 }
 
 public void stateChange(int theID) {
@@ -115,12 +128,19 @@ public void stateChange(int theID) {
       
       info("Switch to Line Training");
       break;
+    case(103):
+      startPatternTraining();
+
+      info("Switch to Pattern Training");
+      break;
     default:
       trainLine.deactivate();
+      trainPattern.deactivate();
+      
       impersonal.canvas.clearCommands();
       impersonal.pause();
       
-      info("Do Nothing");
+      info("Switch to Idling");
       break;
   }
 }

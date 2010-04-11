@@ -12,7 +12,9 @@ import toxi.physics.constraints.*;
 dmComposer impersonal;
 dmBrush brush;
 dmCanvas canvas;
+
 dmLineTraining trainLine;
+dmPatternTraining trainPattern;
 
 VerletPhysics world;
 PFont font;
@@ -33,7 +35,6 @@ void setup()
   background(255);
   smooth();
 
-  
   /*  log */
   
   initLog();
@@ -54,33 +55,47 @@ void setup()
   brush.setGray(CTL_BRUSH_SHADE);
   brush.setAlpha(0.95);
 
-  CTL_BRUSH_SIZE = 5;
+  //CTL_BRUSH_SIZE = 5;
 
   canvas = new dmCanvas(width, height - 80);
   canvas.setBrush(brush);
+  canvas.changeSize(5);
   
   impersonal = new dmComposer(canvas);
   
-  trainLine = new dmLineTraining();
-  trainLine.setCanvas(canvas);
+  trainLine = new dmLineTraining(canvas);
+  trainPattern = new dmPatternTraining(canvas);
+}
+
+void update()
+{
+    updateControls();
+
+  /*  physics */
+    world.update();
+
+  /*  training */
+    trainLine.update();
+    trainPattern.update();
+
+  /* apply setting */  
+    if (!CTL_PLAYBACK)
+    {
+      brush.setGray(CTL_BRUSH_SHADE); 
+      brush.setSize(CTL_BRUSH_SIZE);
+    }
+       
 }
 
 void draw() 
 {
-  translate(0, 0);
-  
-  updateControls();
+  update();
   
   if (CTL_CLEAR_BACKGROUND)
   {
     canvas.clear();
   }
   
-  world.update();
-  trainLine.update();
-  
-  brush.setSize(CTL_BRUSH_SIZE);
-  brush.setGray(CTL_BRUSH_SHADE);
   //brush.draw(); 
 
   impersonal.draw();
@@ -90,6 +105,7 @@ void draw()
   impersonal.drawGauge(width - 200, height - 80 + 1);
   
   if (trainLine.active){trainLine.display();}
+  if (trainPattern.active){trainPattern.display();}
 }
 
 void stop()

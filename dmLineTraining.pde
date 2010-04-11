@@ -9,9 +9,9 @@ class dmLineTraining extends dmAbstractTraining
   private Vec3D boundOffsetA;
   private Vec3D boundOffsetB;
   
-  dmLineTraining()
+  dmLineTraining(dmCanvas c)
   {
-    super();
+    super(c);
     
     this.margin = 50;
     this.side = (width - 50 * 3) / 2;
