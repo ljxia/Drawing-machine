@@ -65,6 +65,25 @@ void setupControls()
   r.add("DO NOTHING", 100);
   r.setWindow(controlWindow);
   
+  r = controlP5.addRadio("functionTest",20,270);
+  r.deactivateAll();
+  r.add("Test Http Request",201);
+  r.add("Test Json",202);
+  r.add("Test PGraphics", 203);
+  r.add("Test Load Interpolation",204);
+  r.add("Test Line Interpolation",205);
+  r.add("Test Load Pattern",206);
+  r.setWindow(controlWindow);
+  
+  
+  r = controlP5.addRadio("drawingTest",20,370);
+  r.deactivateAll();
+  r.add("Test Line",301);
+  r.add("Test Shape",302);
+  r.add("Test Curve",303);
+  r.add("Test Circle",304);
+  r.setWindow(controlWindow);
+  
 }
 
 void updateControls()
@@ -87,8 +106,7 @@ void updateControls()
 
 void startComposing()
 {
-  trainLine.deactivate(); 
-  trainPattern.deactivate(); 
+  startIdle();
   
   impersonal.play();
   impersonal.canvas.clear();
@@ -96,24 +114,27 @@ void startComposing()
 
 void startLineTraining()
 {
-  impersonal.pause();
-  impersonal.canvas.clearCommands();
-  impersonal.canvas.clear();
-  
-  trainPattern.deactivate(); 
+  startIdle();
   
   trainLine.activate();    
 }
 
 void startPatternTraining()
 {
-  impersonal.pause();
-  impersonal.canvas.clearCommands();
-  impersonal.canvas.clear();
-  
-  trainLine.deactivate(); 
+  startIdle();
   
   trainPattern.activate(); 
+}
+
+void startIdle()
+{
+  trainLine.deactivate();
+  trainPattern.deactivate();
+  
+  impersonal.canvas.clearCommands();
+  impersonal.pause();
+  
+  info("Switch to Idling");
 }
 
 public void stateChange(int theID) {
@@ -134,14 +155,62 @@ public void stateChange(int theID) {
       info("Switch to Pattern Training");
       break;
     default:
-      trainLine.deactivate();
-      trainPattern.deactivate();
-      
-      impersonal.canvas.clearCommands();
-      impersonal.pause();
-      
-      info("Switch to Idling");
+      startIdle();
       break;
+  }
+}
+
+public void functionTest(int theID) 
+{
+  startIdle();
+  
+  switch(theID) 
+  {
+    case(201):
+      testHttpRequest();
+    break;  
+    case(202):
+      testJson();
+    break;
+    case(203):
+      testPGraphics();
+    break;
+    case(204):
+      testLoadInterpolation();
+    break;
+    case(205):
+      testLineWithInterpolation();
+    break;
+    case(206):
+      testLoadPattern();
+    break;
+    default:
+      startIdle();
+    break;
+  }
+}
+
+public void drawingTest(int theID) 
+{
+  startIdle();
+  
+  switch(theID) 
+  {
+    case(301):
+      testLine();
+    break;  
+    case(302):
+      testShape();
+    break;
+    case(303):
+      testCurve2();
+    break;
+    case(304):
+      testCircles();
+    break;
+    default:
+      startIdle();
+    break;
   }
 }
 
@@ -270,30 +339,7 @@ void keyPressed()
     
   }
   
-  if (key == '1')
-  {
-    testHttpRequest();
-  }
-  
-  if (key == '2')
-  {
-    testJson();
-  }
-  
-  if (key == '3')
-  {
-    testLoadInterpolation();
-  }
-  
-  if (key == '4')
-  {
-    testLineWithInterpolation();
-  }
-  
-  if (key == '5')
-  {
-    testPGraphics();
-  }
+
   
   if (key == ',')
   {

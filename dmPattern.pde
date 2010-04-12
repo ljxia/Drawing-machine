@@ -103,6 +103,8 @@ class dmPattern extends dmAbstractMemory
     {
       JSONObject json = new JSONObject(input);
       this.id = json.getInt("id");
+      this.topLeft = new Vec3D();
+      this.bottomRight = this.topLeft.add(json.getLong("width"), json.getLong("height"), 0);
       
       dmStroke tempStroke = new dmStroke();
       this.strokes = tempStroke.recall(this.id);
@@ -119,5 +121,22 @@ class dmPattern extends dmAbstractMemory
       debug(e.getMessage());
       return null;
     }
+  }
+
+  public void display(dmCanvas c, Vec3D offset)
+  {
+    c.setPlaybackMode(true);
+    
+    for (int i = 0; i < this.strokeCount() ; i++)
+    {
+      dmStroke stk = this.getStroke(i);
+      
+      c.changeColor(stk.brushColor);
+      c.changeSize(stk.brushSize);
+      
+      c.trace(stk.trail, this.topLeft.add(offset));
+    }
+    
+    c.setPlaybackMode(false);
   }
 }
