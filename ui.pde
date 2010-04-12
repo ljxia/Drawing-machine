@@ -65,7 +65,7 @@ void setupControls()
   r.add("DO NOTHING", 100);
   r.setWindow(controlWindow);
   
-  r = controlP5.addRadio("functionTest",20,270);
+  r = controlP5.addRadio("functionTest",20,290);
   r.deactivateAll();
   r.add("Test Http Request",201);
   r.add("Test Json",202);
@@ -76,7 +76,7 @@ void setupControls()
   r.setWindow(controlWindow);
   
   
-  r = controlP5.addRadio("drawingTest",20,370);
+  r = controlP5.addRadio("drawingTest",20,400);
   r.deactivateAll();
   r.add("Test Line",301);
   r.add("Test Shape",302);
