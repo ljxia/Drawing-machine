@@ -2,6 +2,9 @@ import controlP5.*;
 
 ControlP5 controlP5;
 ControlWindow controlWindow;
+Radio CTL_STATE;
+Radio CTL_FUNCTION_TEST;
+Radio CTL_DRAWING_TEST;
 
 /*control params*/
 
@@ -54,35 +57,36 @@ void setupControls()
   controlP5.addToggle("CTL_USE_MOUSE",       CTL_USE_MOUSE,  20,   240, 10, 10).setWindow(controlWindow);
   controlP5.addToggle("CTL_PLAYBACK",       CTL_PLAYBACK,  100,   240, 10, 10).setWindow(controlWindow);
   
-  Radio r = controlP5.addRadio("stateChange",20,20);
+  CTL_STATE = controlP5.addRadio("stateChange",20,20);
   
   //r.deactivateAll(); // use deactiveAll to not make the first radio button active.
-  r.add("COMPOSE",101);
-  r.add("INTERPOLATION TRAINING",102);
-  r.add("PATTERN TRAINING",103);
-  r.add("STRUCTURE TRAINING",104);
-  r.add("EXTERNAL MEMORY TRAINING",105);
-  r.add("DO NOTHING", 100);
-  r.setWindow(controlWindow);
+  CTL_STATE.add("COMPOSE",101);
+  CTL_STATE.add("INTERPOLATION TRAINING",102);
+  CTL_STATE.add("PATTERN TRAINING",103);
+  CTL_STATE.add("STRUCTURE TRAINING",104);
+  CTL_STATE.add("EXTERNAL MEMORY TRAINING",105);
+  CTL_STATE.add("DO NOTHING", 100);
+  CTL_STATE.setWindow(controlWindow);
   
-  r = controlP5.addRadio("functionTest",20,290);
-  r.deactivateAll();
-  r.add("Test Http Request",201);
-  r.add("Test Json",202);
-  r.add("Test PGraphics", 203);
-  r.add("Test Load Interpolation",204);
-  r.add("Test Line Interpolation",205);
-  r.add("Test Load Pattern",206);
-  r.setWindow(controlWindow);
+  CTL_FUNCTION_TEST = controlP5.addRadio("functionTest",20,290);
+  
+  CTL_FUNCTION_TEST.add("TEST NOTHING",200);
+  CTL_FUNCTION_TEST.add("Test Http Request",201);
+  CTL_FUNCTION_TEST.add("Test Json",202);
+  CTL_FUNCTION_TEST.add("Test PGraphics", 203);
+  CTL_FUNCTION_TEST.add("Test Load Interpolation",204);
+  CTL_FUNCTION_TEST.add("Test Line Interpolation",205);
+  CTL_FUNCTION_TEST.add("Test Load Pattern",206);
+  CTL_FUNCTION_TEST.setWindow(controlWindow);
   
   
-  r = controlP5.addRadio("drawingTest",20,400);
-  r.deactivateAll();
-  r.add("Test Line",301);
-  r.add("Test Shape",302);
-  r.add("Test Curve",303);
-  r.add("Test Circle",304);
-  r.setWindow(controlWindow);
+  CTL_DRAWING_TEST = controlP5.addRadio("drawingTest",20,400);
+  CTL_DRAWING_TEST.add("TEST NOTHING",300);
+  CTL_DRAWING_TEST.add("Test Line",301);
+  CTL_DRAWING_TEST.add("Test Shape",302);
+  CTL_DRAWING_TEST.add("Test Curve",303);
+  CTL_DRAWING_TEST.add("Test Circle",304);
+  CTL_DRAWING_TEST.setWindow(controlWindow);
   
 }
 
@@ -137,27 +141,30 @@ void startIdle()
   info("Switch to Idling");
 }
 
-public void stateChange(int theID) {
-  switch(theID) {
+public void stateChange(int theID) 
+{
+  switch(theID) 
+  {
     case(101):
-      startComposing();  
-      
-      info("Switch to Composing");
-      break;  
-    case(102):
-      startLineTraining();
-      
-      info("Switch to Line Training");
-      break;
-    case(103):
-      startPatternTraining();
+    startComposing();  
 
-      info("Switch to Pattern Training");
-      break;
+    info("Switch to Composing");
+    break;  
+    case(102):
+    startLineTraining();
+
+    info("Switch to Line Training");
+    break;
+    case(103):
+    startPatternTraining();
+
+    info("Switch to Pattern Training");
+    break;
     default:
-      startIdle();
-      break;
+    startIdle();
+    break;
   }
+
 }
 
 public void functionTest(int theID) 
@@ -185,7 +192,7 @@ public void functionTest(int theID)
       testLoadPattern();
     break;
     default:
-      startIdle();
+      //startIdle();
     break;
   }
 }
@@ -209,7 +216,7 @@ public void drawingTest(int theID)
       testCircles();
     break;
     default:
-      startIdle();
+      //startIdle();
     break;
   }
 }
