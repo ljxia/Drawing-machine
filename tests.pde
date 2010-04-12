@@ -173,7 +173,7 @@ void testHttpRequest()
 
 void testJson()
 {
-  Vec3D v = JsonUtil.decodeVec3D("{x:" + random(1000) + ", y:" + random(1000) + ",z:" + random(1000) + "}");
+  Vec3D v = decodeVec3D("{x:" + random(1000) + ", y:" + random(1000) + ",z:" + random(1000) + "}");
   debug(v.toString());
   debug(v.x + ", " + v.y + ", " + v.z);
 }
@@ -197,7 +197,7 @@ void testLoadInterpolation()
     {
       //debug(pl.toString());
       
-      Vec3D refVec = JsonUtil.decodeVec3D(memory.getData("vector").toString());
+      Vec3D refVec = decodeVec3D(memory.getData("vector").toString());
       pl = rotatePointList(pl, refVec, vec);
       
       canvas.trace(pl, startPoint);

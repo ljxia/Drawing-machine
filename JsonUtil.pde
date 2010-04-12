@@ -1,44 +1,63 @@
 import org.json.*;
 
-static class JsonUtil
+dmStroke decodeStroke(String input)
 {
-  static Vec3D decodeVec3D(String input)
+  try
   {
-    try
-    {
-      JSONObject json = new JSONObject(input);
-      Vec3D vector = new Vec3D(json.optLong("x"),json.optLong("y"),json.optLong("z"));
-      return vector;
-    }
-    catch(JSONException e)
-    {
-      return null;
-    }
+    dmStroke s = new dmStroke();
+    
+    JSONObject json = new JSONObject(input);
+
+    s.id = json.optInt("id");
+    s.trail = decodePointList(json.getString("trail"));
+    s.brushSize = json.optLong("brushSize");
+    s.brushColor = TColor.BLACK.copy().setARGB(json.optInt("brushColor"));
+    
+    return s;
   }
-  
-  static PointList decodePointList(String input)
+  catch(JSONException e)
   {
-    PointList pl = new PointList();
-    try
+    return null;
+  }
+}
+
+
+Vec3D decodeVec3D(String input)
+{
+  try
+  {
+    JSONObject json = new JSONObject(input);
+    Vec3D vector = new Vec3D(json.optLong("x"),json.optLong("y"),json.optLong("z"));
+    return vector;
+  }
+  catch(JSONException e)
+  {
+    return null;
+  }
+}
+
+PointList decodePointList(String input)
+{
+  PointList pl = new PointList();
+  try
+  {
+    JSONArray array = new JSONArray(input);
+    //println(array.length() + array.toString());
+    for (int i = 0; i < array.length() ; i++)
     {
-      JSONArray array = new JSONArray(input);
-      //println(array.length() + array.toString());
-      for (int i = 0; i < array.length() ; i++)
+      Vec3D v = decodeVec3D(array.getString(i));
+      if (v != null)
       {
-        Vec3D v = JsonUtil.decodeVec3D(array.getString(i));
-        if (v != null)
-        {
-          //println(v.toString());
-          pl.add(v);
-        }
-      } 
-      
-      return pl;
-    }
-    catch(JSONException e)
-    {
-      println(e.getMessage());
-      return null;
-    }
+        //println(v.toString());
+        pl.add(v);
+      }
+    } 
+    
+    return pl;
+  }
+  catch(JSONException e)
+  {
+    println(e.getMessage());
+    return null;
   }
 }

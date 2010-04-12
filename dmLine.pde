@@ -50,7 +50,7 @@ class dmLine extends dmAbstractMemory
       debug("loaded interpolation: " + this.getData("id").toString());
       
       
-      this.setData("trail", JsonUtil.decodePointList(json.getString("trail")));
+      this.setData("trail", decodePointList(json.getString("trail")));
       
       return (PointList)this.getData("trail");
     }

@@ -468,7 +468,7 @@ class dmCanvas
       // origin vector data is dumped the memory, 
       // so that the canvas knows how to rotate the interpolation for current vector
       
-      Vec3D refVec = JsonUtil.decodeVec3D(memory.getData("vector").toString());
+      Vec3D refVec = decodeVec3D(memory.getData("vector").toString());
       pl = rotatePointList(pl, refVec, vector);
 
       return pl;

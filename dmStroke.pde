@@ -1,4 +1,4 @@
-class dmStroke extends dmAbstractMemory
+public class dmStroke extends dmAbstractMemory
 {
   public int id;
   public PointList trail;
@@ -50,8 +50,37 @@ class dmStroke extends dmAbstractMemory
     this.setData("trail",this.trail);
     this.setData("brushSize",this.brushSize);
     this.setData("brushColor",this.brushColor.toARGB());
-    this.setData("density", 0);
     
     return super.memorize();
+  }
+  
+  ArrayList recall(int patternId)
+  {
+    Hashtable params = new Hashtable();
+    params.put("pattern_id",patternId);
+    
+    String input = super.recall(params);
+    
+    ArrayList strokes = new ArrayList();
+    
+    try
+    {
+      JSONArray array = new JSONArray(input);
+      for (int i = 0; i < array.length() ; i++)
+      {
+        dmStroke s = decodeStroke(array.getString(i));
+        if (s != null)
+        {
+          strokes.add(s);
+        }
+      }
+      
+      return strokes;
+    }
+    catch(JSONException e)
+    {
+      debug(e.getMessage());
+      return null;
+    }
   }
 }

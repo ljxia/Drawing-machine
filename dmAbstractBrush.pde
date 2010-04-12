@@ -127,10 +127,12 @@ public class dmAbstractBrush
       sp.restLength = sl * this._scale.get();
       this.springs.set(i, sp);
     }
+/*    
     if (CTL_PLAYBACK)
     {
       debug("all brush strings are updated with new scale: " + this._scale.get());
     }
+*/
     
   }
   

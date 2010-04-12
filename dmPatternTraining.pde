@@ -89,7 +89,7 @@ class dmPatternTraining extends dmAbstractTraining
       noFill();
       rect(this.pattern.topLeft.x, this.pattern.topLeft.y, this.pattern.getWidth(), this.pattern.getHeight());
       
-      //this.save();
+      this.save();
       this.stop();
       this.reset();
     }

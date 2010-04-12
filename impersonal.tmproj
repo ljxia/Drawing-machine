@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>dmPatternTraining.pde</string>
+	<string>JsonUtil.pde</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -67,7 +67,7 @@
 					<key>filename</key>
 					<string>dmAbstractBrush.pde</string>
 					<key>lastUsed</key>
-					<date>2010-04-11T06:40:28Z</date>
+					<date>2010-04-11T23:28:48Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -145,7 +145,9 @@
 					<key>filename</key>
 					<string>JsonUtil.pde</string>
 					<key>lastUsed</key>
-					<date>2010-04-11T02:20:56Z</date>
+					<date>2010-04-12T02:09:10Z</date>
+					<key>selected</key>
+					<true/>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -166,25 +168,25 @@
 					<key>filename</key>
 					<string>dmAbstractMemory.pde</string>
 					<key>lastUsed</key>
-					<date>2010-04-11T04:04:41Z</date>
+					<date>2010-04-12T02:09:10Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>dmLine.pde</string>
 					<key>lastUsed</key>
-					<date>2010-04-11T04:01:14Z</date>
+					<date>2010-04-12T01:32:30Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>dmPattern.pde</string>
 					<key>lastUsed</key>
-					<date>2010-04-11T06:15:38Z</date>
+					<date>2010-04-12T02:03:03Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>dmStroke.pde</string>
 					<key>lastUsed</key>
-					<date>2010-04-11T06:15:57Z</date>
+					<date>2010-04-12T02:08:34Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -232,9 +234,7 @@
 					<key>filename</key>
 					<string>dmPatternTraining.pde</string>
 					<key>lastUsed</key>
-					<date>2010-04-11T06:42:44Z</date>
-					<key>selected</key>
-					<true/>
+					<date>2010-04-11T23:42:55Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -302,9 +302,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>16</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>35</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -316,9 +316,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>28</integer>
 				<key>line</key>
-				<integer>119</integer>
+				<integer>87</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -344,9 +344,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>5</integer>
+				<integer>7</integer>
 				<key>line</key>
-				<integer>28</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -386,9 +386,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>6</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>292</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -484,21 +484,21 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>16</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>61</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>6</integer>
+			<integer>53</integer>
 		</dict>
 		<key>dmPatternTraining.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>8</integer>
+				<integer>6</integer>
 				<key>line</key>
 				<integer>91</integer>
 			</dict>
@@ -512,9 +512,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>34</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>20</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -570,7 +570,7 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>92</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -679,6 +679,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{602, 0}, {1574, 1418}}</string>
+	<string>{{68, 0}, {1440, 1418}}</string>
 </dict>
 </plist>

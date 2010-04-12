@@ -20,10 +20,7 @@ class dmPattern extends dmAbstractMemory
   
   public int strokeCount()
   {
-    if (this.strokes != null)
-      return this.strokes.size();
-    
-    return 0;  
+    return this.strokes.size();
   }
   
   public dmStroke getStroke(int i)
@@ -38,6 +35,11 @@ class dmPattern extends dmAbstractMemory
 
   public float getWidth(){return this.bottomRight.x - this.topLeft.x; }
   public float getHeight(){return this.bottomRight.y - this.topLeft.y; }
+  
+  public float getDensity()
+  {
+    return -1;
+  }
   
   public void log(float x, float y, boolean newStroke, dmBrush b)
   {
@@ -60,18 +62,26 @@ class dmPattern extends dmAbstractMemory
     this.setData("strokeCount",this.strokeCount());
     this.setData("width",this.getWidth());
     this.setData("height",this.getHeight());
+    this.setData("density",this.getDensity());
     
     int newId = -1;
-    newId = int(super.memorize());
+    
+    String result = super.memorize().trim();
+
+    newId = int(result);
+    
     
     if (newId > 0 && this.strokeCount() > 0)
-    {
+    {      
       for (int i = 0; i < this.strokeCount() ; i++)
       {
         dmStroke s = this.getStroke(i);
+        
+        s.trail.subSelf(this.topLeft);
+        
         if (s != null)
         {
-          s.memorize(newId);
+          result = s.memorize(newId);
         }
       }
       
@@ -84,34 +94,30 @@ class dmPattern extends dmAbstractMemory
     
   }
   
-  PointList recall(Vec3D vector)
+  dmPattern recall()
   {
-    return null;
-    /*    
     Hashtable params = new Hashtable();
 
     String input = super.recall(params);
     try
     {
       JSONObject json = new JSONObject(input);
-      this.setData("id",json.getString("id"));
-      this.setData("vector",json.getString("vector"));
-
-      this.setData("deviation",json.getString("deviation"));
-      this.setData("steps",json.getString("steps"));
+      this.id = json.getInt("id");
       
-      debug("loaded interpolation: " + this.getData("id").toString());
+      dmStroke tempStroke = new dmStroke();
+      this.strokes = tempStroke.recall(this.id);
+      
+      debug("loaded pattern: " + this.id);
       
       
-      this.setData("trail", JsonUtil.decodePointList(json.getString("trail")));
+      this.setData("trail", decodePointList(json.getString("trail")));
       
-      return (PointList)this.getData("trail");
+      return this;
     }
     catch(JSONException e)
     {
       debug(e.getMessage());
       return null;
     }
-    */
   }
 }

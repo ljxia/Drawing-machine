@@ -1,4 +1,4 @@
-abstract class dmAbstractMemory
+public abstract class dmAbstractMemory
 {
   public String serverUrlBase = Config.API_URL;
   protected String serverMethod = "abstract"; 
