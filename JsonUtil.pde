@@ -21,6 +21,23 @@ dmStroke decodeStroke(String input)
   }
 }
 
+dmPattern decodePattern(String input)
+{
+  try
+  {
+    dmPattern p = new dmPattern();
+    JSONObject json = new JSONObject(input);
+    p.id = json.getInt("id");
+    p.topLeft = new Vec3D();
+    p.bottomRight = p.topLeft.add(json.getLong("width"), json.getLong("height"), 0);
+    return p;
+  }
+  catch(JSONException e)
+  {
+    return null;
+  }
+}
+
 
 Vec3D decodeVec3D(String input)
 {

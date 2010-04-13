@@ -110,35 +110,43 @@ void updateControls()
 
 void startComposing()
 {
-  startIdle();
-  
+  setIdle();
+  info("Switch to Composing");
   impersonal.play();
   impersonal.canvas.clear();
 }
 
 void startLineTraining()
 {
-  startIdle();
-  
+  setIdle();
+  info("Switch to Line Training");
   trainLine.activate();    
 }
 
 void startPatternTraining()
 {
-  startIdle();
-  
+  setIdle();
+  info("Switch to Pattern Training");
   trainPattern.activate(); 
 }
 
-void startIdle()
+void startStructureTraining()
+{
+  setIdle();
+  info("Switch to Structure Training");
+  trainStructure.activate();
+}
+
+void setIdle()
 {
   trainLine.deactivate();
   trainPattern.deactivate();
+  trainStructure.deactivate();
   
   impersonal.canvas.clearCommands();
   impersonal.pause();
   
-  info("Switch to Idling");
+  info("Switch to Idle");
 }
 
 public void stateChange(int theID) 
@@ -146,30 +154,27 @@ public void stateChange(int theID)
   switch(theID) 
   {
     case(101):
-    startComposing();  
-
-    info("Switch to Composing");
-    break;  
+      startComposing();  
+      break;  
     case(102):
-    startLineTraining();
-
-    info("Switch to Line Training");
-    break;
+      startLineTraining();
+      break;
     case(103):
-    startPatternTraining();
-
-    info("Switch to Pattern Training");
-    break;
+      startPatternTraining();
+      break;
+    case(104):
+      startStructureTraining();
+      break;
     default:
-    startIdle();
-    break;
+      setIdle();
+      break;
   }
 
 }
 
 public void functionTest(int theID) 
 {
-  startIdle();
+  setIdle();
   
   switch(theID) 
   {
@@ -192,14 +197,14 @@ public void functionTest(int theID)
       testLoadPattern();
     break;
     default:
-      //startIdle();
+      //setIdle();
     break;
   }
 }
 
 public void drawingTest(int theID) 
 {
-  startIdle();
+  setIdle();
   
   switch(theID) 
   {
@@ -216,7 +221,7 @@ public void drawingTest(int theID)
       testCircles();
     break;
     default:
-      //startIdle();
+      //setIdle();
     break;
   }
 }

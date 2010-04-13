@@ -57,6 +57,12 @@ class dmPattern extends dmAbstractMemory
     if (bottomRight.y < y) {bottomRight.y = y;}
   }
   
+  public String memorize(int structure_id)
+  {
+    this.setData("structure_id", structure_id);
+    return this.memorize();
+  }
+  
   public String memorize()
   {
     this.setData("strokeCount",this.strokeCount());
@@ -94,33 +100,66 @@ class dmPattern extends dmAbstractMemory
     
   }
   
-  dmPattern recall()
+  void copy(dmPattern p)
+  {
+    this.id = p.id;
+    this.topLeft = p.topLeft.copy();
+    this.bottomRight = p.bottomRight.copy();
+  }
+  
+  ArrayList recall(int structureId)
   {
     Hashtable params = new Hashtable();
-
+    params.put("structure_id",structureId);
+    
     String input = super.recall(params);
+    
+    ArrayList patterns = new ArrayList();
+    
     try
     {
-      JSONObject json = new JSONObject(input);
-      this.id = json.getInt("id");
-      this.topLeft = new Vec3D();
-      this.bottomRight = this.topLeft.add(json.getLong("width"), json.getLong("height"), 0);
+      JSONArray array = new JSONArray(input);
+      for (int i = 0; i < array.length() ; i++)
+      {
+        dmPattern p = new dmPattern();
+        p.load(array.getString(i));
+        if (p != null)
+        {
+          patterns.add(p);
+        }
+      }
       
-      dmStroke tempStroke = new dmStroke();
-      this.strokes = tempStroke.recall(this.id);
-      
-      debug("loaded pattern: " + this.id);
-      
-      
-      this.setData("trail", decodePointList(json.getString("trail")));
-      
-      return this;
+      return patterns;
     }
     catch(JSONException e)
     {
       debug(e.getMessage());
       return null;
     }
+  }
+  
+  void load(String input)
+  {
+    dmPattern p = decodePattern(input);
+    if (p != null)
+    {
+      this.copy(p);
+
+      dmStroke tempStroke = new dmStroke();
+      this.strokes = tempStroke.recall(this.id);
+
+      debug("loaded pattern: #" + this.id + " with " + this.strokes.size() + " Strokes");
+    }
+  }
+  
+  dmPattern recall()
+  {
+    Hashtable params = new Hashtable();
+
+    String input = super.recall(params);
+
+    this.load(input);
+    return this;
   }
 
   public void display(dmCanvas c, Vec3D offset)

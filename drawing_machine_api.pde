@@ -15,6 +15,7 @@ dmCanvas canvas;
 
 dmLineTraining trainLine;
 dmPatternTraining trainPattern;
+dmStructureTraining trainStructure;
 
 VerletPhysics world;
 PFont font;
@@ -46,7 +47,7 @@ void setup()
   
   /* initialize */
   
-  //hint( ENABLE_OPENGL_4X_SMOOTH );
+  hint( ENABLE_OPENGL_4X_SMOOTH );
   font = loadFont("04b-03-8.vlw");
   textFont(font);
   world = new VerletPhysics(new Vec3D(0,0,0),25,10,0.1);
@@ -65,6 +66,7 @@ void setup()
   
   trainLine = new dmLineTraining(canvas);
   trainPattern = new dmPatternTraining(canvas);
+  trainStructure = new dmStructureTraining(canvas);
 }
 
 void update()
@@ -106,6 +108,7 @@ void draw()
   
   if (trainLine.active){trainLine.display();}
   if (trainPattern.active){trainPattern.display();}
+  if (trainStructure.active){trainStructure.display();}
 }
 
 void stop()
