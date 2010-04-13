@@ -59,11 +59,10 @@ class dmStructure extends dmAbstractMemory
     this.setData("height",this.getHeight());
     
     int newId = -1;
-    
     String result = super.memorize().trim();
 
     newId = int(result);
-    
+
     if (newId > 0 && this.patternCount() > 0)
     {      
       for (int i = 0; i < this.patternCount() ; i++)

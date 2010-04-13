@@ -239,6 +239,22 @@ void testLoadPattern()
     memory.display(impersonal.canvas, startPoint);
 }
 
+void testLoadStructure()
+{
+    Vec3D startPoint = new Vec3D(0,0,0);
+
+    dmStructure memory = new dmStructure();
+    memory.recall();
+    
+    impersonal.canvas.clear();
+    
+    stroke(255,0,0);
+    noFill();
+    rect(startPoint.x, startPoint.y, memory.getWidth(), memory.getHeight());
+    
+    memory.display(impersonal.canvas, startPoint);
+}
+
 
 void testPushBuffer()
 {

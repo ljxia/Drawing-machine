@@ -77,10 +77,11 @@ void setupControls()
   CTL_FUNCTION_TEST.add("Test Load Interpolation",204);
   CTL_FUNCTION_TEST.add("Test Line Interpolation",205);
   CTL_FUNCTION_TEST.add("Test Load Pattern",206);
+  CTL_FUNCTION_TEST.add("Test Load Structure",207);
   CTL_FUNCTION_TEST.setWindow(controlWindow);
   
   
-  CTL_DRAWING_TEST = controlP5.addRadio("drawingTest",20,400);
+  CTL_DRAWING_TEST = controlP5.addRadio("drawingTest",20,460);
   CTL_DRAWING_TEST.add("TEST NOTHING",300);
   CTL_DRAWING_TEST.add("Test Line",301);
   CTL_DRAWING_TEST.add("Test Shape",302);
@@ -196,6 +197,9 @@ public void functionTest(int theID)
     case(206):
       testLoadPattern();
     break;
+    case(207):
+      testLoadStructure();
+      break;
     default:
       //setIdle();
     break;

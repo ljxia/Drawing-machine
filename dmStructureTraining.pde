@@ -79,9 +79,16 @@ class dmStructureTraining extends dmAbstractTraining
     if (this.canvas != null)
     {
       this.structure.display(this.canvas, new Vec3D());
+      
+      this.save();
       this.stop();
       this.reset();
     }
+  }
+  
+  boolean save()
+  {
+    return this.structure.memorize().equals("ok");
   }
   
   void display()
