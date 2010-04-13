@@ -38,7 +38,7 @@ class dmStructure extends dmAbstractMemory
   
   public void log(float x, float y, boolean newPattern, boolean newStroke, dmBrush b)
   {
-    if (newPattern)
+    if (newPattern || (this.patterns.size() == 0))
     {
       this.patterns.add(new dmPattern());
     }

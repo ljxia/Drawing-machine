@@ -79,6 +79,7 @@ void update()
   /*  training */
     trainLine.update();
     trainPattern.update();
+    trainStructure.update();
 
   /* apply setting */  
     if (!CTL_PLAYBACK)

@@ -10,7 +10,7 @@ class dmPatternTraining extends dmAbstractTraining
   
   void reset()
   {
-    pattern = new dmPattern();
+    this.pattern = new dmPattern();
     
     this.canvas.changeColor(new TColor(TColor.BLACK));
     this.canvas.changeSize(3);
@@ -34,6 +34,7 @@ class dmPatternTraining extends dmAbstractTraining
       else //accept logging
       {
         boolean paused = false;
+        
         if (mousePressed)
         {
           if (!this.isLogging) //previously not logging, is a pause

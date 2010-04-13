@@ -43,7 +43,7 @@ class dmPattern extends dmAbstractMemory
   
   public void log(float x, float y, boolean newStroke, dmBrush b)
   {
-    if (newStroke)
+    if (newStroke || (this.strokes.size() == 0))
     {
       this.strokes.add(new dmStroke(b));
     }
