@@ -8,6 +8,8 @@ public class dmStroke extends dmAbstractMemory
   public Vec3D topLeft;
   public Vec3D bottomRight;
   
+  public Vec3D globalOffset;
+  
   dmStroke()
   {
     this.serverMethod = "stroke";
@@ -42,10 +44,18 @@ public class dmStroke extends dmAbstractMemory
     
     this.topLeft = new Vec3D(9999,9999,0);
     this.bottomRight = new Vec3D(0,0,0);
+    this.globalOffset = new Vec3D(0,0,0);
   }
   
   public String memorize(int patternId)
   {
+    return this.memorize(patternId, new Vec3D(0,0,0));
+  }
+  
+  public String memorize(int patternId, Vec3D offset)
+  {
+    this.trail.subSelf(offset);
+    
     this.setData("pattern_id", patternId);
     this.setData("trail",this.trail);
     this.setData("brushSize",this.brushSize);
@@ -82,5 +92,13 @@ public class dmStroke extends dmAbstractMemory
       debug(e.getMessage());
       return null;
     }
+  }
+  
+  public void display(dmCanvas c, Vec3D offset)
+  {
+    c.changeColor(this.brushColor);
+    c.changeSize(this.brushSize);
+    
+    c.trace(this.trail, offset);
   }
 }

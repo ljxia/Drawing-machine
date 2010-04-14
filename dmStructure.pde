@@ -83,10 +83,7 @@ class dmStructure extends dmAbstractMemory
         
         if (p != null)
         {
-          p.topLeft.subSelf(this.topLeft);
-          p.bottomRight.subSelf(this.topLeft);
-          
-          p.memorize(newId);
+          p.memorize(newId, this.topLeft);
         }
       }
       
@@ -130,15 +127,18 @@ class dmStructure extends dmAbstractMemory
 
   public void display(dmCanvas c, Vec3D offset)
   {
-    stroke(100,0,0);
-    noFill();
-    rect(this.topLeft.x + offset.x, this.topLeft.y + offset.y, this.getWidth(), this.getHeight());
-    
     for (int i = 0; i < this.patternCount() ; i++)
     {
       dmPattern pat = this.getPattern(i);
       
-      pat.display(c, this.topLeft.add(offset));
+      //pat.display(c, this.topLeft.add(offset));
+      pat.display(c, offset);
     }
+    
+    /*    
+    stroke(100,0,0);
+    noFill();
+    rect(this.topLeft.x + offset.x, this.topLeft.y + offset.y, this.getWidth(), this.getHeight());
+    */
   }
 }

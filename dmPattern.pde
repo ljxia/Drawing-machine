@@ -7,6 +7,8 @@ class dmPattern extends dmAbstractMemory
   public Vec3D topLeft;
   public Vec3D bottomRight;
   
+  public Vec3D globalOffset;
+  
   dmPattern()
   {
     this.id = -1;
@@ -15,6 +17,7 @@ class dmPattern extends dmAbstractMemory
     
     this.topLeft = new Vec3D(9999,9999,0);
     this.bottomRight = new Vec3D(0,0,0);
+    this.globalOffset = new Vec3D(0,0,0);
     //this.density = 0;
   }
   
@@ -60,6 +63,13 @@ class dmPattern extends dmAbstractMemory
   public String memorize(int structure_id)
   {
     this.setData("structure_id", structure_id);
+    return this.memorize(structure_id, new Vec3D(0,0,0));
+  }
+  
+  public String memorize(int structure_id, Vec3D offset)
+  {
+    this.setData("structure_id", structure_id);
+    this.globalOffset = offset.copy();
     return this.memorize();
   }
   
@@ -69,7 +79,7 @@ class dmPattern extends dmAbstractMemory
     this.setData("width",this.getWidth());
     this.setData("height",this.getHeight());
     this.setData("density",this.getDensity());
-    this.setData("offset", this.topLeft.toString());
+    this.setData("offset", this.topLeft.sub(this.globalOffset).toString());
     
     int newId = -1;
     
@@ -87,8 +97,7 @@ class dmPattern extends dmAbstractMemory
         
         if (s != null)
         {
-          s.trail.subSelf(this.topLeft);
-          result = s.memorize(newId);
+          result = s.memorize(newId, this.topLeft);
         }
       }
       
@@ -165,22 +174,20 @@ class dmPattern extends dmAbstractMemory
 
   public void display(dmCanvas c, Vec3D offset)
   {
-    stroke(255,0,0);
-    noFill();
-    rect(this.topLeft.x + offset.x, this.topLeft.y + offset.y, this.getWidth(), this.getHeight());
-    
     c.setPlaybackMode(true);
     
     for (int i = 0; i < this.strokeCount() ; i++)
     {
-      dmStroke stk = this.getStroke(i);
-      
-      c.changeColor(stk.brushColor);
-      c.changeSize(stk.brushSize);
-      
-      c.trace(stk.trail, this.topLeft.add(offset));
+      dmStroke stk = this.getStroke(i);      
+      stk.display(c, this.topLeft.add(offset));
     }
     
     c.setPlaybackMode(false);
+    
+    /*    
+    stroke(255,0,0);
+    noFill();
+    rect(this.topLeft.x + offset.x, this.topLeft.y + offset.y, this.getWidth(), this.getHeight());
+    */
   }
 }
