@@ -28,7 +28,7 @@ dmPattern decodePattern(String input)
     dmPattern p = new dmPattern();
     JSONObject json = new JSONObject(input);
     p.id = json.getInt("id");
-    p.topLeft = new Vec3D();
+    p.topLeft = decodeVec3D(json.getString("offset"));
     p.bottomRight = p.topLeft.add(json.getLong("width"), json.getLong("height"), 0);
     return p;
   }
@@ -49,7 +49,7 @@ Vec3D decodeVec3D(String input)
   }
   catch(JSONException e)
   {
-    return null;
+    return new Vec3D();
   }
 }
 

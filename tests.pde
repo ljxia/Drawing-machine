@@ -225,10 +225,10 @@ void testLineWithInterpolation()
 
 void testLoadPattern()
 {
-    Vec3D startPoint = new Vec3D(random(width / 2), random(height / 2), 0);
-
     dmPattern memory = new dmPattern();
     memory.recall();
+    
+    Vec3D startPoint = new Vec3D(0,0,0);
     
     impersonal.canvas.clear();
     
@@ -247,10 +247,6 @@ void testLoadStructure()
     memory.recall();
     
     impersonal.canvas.clear();
-    
-    stroke(255,0,0);
-    noFill();
-    rect(startPoint.x, startPoint.y, memory.getWidth(), memory.getHeight());
     
     memory.display(impersonal.canvas, startPoint);
 }

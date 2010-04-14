@@ -7,14 +7,23 @@ class dmStructure extends dmAbstractMemory
   public Vec3D topLeft;
   public Vec3D bottomRight;
   
+  public Vec3D dimension;
+  
   dmStructure()
   {
     this.id = -1;
     this.serverMethod = "structure";
     this.patterns = new ArrayList();
     
+    
     this.topLeft = new Vec3D(9999,9999,0);
     this.bottomRight = new Vec3D(0,0,0);
+  }
+  
+  dmStructure(float w, float h)
+  {
+    this();
+    this.dimension = new Vec3D(w, h, 0);
     //this.density = 0;
   }
   
@@ -58,6 +67,8 @@ class dmStructure extends dmAbstractMemory
     this.setData("patternCount",this.patternCount());
     this.setData("width",this.getWidth());
     this.setData("height",this.getHeight());
+    this.setData("dimension",this.dimension.toString());
+    this.setData("offset", this.topLeft.toString());
     
     int newId = -1;
     String result = super.memorize().trim();
@@ -72,6 +83,9 @@ class dmStructure extends dmAbstractMemory
         
         if (p != null)
         {
+          p.topLeft.subSelf(this.topLeft);
+          p.bottomRight.subSelf(this.topLeft);
+          
           p.memorize(newId);
         }
       }
@@ -94,8 +108,9 @@ class dmStructure extends dmAbstractMemory
     {
       JSONObject json = new JSONObject(input);
       this.id = json.getInt("id");
-      this.topLeft = new Vec3D();
+      this.topLeft = decodeVec3D(json.getString("offset"));
       this.bottomRight = this.topLeft.add(json.getLong("width"), json.getLong("height"), 0);
+      this.dimension = decodeVec3D(json.getString("dimension"));
       
       debug("loaded structure: #" + this.id);
       
@@ -115,11 +130,15 @@ class dmStructure extends dmAbstractMemory
 
   public void display(dmCanvas c, Vec3D offset)
   {
+    stroke(100,0,0);
+    noFill();
+    rect(this.topLeft.x + offset.x, this.topLeft.y + offset.y, this.getWidth(), this.getHeight());
+    
     for (int i = 0; i < this.patternCount() ; i++)
     {
       dmPattern pat = this.getPattern(i);
       
-      pat.display(c, offset);
+      pat.display(c, this.topLeft.add(offset));
     }
   }
 }

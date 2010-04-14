@@ -73,7 +73,7 @@ class dmCanvas
   public void changeColor(float _gray)
   {
     //global
-    CTL_BRUSH_SHADE = _gray;
+    CTL_BRUSH_SHADE = (int)_gray;
 
     dmCommand cmd = new dmCommand("color");
     TColor _color = TColor.newRGBA(_gray / 255, _gray / 255,_gray / 255,1);

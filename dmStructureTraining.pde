@@ -2,7 +2,7 @@ class dmStructureTraining extends dmAbstractTraining
 {
   public int timeout = 60000;
   public dmStructure structure;
-  private TColor brushShade = null;
+  private int brushShade = -1;
   
   dmStructureTraining(dmCanvas c)
   {
@@ -13,8 +13,8 @@ class dmStructureTraining extends dmAbstractTraining
   {
     CTL_SAVE_STRUCTURE = false;
     
-    this.brushShade = null;
-    this.structure = new dmStructure(); // array list of dmPatterns
+    this.brushShade = -1;
+    this.structure = new dmStructure(this.canvas.width, this.canvas.height); // array list of dmPatterns
     
     this.canvas.changeColor(new TColor(TColor.BLACK));
     this.canvas.changeSize(10);
@@ -41,11 +41,9 @@ class dmStructureTraining extends dmAbstractTraining
         boolean colorChanged = false;
         
         
-        if (brushShade == null || (brushShade.toARGB() != this.canvas.getBrush().getColor().toARGB()))
+        if (brushShade < 0 || (brushShade != CTL_BRUSH_SHADE))
         {
           colorChanged = true;
-          debug("New Pattern");
-          this.brushShade = this.canvas.getBrush().getColor().copy();
         }
         
         if (mousePressed)
@@ -53,7 +51,7 @@ class dmStructureTraining extends dmAbstractTraining
           if (!this.isLogging) //previously not logging, is a pause
           {
             strokePaused = true;
-            debug("New Stroke");
+            //debug("New Stroke");
           }
           this.start();
         }
@@ -70,6 +68,7 @@ class dmStructureTraining extends dmAbstractTraining
         if (this.isLogging)
         {
           this.log(mouseX, mouseY, colorChanged, strokePaused);
+          brushShade = CTL_BRUSH_SHADE;
           //debug("Line Training Log: " + mouseX + "," + mouseY);
           this.lastLog = millis();
         }

@@ -69,6 +69,7 @@ class dmPattern extends dmAbstractMemory
     this.setData("width",this.getWidth());
     this.setData("height",this.getHeight());
     this.setData("density",this.getDensity());
+    this.setData("offset", this.topLeft.toString());
     
     int newId = -1;
     
@@ -84,10 +85,9 @@ class dmPattern extends dmAbstractMemory
       {
         dmStroke s = this.getStroke(i);
         
-        s.trail.subSelf(this.topLeft);
-        
         if (s != null)
         {
+          s.trail.subSelf(this.topLeft);
           result = s.memorize(newId);
         }
       }
@@ -165,6 +165,10 @@ class dmPattern extends dmAbstractMemory
 
   public void display(dmCanvas c, Vec3D offset)
   {
+    stroke(255,0,0);
+    noFill();
+    rect(this.topLeft.x + offset.x, this.topLeft.y + offset.y, this.getWidth(), this.getHeight());
+    
     c.setPlaybackMode(true);
     
     for (int i = 0; i < this.strokeCount() ; i++)

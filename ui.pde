@@ -9,7 +9,7 @@ Radio CTL_DRAWING_TEST;
 /*control params*/
 
 public float CTL_BRUSH_SIZE = 1;
-public float CTL_BRUSH_SHADE = 0;
+public int CTL_BRUSH_SHADE = 0;
 public boolean CTL_DEBUG_MODE = false;
 public boolean CTL_CLEAR_BACKGROUND = false;
 public boolean CTL_SHOW_TOOL = true;
@@ -141,11 +141,13 @@ void startStructureTraining()
 
 void setIdle()
 {
+  
   trainLine.deactivate();
   trainPattern.deactivate();
   trainStructure.deactivate();
   
   impersonal.canvas.clearCommands();
+  impersonal.canvas.setPlaybackMode(false);
   impersonal.pause();
   
   info("Switch to Idle");
