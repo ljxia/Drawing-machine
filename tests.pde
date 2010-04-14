@@ -234,7 +234,7 @@ void testLoadPattern()
     
     stroke(255,0,0);
     noFill();
-    rect(startPoint.x, startPoint.y, memory.getWidth(), memory.getHeight());
+    rect(memory.topLeft.x, memory.topLeft.y, memory.getWidth(), memory.getHeight());
     
     memory.display(impersonal.canvas, startPoint);
 }
