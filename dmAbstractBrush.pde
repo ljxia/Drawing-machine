@@ -73,7 +73,7 @@ public class dmAbstractBrush
     {
       this._scale.set(new_size);
       this.update();
-      debug("brush size force changed to " + new_size);
+      info("brush size force changed to " + new_size);
     }
     else
     {
@@ -84,7 +84,7 @@ public class dmAbstractBrush
   void setSize(float new_size)
   {
     this._scale.target(new_size);
-    //debug("size: " + this._size + ", scale: " + this._scale.get());
+    //info("size: " + this._size + ", scale: " + this._scale.get());
     //this._size = new_size;
   }
   
@@ -130,7 +130,7 @@ public class dmAbstractBrush
 /*    
     if (CTL_PLAYBACK)
     {
-      debug("all brush strings are updated with new scale: " + this._scale.get());
+      info("all brush strings are updated with new scale: " + this._scale.get());
     }
 */
     
@@ -169,12 +169,12 @@ public class dmAbstractBrush
   
   void draw()
   {
-    debug("abstract draw");
+    info("abstract draw");
   }
   
   void draw(PGraphics canvas)
   {
-    debug("abstract draw on canvas");
+    info("abstract draw on canvas");
   }
   
   void setGray(float shade)
@@ -186,7 +186,7 @@ public class dmAbstractBrush
   {
     this._color = c;
     
-    debug("brush color changed to " + this._color.toString());
+    info("brush color changed to " + this._color.toString());
   }
   
   void setColor(float r, float g, float b, float a)

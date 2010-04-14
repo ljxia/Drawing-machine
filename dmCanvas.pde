@@ -281,7 +281,7 @@ class dmCanvas
 
         dmCommand cmd = (dmCommand)this.commands.remove(0);
 
-        debug("----");
+        info("----");
 
         if (cmd.name.equals("playback"))
         {
@@ -296,7 +296,7 @@ class dmCanvas
 
           this._brush.resetTravelLength();
           this._brush.moveTo(target, offset);
-          debug("move to " + (target.x + offset.x) + ", " + (target.y + offset.y));
+          info("move to " + (target.x + offset.x) + ", " + (target.y + offset.y));
         }
         else if (cmd.name.equals("line"))
         {
@@ -304,7 +304,7 @@ class dmCanvas
 
           this._brush.resetTravelLength();
           this._brush.lineTo(target);
-          debug("line to " + target.x + ", " + target.y);
+          info("line to " + target.x + ", " + target.y);
         }
         else if (cmd.name.equals("follow"))
         {
@@ -314,12 +314,12 @@ class dmCanvas
           this._brush.closeShape = closeShape;
           //path.display();
           this._brush.drawAlong(path);
-          debug("draw along path - node count " + path.points.size());
+          info("draw along path - node count " + path.points.size());
         }
         else if (cmd.name.equals("color"))
         {
           TColor c = (TColor)cmd.params.get("color");
-          debug("change color " + c.red() + "," + c.green() + "," + c.blue());
+          info("change color " + c.red() + "," + c.green() + "," + c.blue());
 
           this._brush.setColor(c);
 
@@ -327,7 +327,7 @@ class dmCanvas
         else if (cmd.name.equals("size"))
         {
           float s = float(cmd.params.get("size").toString());
-          debug("change size " + s);
+          info("change size " + s);
 
           this._brush.setSize(s, true);
 
@@ -337,7 +337,7 @@ class dmCanvas
           PointList trace = (PointList)cmd.params.get("trace");
           Vec3D offset = (Vec3D)cmd.params.get("offset");
           this._brush.trace(trace, offset);
-          debug("tracing...");
+          info("tracing...");
         }
         else if (cmd.name.equals("interpolate"))
         {

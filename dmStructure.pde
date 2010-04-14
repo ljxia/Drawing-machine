@@ -41,6 +41,7 @@ class dmStructure extends dmAbstractMemory
     if (newPattern || (this.patterns.size() == 0))
     {
       this.patterns.add(new dmPattern());
+      debug("Pattern Count: " + this.patterns.size());
     }
     
     dmPattern p = (dmPattern)this.patterns.get(this.patterns.size() - 1);

@@ -91,7 +91,7 @@ public class dmBrush extends dmAbstractBrush
     
     this.motion.maxforce = FORCE_STRAIGHT;
     this.motion.maxspeed = SPEED_STRAIGHT * localSpeedVar;
-    debug("motion moveTo started");
+    info("motion moveTo started");
     
     return true;
   }
@@ -108,7 +108,7 @@ public class dmBrush extends dmAbstractBrush
     this.motion.maxforce = FORCE_STRAIGHT;
     this.motion.maxspeed = SPEED_STRAIGHT * localSpeedVar;
     
-    debug("motion lineTo started");
+    info("motion lineTo started");
   }
   
   void drawAlong(Path path)
@@ -135,7 +135,7 @@ public class dmBrush extends dmAbstractBrush
       this.motion.vel.y = this.motion.vel.y * (1 + random(-0.4, 0.4));
     }
     
-    debug("motion drawAlong started");
+    info("motion drawAlong started");
   }
   
   void trace(PointList pl, Vec3D offset)
@@ -155,7 +155,7 @@ public class dmBrush extends dmAbstractBrush
     }
 */
     
-    debug("motion trace started");
+    info("motion trace started");
   }
 
   void reset()
@@ -248,7 +248,7 @@ public class dmBrush extends dmAbstractBrush
         
         this._offset.scaleSelf(0);
         
-        debug("trace completed");
+        info("trace completed");
       }
     }
     else if (this.motion != null && this.motionEnd != null && !motionCompleted) // line to and move to
@@ -259,7 +259,7 @@ public class dmBrush extends dmAbstractBrush
         this.anchor.lock();
         this.motionEnd = null;
         this.automated = false;
-        debug("motion completed");
+        info("motion completed");
       }      
       this.setPos(this.motion.loc);
     }
@@ -273,7 +273,7 @@ public class dmBrush extends dmAbstractBrush
           motionCompleted = true;
           this.anchor.lock();
           this.automated = false;
-          debug("motion completed");
+          info("motion completed");
 
           if (this.motion.travelLength < (1.2 * this.motionCurve.length()) && random(0,1) < 0.6)
           {

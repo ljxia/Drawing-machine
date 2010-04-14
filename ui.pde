@@ -21,6 +21,7 @@ public boolean CTL_PLAYBACK = false;
 
 public float CTL_USE_TRAINED_INTERPOLATION = 0.95;
 
+public boolean CTL_SAVE_STRUCTURE = false;
 
 public float FORCE_STRAIGHT = 1.7;
 public float SPEED_STRAIGHT = 13;
@@ -292,8 +293,14 @@ void keyPressed()
   if (key == 's')
   {
     //saveFrame("images/sketch-#####.png");
+    
     impersonal.canvas.pushBuffer();
     impersonal.canvas.dumpBuffer();
+    
+    if (trainStructure.active)
+    {
+      CTL_SAVE_STRUCTURE = true;
+    }
   }
   
   if (key == 't')

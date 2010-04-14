@@ -75,10 +75,11 @@ class dmPattern extends dmAbstractMemory
     String result = super.memorize().trim();
 
     newId = int(result);
-    
-    
+        
     if (newId > 0 && this.strokeCount() > 0)
-    {      
+    {
+      debug("Pattern #" + newId + " Saved.");
+      debug("Saving " + this.strokeCount() + " strokes...");
       for (int i = 0; i < this.strokeCount() ; i++)
       {
         dmStroke s = this.getStroke(i);

@@ -26,9 +26,12 @@ public abstract class dmAbstractMemory
     String url = serverUrlBase + "learn/" + serverMethod;
     debug("-----------------");
     debug("ping url: " + url);
+    debug("POST param:" + this.getData().toString());
     try
     {
-      return req.send(url,"POST",this.getData(),null);
+      String res = req.send(url,"POST",this.getData(),null);
+      debug(res);
+      return res;
     }
     catch (Exception e){return "error: " + e.getMessage();}
   }
