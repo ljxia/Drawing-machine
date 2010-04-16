@@ -244,7 +244,7 @@ void keyPressed()
   
   if (key == ' ')
   {
-    if (impersonal.paused)
+    if (impersonal.isPaused())
     {
       impersonal.play();
     }

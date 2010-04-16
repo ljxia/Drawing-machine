@@ -103,13 +103,15 @@ void draw()
 
   impersonal.draw();
   
-  if (CTL_SHOW_TOOL) drawTools();
-  
-  impersonal.drawGauge(width - 200, height - 80 + 1);
-  
   if (trainLine.active){trainLine.display();}
   if (trainPattern.active){trainPattern.display();}
   if (trainStructure.active){trainStructure.display();}
+  
+  
+  if (CTL_SHOW_TOOL) {drawTools();}
+  
+  impersonal.context.display(width - 200, height - 80 + 1);
+  
 }
 
 void stop()
