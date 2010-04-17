@@ -21,4 +21,5 @@ class dmAbstractStrategy
   {
     return false;
   }
+  
 }

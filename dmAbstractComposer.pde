@@ -29,7 +29,10 @@ class dmAbstractComposer
   
   protected void update()
   {
-    this.canvas.update();
+    if (this.canvas.update())
+    {
+      this.canvas.saveImage(this.context.snapshot);
+    }
     this.context.update();
     
     if (this.context.isIdle())

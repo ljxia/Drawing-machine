@@ -19,15 +19,25 @@ class dmCanvas
     this.corner.set(0,0,0);
   }
 
-  public void pushBuffer()
+  public void saveImage(PImage img)
   {
+    if (img == null || img.width != this.buffer.width || img.height != this.buffer.height)
+    {
+      img = createImage(this.width, this.height, ARGB);
+    }
+    
     loadPixels();
-    //this.buffer.loadPixels();
-    for (int i = 0; i < this.buffer.pixels.length; i++) {
-      this.buffer.pixels[i] = pixels[i]; 
+    
+    for (int i = 0; i < img.pixels.length; i++) {
+      img.pixels[i] = pixels[i]; 
     }
 
-    this.buffer.updatePixels();
+    img.updatePixels();
+  }
+
+  public void pushBuffer()
+  {
+    this.saveImage(this.buffer);
   }
 
   public void popBuffer()
@@ -420,7 +430,7 @@ class dmCanvas
     }
   }
 
-  public void update()
+  public boolean update()
   {
     //
     if (CTL_AUTORUN)
@@ -428,6 +438,7 @@ class dmCanvas
       if (popCommand())
       {
         CTL_USE_MOUSE = false;
+        return true;
       }
     }
 
@@ -435,6 +446,7 @@ class dmCanvas
     {
       this._brush.setPos(mouseX - int(this.corner.x), mouseY - int(this.corner.y));
     }
+    return false;
   }
 
   public void draw(int x, int y)

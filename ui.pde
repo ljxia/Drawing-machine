@@ -296,6 +296,8 @@ void keyPressed()
   {
     //saveFrame("images/sketch-#####.png");
     
+    impersonal.canvas.saveImage(impersonal.context.snapshot);
+    
     impersonal.canvas.pushBuffer();
     impersonal.canvas.dumpBuffer();
     

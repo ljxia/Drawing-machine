@@ -3,6 +3,7 @@ class dmDrawingContext
   protected dmCanvas canvas;
   
   public boolean paused = false;
+  public PImage snapshot;
   
   protected boolean inMotion = false;
   
@@ -23,6 +24,8 @@ class dmDrawingContext
   dmDrawingContext(dmCanvas canvas)
   {
     this.canvas = canvas;
+    
+    this.snapshot = createImage(this.canvas.width, this.canvas.height, ARGB);
     
     this.thresholdUptime = 5 * 60 * 1000;
     this.thresholdStepCount = 500;
@@ -104,9 +107,7 @@ class dmDrawingContext
   public void display(float x, float y)
   {
     pushMatrix();
-    translate(x,y);
-    
-    
+    translate(x,y);    
     
     int vertical = 10;
     
@@ -153,6 +154,14 @@ class dmDrawingContext
     rect(20, vertical, map(this.gaugeCommandQueue, 0, this.thresholdCommandQueue, 0, 90), 10);
     
     textAlign(CORNER);
+    
+    
+    if (this.snapshot != null)
+    {
+      image(this.snapshot, -200, 8, (this.canvas.width * 60) / this.canvas.height,60);
+    }
+    
+    
     popMatrix();
   }
 }
