@@ -1,7 +1,7 @@
 class dmComposer extends dmAbstractComposer
 {
-  dmComposer(dmCanvas canvas)
+  dmComposer(PApplet applet, dmCanvas canvas)
   {
-    super(canvas);
+    super(applet, canvas);
   }
 }

@@ -282,3 +282,90 @@ void testEmail()
 {
   sendMail(savePath("buffer.png"));
 }
+
+void testEvaluation()
+{
+  debug("-------- EVAL ---------");
+  impersonal.canvas.pushBuffer();
+  
+  PImage img = impersonal.canvas.buffer;
+  
+  for (int i = 0; i < img.width; i++) {
+    img.pixels[i] = color(255,255,255); 
+    img.pixels[img.width + i] = color(255,255,255); 
+    img.pixels[(img.height - 2) * img.width + i] = color(255,255,255); 
+    img.pixels[(img.height - 1) * img.width + i] = color(255,255,255); 
+  }
+  
+  for (int i = 0; i < img.height; i++) {
+    img.pixels[i * img.width] = color(255,255,255); 
+    img.pixels[i * img.width + 1] = color(255,255,255); 
+    img.pixels[i * img.width + img.width - 2] = color(255,255,255); 
+    img.pixels[i * img.width + img.width - 1] = color(255,255,255); 
+  }
+  
+  
+  img.updatePixels();
+  
+  PImage buffer = createImage(img.width, img.height,ARGB);
+  OpenCV opencv = new OpenCV(this);
+  opencv.allocate(impersonal.canvas.width,impersonal.canvas.height); 
+  
+  
+  //for (int threshold = 250; threshold > 0; threshold -= 50)
+  
+  int threshold = 240;
+  {
+    buffer.copy(img,0,0,img.width,img.height,0,0,img.width,img.height);
+
+    opencv.copy(buffer);
+
+    opencv.blur(OpenCV.BLUR, 7);
+
+    opencv.threshold(threshold,0,OpenCV.THRESH_TOZERO); 
+    Blob[] blobs = opencv.blobs( 10, impersonal.canvas.width * impersonal.canvas.height / 2, 100, true, OpenCV.MAX_VERTICES * 100 );
+
+    debug("find blobs: " + blobs.length + " w/ threshold " + threshold);
+
+    // draw blob results
+    for( int i=0; i<blobs.length; i++ ) 
+    {
+      debug("blob #" + i + ": " + blobs[i].points.length + " vertices, is " + (blobs[i].isHole ? "not " : "") + "hole, " + "length: " + blobs[i].length  + " area: " + blobs[i].area );
+
+      if (blobs[i].isHole)
+      {
+        fill(255,0,0);    
+      }
+      else
+      {
+        fill(0,0,255);
+      }
+      
+      beginShape();
+      for( int j=0; j<blobs[i].points.length; j++ ) {
+        vertex( blobs[i].points[j].x, blobs[i].points[j].y );
+      }
+      endShape(CLOSE);
+      
+      //fill(255,255,0);
+      //ellipse(blobs[i].centroid.x,blobs[i].centroid.y,7,7);
+      
+      stroke(0,70,0);
+      noFill();
+      rect(blobs[i].rectangle.x,  blobs[i].rectangle.y,blobs[i].rectangle.width,blobs[i].rectangle.height);
+      
+      noStroke();
+      fill(0,70,0);
+      float radius = sqrt(blobs[i].area);
+      rect(blobs[i].rectangle.x + blobs[i].rectangle.width / 2 - radius / 2,  blobs[i].rectangle.y + blobs[i].rectangle.height / 2 - radius / 2,radius,radius);
+      
+      
+    }
+
+    //image(opencv.image(), 0, 0);    
+  }
+  
+  
+
+  
+}

@@ -62,7 +62,7 @@ void setup()
   canvas.setBrush(brush);
   canvas.changeSize(5);
   
-  impersonal = new dmComposer(canvas);
+  impersonal = new dmComposer(this, canvas);
   
   trainLine = new dmLineTraining(canvas);
   trainPattern = new dmPatternTraining(canvas);

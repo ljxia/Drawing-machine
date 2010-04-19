@@ -1,5 +1,6 @@
 class dmDrawingContext
 {
+  protected PApplet applet;
   protected dmCanvas canvas;
   
   public boolean paused = false;
@@ -21,8 +22,9 @@ class dmDrawingContext
   protected float thresholdMotivation;
   protected float thresholdCommandQueue;
   
-  dmDrawingContext(dmCanvas canvas)
+  dmDrawingContext(PApplet applet, dmCanvas canvas)
   {
+    this.applet = applet;
     this.canvas = canvas;
     
     this.snapshot = createImage(this.canvas.width, this.canvas.height, ARGB);

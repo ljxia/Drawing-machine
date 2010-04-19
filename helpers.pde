@@ -9,6 +9,15 @@ float getOrientation(Vec3D vector)
   return orientation;
 }
 
+int getPixelPosition(int x, int y, int w, int h)
+{
+  if (x >= w || y >= h)
+  {
+    return 0;
+  }
+  return y * w + x;
+}
+
 PointList rotatePointList(PointList pl, Vec3D origin, Vec3D target)
 {
   float factor = target.magnitude() / origin.magnitude();

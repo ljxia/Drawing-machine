@@ -2,15 +2,17 @@ import java.util.Hashtable;
 
 class dmAbstractComposer
 {
+  protected PApplet applet;
   protected dmCanvas canvas;
   
   public dmDrawingContext context;
   public dmAbstractStrategy strategy;
   
-  dmAbstractComposer(dmCanvas canvas)
+  dmAbstractComposer(PApplet applet, dmCanvas canvas)
   {
-    this.canvas = canvas;    
-    this.context = new dmDrawingContext(canvas);
+    this.applet = applet;
+    this.canvas = canvas;
+    this.context = new dmDrawingContext(applet, canvas);
     this.strategy = new dmInstinctiveStrategy(this.context);
     this.reset();
   }

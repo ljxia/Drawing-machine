@@ -20,6 +20,7 @@ public boolean CTL_USE_MOUSE = false;
 public boolean CTL_PLAYBACK = false;
 
 public float CTL_USE_TRAINED_INTERPOLATION = 0.95;
+public float CTL_BLOB_THRESHOLD = 50;
 
 public boolean CTL_SAVE_STRUCTURE = false;
 
@@ -58,6 +59,9 @@ void setupControls()
   controlP5.addToggle("CTL_USE_MOUSE",       CTL_USE_MOUSE,  20,   240, 10, 10).setWindow(controlWindow);
   controlP5.addToggle("CTL_PLAYBACK",       CTL_PLAYBACK,  100,   240, 10, 10).setWindow(controlWindow);
   
+  
+  
+  
   CTL_STATE = controlP5.addRadio("stateChange",20,20);
   
   //r.deactivateAll(); // use deactiveAll to not make the first radio button active.
@@ -65,7 +69,8 @@ void setupControls()
   CTL_STATE.add("INTERPOLATION TRAINING",102);
   CTL_STATE.add("PATTERN TRAINING",103);
   CTL_STATE.add("STRUCTURE TRAINING",104);
-  CTL_STATE.add("EXTERNAL MEMORY TRAINING",105);
+  CTL_STATE.add("EVALUATION DEV",105);
+  //CTL_STATE.add("EXTERNAL MEMORY TRAINING",106);
   CTL_STATE.add("DO NOTHING", 100);
   CTL_STATE.setWindow(controlWindow);
   
@@ -139,6 +144,12 @@ void startStructureTraining()
   trainStructure.activate();
 }
 
+void startEvaluationTraining()
+{
+  setIdle();
+  info("Switch to Evaluation Training");
+}
+
 void setIdle()
 {
   
@@ -168,6 +179,9 @@ public void stateChange(int theID)
       break;
     case(104):
       startStructureTraining();
+      break;
+    case(105):
+      startEvaluationTraining();
       break;
     default:
       setIdle();
@@ -298,8 +312,10 @@ void keyPressed()
     
     impersonal.canvas.saveImage(impersonal.context.snapshot);
     
+    SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd-HHmmss");
+    String name = "drawings/" + df.format(new Date()) + ".png";
     impersonal.canvas.pushBuffer();
-    impersonal.canvas.dumpBuffer();
+    impersonal.canvas.dumpBuffer(name);
     
     if (trainStructure.active)
     {
@@ -386,6 +402,11 @@ void keyPressed()
   if (key == 'e')
   {
     testEmail();
+  }
+  
+  if (key == 'a')
+  {
+    testEvaluation();
   }
 }
 

@@ -1,27 +1,36 @@
 class dmEvaluation
 {
-  public ArrayList rules;
+  public Hashtable rules;
+  public Hashtable weights;
   
   dmEvaluation()
   {
-    rules = new ArrayList();
+    rules = new Hashtable();
+    weights = new Hashtable();
   }
   
-  void addRule(dmEvaluationRule rule)
+  void addRule(String name, dmAbstractEvaluationRule rule, float weight)
   {
-    this.rules.add(rule);
-  }
-}
-
-class dmEvaluationRule
-{
-  int evaluate(PApplet pa)
-  {
-    return 0;
+    this.rules.put(name, rule);
+    this.weights.put(name, weight);
   }
   
-  dmCommand suggest()
+  float evaluate(dmDrawingContext context)
   {
-    return null;
+    float result = 0;
+    for (Enumeration e = this.rules.keys() ; e.hasMoreElements() ;) 
+    {
+        Object ruleName = e.nextElement();
+        dmAbstractEvaluationRule rule = (dmAbstractEvaluationRule)this.rules.get(ruleName);
+        
+        float weight = 1;
+        if (this.weights.containsKey(ruleName))
+        {
+          weight = float(this.weights.get(ruleName).toString());
+        }
+        
+        result += weight * rule.evaluate(context);
+    }
+    return result;
   }
 }
