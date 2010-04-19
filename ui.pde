@@ -406,7 +406,8 @@ void keyPressed()
   
   if (key == 'a')
   {
-    testEvaluation();
+    //testEvaluation();
+    testSymmetry();
   }
 }
 

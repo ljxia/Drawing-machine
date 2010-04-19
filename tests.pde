@@ -283,6 +283,12 @@ void testEmail()
   sendMail(savePath("buffer.png"));
 }
 
+void testSymmetry()
+{
+  dmSymmetryRule rule = new dmSymmetryRule();
+  rule.evaluate(impersonal.context);
+}
+
 void testEvaluation()
 {
   debug("-------- EVAL ---------");

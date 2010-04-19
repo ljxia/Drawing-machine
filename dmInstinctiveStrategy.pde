@@ -29,7 +29,17 @@ class dmInstinctiveStrategy extends dmAbstractStrategy
     dmLine memory = new dmLine();
 
     Vec3D vec = Vec3D.randomVector();
-    float lngth = random(10, canvas.width / 3);
+    float lngth = random(40, canvas.width / 3);
+    
+    if (random(1) < 0.05)
+    {
+      lngth = random(5,30);
+    }
+    else if (random(1) < 0.05)
+    {
+      lngth = random(canvas.width / 3,canvas.width / 2);
+    }
+    
     refPoint = startPoint.add(vec.scale(lngth * random(1)));
     vec.scaleSelf(lngth);
     
