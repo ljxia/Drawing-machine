@@ -1,7 +1,9 @@
 class dmSymmetryRule extends dmAbstractEvaluationRule
 {
   int GRID_SIZE = 9;
+  int DEFAULT_MAX_SHIFT = 100;
   float [][]impression;
+  float maxShift = DEFAULT_MAX_SHIFT;
   
   dmSymmetryRule()
   {
@@ -19,8 +21,13 @@ class dmSymmetryRule extends dmAbstractEvaluationRule
       }
     }
   }
+  
+  void reset()
+  {
+    this.maxShift = DEFAULT_MAX_SHIFT;
+  }
 
-  float evaluate(dmDrawingContext context)
+  float evaluate(dmContext context)
   { 
     PImage img = createImage(context.canvas.width, context.canvas.height, ARGB);
     
@@ -61,7 +68,9 @@ class dmSymmetryRule extends dmAbstractEvaluationRule
     
     println(shift.x + ", " + shift.y + " mag: " + shift.mag());
     
-    float score = constrain(map(shift.mag(),0,100, 0,10),0,10);
+    this.maxShift = max(DEFAULT_MAX_SHIFT, shift.mag());
+    
+    float score = constrain(map(shift.mag(),0,this.maxShift, 0,10),0,10);
     println("score " + score);
     return 10 - score;
   }

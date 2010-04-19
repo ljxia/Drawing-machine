@@ -1,5 +1,5 @@
 import hypermedia.video.*;
-
+import processing.video.*;
 import processing.opengl.*;
 
 import toxi.color.*;
@@ -87,7 +87,6 @@ void update()
       brush.setGray(CTL_BRUSH_SHADE); 
       brush.setSize(CTL_BRUSH_SIZE);
     }
-       
 }
 
 void draw() 
@@ -117,6 +116,7 @@ void draw()
 void stop()
 {
   destroyLog();
+  impersonal.finish();
 }
 
 

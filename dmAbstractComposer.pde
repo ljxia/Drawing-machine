@@ -5,15 +5,22 @@ class dmAbstractComposer
   protected PApplet applet;
   protected dmCanvas canvas;
   
-  public dmDrawingContext context;
+  public dmContext context;
   public dmAbstractStrategy strategy;
+  public dmEvaluation evaluation;
   
   dmAbstractComposer(PApplet applet, dmCanvas canvas)
   {
     this.applet = applet;
     this.canvas = canvas;
-    this.context = new dmDrawingContext(applet, canvas);
+    this.context = new dmContext(applet, canvas);
     this.strategy = new dmInstinctiveStrategy(this.context);
+
+    this.evaluation = new dmEvaluation();
+    
+    evaluation.addRule("CHAOS", new dmAbstractEvaluationRule(), 1);
+    evaluation.addRule("SYMME", new dmSymmetryRule(), 5);
+
     this.reset();
   }
   
@@ -29,7 +36,29 @@ class dmAbstractComposer
     this.canvas.draw(0,0);
   }
   
-  protected void update()
+  void review()
+  {
+    if (millis() > this.context.lastReviewTime + this.context.nextReviewTime)
+    {
+      float score = this.evaluation.evaluate(this.context);
+      
+      if (this.evaluation.lastScore > 0)
+      {
+        this.context.adjustMotivation(score - this.evaluation.lastScore);
+        
+        if (score - this.evaluation.lastScore < 0)
+        {
+          this.context.setReviewTime(1000);
+        }
+        
+      }
+      
+      this.evaluation.applyScore();
+      
+    }
+  }
+  
+  protected boolean update()
   {
     if (this.canvas.update())
     {
@@ -41,14 +70,19 @@ class dmAbstractComposer
     {
       if (!this.isDone())
       {
+        this.review();
         this.compose();
+        return false;
       }
       else
       {
         this.save();
         this.reset();
+        return true;
       }
     }
+    
+    return false;
   }
   
   protected void save()
@@ -57,6 +91,8 @@ class dmAbstractComposer
     String name = "drawings/" + df.format(new Date()) + ".png";
     this.canvas.pushBuffer();
     this.canvas.dumpBuffer(name);
+    
+    this.evaluation.reset();
     
     sendMail(savePath(name));
   }
@@ -74,6 +110,11 @@ class dmAbstractComposer
   boolean isPaused()
   {
     return this.context.isPaused();
+  }
+  
+  protected void finish()
+  {
+
   }
   
   void pause()

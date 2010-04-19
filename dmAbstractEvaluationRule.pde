@@ -1,11 +1,16 @@
-class dmAbstractEvaluationRule
+class dmAbstractEvaluationRule //chaos rule
 {
   dmAbstractEvaluationRule()
   {
   }
   
-  float evaluate(dmDrawingContext context)
+  void reset()
   {
-    return 0;
+    
+  }
+  
+  float evaluate(dmContext context)
+  {
+    return floor(random(0, 11));
   }
 }

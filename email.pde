@@ -39,7 +39,7 @@ void sendMail(String filename) {
     MimeMessage msg=new MimeMessage(session);
     msg.setFrom(new InternetAddress("lithiumnoid@gmail.com", "lithium"));
     msg.addRecipient(Message.RecipientType.TO,new InternetAddress("430prudev@tumblr.com"));
-    msg.setSubject("");
+    
     BodyPart messageBodyPart = new MimeBodyPart();
  // Fill the message
     messageBodyPart.setText("Sent from impersonal");
@@ -51,10 +51,13 @@ void sendMail(String filename) {
     messageBodyPart.setDataHandler(new DataHandler(source));
     
     
-    SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd-HHmmss");
+    SimpleDateFormat df = new SimpleDateFormat("yyyy.MM.dd - HH:mm:ss");
     
-    messageBodyPart.setFileName(df.format(new Date()) + ".png");
+    String newName = df.format(new Date()) + findExtension(filename);
+    debug(newName);
+    messageBodyPart.setFileName(newName);
     multipart.addBodyPart(messageBodyPart);
+    msg.setSubject(df.format(new Date()));
     msg.setContent(multipart);
     msg.setSentDate(new Date());
     Transport.send(msg);

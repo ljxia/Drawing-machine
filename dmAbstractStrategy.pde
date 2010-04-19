@@ -1,8 +1,8 @@
 class dmAbstractStrategy
 {
-  public dmDrawingContext context;
+  public dmContext context;
   
-  dmAbstractStrategy(dmDrawingContext context)
+  dmAbstractStrategy(dmContext context)
   {
     this.context = context;
   }

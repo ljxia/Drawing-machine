@@ -5,7 +5,7 @@ class dmStructureRule extends dmAbstractEvaluationRule
 
   }
 
-  float evaluate(dmDrawingContext context)
+  float evaluate(dmContext context)
   { 
     return 0;
   }

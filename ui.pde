@@ -401,6 +401,7 @@ void keyPressed()
   
   if (key == 'e')
   {
+    debug("test email..");
     testEmail();
   }
   

@@ -281,6 +281,7 @@ void testPGraphics()
 void testEmail()
 {
   sendMail(savePath("buffer.png"));
+  //sendMail(savePath("drawing1858.mov"));
 }
 
 void testSymmetry()

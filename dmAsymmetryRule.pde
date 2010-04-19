@@ -5,7 +5,7 @@ class dmAsymmetryRule extends dmAbstractEvaluationRule
 
   }
 
-  float evaluate(dmDrawingContext context)
+  float evaluate(dmContext context)
   {
     PImage img = null;
     img.copy(context.snapshot,

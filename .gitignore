@@ -6,4 +6,5 @@ applet/*
 lib/config.pde
 log/*.log
 drawings/*
+videos/*
 buffer*.png

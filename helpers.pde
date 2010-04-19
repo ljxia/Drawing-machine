@@ -1,5 +1,23 @@
 /* helpers */
 
+String findExtension(String filename)
+{
+  int pos = -1;
+  while (filename.indexOf(".", pos + 1) > pos)
+  {
+    pos = filename.indexOf(".", pos + 1);
+  }
+  
+  if (pos > 0)
+  {
+    return filename.substring(pos);
+  }
+  else
+  {
+    return ".png";
+  }
+}
+
 float getOrientation(Vec3D vector)
 {
   float orientation = vector.angleBetween(new Vec3D(1,0,0), true) * 180 / PI;

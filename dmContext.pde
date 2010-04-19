@@ -1,4 +1,4 @@
-class dmDrawingContext
+class dmContext
 {
   protected PApplet applet;
   protected dmCanvas canvas;
@@ -22,7 +22,10 @@ class dmDrawingContext
   protected float thresholdMotivation;
   protected float thresholdCommandQueue;
   
-  dmDrawingContext(PApplet applet, dmCanvas canvas)
+  protected float lastReviewTime;
+  protected float nextReviewTime;
+  
+  dmContext(PApplet applet, dmCanvas canvas)
   {
     this.applet = applet;
     this.canvas = canvas;
@@ -33,6 +36,11 @@ class dmDrawingContext
     this.thresholdStepCount = 500;
     this.thresholdMotivation = 100;
     this.thresholdCommandQueue = 50;
+  }
+  
+  public void adjustMotivation(float motif)
+  {
+    this.gaugeMotivation += motif;
   }
   
   protected void reset()
@@ -47,7 +55,9 @@ class dmDrawingContext
     
     this.gaugeUptime = -1;
     this.gaugeStepCount = 0;
-    this.gaugeMotivation = 100;
+    this.gaugeMotivation = random(70,90);
+    
+    this.setReviewTime();
   }
   
   public boolean isFinished()
@@ -60,6 +70,11 @@ class dmDrawingContext
     {
       return true;
     }
+    else if (this.gaugeMotivation < 0)
+    {
+      return true;
+    }
+    
     return false;
   }
   
@@ -83,6 +98,17 @@ class dmDrawingContext
   {
     this.paused = false;
     this.pauseLength = pauseLength + (millis() - pauseTime);
+  }
+  
+  public void setReviewTime()
+  {
+    this.setReviewTime(random(5, 10) * 1000);
+  }
+  
+  public void setReviewTime(float timespan)
+  {
+    this.lastReviewTime = millis();
+    this.nextReviewTime = timespan;
   }
 
   public void update()

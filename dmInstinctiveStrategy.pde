@@ -2,7 +2,7 @@ class dmInstinctiveStrategy extends dmAbstractStrategy
 {
   private Vec3D refPoint = null;
   
-  dmInstinctiveStrategy(dmDrawingContext context)
+  dmInstinctiveStrategy(dmContext context)
   {
     super(context);
   }
@@ -11,7 +11,7 @@ class dmInstinctiveStrategy extends dmAbstractStrategy
   {
     dmCanvas canvas = this.canvas();
     
-    if (canvas.commands.size() > 5)
+    if (canvas.commands.size() > 2)
     {
       return false;
     }
