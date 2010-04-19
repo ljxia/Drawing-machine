@@ -1,6 +1,6 @@
-class dmWhitespaceRule extends dmAbstractEvaluationRule
+class dmEnergyFlowRule extends dmAbstractEvaluationRule
 {
-  dmWhitespaceRule()
+  dmEnergyFlowRule()
   {
 
   }

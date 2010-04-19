@@ -1,6 +1,6 @@
 class dmSymmetryRule extends dmAbstractEvaluationRule
 {
-  int GRID_SIZE = 7;
+  int GRID_SIZE = 9;
   float [][]impression;
   
   dmSymmetryRule()
