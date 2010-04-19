@@ -64,13 +64,32 @@ class dmContext
   {
     if (this.gaugeUptime > this.thresholdUptime)
     {
-      return true;
+      if (this.gaugeUptime > 1000 || this.gaugeMotivation < 50)
+      {
+        return true;
+      }
+      else
+      {
+        //procrastinate
+        this.thresholdUptime += floor(this.gaugeMotivation * random(0,1) * 1000);
+      }
     }
-    else if (this.gaugeStepCount > this.thresholdStepCount)
+    
+    if (this.gaugeStepCount > this.thresholdStepCount)
     {
-      return true;
+      if (this.gaugeStepCount > 1000 || this.gaugeMotivation < 50)
+      {
+        return true;
+      }
+      else
+      {
+        //procrastinate a bit
+        this.thresholdStepCount += floor(this.gaugeMotivation * random(0.5,1));
+      }
+      
     }
-    else if (this.gaugeMotivation < 0)
+    
+    if (this.gaugeMotivation < 0)
     {
       return true;
     }

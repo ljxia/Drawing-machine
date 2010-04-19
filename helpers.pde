@@ -36,6 +36,36 @@ int getPixelPosition(int x, int y, int w, int h)
   return y * w + x;
 }
 
+float [][] getPixelDistribution(dmCanvas canvas, int grain)
+{
+  float [][]distribution = new float[grain][grain];
+  for (int i = 0; i < grain ; i++)
+  {
+    for (int j = 0; j < grain ; j++)
+    {
+      distribution[i][j] = 0f;
+    }
+  }
+  
+  PImage img = createImage(canvas.width, canvas.height, ARGB);
+  
+  canvas.saveImage(img);
+                    
+  img.loadPixels();                  
+                    
+  for (int i = 0; i < img.width ; i++)
+  {
+    for (int j = 0; j < img.height ; j++)
+    {
+      TColor c = TColor.newARGB(img.pixels[getPixelPosition(i,j,img.width,img.height)]);
+      
+      distribution[int(float(i * grain) / img.width)][int(float(j * grain) / img.height)] += (1 - c.brightness());
+    }
+  }
+  
+  return distribution;
+}
+
 PointList rotatePointList(PointList pl, Vec3D origin, Vec3D target)
 {
   float factor = target.magnitude() / origin.magnitude();

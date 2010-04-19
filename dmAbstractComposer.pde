@@ -18,7 +18,8 @@ class dmAbstractComposer
 
     this.evaluation = new dmEvaluation();
     
-    evaluation.addRule("CHAOS", new dmAbstractEvaluationRule(), 1);
+    evaluation.addRule("CHAOS", new dmAbstractEvaluationRule(), 0.5);
+    evaluation.addRule("ENTPY", new dmEntropyRule(), 1);
     evaluation.addRule("SYMME", new dmSymmetryRule(), 5);
 
     this.reset();
