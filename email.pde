@@ -18,7 +18,13 @@ public class Auth extends Authenticator {
   }
 }
 
-void sendMail(String filename) {
+void sendMail(String filename)
+{
+  sendMail(filename, "");
+}
+
+void sendMail(String filename, String description)
+{
   // Create a session
   String host="smtp.gmail.com";
   Properties props=new Properties();
@@ -38,18 +44,24 @@ void sendMail(String filename) {
   {
     MimeMessage msg=new MimeMessage(session);
     msg.setFrom(new InternetAddress("lithiumnoid@gmail.com", "lithium"));
-    msg.addRecipient(Message.RecipientType.TO,new InternetAddress("430prudev@tumblr.com"));
+    msg.addRecipient(Message.RecipientType.TO,new InternetAddress("853woihes@tumblr.com"));
     
     BodyPart messageBodyPart = new MimeBodyPart();
  // Fill the message
-    messageBodyPart.setText("Sent from impersonal");
+    messageBodyPart.setText(description);
+    
+    
+    
     Multipart multipart = new MimeMultipart();
     multipart.addBodyPart(messageBodyPart);
+   
+   
+   
+   
    // Part two is attachment
     messageBodyPart = new MimeBodyPart();
     DataSource source = new FileDataSource(filename);
-    messageBodyPart.setDataHandler(new DataHandler(source));
-    
+    messageBodyPart.setDataHandler(new DataHandler(source)); 
     
     SimpleDateFormat df = new SimpleDateFormat("yyyy.MM.dd - HH:mm:ss");
     
@@ -57,6 +69,8 @@ void sendMail(String filename) {
     debug(newName);
     messageBodyPart.setFileName(newName);
     multipart.addBodyPart(messageBodyPart);
+    
+    
     msg.setSubject(df.format(new Date()));
     msg.setContent(multipart);
     msg.setSentDate(new Date());

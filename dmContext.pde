@@ -25,6 +25,8 @@ class dmContext
   protected float lastReviewTime;
   protected float nextReviewTime;
   
+  private String summaryText = "";
+  
   dmContext(PApplet applet, dmCanvas canvas)
   {
     this.applet = applet;
@@ -38,9 +40,37 @@ class dmContext
     this.thresholdCommandQueue = 50;
   }
   
+  public String summary()
+  {
+    if (!this.summaryText.equals(""))
+    {
+      return this.summaryText;
+    }
+    else
+    {
+      return this.setSummary("");
+    }
+  }
+  
+  private String setSummary(String exitCondition)
+  {
+    this.summaryText = "";
+    this.summaryText += "Dimension: " + this.canvas.width + " x " + this.canvas.height + "\n";
+    this.summaryText += "Drawing Time: " + floor(this.gaugeUptime / 1000) + " seconds \n";
+    this.summaryText += "Steps Used: " + int(this.gaugeStepCount) + "\n";
+    
+    if (!exitCondition.equals(""))
+    {
+      this.summaryText += "Exit Condition: " + exitCondition;
+    }
+    
+    return this.summaryText;
+  }
+  
   public void adjustMotivation(float motif)
   {
     this.gaugeMotivation += motif;
+    this.gaugeMotivation = constrain(this.gaugeMotivation, 0, this.thresholdMotivation);
   }
   
   protected void reset()
@@ -66,6 +96,7 @@ class dmContext
     {
       if (this.gaugeUptime > 1000 || this.gaugeMotivation < 50)
       {
+        setSummary("Time is up, this is not exciting");
         return true;
       }
       else
@@ -79,6 +110,7 @@ class dmContext
     {
       if (this.gaugeStepCount > 1000 || this.gaugeMotivation < 50)
       {
+        setSummary("This is a mess.");
         return true;
       }
       else
@@ -89,8 +121,9 @@ class dmContext
       
     }
     
-    if (this.gaugeMotivation < 0)
+    if (this.gaugeMotivation < 20)
     {
+      setSummary("Completely bored");
       return true;
     }
     

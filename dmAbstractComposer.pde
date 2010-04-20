@@ -95,7 +95,7 @@ class dmAbstractComposer
     
     this.evaluation.reset();
     
-    sendMail(savePath(name));
+    sendMail(savePath(name), this.context.summary());
   }
   
   protected boolean isDone()
