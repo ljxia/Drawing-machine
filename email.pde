@@ -1,4 +1,4 @@
-import javax.mail.*;
+/*import javax.mail.*;
 import javax.mail.internet.*;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
@@ -82,4 +82,4 @@ void sendMail(String filename, String description)
     e.printStackTrace();
   }
 
-}
+}*/

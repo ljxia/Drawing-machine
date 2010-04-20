@@ -280,7 +280,10 @@ void testPGraphics()
 
 void testEmail()
 {
-  sendMail(savePath("drawings/20100419-180508.png"), "Dimension: ???? x ???? \n Steps Used: 19");
+  TumblrClient tumblr = new TumblrClient();
+  tumblr.postPhoto(savePath("drawings/20100419-180508.png"), "Dimension: ???? x ???? \n Steps Used: 19");
+  
+  //sendMail(savePath("drawings/20100419-180508.png"), "Dimension: ???? x ???? \n Steps Used: 19");
   //sendMail(savePath("buffer.png"));
   //sendMail(savePath("drawing1858.mov"));
 }

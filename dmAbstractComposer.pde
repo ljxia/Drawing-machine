@@ -95,7 +95,11 @@ class dmAbstractComposer
     
     this.evaluation.reset();
     
-    sendMail(savePath(name), this.context.summary());
+    //sendMail(savePath(name), this.context.summary());
+    
+    TumblrClient tumblr = new TumblrClient();
+    info(tumblr.postPhoto(savePath(name), this.context.summary()));
+    
   }
   
   protected boolean isDone()
