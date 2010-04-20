@@ -33,4 +33,9 @@ class DataPool
     
     return ret / this.count;
   }
+  
+  boolean full()
+  {
+    return this.count == this.data.length;
+  }
 }

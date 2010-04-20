@@ -91,7 +91,7 @@ class dmContext
     this.gaugeStepCount = 0;
     this.gaugeMotivation = random(70,90);
     
-    this.recentScore = new DataPool(5);
+    this.recentScore = new DataPool(25);
     
     this.setReviewTime();
   }
@@ -129,7 +129,7 @@ class dmContext
       
     }
     
-    if (this.recentScore.average() < 0 && this.gaugeMotivation > 70)
+    if (this.recentScore.full() && this.recentScore.average() < 0 && this.gaugeMotivation > 85)
     {
       setSummary("Maybe it's better to stop here.");
       return true;
