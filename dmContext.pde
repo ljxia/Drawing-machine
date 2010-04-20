@@ -27,6 +27,8 @@ class dmContext
   
   private String summaryText = "";
   
+  private DataPool recentScore;
+  
   dmContext(PApplet applet, dmCanvas canvas)
   {
     this.applet = applet;
@@ -58,6 +60,7 @@ class dmContext
     this.summaryText += "Dimension: " + this.canvas.width + " x " + this.canvas.height + "\n";
     this.summaryText += "Drawing Time: " + floor(this.gaugeUptime / 1000) + " seconds \n";
     this.summaryText += "Steps Used: " + int(this.gaugeStepCount) + "\n";
+    this.summaryText += "Passion Gauge: " + int(this.gaugeMotivation) + "\n";
     
     if (!exitCondition.equals(""))
     {
@@ -70,6 +73,7 @@ class dmContext
   public void adjustMotivation(float motif)
   {
     this.gaugeMotivation += motif;
+    this.recentScore.log(motif);
     this.gaugeMotivation = constrain(this.gaugeMotivation, 0, this.thresholdMotivation);
   }
   
@@ -80,12 +84,14 @@ class dmContext
     this.pauseLength = 0;
     this.inMotion = false;
     
-    this.thresholdUptime = random(1, 10) * 60 * 1000;
+    this.thresholdUptime = random(0, 2) * 60 * 1000;
     this.thresholdStepCount = random(10,1000);
     
     this.gaugeUptime = -1;
     this.gaugeStepCount = 0;
     this.gaugeMotivation = random(70,90);
+    
+    this.recentScore = new DataPool(5);
     
     this.setReviewTime();
   }
@@ -94,15 +100,16 @@ class dmContext
   {
     if (this.gaugeUptime > this.thresholdUptime)
     {
-      if (this.gaugeUptime > 1000 || this.gaugeMotivation < 50)
+      if (this.gaugeUptime > 1000 * 60 * 1000 || this.gaugeMotivation < 60)
       {
-        setSummary("Time is up, this is not exciting");
+        setSummary("Time is up, this is not exciting.");
         return true;
       }
       else
       {
         //procrastinate
-        this.thresholdUptime += floor(this.gaugeMotivation * random(0,1) * 1000);
+        this.thresholdUptime = this.thresholdUptime + (this.gaugeMotivation * random(0,1) * 1000);
+        info("procrastinate: more time: " + this.thresholdUptime);
       }
     }
     
@@ -116,14 +123,21 @@ class dmContext
       else
       {
         //procrastinate a bit
-        this.thresholdStepCount += floor(this.gaugeMotivation * random(0.5,1));
+        this.thresholdStepCount = this.thresholdStepCount + (this.gaugeMotivation * random(0.5,1));
+        info("procrastinate: more steps: " + this.thresholdStepCount);
       }
       
     }
     
+    if (this.recentScore.average() < 0 && this.gaugeMotivation > 70)
+    {
+      setSummary("Maybe it's better to stop here.");
+      return true;
+    }
+    
     if (this.gaugeMotivation < 20)
     {
-      setSummary("Completely bored");
+      setSummary("Completely bored.");
       return true;
     }
     
