@@ -163,6 +163,7 @@ void setIdle()
   trainLine.deactivate();
   trainPattern.deactivate();
   trainStructure.deactivate();
+  trainImage.deactivate();
   
   impersonal.canvas.clearCommands();
   impersonal.canvas.setPlaybackMode(false);
