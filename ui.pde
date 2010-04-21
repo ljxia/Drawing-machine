@@ -70,7 +70,7 @@ void setupControls()
   CTL_STATE.add("PATTERN TRAINING",103);
   CTL_STATE.add("STRUCTURE TRAINING",104);
   CTL_STATE.add("EVALUATION DEV",105);
-  //CTL_STATE.add("EXTERNAL MEMORY TRAINING",106);
+  CTL_STATE.add("EXTERNAL MEMORY TRAINING",106);
   CTL_STATE.add("DO NOTHING", 100);
   CTL_STATE.setWindow(controlWindow);
   
@@ -150,6 +150,13 @@ void startEvaluationTraining()
   info("Switch to Evaluation Training");
 }
 
+void startImageTraining()
+{
+  setIdle();
+  info("Switch to Image Training");
+  trainImage.activate();
+}
+
 void setIdle()
 {
   
@@ -182,6 +189,9 @@ public void stateChange(int theID)
       break;
     case(105):
       startEvaluationTraining();
+      break;
+    case(106):
+      startImageTraining();
       break;
     default:
       setIdle();
@@ -381,9 +391,7 @@ void keyPressed()
     }
     
   }
-  
-
-  
+   
   if (key == ',')
   {
     testPushBuffer();

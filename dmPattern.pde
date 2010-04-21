@@ -174,15 +174,22 @@ class dmPattern extends dmAbstractMemory
 
   public void display(dmCanvas c, Vec3D offset)
   {
-    c.setPlaybackMode(true);
+    this.display(c,offset,true);
+  }
+
+  public void display(dmCanvas c, Vec3D offset, boolean useOriginalBrush)
+  {
+    if (useOriginalBrush)
+      c.setPlaybackMode(true);
     
     for (int i = 0; i < this.strokeCount() ; i++)
     {
       dmStroke stk = this.getStroke(i);      
-      stk.display(c, this.topLeft.add(offset));
+      stk.display(c, this.topLeft.add(offset), useOriginalBrush);
     }
     
-    c.setPlaybackMode(false);
+    if (useOriginalBrush)
+      c.setPlaybackMode(false);
     
     /*    
     stroke(255,0,0);

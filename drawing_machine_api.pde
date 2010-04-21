@@ -16,6 +16,7 @@ dmCanvas canvas;
 dmLineTraining trainLine;
 dmPatternTraining trainPattern;
 dmStructureTraining trainStructure;
+dmImageTraining trainImage;
 
 VerletPhysics world;
 PFont font;
@@ -67,6 +68,7 @@ void setup()
   trainLine = new dmLineTraining(canvas);
   trainPattern = new dmPatternTraining(canvas);
   trainStructure = new dmStructureTraining(canvas);
+  trainImage = new dmImageTraining(canvas);
 }
 
 void update()
@@ -80,6 +82,7 @@ void update()
     trainLine.update();
     trainPattern.update();
     trainStructure.update();
+    trainImage.update();
 
   /* apply setting */  
     if (!CTL_PLAYBACK)
@@ -105,6 +108,7 @@ void draw()
   if (trainLine.active){trainLine.display();}
   if (trainPattern.active){trainPattern.display();}
   if (trainStructure.active){trainStructure.display();}
+  if (trainImage.active){trainImage.display();}
   
   
   if (CTL_SHOW_TOOL) {drawTools();}

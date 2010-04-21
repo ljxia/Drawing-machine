@@ -96,8 +96,16 @@ public class dmStroke extends dmAbstractMemory
   
   public void display(dmCanvas c, Vec3D offset)
   {
-    c.changeColor(this.brushColor);
-    c.changeSize(this.brushSize);
+    this.display(c, offset,true);
+  }
+  
+  public void display(dmCanvas c, Vec3D offset, boolean useOriginalBrush)
+  {
+    if (useOriginalBrush)
+    {
+      c.changeColor(this.brushColor);
+      c.changeSize(this.brushSize);
+    }
     
     c.trace(this.trail, offset);
   }
