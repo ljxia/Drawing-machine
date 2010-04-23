@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>dmImageTraining.pde</string>
+	<string>dmInspiration.pde</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -43,7 +43,7 @@
 									<key>filename</key>
 									<string>helpers.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-21T08:28:40Z</date>
+									<date>2010-04-23T06:53:34Z</date>
 								</dict>
 								<dict>
 									<key>filename</key>
@@ -71,15 +71,15 @@
 								</dict>
 								<dict>
 									<key>filename</key>
-									<string>tumblr.pde</string>
-									<key>lastUsed</key>
-									<date>2010-04-21T08:28:40Z</date>
-								</dict>
-								<dict>
-									<key>filename</key>
 									<string>opencv.pde</string>
 									<key>lastUsed</key>
 									<date>2010-04-21T08:28:35Z</date>
+								</dict>
+								<dict>
+									<key>filename</key>
+									<string>tumblr.pde</string>
+									<key>lastUsed</key>
+									<date>2010-04-23T05:58:48Z</date>
 								</dict>
 							</array>
 							<key>expanded</key>
@@ -91,7 +91,7 @@
 							<key>filename</key>
 							<string>tests.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-21T08:28:39Z</date>
+							<date>2010-04-23T05:22:56Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
@@ -128,12 +128,6 @@
 									<string>dmContext.pde</string>
 									<key>lastUsed</key>
 									<date>2010-04-21T08:48:54Z</date>
-								</dict>
-								<dict>
-									<key>filename</key>
-									<string>dmInspiration.pde</string>
-									<key>lastUsed</key>
-									<date>2010-04-19T19:19:17Z</date>
 								</dict>
 							</array>
 							<key>expanded</key>
@@ -268,6 +262,12 @@
 							<date>2010-04-19T05:51:14Z</date>
 						</dict>
 						<dict>
+							<key>filename</key>
+							<string>dmInspiration.pde</string>
+							<key>lastUsed</key>
+							<date>2010-04-23T06:53:34Z</date>
+						</dict>
+						<dict>
 							<key>children</key>
 							<array>
 								<dict>
@@ -303,6 +303,12 @@
 						</dict>
 						<dict>
 							<key>filename</key>
+							<string>dmContours.pde</string>
+							<key>lastUsed</key>
+							<date>2010-04-21T08:28:36Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
 							<string>dmLine.pde</string>
 							<key>lastUsed</key>
 							<date>2010-04-16T17:11:25Z</date>
@@ -325,12 +331,6 @@
 							<key>lastUsed</key>
 							<date>2010-04-19T05:51:17Z</date>
 						</dict>
-						<dict>
-							<key>filename</key>
-							<string>dmContours.pde</string>
-							<key>lastUsed</key>
-							<date>2010-04-21T08:28:36Z</date>
-						</dict>
 					</array>
 					<key>expanded</key>
 					<true/>
@@ -342,6 +342,8 @@
 			<true/>
 			<key>name</key>
 			<string>Impersonal</string>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>children</key>
@@ -356,9 +358,7 @@
 					<key>filename</key>
 					<string>dmImageTraining.pde</string>
 					<key>lastUsed</key>
-					<date>2010-04-21T09:22:58Z</date>
-					<key>selected</key>
-					<true/>
+					<date>2010-04-23T05:20:44Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -482,14 +482,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>9</integer>
+				<integer>13</integer>
 				<key>line</key>
-				<integer>113</integer>
+				<integer>134</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>104</integer>
+		</dict>
+		<key>dmInspiration.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>5</integer>
+				<key>line</key>
+				<integer>23</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>dmLineTraining.pde</key>
 		<dict>
@@ -577,6 +591,20 @@
 				<integer>18</integer>
 			</dict>
 		</dict>
+		<key>helpers.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>14</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>path.pde</key>
 		<dict>
 			<key>caret</key>
@@ -591,10 +619,42 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>tests.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>55</integer>
+				<key>line</key>
+				<integer>292</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>235</integer>
+		</dict>
+		<key>tumblr.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>5</integer>
+				<key>line</key>
+				<integer>24</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>dmImageTraining.pde</string>
+		<string>helpers.pde</string>
+		<string>tests.pde</string>
+		<string>dmInspiration.pde</string>
+		<string>tumblr.pde</string>
 		<string>dmAbstractTraining.pde</string>
 		<string>dmPatternTraining.pde</string>
 		<string>dmStructureTraining.pde</string>
