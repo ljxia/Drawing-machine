@@ -6,21 +6,21 @@ class dmComposer extends dmAbstractComposer
   dmComposer(PApplet applet, dmCanvas canvas)
   {
     super(applet, canvas);
-    recorder = new MovieMaker(applet, 640, floor(canvas.height * 640.0 / canvas.width) , newVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
+    recorder = new MovieMaker(applet, int(CTL_VIDEO_WIDTH), floor(canvas.height * CTL_VIDEO_WIDTH / canvas.width) , newVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
   }
   
   private String newVideoFilename()
   {
-    this.videoFilename = "videos/drawing" + millis() + ".mov";
+    this.videoFilename = getNewVideoFilename();
     return this.videoFilename;
   }
   
   protected boolean update()
   {
-    if (!isPaused() && frameCount % 10 == 0)
+    if ((!isPaused() || CTL_RECORD) && frameCount % 10 == 0)
     {
       this.context.canvas.pushBuffer();
-      PImage img = createImage(640, floor(context.canvas.height * 640.0 / context.canvas.width), ARGB);
+      PImage img = createImage(int(CTL_VIDEO_WIDTH), floor(context.canvas.height * CTL_VIDEO_WIDTH / context.canvas.width), ARGB);
       img.copy(this.context.canvas.buffer,
                         0,
                         0,
@@ -31,7 +31,7 @@ class dmComposer extends dmAbstractComposer
                         img.width, 
                         img.height);
       img.loadPixels();
-      recorder.addFrame(img.pixels, 640, floor(context.canvas.height * 640.0 / context.canvas.width));
+      recorder.addFrame(img.pixels, int(CTL_VIDEO_WIDTH), floor(context.canvas.height * CTL_VIDEO_WIDTH / context.canvas.width));
     }
     
     return super.update();
@@ -42,7 +42,7 @@ class dmComposer extends dmAbstractComposer
     recorder.finish();
     super.save();
     //sendMail(savePath(this.videoFilename));
-    recorder = new MovieMaker(applet, 640, floor(canvas.height * 640.0 / canvas.width) , newVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
+    recorder = new MovieMaker(applet, int(CTL_VIDEO_WIDTH), floor(canvas.height * CTL_VIDEO_WIDTH / canvas.width) , newVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
   }
   
   protected void finish()

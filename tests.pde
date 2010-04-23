@@ -288,6 +288,13 @@ void testEmail()
   //sendMail(savePath("drawing1858.mov"));
 }
 
+void testUpload()
+{
+  dmInspiration insp = new dmInspiration("theinstamatic.jpeg");
+  
+  debug(insp.memorize());
+}
+
 void testSymmetry()
 {
   dmSymmetryRule rule = new dmSymmetryRule();

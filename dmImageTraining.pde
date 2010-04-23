@@ -14,7 +14,7 @@ class dmImageTraining extends dmAbstractTraining
     OpenCV vision = new OpenCV();
     vision.allocate(srcImg.width,srcImg.height); 
     vision.copy(srcImg);
-    vision.blur(OpenCV.BLUR, 5);
+    //vision.blur(OpenCV.BLUR, 5);
 
     PGraphics pg = createGraphics(srcImg.width, srcImg.height, JAVA2D);
 
@@ -71,8 +71,8 @@ class dmImageTraining extends dmAbstractTraining
     
     
     //img = loadImage("theinstamatic.jpeg");
-    img = loadImage("chiaki.jpeg");
-    //img = loadImage("37-13.jpeg");
+    //img = loadImage("chiaki.jpeg");
+    img = loadImage("tumblr_l19qr0A4R11qa57amo1_500.jpeg");
     //img = loadImage("tumblr_l00kikGLDS1qaorky.jpeg");
     
     for (int i = 0; i < img.width; i++) {
@@ -91,8 +91,6 @@ class dmImageTraining extends dmAbstractTraining
 
     img.updatePixels();
     
-    contours = findContour(img, 210);
-    
   }
     
   void log(float x, float y, boolean newPattern, boolean newStroke)
@@ -110,10 +108,16 @@ class dmImageTraining extends dmAbstractTraining
       }
       else //accept logging
       {
-        if (this.canvas.commands.size() <= 2)
+        this.contours = findContour(img, floor(random(225)));
+        
+        if (this.canvas.commands.size() == 0 && this.contours.blobs.length > 0)
         {
           Blob blob = this.contours.blobs[int(random(this.contours.blobs.length))];
-
+          
+          if (!blob.isHole)
+          {
+            return;
+          }
           dmPattern pattern = new dmPattern();
           
           // trace an arbitary part of the blob
@@ -122,14 +126,15 @@ class dmImageTraining extends dmAbstractTraining
           int randomEnd = -1;
           
           randomStart = 0;
-          randomEnd = blob.points.length - 1;
-/*          while (randomEnd <= randomStart + 10)
+          randomEnd = blob.points.length;
+          
+/*          while (randomEnd <= randomStart + 10 || randomEnd > randomStart + 100)
           {
             randomStart = int(random(blob.points.length));
             randomEnd = int(random(randomStart, blob.points.length));
           }*/
           
-          this.canvas.changeSize(random(1,4)); 
+          this.canvas.changeSize(random(1,3)); 
           this.canvas.changeColor(random(0, 200));
           
           //TODO more rules to select segment based on total length and trend
@@ -137,10 +142,13 @@ class dmImageTraining extends dmAbstractTraining
           {
             for (int i = randomStart; i < randomEnd ; i++)
             {
-              pattern.log(blob.points[i].x, blob.points[i].y, (i == randomStart), this.canvas.getBrush());
+              float ratio = this.canvas.height / float(img.height);
+              pattern.log(blob.points[i].x * ratio, blob.points[i].y * ratio, (i == randomStart), this.canvas.getBrush());
             }
- 
-            pattern.display(this.canvas, new Vec3D(0, 0, 0), false);
+            //noFill();
+            //stroke(255,0,0);
+            //rect(pattern.topLeft.x, pattern.topLeft.y, pattern.bottomRight.x - pattern.topLeft.x, pattern.bottomRight.y - pattern.topLeft.y);
+            pattern.display(this.canvas, pattern.topLeft.copy().scale(-1), false);
           }
           
           

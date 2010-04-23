@@ -1,5 +1,66 @@
 /* helpers */
 
+String uploadFile(String url, String fileName)
+{
+  HttpClient httpclient = new DefaultHttpClient();
+  HttpPost httppost = new HttpPost(url);
+  FileBody filebody = new FileBody(new File(fileName));
+  MultipartEntity reqEntity = new MultipartEntity();
+  
+  debug("ready to send file");
+  
+  try
+  {
+    debug("add file part: " + fileName);
+    //reqEntity.addPart("id", new StringBody(id));
+    reqEntity.addPart("userfile", filebody);
+    
+    httppost.setEntity(reqEntity);
+
+    HttpResponse response = httpclient.execute(httppost);
+    HttpEntity resEntity = response.getEntity();
+
+    info("----------------------------------------");
+    info(response.getStatusLine().toString());
+    if (resEntity != null) 
+    {
+        info("Response content length: " + resEntity.getContentLength());
+        BufferedReader reader = new BufferedReader(new InputStreamReader(resEntity.getContent()));
+
+        try 
+        {
+          String result = reader.readLine();
+          debug(result);
+          return result;
+        } 
+        catch (IOException ex) 
+        {
+            throw ex;
+        } 
+        catch (RuntimeException ex) 
+        {
+            throw ex;
+        } 
+        finally 
+        {
+            reader.close();
+        }
+    }
+    if (resEntity != null) {
+        resEntity.consumeContent();
+    }    
+  }
+  catch(Exception ex){}
+  
+  return "error";
+}
+
+String getNewVideoFilename()
+{
+  String videoFilename = "videos/drawing" + millis() + ".mov";
+  return videoFilename;
+}
+
 String findExtension(String filename)
 {
   int pos = -1;

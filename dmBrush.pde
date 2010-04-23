@@ -110,6 +110,33 @@ public class dmBrush extends dmAbstractBrush
     
     info("motion lineTo started");
   }
+
+  void drawAlong(PointList pl)
+  {
+    this.anchor.unlock();
+    this.automated = true;
+    //this.motionCurve = path;
+    
+    //this.motion.vel.mult(0);
+    this.motionCompleted = false;
+    this.motion.pathProgress = 0;
+    this.motion.maxforce = FORCE_CURVE;
+    this.motion.maxspeed = SPEED_CURVE;
+    
+    if (pl.size() > 1)
+    {
+      PVector a = new PVector(pl.get(0).x, pl.get(0).y);
+      PVector b = new PVector(pl.get(1).x, pl.get(1).y);
+      
+      PVector aug = PVector.sub(b,a);
+      aug.normalize();
+      this.motion.vel.add(aug);
+      this.motion.vel.x = this.motion.vel.x * (1 + random(-0.4, 0.4));
+      this.motion.vel.y = this.motion.vel.y * (1 + random(-0.4, 0.4));
+    }
+    
+    info("motion drawAlong started");
+  }
   
   void drawAlong(Path path)
   {

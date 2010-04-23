@@ -18,9 +18,12 @@ public boolean CTL_AUTORUN = true;
 public boolean CTL_USE_MOUSE = false;
 
 public boolean CTL_PLAYBACK = false;
+public boolean CTL_RECORD = false;
 
 public float CTL_USE_TRAINED_INTERPOLATION = 0.95;
 public float CTL_BLOB_THRESHOLD = 50;
+
+public float CTL_VIDEO_WIDTH = 800;
 
 public boolean CTL_SAVE_STRUCTURE = false;
 
@@ -115,6 +118,18 @@ void updateControls()
   catch(java.lang.NullPointerException e){}
 }
 
+void startRecording()
+{
+  //CTL_RECORD = true;
+}
+
+void stopRecording()
+{
+  //CTL_RECORD = false;
+  //impersonal.recorder.finish();
+  //impersonal.recorder = new MovieMaker(this, int(CTL_VIDEO_WIDTH), floor(canvas.height * CTL_VIDEO_WIDTH / canvas.width) , getNewVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
+}
+
 void startComposing()
 {
   setIdle();
@@ -163,10 +178,13 @@ void setIdle()
   trainLine.deactivate();
   trainPattern.deactivate();
   trainStructure.deactivate();
+  trainImage.deactivate();
   
   impersonal.canvas.clearCommands();
   impersonal.canvas.setPlaybackMode(false);
   impersonal.pause();
+  
+  stopRecording();
   
   info("Switch to Idle");
 }
@@ -192,6 +210,7 @@ public void stateChange(int theID)
       break;
     case(106):
       startImageTraining();
+      startRecording();
       break;
     default:
       setIdle();
@@ -417,6 +436,11 @@ void keyPressed()
   {
     //testEvaluation();
     testSymmetry();
+  }
+  
+  if (key == 'u')
+  {
+    testUpload();
   }
 }
 

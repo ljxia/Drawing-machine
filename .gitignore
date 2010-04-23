@@ -8,3 +8,7 @@ log/*.log
 drawings/*
 videos/*
 buffer*.png
+data/*.jpeg
+data/*.jpg
+data/*.png
+data/*.gif
