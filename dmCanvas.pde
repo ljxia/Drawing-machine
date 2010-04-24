@@ -2,10 +2,12 @@ class dmCanvas
 {
   dmBrush _brush;
   ArrayList commands;
+  String commandName = "IDLE";
   int width = 0;
   int height = 0;
   Vec3D corner = new Vec3D();
   PImage buffer = null;
+  boolean monitorMode = false;
 
   dmCanvas(int w, int h)
   {
@@ -285,14 +287,21 @@ class dmCanvas
   {
     try
     {
-      if (this._brush.motionCompleted && !this.commands.isEmpty())
+      if (!this.inMotion() && !this.commands.isEmpty())
       {
+        if (!this.inMotion() && this.commandName.equals("MOVE"))
+        {
+          this.popBuffer();
+        }
+        
+        this.monitorMode = false;
+        
         this.pushBuffer();
 
         dmCommand cmd = (dmCommand)this.commands.remove(0);
-
+        this.commandName = cmd.name.toUpperCase();
         info("----");
-
+        
         if (cmd.name.equals("playback"))
         {
           CTL_PLAYBACK = float(cmd.params.get("playback").toString()) > 0;
@@ -303,7 +312,9 @@ class dmCanvas
           Vec3D target = (Vec3D)cmd.params.get("target");
           Vec3D offset = (Vec3D)cmd.params.get("offset");
           //Boolean delayOffset = (Boolean)cmd.params.get("delayOffset");
-
+          
+          this.monitorMode = true;
+          
           this._brush.resetTravelLength();
           this._brush.moveTo(target, offset);
           info("move to " + (target.x + offset.x) + ", " + (target.y + offset.y));
@@ -421,6 +432,11 @@ class dmCanvas
       }
       else
       {
+        if (this.commands.isEmpty())
+        {
+          this.commandName = "IDLE";
+        }
+        
         return false;
       }
     }
@@ -452,8 +468,17 @@ class dmCanvas
   public void draw(int x, int y)
   {
     this.corner.set(x,y,0);
-
-    this._brush.draw();
+    
+    if (this.monitorMode)
+    {
+      this.popBuffer();
+      this._brush.drawPosition();
+    }
+    else
+    {
+      this._brush.draw();
+    }
+    
     this._brush.update();
 
     //stroke(210);
@@ -466,6 +491,16 @@ class dmCanvas
     noStroke();
     fill(255);
     rect(0,0,this.width + 1, this.height + 1);
+  }
+  
+  public void showCommands()
+  {
+    debug(this.commands.size() + " in total");
+    for (int i = 0; i < this.commands.size() ; i++)
+    {
+      dmCommand c = (dmCommand)this.commands.get(i);
+      debug(c.name);
+    }
   }
 
 

@@ -120,14 +120,14 @@ void updateControls()
 
 void startRecording()
 {
-  //CTL_RECORD = true;
+  CTL_RECORD = true;
 }
 
 void stopRecording()
 {
-  //CTL_RECORD = false;
-  //impersonal.recorder.finish();
-  //impersonal.recorder = new MovieMaker(this, int(CTL_VIDEO_WIDTH), floor(canvas.height * CTL_VIDEO_WIDTH / canvas.width) , getNewVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
+  CTL_RECORD = false;
+  impersonal.recorder.finish();
+  impersonal.recorder = new MovieMaker(this, int(CTL_VIDEO_WIDTH), floor(canvas.height * CTL_VIDEO_WIDTH / canvas.width) , getNewVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
 }
 
 void startComposing()

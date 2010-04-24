@@ -87,7 +87,7 @@ class dmStructure extends dmAbstractMemory
         }
       }
       
-      return "ok";
+      return newId + "";
     }
     else
     {

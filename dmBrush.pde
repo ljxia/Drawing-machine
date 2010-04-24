@@ -335,6 +335,49 @@ public class dmBrush extends dmAbstractBrush
   {
     this.motion.travelLength = 0;
   }
+  
+  void drawPosition()
+  {
+    noStroke();
+    fill(255,0,0);
+    ellipse(this.anchor.x, this.anchor.y, 4,4);
+    
+    //fill(200,0,0);
+    //ellipse(this.motion.loc.x, this.motion.loc.y, 4,4);
+  }
+  
+  void draw(PGraphics graphic)
+  {
+    graphic.beginDraw();
+    
+    if (this.automated)
+    {      
+      graphic.noStroke();
+      graphic.fill(this._color.toARGB());
+      
+      graphic.beginShape();
+      graphic.vertex(tail.x, tail.y);
+      graphic.vertex(left.x, left.y);
+      graphic.vertex(right.x, right.y);
+      graphic.endShape(CLOSE);
+
+      graphic.beginShape();
+      graphic.vertex(tail.x, tail.y);
+      graphic.vertex(last_tail.x, last_tail.y);
+      graphic.vertex(last_right.x, last_right.y);
+      graphic.vertex(right.x, right.y);
+      graphic.endShape(CLOSE);
+
+      graphic.beginShape();
+      graphic.vertex(tail.x, tail.y);
+      graphic.vertex(last_tail.x, last_tail.y);
+      graphic.vertex(last_left.x, last_left.y);
+      graphic.vertex(left.x, left.y);
+      graphic.endShape(CLOSE);
+    }
+    
+    graphic.endDraw();
+  }
 
   void draw()
   {
@@ -387,12 +430,7 @@ public class dmBrush extends dmAbstractBrush
     
     if (CTL_SHOW_BRUSH)
     {
-      noStroke();
-      fill(255,0,0);
-      ellipse(this.anchor.x, this.anchor.y, 4,4);
-      
-      fill(0,200,0);
-      rect(this.motion.loc.x, this.motion.loc.y, 8,8);
+      drawPosition();
     }
     
     

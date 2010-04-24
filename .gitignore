@@ -12,3 +12,4 @@ data/*.jpeg
 data/*.jpg
 data/*.png
 data/*.gif
+tmp

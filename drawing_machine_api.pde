@@ -18,6 +18,8 @@ dmPatternTraining trainPattern;
 dmStructureTraining trainStructure;
 dmImageTraining trainImage;
 
+ArrayList parallelCanvases;
+
 VerletPhysics world;
 PFont font;
 
@@ -69,6 +71,8 @@ void setup()
   trainPattern = new dmPatternTraining(canvas);
   trainStructure = new dmStructureTraining(canvas);
   trainImage = new dmImageTraining(canvas);
+  
+  parallelCanvases = new ArrayList();
 }
 
 void update()
@@ -105,6 +109,7 @@ void draw()
 
   impersonal.draw();
   
+  
   if (trainLine.active){trainLine.display();}
   if (trainPattern.active){trainPattern.display();}
   if (trainStructure.active){trainStructure.display();}
@@ -114,6 +119,33 @@ void draw()
   if (CTL_SHOW_TOOL) {drawTools();}
   
   impersonal.context.display(width - 200, height - 80 + 1);
+  
+  if (parallelCanvases.size() > 0)
+  {
+    println("parallel canvas total: " + parallelCanvases.size());
+  }
+  
+  for (int i = parallelCanvases.size() - 1; i >= 0  ; i--)
+  {
+    if (parallelCanvases.get(i) != null)
+    {
+      dmCanvasMemory c = (dmCanvasMemory)parallelCanvases.get(i);
+      if (c.update())
+      {
+        println("done. ready to delete parallel canvas");
+        parallelCanvases.set(i, null);
+      }
+      else
+      {
+        println("updating parallel canvas");
+      }
+    }
+    else
+    {
+      println("delete parallel canvas #" + i);
+      parallelCanvases.remove(i);
+    }
+  }
   
 }
 

@@ -1,6 +1,7 @@
 class dmPattern extends dmAbstractMemory
 {
   public int id;
+  public int inspiration_id;
   
   public ArrayList strokes;
   
@@ -12,6 +13,7 @@ class dmPattern extends dmAbstractMemory
   dmPattern()
   {
     this.id = -1;
+    this.inspiration_id = -1;
     this.serverMethod = "pattern";
     this.strokes = new ArrayList();
     
@@ -81,6 +83,11 @@ class dmPattern extends dmAbstractMemory
     this.setData("density",this.getDensity());
     this.setData("offset", this.topLeft.sub(this.globalOffset).toString());
     
+    if (this.inspiration_id > 0)
+    {
+      this.setData("inspiration_id",this.inspiration_id);
+    }
+    
     int newId = -1;
     
     String result = super.memorize().trim();
@@ -89,6 +96,8 @@ class dmPattern extends dmAbstractMemory
         
     if (newId > 0 && this.strokeCount() > 0)
     {
+      this.id = newId;
+      
       debug("Pattern #" + newId + " Saved.");
       debug("Saving " + this.strokeCount() + " strokes...");
       for (int i = 0; i < this.strokeCount() ; i++)
@@ -101,7 +110,7 @@ class dmPattern extends dmAbstractMemory
         }
       }
       
-      return "ok";
+      return newId + "";
     }
     else
     {

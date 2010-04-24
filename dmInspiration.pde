@@ -5,14 +5,35 @@ class dmInspiration extends dmAbstractMemory
   
   public String type;
   public String url;
+  public String filehash;
+  
+  public int id;
   
   public PImage image;
   
   dmInspiration(String source)
   {
+    this.id = 0;
+    
     this.serverMethod = "inspiration";
     this.image = loadImage(source);
-    
+        
+    for (int i = 0; i < this.image.width; i++) {
+      this.image.pixels[i] = color(255,255,255); 
+      this.image.pixels[this.image.width + i] = color(255,255,255); 
+      this.image.pixels[(this.image.height - 2) * this.image.width + i] = color(255,255,255); 
+      this.image.pixels[(this.image.height - 1) * this.image.width + i] = color(255,255,255); 
+    }
+
+    for (int i = 0; i < this.image.height; i++) {
+      this.image.pixels[i * this.image.width] = color(255,255,255); 
+      this.image.pixels[i * this.image.width + 1] = color(255,255,255); 
+      this.image.pixels[i * this.image.width + this.image.width - 2] = color(255,255,255); 
+      this.image.pixels[i * this.image.width + this.image.width - 1] = color(255,255,255); 
+    }
+
+    this.image.updatePixels();
+   
     debug("image loaded from " + source);
     debug(this.image.width + ", " + this.image.height);
     
@@ -78,11 +99,12 @@ class dmInspiration extends dmAbstractMemory
     newId = int(result);
 
     if (newId > 0)
-    {      
+    {
+      this.id = newId;      
       //upload the file
       debug("inspiration saved: #" + newId);
       uploadImageFile(newId);
-      return "ok";
+      return newId + "";
     }
     else
     {

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>dmInspiration.pde</string>
+	<string>dmCanvasMemory.pde</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -16,7 +16,7 @@
 							<key>filename</key>
 							<string>drawing_machine_api.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-21T08:28:38Z</date>
+							<date>2010-04-24T21:23:20Z</date>
 						</dict>
 						<dict>
 							<key>children</key>
@@ -25,31 +25,31 @@
 									<key>filename</key>
 									<string>config.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-16T21:03:29Z</date>
+									<date>2010-04-24T08:46:28Z</date>
 								</dict>
 								<dict>
 									<key>filename</key>
 									<string>dataPool.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-21T08:28:38Z</date>
+									<date>2010-04-24T08:46:29Z</date>
 								</dict>
 								<dict>
 									<key>filename</key>
 									<string>email.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-21T08:28:39Z</date>
+									<date>2010-04-24T08:46:32Z</date>
 								</dict>
 								<dict>
 									<key>filename</key>
 									<string>helpers.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-23T06:53:34Z</date>
+									<date>2010-04-24T08:46:36Z</date>
 								</dict>
 								<dict>
 									<key>filename</key>
 									<string>HttpRequest.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-06T22:58:02Z</date>
+									<date>2010-04-24T08:46:39Z</date>
 								</dict>
 								<dict>
 									<key>filename</key>
@@ -79,7 +79,7 @@
 									<key>filename</key>
 									<string>tumblr.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-23T05:58:48Z</date>
+									<date>2010-04-23T22:58:17Z</date>
 								</dict>
 							</array>
 							<key>expanded</key>
@@ -91,13 +91,13 @@
 							<key>filename</key>
 							<string>tests.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-23T05:22:56Z</date>
+							<date>2010-04-24T04:30:22Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
 							<string>ui.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-21T08:28:38Z</date>
+							<date>2010-04-24T21:15:41Z</date>
 						</dict>
 					</array>
 					<key>expanded</key>
@@ -115,19 +115,19 @@
 									<key>filename</key>
 									<string>dmAbstractComposer.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-21T08:28:39Z</date>
+									<date>2010-04-24T21:23:44Z</date>
 								</dict>
 								<dict>
 									<key>filename</key>
 									<string>dmComposer.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-21T08:28:38Z</date>
+									<date>2010-04-24T21:51:02Z</date>
 								</dict>
 								<dict>
 									<key>filename</key>
 									<string>dmContext.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-21T08:48:54Z</date>
+									<date>2010-04-24T08:46:46Z</date>
 								</dict>
 							</array>
 							<key>expanded</key>
@@ -142,7 +142,7 @@
 									<key>filename</key>
 									<string>dmEvaluation.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-21T08:28:37Z</date>
+									<date>2010-04-24T08:46:48Z</date>
 								</dict>
 								<dict>
 									<key>children</key>
@@ -151,43 +151,43 @@
 											<key>filename</key>
 											<string>dmAbstractEvaluationRule.pde</string>
 											<key>lastUsed</key>
-											<date>2010-04-21T08:28:37Z</date>
+											<date>2010-04-24T08:46:49Z</date>
 										</dict>
 										<dict>
 											<key>filename</key>
 											<string>dmAsymmetryRule.pde</string>
 											<key>lastUsed</key>
-											<date>2010-04-19T19:19:16Z</date>
+											<date>2010-04-24T08:46:50Z</date>
 										</dict>
 										<dict>
 											<key>filename</key>
 											<string>dmEnergyFlowRule.pde</string>
 											<key>lastUsed</key>
-											<date>2010-04-19T19:19:16Z</date>
+											<date>2010-04-24T08:46:51Z</date>
 										</dict>
 										<dict>
 											<key>filename</key>
 											<string>dmEntropyRule.pde</string>
 											<key>lastUsed</key>
-											<date>2010-04-21T08:28:37Z</date>
+											<date>2010-04-24T08:46:52Z</date>
 										</dict>
 										<dict>
 											<key>filename</key>
 											<string>dmRepetitionRule.pde</string>
 											<key>lastUsed</key>
-											<date>2010-04-19T19:19:16Z</date>
+											<date>2010-04-24T08:46:52Z</date>
 										</dict>
 										<dict>
 											<key>filename</key>
 											<string>dmStructureRule.pde</string>
 											<key>lastUsed</key>
-											<date>2010-04-19T19:19:16Z</date>
+											<date>2010-04-24T08:46:53Z</date>
 										</dict>
 										<dict>
 											<key>filename</key>
 											<string>dmSymmetryRule.pde</string>
 											<key>lastUsed</key>
-											<date>2010-04-21T08:28:37Z</date>
+											<date>2010-04-24T08:46:54Z</date>
 										</dict>
 										<dict>
 											<key>filename</key>
@@ -214,13 +214,13 @@
 									<key>filename</key>
 									<string>dmAbstractStrategy.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-21T08:28:38Z</date>
+									<date>2010-04-24T08:46:55Z</date>
 								</dict>
 								<dict>
 									<key>filename</key>
 									<string>dmInstinctiveStrategy.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-21T08:28:39Z</date>
+									<date>2010-04-24T08:46:58Z</date>
 								</dict>
 							</array>
 							<key>expanded</key>
@@ -241,31 +241,33 @@
 							<key>filename</key>
 							<string>dmAbstractBrush.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-16T21:03:29Z</date>
+							<date>2010-04-24T21:59:43Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
 							<string>dmBrush.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-16T17:11:23Z</date>
+							<date>2010-04-24T21:22:13Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
 							<string>dmCanvas.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-21T09:18:23Z</date>
+							<date>2010-04-24T21:56:57Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>dmCanvasMemory.pde</string>
+							<key>lastUsed</key>
+							<date>2010-04-24T22:00:33Z</date>
+							<key>selected</key>
+							<true/>
 						</dict>
 						<dict>
 							<key>filename</key>
 							<string>dmCommand.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-19T05:51:14Z</date>
-						</dict>
-						<dict>
-							<key>filename</key>
-							<string>dmInspiration.pde</string>
-							<key>lastUsed</key>
-							<date>2010-04-23T06:53:34Z</date>
+							<date>2010-04-24T08:47:23Z</date>
 						</dict>
 						<dict>
 							<key>children</key>
@@ -299,37 +301,43 @@
 							<key>filename</key>
 							<string>dmAbstractMemory.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-16T21:03:30Z</date>
+							<date>2010-04-24T21:44:30Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
 							<string>dmContours.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-21T08:28:36Z</date>
+							<date>2010-04-24T22:00:33Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
 							<string>dmLine.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-16T17:11:25Z</date>
+							<date>2010-04-24T08:47:27Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
 							<string>dmPattern.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-21T09:22:58Z</date>
+							<date>2010-04-24T21:44:34Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
 							<string>dmStroke.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-21T09:21:40Z</date>
+							<date>2010-04-24T21:33:33Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
 							<string>dmStructure.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-19T05:51:17Z</date>
+							<date>2010-04-24T21:52:31Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>dmInspiration.pde</string>
+							<key>lastUsed</key>
+							<date>2010-04-24T20:55:00Z</date>
 						</dict>
 					</array>
 					<key>expanded</key>
@@ -342,8 +350,6 @@
 			<true/>
 			<key>name</key>
 			<string>Impersonal</string>
-			<key>selected</key>
-			<true/>
 		</dict>
 		<dict>
 			<key>children</key>
@@ -352,13 +358,13 @@
 					<key>filename</key>
 					<string>dmAbstractTraining.pde</string>
 					<key>lastUsed</key>
-					<date>2010-04-21T09:01:45Z</date>
+					<date>2010-04-24T17:07:37Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>dmImageTraining.pde</string>
 					<key>lastUsed</key>
-					<date>2010-04-23T05:20:44Z</date>
+					<date>2010-04-24T21:34:42Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -376,7 +382,7 @@
 					<key>filename</key>
 					<string>dmStructureTraining.pde</string>
 					<key>lastUsed</key>
-					<date>2010-04-21T09:01:56Z</date>
+					<date>2010-04-24T02:57:34Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -403,12 +409,210 @@
 			<key>firstVisibleLine</key>
 			<integer>62</integer>
 		</dict>
+		<key>config.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>dataPool.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>42</integer>
+				<key>line</key>
+				<integer>38</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>dmAbstractBrush.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>100</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>75</integer>
+		</dict>
+		<key>dmAbstractComposer.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>36</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>dmAbstractEvaluationRule.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>28</integer>
+				<key>line</key>
+				<integer>13</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>dmAbstractMemory.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>37</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>dmAbstractStrategy.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>dmAbstractTraining.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>71</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>31</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>17</integer>
+				<key>line</key>
+				<integer>71</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>71</integer>
+			</dict>
+		</dict>
+		<key>dmAsymmetryRule.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>dmBrush.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>345</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>327</integer>
+		</dict>
+		<key>dmCanvas.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>43</integer>
+				<key>line</key>
+				<integer>497</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>452</integer>
+		</dict>
+		<key>dmCanvasMemory.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>dmCommand.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>11</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>dmComposer.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>35</integer>
 				<key>line</key>
 				<integer>28</integer>
 			</dict>
@@ -416,36 +620,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>dmCanvas.pde</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>24</integer>
-				<key>line</key>
-				<integer>102</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>117</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>14</integer>
-				<key>line</key>
-				<integer>102</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>24</integer>
-				<key>line</key>
-				<integer>102</integer>
-			</dict>
 		</dict>
 		<key>dmContext.pde</key>
 		<dict>
@@ -461,7 +635,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>159</integer>
+			<integer>191</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
@@ -477,28 +651,112 @@
 				<integer>186</integer>
 			</dict>
 		</dict>
+		<key>dmContours.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>4</integer>
+				<key>line</key>
+				<integer>60</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>18</integer>
+		</dict>
+		<key>dmEnergyFlowRule.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>dmEntropyRule.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>dmEvaluation.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>dmImageTraining.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>13</integer>
+				<integer>16</integer>
 				<key>line</key>
-				<integer>134</integer>
+				<integer>122</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>104</integer>
+			<integer>94</integer>
 		</dict>
 		<key>dmInspiration.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>5</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>23</integer>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>46</integer>
+		</dict>
+		<key>dmInstinctiveStrategy.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>47</integer>
+				<key>line</key>
+				<integer>35</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>17</integer>
+		</dict>
+		<key>dmLine.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>39</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -524,14 +782,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>21</integer>
+				<integer>8</integer>
 				<key>line</key>
-				<integer>181</integer>
+				<integer>105</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>6</integer>
+			<integer>64</integer>
 		</dict>
 		<key>dmPatternTraining.pde</key>
 		<dict>
@@ -547,58 +805,112 @@
 			<key>firstVisibleLine</key>
 			<integer>38</integer>
 		</dict>
+		<key>dmRepetitionRule.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>dmStroke.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>5</integer>
 				<key>line</key>
-				<integer>98</integer>
+				<integer>90</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>36</integer>
+			<integer>42</integer>
+		</dict>
+		<key>dmStructure.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>46</integer>
+		</dict>
+		<key>dmStructureRule.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>dmStructureTraining.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>4</integer>
+				<integer>3</integer>
 				<key>line</key>
-				<integer>18</integer>
+				<integer>22</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>31</integer>
-				<key>line</key>
-				<integer>19</integer>
-			</dict>
-			<key>selectTo</key>
+		</dict>
+		<key>dmSymmetryRule.pde</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>4</integer>
 				<key>line</key>
-				<integer>18</integer>
+				<integer>21</integer>
 			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>email.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>38</integer>
+				<key>line</key>
+				<integer>35</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>helpers.pde</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>6</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>14</integer>
+				<integer>76</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -624,14 +936,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>55</integer>
+				<integer>8</integer>
 				<key>line</key>
-				<integer>292</integer>
+				<integer>294</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>235</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>294</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>294</integer>
+			</dict>
 		</dict>
 		<key>tumblr.pde</key>
 		<dict>
@@ -647,22 +975,77 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>ui.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>448</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>411</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>9</integer>
+				<key>line</key>
+				<integer>448</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>448</integer>
+			</dict>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>dmImageTraining.pde</string>
+		<string>config.pde</string>
+		<string>dataPool.pde</string>
+		<string>dmPattern.pde</string>
+		<string>dmLine.pde</string>
+		<string>dmContours.pde</string>
+		<string>dmCanvasMemory.pde</string>
+		<string>dmAbstractMemory.pde</string>
 		<string>helpers.pde</string>
+		<string>HttpRequest.pde</string>
+		<string>dmAbstractComposer.pde</string>
+		<string>dmComposer.pde</string>
+		<string>email.pde</string>
 		<string>tests.pde</string>
 		<string>dmInspiration.pde</string>
 		<string>tumblr.pde</string>
 		<string>dmAbstractTraining.pde</string>
 		<string>dmPatternTraining.pde</string>
 		<string>dmStructureTraining.pde</string>
-		<string>dmPattern.pde</string>
 		<string>dmStroke.pde</string>
+		<string>dmStructure.pde</string>
 		<string>dmLineTraining.pde</string>
 		<string>dmCanvas.pde</string>
+		<string>ui.pde</string>
+		<string>dmCommand.pde</string>
 		<string>dmContext.pde</string>
+		<string>dmEvaluation.pde</string>
+		<string>dmAbstractEvaluationRule.pde</string>
+		<string>dmAsymmetryRule.pde</string>
+		<string>dmEnergyFlowRule.pde</string>
+		<string>dmEntropyRule.pde</string>
+		<string>dmRepetitionRule.pde</string>
+		<string>dmStructureRule.pde</string>
+		<string>dmSymmetryRule.pde</string>
+		<string>dmAbstractStrategy.pde</string>
+		<string>dmInstinctiveStrategy.pde</string>
+		<string>dmAbstractBrush.pde</string>
+		<string>dmBrush.pde</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>

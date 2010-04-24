@@ -19,13 +19,14 @@ class dmComposer extends dmAbstractComposer
   {
     if ((!isPaused() || CTL_RECORD) && frameCount % 10 == 0)
     {
-      this.context.canvas.pushBuffer();
+      PImage bufferImage = createImage(this.context.canvas.width, this.context.canvas.height, ARGB);
+      this.context.canvas.saveImage(bufferImage);
       PImage img = createImage(int(CTL_VIDEO_WIDTH), floor(context.canvas.height * CTL_VIDEO_WIDTH / context.canvas.width), ARGB);
-      img.copy(this.context.canvas.buffer,
+      img.copy(bufferImage,
                         0,
                         0,
-                        this.context.canvas.buffer.width, 
-                        this.context.canvas.buffer.height,
+                        bufferImage.width, 
+                        bufferImage.height,
                         0,
                         0,
                         img.width, 

@@ -25,8 +25,8 @@ public abstract class dmAbstractMemory
     HttpRequest req = new HttpRequest();
     String url = serverUrlBase + "learn/" + serverMethod;
     debug("-----------------");
-    debug("ping url: " + url);
-    debug("POST param:" + this.getData().toString());
+    //debug("ping url: " + url);
+    //debug("POST param:" + this.getData().toString());
     try
     {
       String res = req.send(url,"POST",this.getData(),null);
