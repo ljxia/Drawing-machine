@@ -119,12 +119,7 @@ void draw()
   if (CTL_SHOW_TOOL) {drawTools();}
   
   impersonal.context.display(width - 200, height - 80 + 1);
-  
-  if (parallelCanvases.size() > 0)
-  {
-    println("parallel canvas total: " + parallelCanvases.size());
-  }
-  
+
   for (int i = parallelCanvases.size() - 1; i >= 0  ; i--)
   {
     if (parallelCanvases.get(i) != null)
@@ -132,17 +127,11 @@ void draw()
       dmCanvasMemory c = (dmCanvasMemory)parallelCanvases.get(i);
       if (c.update())
       {
-        println("done. ready to delete parallel canvas");
         parallelCanvases.set(i, null);
-      }
-      else
-      {
-        println("updating parallel canvas");
       }
     }
     else
     {
-      println("delete parallel canvas #" + i);
       parallelCanvases.remove(i);
     }
   }

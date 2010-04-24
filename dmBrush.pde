@@ -340,7 +340,7 @@ public class dmBrush extends dmAbstractBrush
   {
     noStroke();
     fill(255,0,0);
-    ellipse(this.anchor.x, this.anchor.y, 4,4);
+    ellipse(this.anchor.x, this.anchor.y, this.getScale() * 5,this.getScale() * 5);
     
     //fill(200,0,0);
     //ellipse(this.motion.loc.x, this.motion.loc.y, 4,4);

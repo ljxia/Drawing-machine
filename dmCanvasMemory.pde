@@ -29,9 +29,15 @@ class dmCanvasMemory extends dmCanvas
     return false;
   }
   
+  public void popBuffer()
+  {
+    return;
+  }
+  
   public void draw(int x, int y)
   {
-    this.corner.set(x,y,0); 
+    return;
+    //this.corner.set(x,y,0); 
   }
   
   void callback()
