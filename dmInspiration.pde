@@ -89,6 +89,11 @@ class dmInspiration extends dmAbstractMemory
     this.setData("height",this.getHeight());
     this.setData("type",this.type);
     this.setData("url",this.url);
+    if (this.type.equals(TYPE_FILE))
+    {
+      this.setData("filehash", getFileSHA1(this.url));
+    }
+    
     
     int newId = -1;
     
@@ -102,9 +107,15 @@ class dmInspiration extends dmAbstractMemory
     {
       this.id = newId;      
       //upload the file
-      debug("inspiration saved: #" + newId);
+      println("inspiration saved: #" + newId);
       uploadImageFile(newId);
-      return newId + "";
+      return this.id + "";
+    }
+    else if (newId < 0)
+    {
+      this.id = -1 * newId;
+      println("existing inspiration found: #" + newId);
+      return this.id + "";
     }
     else
     {
