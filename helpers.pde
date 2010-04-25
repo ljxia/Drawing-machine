@@ -75,27 +75,59 @@ String convertToHex(byte[] data)
     return buf.toString();
 }
 
-String SHA1(String text)  
+String getFileSHA1(String filename)  
 {
   try
   {
     MessageDigest md;
+    File file = new File(filename);
+    
+    println("init input stream");
+    
+    InputStream is = new FileInputStream(file);
+    
+    // Get the size of the file
+    long fileLength = file.length();
+    
+    println("file length " + fileLength);
+
+    // You cannot create an array using a long type.
+    // It needs to be an int type.
+    // Before converting to an int type, check
+    // to ensure that file is not larger than Integer.MAX_VALUE.
+    if (fileLength > Integer.MAX_VALUE) {
+        // File is too large
+    }
+
+    // Create the byte array to hold the data
+    byte[] bytes = new byte[(int)fileLength];
+
+    // Read in the bytes
+    int offset = 0;
+    int numRead = 0;
+    while (offset < bytes.length
+           && (numRead=is.read(bytes, offset, bytes.length-offset)) >= 0) {
+        offset += numRead;
+    }
+
+    // Ensure all the bytes have been read in
+    if (offset < bytes.length) {
+        return "";
+    }
+
+    // Close the input stream and return bytes
+    is.close();
+     
     md = MessageDigest.getInstance("SHA-1");
     byte[] sha1hash = new byte[40];
-    md.update(text.getBytes("iso-8859-1"), 0, text.length());
+    md.update(bytes, 0, int(fileLength));
     sha1hash = md.digest();
     return convertToHex(sha1hash);
   }
-  catch (NoSuchAlgorithmException e0)
+  catch (Exception ex)
   {
-    
+    return "error";
   }
-  catch (UnsupportedEncodingException e1)
-  {
-    
-  }
-  
-  return "";
 }
 
 String getNewVideoFilename()

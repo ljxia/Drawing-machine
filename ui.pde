@@ -222,9 +222,8 @@ public void stateChange(int theID)
       startImageTraining();
       startRecording();
       break;
-    case(106):
-      startImageTraining();
-      startRecording();
+    case(107):
+      setIdle();
       break;      
     default:
       setIdle();
