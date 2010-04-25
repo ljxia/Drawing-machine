@@ -49,35 +49,45 @@ void setupControls()
   controlWindow.setUpdateMode(ControlWindow.NORMAL);
   controlWindow.hideCoordinates();
   
-  controlP5.addSlider("CTL_BRUSH_SIZE",   1,  40, CTL_BRUSH_SIZE,   20, 120, 100,  10).setWindow(controlWindow);
-  controlP5.addSlider("CTL_BRUSH_SHADE",  0,  255,CTL_BRUSH_SHADE,  20, 140, 100,  10).setWindow(controlWindow);
-  controlP5.addSlider("CTL_USE_TRAINED_INTERPOLATION",  0,  1,CTL_USE_TRAINED_INTERPOLATION,  20, 160, 100,  10).setWindow(controlWindow);
-  
-  controlP5.addToggle("CTL_DEBUG_MODE",       CTL_DEBUG_MODE,         20,   180, 10, 10).setWindow(controlWindow);
-  controlP5.addToggle("CTL_CLEAR_BACKGROUND", CTL_CLEAR_BACKGROUND,  100,  180, 10, 10).setWindow(controlWindow);
-  
-  controlP5.addToggle("CTL_SHOW_BRUSH",       CTL_SHOW_BRUSH,  20,   210, 10, 10).setWindow(controlWindow);
-  controlP5.addToggle("CTL_AUTORUN",          CTL_AUTORUN,    100,   210, 10, 10).setWindow(controlWindow);
-  
-  controlP5.addToggle("CTL_USE_MOUSE",       CTL_USE_MOUSE,  20,   240, 10, 10).setWindow(controlWindow);
-  controlP5.addToggle("CTL_PLAYBACK",       CTL_PLAYBACK,  100,   240, 10, 10).setWindow(controlWindow);
-  
-  
-  
   
   CTL_STATE = controlP5.addRadio("stateChange",20,20);
+
+   //r.deactivateAll(); // use deactiveAll to not make the first radio button active.
+   CTL_STATE.add("COMPOSE",101);
+   CTL_STATE.add("INTERPOLATION TRAINING",102);
+   CTL_STATE.add("PATTERN TRAINING",103);
+   CTL_STATE.add("STRUCTURE TRAINING",104);
+   CTL_STATE.add("EVALUATION DEV",105);
+   CTL_STATE.add("EXTERNAL MEMORY TRAINING",106);
+   CTL_STATE.add("PATTERN ANALYSIS TRAINING",107);
+   
+   CTL_STATE.add("Free Hand Drawing", 100);
+   CTL_STATE.setWindow(controlWindow);
   
-  //r.deactivateAll(); // use deactiveAll to not make the first radio button active.
-  CTL_STATE.add("COMPOSE",101);
-  CTL_STATE.add("INTERPOLATION TRAINING",102);
-  CTL_STATE.add("PATTERN TRAINING",103);
-  CTL_STATE.add("STRUCTURE TRAINING",104);
-  CTL_STATE.add("EVALUATION DEV",105);
-  CTL_STATE.add("EXTERNAL MEMORY TRAINING",106);
-  CTL_STATE.add("DO NOTHING", 100);
-  CTL_STATE.setWindow(controlWindow);
   
-  CTL_FUNCTION_TEST = controlP5.addRadio("functionTest",20,290);
+  
+  int controlStart = 200; // vertical position
+  
+  
+  controlP5.addSlider("CTL_BRUSH_SIZE",   1,  40, CTL_BRUSH_SIZE,   20, controlStart + 20, 100,  10).setWindow(controlWindow);
+  controlP5.addSlider("CTL_BRUSH_SHADE",  0,  255,CTL_BRUSH_SHADE,  20, controlStart + 40, 100,  10).setWindow(controlWindow);
+  controlP5.addSlider("CTL_USE_TRAINED_INTERPOLATION",  0,  1,CTL_USE_TRAINED_INTERPOLATION,  20, controlStart + 60, 100,  10).setWindow(controlWindow);
+  
+  controlP5.addToggle("CTL_DEBUG_MODE",       CTL_DEBUG_MODE,         20,   controlStart + 80, 10, 10).setWindow(controlWindow);
+  controlP5.addToggle("CTL_CLEAR_BACKGROUND", CTL_CLEAR_BACKGROUND,  100,  controlStart + 80, 10, 10).setWindow(controlWindow);
+  
+  controlP5.addToggle("CTL_SHOW_BRUSH",       CTL_SHOW_BRUSH,  20,   controlStart + 110, 10, 10).setWindow(controlWindow);
+  controlP5.addToggle("CTL_AUTORUN",          CTL_AUTORUN,    100,   controlStart + 110, 10, 10).setWindow(controlWindow);
+  
+  controlP5.addToggle("CTL_USE_MOUSE",       CTL_USE_MOUSE,  20,   controlStart + 140, 10, 10).setWindow(controlWindow);
+  controlP5.addToggle("CTL_PLAYBACK",       CTL_PLAYBACK,  100,   controlStart + 140, 10, 10).setWindow(controlWindow);
+  
+  
+  
+  int testStart = 500;
+ 
+  
+  CTL_FUNCTION_TEST = controlP5.addRadio("functionTest",20,testStart);
   
   CTL_FUNCTION_TEST.add("TEST NOTHING",200);
   CTL_FUNCTION_TEST.add("Test Http Request",201);
@@ -90,7 +100,7 @@ void setupControls()
   CTL_FUNCTION_TEST.setWindow(controlWindow);
   
   
-  CTL_DRAWING_TEST = controlP5.addRadio("drawingTest",20,460);
+  CTL_DRAWING_TEST = controlP5.addRadio("drawingTest",20,testStart + 200);
   CTL_DRAWING_TEST.add("TEST NOTHING",300);
   CTL_DRAWING_TEST.add("Test Line",301);
   CTL_DRAWING_TEST.add("Test Shape",302);
@@ -212,6 +222,10 @@ public void stateChange(int theID)
       startImageTraining();
       startRecording();
       break;
+    case(106):
+      startImageTraining();
+      startRecording();
+      break;      
     default:
       setIdle();
       break;
