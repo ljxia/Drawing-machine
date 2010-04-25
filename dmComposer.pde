@@ -6,7 +6,11 @@ class dmComposer extends dmAbstractComposer
   dmComposer(PApplet applet, dmCanvas canvas)
   {
     super(applet, canvas);
-    recorder = new MovieMaker(applet, int(CTL_VIDEO_WIDTH), floor(canvas.height * CTL_VIDEO_WIDTH / canvas.width) , newVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
+    
+    if (CTL_ENABLE_RECORDING)
+    {
+      recorder = new MovieMaker(applet, int(CTL_VIDEO_WIDTH), floor(canvas.height * CTL_VIDEO_WIDTH / canvas.width) , newVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
+    }
   }
   
   private String newVideoFilename()
@@ -32,7 +36,10 @@ class dmComposer extends dmAbstractComposer
                         img.width, 
                         img.height);
       img.loadPixels();
-      recorder.addFrame(img.pixels, int(CTL_VIDEO_WIDTH), floor(context.canvas.height * CTL_VIDEO_WIDTH / context.canvas.width));
+      if (CTL_ENABLE_RECORDING)
+      {
+        recorder.addFrame(img.pixels, int(CTL_VIDEO_WIDTH), floor(context.canvas.height * CTL_VIDEO_WIDTH / context.canvas.width));
+      }
     }
     
     return super.update();
@@ -40,14 +47,23 @@ class dmComposer extends dmAbstractComposer
   
   protected void save()
   {
-    recorder.finish();
+    if (CTL_ENABLE_RECORDING)
+    {
+      recorder.finish();
+    }
     super.save();
     //sendMail(savePath(this.videoFilename));
-    recorder = new MovieMaker(applet, int(CTL_VIDEO_WIDTH), floor(canvas.height * CTL_VIDEO_WIDTH / canvas.width) , newVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
+    if (CTL_ENABLE_RECORDING)
+    {
+      recorder = new MovieMaker(applet, int(CTL_VIDEO_WIDTH), floor(canvas.height * CTL_VIDEO_WIDTH / canvas.width) , newVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
+    }
   }
   
   protected void finish()
   {
-    recorder.dispose();
+    if (CTL_ENABLE_RECORDING)
+    {
+      recorder.dispose();
+    }
   }
 }

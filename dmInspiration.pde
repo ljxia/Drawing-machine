@@ -107,14 +107,14 @@ class dmInspiration extends dmAbstractMemory
     {
       this.id = newId;      
       //upload the file
-      println("inspiration saved: #" + newId);
+      info("inspiration saved: #" + newId);
       uploadImageFile(newId);
       return this.id + "";
     }
     else if (newId < 0)
     {
       this.id = -1 * newId;
-      println("existing inspiration found: #" + newId);
+      info("existing inspiration found: #" + newId);
       return this.id + "";
     }
     else

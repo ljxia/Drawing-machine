@@ -17,6 +17,7 @@ dmLineTraining trainLine;
 dmPatternTraining trainPattern;
 dmStructureTraining trainStructure;
 dmImageTraining trainImage;
+dmPatternAnalysisTraining traingPatternAnalysis;
 
 ArrayList parallelCanvases;
 
@@ -74,6 +75,7 @@ void setup()
   trainPattern = new dmPatternTraining(canvas);
   trainStructure = new dmStructureTraining(canvas);
   trainImage = new dmImageTraining(canvas);
+  traingPatternAnalysis = new dmPatternAnalysisTraining(canvas);
   
   parallelCanvases = new ArrayList();
 }
@@ -90,6 +92,7 @@ void update()
     trainPattern.update();
     trainStructure.update();
     trainImage.update();
+    traingPatternAnalysis.update();
 
   /* apply setting */  
     if (!CTL_PLAYBACK)
@@ -127,6 +130,7 @@ void draw()
   if (trainPattern.active){trainPattern.display();}
   if (trainStructure.active){trainStructure.display();}
   if (trainImage.active){trainImage.display();}
+  if (traingPatternAnalysis.active){traingPatternAnalysis.display();}
   
   
   if (CTL_SHOW_TOOL) {drawTools();}

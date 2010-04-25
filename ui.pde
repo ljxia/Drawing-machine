@@ -24,6 +24,7 @@ public float CTL_USE_TRAINED_INTERPOLATION = 0.95;
 public float CTL_BLOB_THRESHOLD = 50;
 
 public float CTL_VIDEO_WIDTH = 800;
+public boolean CTL_ENABLE_RECORDING = false;
 
 public boolean CTL_SAVE_STRUCTURE = false;
 
@@ -136,8 +137,11 @@ void startRecording()
 void stopRecording()
 {
   CTL_RECORD = false;
-  impersonal.recorder.finish();
-  impersonal.recorder = new MovieMaker(this, int(CTL_VIDEO_WIDTH), floor(canvas.height * CTL_VIDEO_WIDTH / canvas.width) , getNewVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
+  if (CTL_ENABLE_RECORDING)
+  {
+    impersonal.recorder.finish();
+    impersonal.recorder = new MovieMaker(this, int(CTL_VIDEO_WIDTH), floor(canvas.height * CTL_VIDEO_WIDTH / canvas.width) , getNewVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
+  }
 }
 
 void startComposing()
@@ -182,6 +186,13 @@ void startImageTraining()
   trainImage.activate();
 }
 
+void startPatternAnalysisTraining()
+{
+  setIdle();
+  info("Switch to Pattern Analysis Training");
+  traingPatternAnalysis.activate();
+}
+
 void setIdle()
 {
   
@@ -223,7 +234,7 @@ public void stateChange(int theID)
       startRecording();
       break;
     case(107):
-      setIdle();
+      startPatternAnalysisTraining();
       break;      
     default:
       setIdle();

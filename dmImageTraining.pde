@@ -30,7 +30,7 @@ class dmImageTraining extends dmAbstractTraining
   
   void initInspiration()
   {
-    this.inspiration = new dmInspiration("tumblr_l19qr0A4R11qa57amo1_500.jpeg");
+    this.inspiration = new dmInspiration("4510439797_52462f4238_b.jpeg");
     this.inspiration.memorize();
     
     this.currentThreshold = 240;
