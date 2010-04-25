@@ -7,6 +7,8 @@ class dmContours extends dmAbstractMemory
   
   dmContours(int w, int h, float threshold, Blob[] blbs)
   {
+    this.serverMethod = "contour";
+    
     this.blobs = blbs;
     this.snapshot = createGraphics(w, h, JAVA2D);;
     this.threshold = threshold;
@@ -45,50 +47,50 @@ class dmContours extends dmAbstractMemory
   
   String memorize(int inspirationId, dmPattern pattern, Blob blob)
   {
-/*    if (true)
+    if (false)
     {
       return "";
-    }*/
+    }
     
+    this.setData("inspiration_id",inspirationId);
+    this.setData("pattern_id",pattern.id);
+    this.setData("threshold",this.threshold);
+    this.setData("area",blob.area);
+    this.setData("isHole", blob.isHole ? "0" : "1");
     
-    //generate snapshot for contour pattern
+    int newId = -1;    
+    String result = super.memorize().trim();
+    newId = int(result);
     
-    int margin = 20;
-    
-    int canvasWidth = int(pattern.getWidth()) + margin * 2;
-    int canvasHeight = int(pattern.getHeight()) + margin * 2;
-    
-    
-    dmBrush contourBrush = new dmBrush(new Vec3D(canvasWidth/2, canvasHeight/2, 0), world, 1);  
-    contourBrush.setGray(0);
-    contourBrush.setAlpha(0.95);
-    
-    dmCanvasMemory contourCanvas = new dmCanvasMemory(canvasWidth, canvasHeight);
-    contourCanvas.setBrush(contourBrush);
-    contourCanvas.changeSize(1.5);
+    if (newId > 0)
+    {
+      //generate snapshot for contour pattern
 
-    pattern.display(contourCanvas, pattern.topLeft.copy().scale(-1).addSelf(margin, margin, 0), false);
+      int margin = 20;
 
-    parallelCanvases.add(contourCanvas);
+      int canvasWidth = int(pattern.getWidth()) + margin * 2;
+      int canvasHeight = int(pattern.getHeight()) + margin * 2;
+      
+      // set up off-screen canvas
+
+      dmBrush contourBrush = new dmBrush(new Vec3D(canvasWidth/2, canvasHeight/2, 0), world, 1);  
+      contourBrush.setGray(0);
+      contourBrush.setAlpha(0.95);
+
+      dmCanvasMemory contourCanvas = new dmCanvasMemory(canvasWidth, canvasHeight);
+      contourCanvas.setBrush(contourBrush);
+      
+      String serverUrl = serverUrlBase + "upload/" + serverMethod + "/" + newId;
+      contourCanvas.setRemoteUrl(serverUrl);
+
+      // setup drawing commands 
+      pattern.display(contourCanvas, pattern.topLeft.copy().scale(-1).addSelf(margin, margin, 0), false);
+      
+      
+      // send off-screen canvas to global drawing queue
+      parallelCanvases.add(contourCanvas);
+    }
     
     return "";
-    
-    //pattern.display();
-  
-    
-    
-    
-/*    HttpRequest req = new HttpRequest();
-    String url = serverUrlBase + "learn/" + serverMethod;
-    debug("-----------------");
-    debug("ping url: " + url);
-    debug("POST param:" + this.getData().toString());
-    try
-    {
-      String res = req.send(url,"POST",this.getData(),null);
-      debug(res);
-      return res;
-    }
-    catch (Exception e){return "error: " + e.getMessage();}*/
   }
 }

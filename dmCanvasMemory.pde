@@ -2,6 +2,7 @@ class dmCanvasMemory extends dmCanvas
 {
   //directly draws to buffer than onto the screen
   PGraphics content;
+  String serverUrl;
   
   dmCanvasMemory(int w, int h)
   {
@@ -40,9 +41,22 @@ class dmCanvasMemory extends dmCanvas
     //this.corner.set(x,y,0); 
   }
   
+  public void setRemoteUrl(String url)
+  {
+    this.serverUrl = url;
+  }
+  
   void callback()
   {
-    this.content.save("tmp/" + millis() + ".png");
+    String filename = "tmp/" + millis() + ".png";
+    this.content.save(filename);
+    
+    
+    if (!this.serverUrl.equals(""))
+    {
+      filename = savePath(filename);
+      uploadFile(serverUrl, filename);
+    }
   }
   
 }

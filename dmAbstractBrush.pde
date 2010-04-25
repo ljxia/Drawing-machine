@@ -73,7 +73,7 @@ public class dmAbstractBrush
     {
       this._scale.set(new_size);
       this.update();
-      info("brush size force changed to " + new_size);
+      //info("brush size force changed to " + new_size);
     }
     else
     {

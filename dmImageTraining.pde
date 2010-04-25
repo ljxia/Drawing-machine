@@ -21,7 +21,7 @@ class dmImageTraining extends dmAbstractTraining
 
     vision.threshold(contourThreshold,0,OpenCV.THRESH_TOZERO); 
 
-    Blob[] blobs = vision.blobs( 100, srcImg.width * srcImg.height / 4, 100, true, OpenCV.MAX_VERTICES * 100 );
+    Blob[] blobs = vision.blobs( 50, srcImg.width * srcImg.height / 4, 100, true, OpenCV.MAX_VERTICES * 100 );
 
     info("find blobs: " + blobs.length + " w/ threshold " + contourThreshold);
 
@@ -30,7 +30,7 @@ class dmImageTraining extends dmAbstractTraining
   
   void initInspiration()
   {
-    this.inspiration = new dmInspiration("Iain Macarthur.jpeg");
+    this.inspiration = new dmInspiration("tumblr_l19qr0A4R11qa57amo1_500.jpeg");
     this.inspiration.memorize();
     
     this.currentThreshold = 240;
@@ -74,7 +74,7 @@ class dmImageTraining extends dmAbstractTraining
         {
           this.contours = findContour(this.inspiration.image, currentThreshold);//floor(random(225))
           this.blobIndex = 0;
-          this.currentThreshold -= 5;
+          this.currentThreshold -= 10;
         }
         if ( this.canvas.commands.size() == 0 && this.contours != null && this.contours.blobs != null && this.contours.blobs.length > 0)
         {
@@ -84,10 +84,6 @@ class dmImageTraining extends dmAbstractTraining
             
             blobIndex++;
 
-            if (!blob.isHole)
-            {
-              return;
-            }
             dmPattern pattern = new dmPattern();
 
             // trace an arbitary part of the blob
@@ -98,15 +94,14 @@ class dmImageTraining extends dmAbstractTraining
             randomStart = 0;
             randomEnd = blob.points.length;
 
-  /*          int retry = 0;
+            /*          
+            int retry = 0;
             while ((randomEnd <= randomStart + 10 || randomEnd > randomStart + 100) && retry < 30)
             {
               randomStart = int(random(blob.points.length));
               randomEnd = int(random(randomStart, blob.points.length));
               retry ++;
             }*/
-
-            
 
             //TODO more rules to select segment based on total length and trend
             if (randomEnd >= randomStart)

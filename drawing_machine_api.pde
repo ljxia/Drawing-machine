@@ -27,6 +27,9 @@ PFont font;
 
 boolean recreateCurve = false;
 
+float lastBrushSize = 0;
+int lastBrushShade = 0;
+
 void setup() 
 {
   /*  sketch */
@@ -91,9 +94,19 @@ void update()
   /* apply setting */  
     if (!CTL_PLAYBACK)
     {
-      brush.setGray(CTL_BRUSH_SHADE); 
-      brush.setSize(CTL_BRUSH_SIZE);
+      if (CTL_BRUSH_SHADE != lastBrushSize)
+      {
+        brush.setGray(CTL_BRUSH_SHADE); 
+      }
+      
+      if (CTL_BRUSH_SIZE != lastBrushSize)
+      {
+        brush.setSize(CTL_BRUSH_SIZE);
+      }
     }
+    
+    lastBrushSize = CTL_BRUSH_SIZE;
+    lastBrushShade = CTL_BRUSH_SHADE;
 }
 
 void draw() 
