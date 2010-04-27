@@ -2,7 +2,7 @@ public abstract class dmAbstractMemory
 {
   public String serverUrlBase = Config.API_URL;
   protected String serverMethod = "abstract"; 
-  private Hashtable _data;
+  protected Hashtable _data;
   
   dmAbstractMemory(){_data = new Hashtable();}
   
@@ -34,6 +34,29 @@ public abstract class dmAbstractMemory
       return res;
     }
     catch (Exception e){return "error: " + e.getMessage();}
+  }
+  
+  public String update(int id)
+  {
+    if (id > 0)
+    {
+      HttpRequest req = new HttpRequest();
+      String url = serverUrlBase + serverMethod + "/update/" + id;
+      debug("-----------------");
+      debug("ping url: " + url);
+      debug("POST param:" + this.getData().toString());
+      try
+      {
+        String res = req.send(url,"POST",this.getData(),null);
+        debug(res);
+        return res;
+      }
+      catch (Exception e){return "error: " + e.getMessage();}
+    }
+    else
+    {
+      return "Id is required to update " + this.serverMethod;
+    }
   }
   
   public void setData(String dataKey, Object dataValue){this._data.put(dataKey, dataValue);}

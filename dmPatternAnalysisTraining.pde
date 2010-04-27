@@ -32,16 +32,29 @@ class dmPatternAnalysisTraining extends dmAbstractTraining
 
   void reset()
   {
-    this.initVectorField();
-    
-    if (!this.manualMode)
+    if (this.active)
     {
-      this.initPattern();
+      this.canvas.clear();
+      this.canvas.clearCommands();
+      this.canvas.changeColor(0);
+      this.canvas.changeSize(7);
       
-      debug("pattern loaded: " + pattern.getWidth() + "x" + pattern.getHeight());
-      this.pattern.display(this.canvas);
+      
+      this.initVectorField();
+
+      if (!this.manualMode)
+      {
+        
+        
+        this.initPattern();
+
+        debug("pattern loaded: " + pattern.getWidth() + "x" + pattern.getHeight());
+        
+        
+        
+        this.pattern.display(this.canvas);
+      }      
     }
-    
     super.reset();
   }
   
@@ -102,7 +115,7 @@ class dmPatternAnalysisTraining extends dmAbstractTraining
           else
           {
             this.stop();
-            this.previousPosition.z = -1;
+            this.previousPosition = new Vec3D(0,0,-1);
           }
           
           if (this.isLogging)
@@ -127,7 +140,8 @@ class dmPatternAnalysisTraining extends dmAbstractTraining
   {
     if (this.canvas != null)
     {     
-/*      this.save();*/
+      this.save();
+
       this.stop();
       this.reset();
     }
@@ -135,7 +149,24 @@ class dmPatternAnalysisTraining extends dmAbstractTraining
   
   boolean save()
   {
-    return false;
+    if (!this.manualMode)
+    {
+      Vec3D energy = this.trainingField.getSum();      
+      float orientation = energy.angleBetween(new Vec3D(1,0,0), true) * 180 / PI;
+
+      if (energy.y > 0) orientation = 360 - orientation;
+      
+      Hashtable patternProperties = new Hashtable();
+      
+      patternProperties.put("orientation", orientation);
+      patternProperties.put("aspectRatio", pattern.getWidth() / pattern.getHeight());
+      patternProperties.put("power", energy.magnitude());
+      
+      debug(patternProperties.toString());
+      
+      this.pattern.update(patternProperties);
+    }
+    return true;
   }
   
   void display()

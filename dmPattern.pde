@@ -118,6 +118,12 @@ class dmPattern extends dmAbstractMemory
     }
     
   }
+
+  public String update(Hashtable params)
+  {
+    this._data = params;
+    return super.update(this.id);
+  }
   
   void copy(dmPattern p)
   {
