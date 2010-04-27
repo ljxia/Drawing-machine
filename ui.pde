@@ -195,11 +195,18 @@ void startPatternAnalysisTraining()
 
 void setIdle()
 {
+  for (int i = 0; i < trainings.size() ; i++)
+  {
+    ((dmAbstractTraining)trainings.get(i)).deactivate();
+  }
   
+  /*
   trainLine.deactivate();
   trainPattern.deactivate();
   trainStructure.deactivate();
   trainImage.deactivate();
+  trainPatternAnalysis.deactivate();
+  */
   
   impersonal.canvas.clearCommands();
   impersonal.canvas.setPlaybackMode(false);

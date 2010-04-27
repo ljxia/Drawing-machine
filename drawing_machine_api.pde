@@ -13,6 +13,9 @@ dmComposer impersonal;
 dmBrush brush;
 dmCanvas canvas;
 
+
+ArrayList trainings;
+
 dmLineTraining trainLine;
 dmPatternTraining trainPattern;
 dmStructureTraining trainStructure;
@@ -71,11 +74,22 @@ void setup()
   
   impersonal = new dmComposer(this, canvas);
   
+  trainings = new ArrayList();
+  
   trainLine = new dmLineTraining(canvas);
+  trainings.add(trainLine);
+  
   trainPattern = new dmPatternTraining(canvas);
+  trainings.add(trainPattern);
+  
   trainStructure = new dmStructureTraining(canvas);
+  trainings.add(trainStructure);
+  
   trainImage = new dmImageTraining(canvas);
+  trainings.add(trainImage);
+  
   trainPatternAnalysis = new dmPatternAnalysisTraining(canvas);
+  trainings.add(trainPatternAnalysis);
   
   parallelCanvases = new ArrayList();
 }
@@ -91,11 +105,18 @@ void update()
     impersonal.update();
 
     /*  training */
+    for (int i = 0; i < trainings.size() ; i++)
+    {
+      ((dmAbstractTraining)trainings.get(i)).update();
+    }
+    
+    /*
     trainLine.update();
     trainPattern.update();
     trainStructure.update();
     trainImage.update();
     trainPatternAnalysis.update();
+    */
 
     /* apply setting */  
     if (!CTL_PLAYBACK)
@@ -126,11 +147,19 @@ void draw()
 
   impersonal.draw();
   
+  for (int i = 0; i < trainings.size() ; i++)
+  {
+    dmAbstractTraining t = (dmAbstractTraining)trainings.get(i);
+    if (t.active){t.display();}
+  }
+  
+  /*
   if (trainLine.active){trainLine.display();}
   if (trainPattern.active){trainPattern.display();}
   if (trainStructure.active){trainStructure.display();}
   if (trainImage.active){trainImage.display();}
   if (trainPatternAnalysis.active){trainPatternAnalysis.display();}
+  */
   
   
   if (CTL_SHOW_TOOL) {drawTools();}

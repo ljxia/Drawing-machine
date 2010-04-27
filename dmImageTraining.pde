@@ -21,7 +21,7 @@ class dmImageTraining extends dmAbstractTraining
 
     vision.threshold(contourThreshold,0,OpenCV.THRESH_TOZERO); 
 
-    Blob[] blobs = vision.blobs( 50, srcImg.width * srcImg.height / 4, 100, true, OpenCV.MAX_VERTICES * 100 );
+    Blob[] blobs = vision.blobs( 100, srcImg.width * srcImg.height / 4, 100, true, OpenCV.MAX_VERTICES * 100 );
 
     info("find blobs: " + blobs.length + " w/ threshold " + contourThreshold);
 
@@ -30,7 +30,7 @@ class dmImageTraining extends dmAbstractTraining
   
   void initInspiration()
   {
-    this.inspiration = new dmInspiration("4510439797_52462f4238_b.jpeg");
+    this.inspiration = new dmInspiration("ink_max_16web.jpeg");
     this.inspiration.memorize();
     
     this.currentThreshold = 240;
