@@ -113,7 +113,7 @@ public class dmBrush extends dmAbstractBrush
 
   void drawAlong(PointList pl)
   {
-    this.anchor.unlock();
+/*    this.anchor.unlock();
     this.automated = true;
     //this.motionCurve = path;
     
@@ -135,7 +135,7 @@ public class dmBrush extends dmAbstractBrush
       this.motion.vel.y = this.motion.vel.y * (1 + random(-0.4, 0.4));
     }
     
-    info("motion drawAlong started");
+    info("motion drawAlong started");*/
   }
   
   void drawAlong(Path path)

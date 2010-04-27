@@ -17,7 +17,7 @@ dmLineTraining trainLine;
 dmPatternTraining trainPattern;
 dmStructureTraining trainStructure;
 dmImageTraining trainImage;
-dmPatternAnalysisTraining traingPatternAnalysis;
+dmPatternAnalysisTraining trainPatternAnalysis;
 
 ArrayList parallelCanvases;
 
@@ -75,7 +75,7 @@ void setup()
   trainPattern = new dmPatternTraining(canvas);
   trainStructure = new dmStructureTraining(canvas);
   trainImage = new dmImageTraining(canvas);
-  traingPatternAnalysis = new dmPatternAnalysisTraining(canvas);
+  trainPatternAnalysis = new dmPatternAnalysisTraining(canvas);
   
   parallelCanvases = new ArrayList();
 }
@@ -84,17 +84,20 @@ void update()
 {
     updateControls();
 
-  /*  physics */
+    /*  physics */
     world.update();
+    
+    /* composer */
+    impersonal.update();
 
-  /*  training */
+    /*  training */
     trainLine.update();
     trainPattern.update();
     trainStructure.update();
     trainImage.update();
-    traingPatternAnalysis.update();
+    trainPatternAnalysis.update();
 
-  /* apply setting */  
+    /* apply setting */  
     if (!CTL_PLAYBACK)
     {
       if (CTL_BRUSH_SHADE != lastBrushSize)
@@ -120,23 +123,21 @@ void draw()
   {
     canvas.clear();
   }
-  
-  //brush.draw(); 
 
   impersonal.draw();
-  
   
   if (trainLine.active){trainLine.display();}
   if (trainPattern.active){trainPattern.display();}
   if (trainStructure.active){trainStructure.display();}
   if (trainImage.active){trainImage.display();}
-  if (traingPatternAnalysis.active){traingPatternAnalysis.display();}
+  if (trainPatternAnalysis.active){trainPatternAnalysis.display();}
   
   
   if (CTL_SHOW_TOOL) {drawTools();}
   
   impersonal.context.display(width - 200, height - 80 + 1);
 
+  // render offscreen canvas
   for (int i = parallelCanvases.size() - 1; i >= 0  ; i--)
   {
     if (parallelCanvases.get(i) != null)

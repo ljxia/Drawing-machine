@@ -38,8 +38,8 @@ class dmPattern extends dmAbstractMemory
     return null;
   }
 
-  public float getWidth(){return this.bottomRight.x - this.topLeft.x; }
-  public float getHeight(){return this.bottomRight.y - this.topLeft.y; }
+  public float getWidth(){return max(this.bottomRight.x - this.topLeft.x, 1); }
+  public float getHeight(){return max(this.bottomRight.y - this.topLeft.y, 1); }
   
   public float getDensity()
   {
@@ -167,20 +167,37 @@ class dmPattern extends dmAbstractMemory
       dmStroke tempStroke = new dmStroke();
       this.strokes = tempStroke.recall(this.id);
 
-      debug("loaded pattern: #" + this.id + " with " + this.strokes.size() + " Strokes");
+      debug("loaded pattern: #" + this.id + ", with " + this.strokes.size() + " Strokes");
+      debug("Top Left: " + this.topLeft.toString());
+      debug("Botom Right: " + this.bottomRight.toString());
     }
+  }
+  
+  dmPattern recallSelf(Hashtable params)
+  {
+    String input = super.recall(params);
+    debug(input);
+    this.load(input);
+    return this;
   }
   
   dmPattern recall()
   {
+    return this.recallSelf(new Hashtable());
+  }
+  
+  dmPattern recallRandom()
+  {
     Hashtable params = new Hashtable();
-
-    String input = super.recall(params);
-
-    this.load(input);
-    return this;
+    params.put("random","1");
+    return this.recallSelf(params);
   }
 
+  public void display(dmCanvas c)
+  {
+    this.display(c, this.topLeft.copy().scaleSelf(-1), false);
+  }
+  
   public void display(dmCanvas c, Vec3D offset)
   {
     this.display(c,offset,true);
@@ -206,4 +223,41 @@ class dmPattern extends dmAbstractMemory
     rect(this.topLeft.x + offset.x, this.topLeft.y + offset.y, this.getWidth(), this.getHeight());
     */
   }
+
+  void scaleSelf(float factor)
+  {
+    this.topLeft.scaleSelf(factor);
+    this.bottomRight.scaleSelf(factor);
+    
+    for (int i = 0; i < this.strokeCount() ; i++)
+    {
+      dmStroke s = this.getStroke(i);
+      
+      if (s != null)
+      {
+        s.scaleSelf(factor);
+      }
+    }
+  }
+
+  public void fitInRect(Rect area)
+  {
+    float srcRatio = this.getWidth() / this.getHeight();
+    float dstRatio = area.width / area.height;
+    
+    float scaling = 1.0;
+    
+    if (srcRatio < dstRatio)
+    {
+      scaling = area.height / this.getHeight();
+    }
+    else
+    {
+      scaling = area.width / this.getWidth();
+    }
+    
+    debug("fit pattern in rect, scale by " + scaling);
+    this.scaleSelf(scaling);
+  }
+
 }

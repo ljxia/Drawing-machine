@@ -33,7 +33,6 @@ class dmAbstractComposer
   
   void draw()
   {
-    this.update();
     this.canvas.draw(0,0);
   }
   

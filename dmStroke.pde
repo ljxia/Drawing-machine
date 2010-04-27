@@ -109,4 +109,14 @@ public class dmStroke extends dmAbstractMemory
     
     c.trace(this.trail, offset);
   }
+  
+  
+  void scaleSelf(float factor)
+  {
+    this.topLeft.scaleSelf(factor);
+    this.bottomRight.scaleSelf(factor);
+    
+    this.trail.scaleSelf(factor);
+  }
+  
 }

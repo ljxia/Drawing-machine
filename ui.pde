@@ -190,7 +190,7 @@ void startPatternAnalysisTraining()
 {
   setIdle();
   info("Switch to Pattern Analysis Training");
-  traingPatternAnalysis.activate();
+  trainPatternAnalysis.activate();
 }
 
 void setIdle()
@@ -407,7 +407,15 @@ void keyPressed()
   
   if (key == 'm')
   {
-    testShape();    
+    if (trainPatternAnalysis.active)
+    {
+      trainPatternAnalysis.toggleManualMode();
+    }
+    else
+    {
+      testShape(); 
+    }
+       
     //testLine();
   }
   

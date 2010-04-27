@@ -212,7 +212,7 @@ class dmContext
     text(int(this.thresholdUptime / 1000), 120, vertical + 8);
     fill(200);
     rect(20, vertical, 90, 10);
-    fill(255,100,100);
+    fill(200,0,0);
     rect(20, vertical, map(this.gaugeUptime, 0, this.thresholdUptime, 0, 90), 10);
     
     vertical += 15;
@@ -224,7 +224,7 @@ class dmContext
     text(int(this.thresholdStepCount), 120, vertical + 8);
     fill(200);
     rect(20, vertical, 90, 10);
-    fill(255,100,100);
+    fill(200,0,0);
     rect(20, vertical, map(this.gaugeStepCount, 0, this.thresholdStepCount, 0, 90), 10);
     
     vertical += 15;
@@ -234,7 +234,7 @@ class dmContext
     text("MOTIVATION: " + int(this.gaugeMotivation), 0, vertical + 8);
     fill(200);
     rect(20, vertical, 90, 10);
-    fill(255,100,100);
+    fill(200,0,0);
     rect(20, vertical, map(this.gaugeMotivation, 0, this.thresholdMotivation, 0, 90), 10);
     
     vertical += 15;
@@ -244,7 +244,7 @@ class dmContext
     text("CMD QUEUE: " + int(this.gaugeCommandQueue), 0, vertical + 8);
     fill(200);
     rect(20, vertical, 90, 10);
-    fill(255,100,100);
+    fill(200,0,0);
     rect(20, vertical, map(this.gaugeCommandQueue, 0, this.thresholdCommandQueue, 0, 90), 10);
     
     textAlign(CORNER);
@@ -255,6 +255,24 @@ class dmContext
       image(this.snapshot, -200, 8, (this.canvas.width * 60) / this.canvas.height,60);
     }
     
+    noStroke();
+    if (this.canvas.commandName.equals("IDLE"))
+    {
+      fill(0);
+    }
+    else
+    {
+      fill(200,0,0);
+    }
+    rect( - 220 - textWidth(this.canvas.commandName) - 6,10,textWidth(this.canvas.commandName) + 6,10);
+    fill(255);
+    textAlign(RIGHT);
+    text(this.canvas.commandName, -220 - 3, 18);
+    
+    stroke(0);
+    fill(CTL_BRUSH_SHADE);
+    ellipseMode(CENTER);
+    ellipse(-220 - 15, 40, CTL_BRUSH_SIZE, CTL_BRUSH_SIZE);
     
     popMatrix();
   }

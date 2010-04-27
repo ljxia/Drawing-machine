@@ -432,7 +432,7 @@ class dmCanvas
       }
       else
       {
-        if (this.commands.isEmpty())
+        if (this.commands.isEmpty() && !this.inMotion())
         {
           this.commandName = "IDLE";
         }
