@@ -502,12 +502,5 @@ void drawTools()
   noStroke();
   fill(0);
   
-  textSize(8);
-  text("brush size", 20, 40);
-  
-  fill(CTL_BRUSH_SHADE);
-  ellipseMode(CENTER);
-  ellipse(90, 40, CTL_BRUSH_SIZE, CTL_BRUSH_SIZE);
-  
   popMatrix();
 }
