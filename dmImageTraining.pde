@@ -4,6 +4,8 @@ class dmImageTraining extends dmAbstractTraining
   int blobIndex = 0;
   int currentThreshold = 0;
   
+  float scaleRatio = -1;
+  
   dmContours contours;
   dmInspiration inspiration;
   
@@ -34,13 +36,28 @@ class dmImageTraining extends dmAbstractTraining
     this.inspiration.memorize();
     
     this.currentThreshold = 240;
+    
+    debug("inspiration aspect ratio: " + this.inspiration.getAspectRatio());
+    debug("canvas aspect ratio: " + this.canvas.getAspectRatio());
+    
+    if (this.inspiration.getAspectRatio() < this.canvas.getAspectRatio())
+    {
+      this.scaleRatio = this.canvas.height / float(this.inspiration.getHeight());
+    }
+    else
+    {
+      this.scaleRatio = this.canvas.width / float(this.inspiration.getWidth());
+    }
+    
+    debug("scale: " + this.scaleRatio);
+    
     //this.contours = findContour(this.inspiration.image, floor(random(225)));
   }
   
   void activate()
   {
-    this.initInspiration();
     super.activate();
+    this.initInspiration();
   }
 
   void reset()
@@ -48,6 +65,7 @@ class dmImageTraining extends dmAbstractTraining
     super.reset();
     
     this.blobIndex = 0;
+    this.scaleRatio = -1;
     
     this.canvas.clearCommands();
     
@@ -108,8 +126,7 @@ class dmImageTraining extends dmAbstractTraining
             {
               for (int i = randomStart; i < randomEnd ; i++)
               {
-                float ratio = this.canvas.height / float(this.inspiration.getHeight());
-                pattern.log(blob.points[i].x * ratio, blob.points[i].y * ratio, (i == randomStart), this.canvas.getBrush());
+                pattern.log(blob.points[i].x * scaleRatio, blob.points[i].y * scaleRatio, (i == randomStart), this.canvas.getBrush());
               }
 
               if (pattern.strokeCount() > 0)

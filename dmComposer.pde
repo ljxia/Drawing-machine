@@ -21,7 +21,7 @@ class dmComposer extends dmAbstractComposer
   
   protected boolean update()
   {
-    if ((!isPaused() || CTL_RECORD) && frameCount % 10 == 0)
+    if ((!isPaused() || CTL_RECORD) && frameCount % 15 == 0)
     {
       PImage bufferImage = createImage(this.context.canvas.width, this.context.canvas.height, ARGB);
       this.context.canvas.saveImage(bufferImage);

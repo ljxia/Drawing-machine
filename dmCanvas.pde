@@ -20,7 +20,12 @@ class dmCanvas
     info("init canvas:" + this.width + ", " + this.height);
     this.corner.set(0,0,0);
   }
-
+  
+  public float getAspectRatio()
+  {
+    return (float)this.width / (float)this.height;
+  }
+  
   public void saveImage(PImage img)
   {
     if (img == null || img.width != this.buffer.width || img.height != this.buffer.height)

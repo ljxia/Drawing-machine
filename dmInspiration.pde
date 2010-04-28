@@ -49,6 +49,14 @@ class dmInspiration extends dmAbstractMemory
     this.url = savePath("data/" + source);    
   }
   
+  public float getAspectRatio()
+  {
+    if (this.image != null)
+    {
+      return (float)this.image.width / (float)this.image.height;
+    }
+    return 1;
+  }
   
   public int getWidth()
   {
@@ -114,7 +122,7 @@ class dmInspiration extends dmAbstractMemory
     else if (newId < 0)
     {
       this.id = -1 * newId;
-      info("existing inspiration found: #" + newId);
+      info("existing inspiration found: #" + this.id);
       return this.id + "";
     }
     else

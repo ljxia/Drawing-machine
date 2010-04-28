@@ -20,7 +20,7 @@ class dmAbstractComposer
     
     evaluation.addRule("CHAOS", new dmAbstractEvaluationRule(), 0.5);
     evaluation.addRule("ENTPY", new dmEntropyRule(), 1);
-    evaluation.addRule("SYMME", new dmSymmetryRule(), 5);
+    evaluation.addRule("SYMME", new dmSymmetryRule(), 6);
 
     this.reset();
   }

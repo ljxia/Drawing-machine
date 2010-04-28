@@ -96,6 +96,11 @@ class dmAbstractTraining
     
   }
   
+  void display()
+  {
+    debug("Abstract Training Display");
+  }
+  
   boolean save(){return false;}
   boolean load(){return false;}
 }

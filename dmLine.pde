@@ -8,13 +8,10 @@ class dmLine extends dmAbstractMemory
   public String memorize(dmLineTraining training)
   {
     Vec3D vector = training.endPoint.sub(training.startPoint);
-    float orientation = vector.angleBetween(new Vec3D(1,0,0), true) * 180 / PI;
-    
-    if (vector.y > 0) orientation = 360 - orientation;
     
     this.setData("vector", vector.toString());
     this.setData("deviation", training.trailDeviation());
-    this.setData("orientation",orientation);
+    this.setData("orientation",getOrientation(vector));
     this.setData("length",vector.magnitude());
     this.setData("normalizedVector",vector.normalize().toString());
     this.setData("trail",training.trail.toString());
@@ -28,12 +25,9 @@ class dmLine extends dmAbstractMemory
   PointList recall(Vec3D vector)
   {
     Hashtable params = new Hashtable();
-    float orientation = vector.angleBetween(new Vec3D(1,0,0), true) * 180 / PI;
-    
-    if (vector.y > 0) orientation = 360 - orientation;
-    
+
     params.put("vector",vector.toString());
-    params.put("orientation", orientation);
+    params.put("orientation", getOrientation(vector));
     params.put("length",vector.magnitude());
     
     String input = super.recall(params);

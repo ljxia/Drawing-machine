@@ -132,6 +132,11 @@ void updateControls()
 void startRecording()
 {
   CTL_RECORD = true;
+  
+  if (CTL_ENABLE_RECORDING)
+  {
+    impersonal.recorder = new MovieMaker(this, int(CTL_VIDEO_WIDTH), floor(canvas.height * CTL_VIDEO_WIDTH / canvas.width) , getNewVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
+  }
 }
 
 void stopRecording()
@@ -140,7 +145,6 @@ void stopRecording()
   if (CTL_ENABLE_RECORDING)
   {
     impersonal.recorder.finish();
-    impersonal.recorder = new MovieMaker(this, int(CTL_VIDEO_WIDTH), floor(canvas.height * CTL_VIDEO_WIDTH / canvas.width) , getNewVideoFilename(), 30, MovieMaker.ANIMATION, MovieMaker.BEST);
   }
 }
 

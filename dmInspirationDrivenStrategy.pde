@@ -4,4 +4,9 @@ class dmInspirationDrivenStrategy extends dmAbstractStrategy
   {
     super(context);
   }
+  
+  boolean compose()
+  {
+    return true;
+  }
 }

@@ -1,5 +1,6 @@
 class dmInstinctiveStrategy extends dmAbstractStrategy
 {
+  private Vec3D startPoint = null;
   private Vec3D refPoint = null;
   private Vec3D refVec = null;
   
@@ -8,27 +9,82 @@ class dmInstinctiveStrategy extends dmAbstractStrategy
     super(context);
   }
   
-  boolean compose()
+  void tossLine(Vec3D suggestion)
   {
-    dmCanvas canvas = this.canvas();
+    //some randomness for color and size
+    if (random(1) < 0.95)
+    {
+      CTL_BRUSH_SIZE = random(map(suggestion.magnitude(),10,canvas.width / 2,1,10));
+    }
+    else if (suggestion.magnitude() < 100)
+    {
+      CTL_BRUSH_SIZE = random(10,25);
+    }
     
-    if (canvas.commands.size() > 2)
-    {
-      return false;
-    }
-
-    Vec3D startPoint = null;
     
-    if (random(1) < 0.95 && refPoint != null && refPoint.distanceTo(new Vec3D(canvas.width / 2, canvas.height / 2, 0)) < canvas.width / 2)
+    //chance to draw the line twice
+    if (random(1) < 0.40)
     {
-      startPoint = new Vec3D(refPoint);
+      canvas.line(startPoint, startPoint.add(suggestion));
     }
-    else
+    canvas.line(startPoint, startPoint.add(suggestion));
+  }
+  
+  void tossPattern(Vec3D suggestion)
+  {
+    dmPattern pattern = new dmPattern();
+    pattern = pattern.recall(suggestion);
+    
+    if (pattern.strokeCount() == 1)
     {
-      startPoint = new Vec3D(random(canvas.width), random(canvas.height), 0);
+      dmStroke s = pattern.getStroke(0);
+      
+      int steps = s.trail.size();
+      
+      if (steps > 20)
+      {
+        int randomStart = 0;
+        int randomEnd = steps - 1;
+        
+        int retry = 0;
+        while ((randomEnd <= randomStart + 10 || randomEnd > randomStart + 100) && retry < 30)
+        {
+          randomStart = int(random(steps));
+          randomEnd = int(random(randomStart, steps));
+          retry ++;
+        }
+        
+        PointList pl = new PointList();
+        
+        for (int i = randomStart; i <= randomEnd ; i++)
+        {
+          pl.add(s.trail.get(i));
+        }
+        
+        s.trail = pl;
+        if (random(1) < 5)
+        {
+          s.trail.scaleSelf(random(1, 5));
+        }
+        s.trail.get(0).z = 1;
+      }
     }
-    dmLine memory = new dmLine();
-
+    
+    //some randomness for color and size
+    if (random(1) < 0.95)
+    {
+      CTL_BRUSH_SIZE = random(map(pattern.getArea(),100,sq(canvas.width / 3),1,10));
+    }
+    else if (pattern.getArea() > 100 * 100)
+    {
+      CTL_BRUSH_SIZE = random(10,25);
+    }
+    
+    pattern.display(this.canvas(), this.startPoint.copy().sub(pattern.topLeft), false);
+  }
+  
+  Vec3D getSuggestion()
+  {
     Vec3D vec = Vec3D.randomVector();
     
     if (refVec != null)
@@ -47,19 +103,44 @@ class dmInstinctiveStrategy extends dmAbstractStrategy
       lngth = random(canvas.width / 3,canvas.width);
     }
     
-    refPoint = startPoint.add(vec.scale(lngth * random(1)));
-    refVec = vec.copy();
-    
     vec.scaleSelf(lngth);
     
-    if (random(1) < 0.95)
+    return vec;
+  }
+  
+  void generatePoints()
+  {
+    //setup start point
+    startPoint = null;
+    
+    if (random(1) < 0.95 && refPoint != null && refPoint.distanceTo(new Vec3D(canvas.width / 2, canvas.height / 2, 0)) < canvas.width / 2)
     {
-      CTL_BRUSH_SIZE = random(map(lngth,10,canvas.width / 2,1,10));
+      startPoint = new Vec3D(refPoint);
     }
-    else if (lngth < 100)
+    else
     {
-      CTL_BRUSH_SIZE = random(10,25);
+      startPoint = new Vec3D(random(canvas.width), random(canvas.height), 0);
     }
+  }
+  
+  boolean compose()
+  {
+    dmCanvas canvas = this.canvas();
+    
+    if (canvas.commands.size() > 2)
+    {
+      return false;
+    }
+    
+    Vec3D suggestion = this.getSuggestion();
+    
+    generatePoints();
+    
+    //save ref point on the line for future reference
+    refPoint = startPoint.add(suggestion.scale(random(1)));
+    refVec = suggestion.copy();
+
+    
     
     if (random(1) < 0.6)
     {
@@ -73,14 +154,15 @@ class dmInstinctiveStrategy extends dmAbstractStrategy
     {
       CTL_BRUSH_SHADE = 255;
     }
-    
-    
-    if (random(1) < 0.40)
+
+    if (random(1) < 0.4)
     {
-      // chance to draw line twice
-      canvas.line(startPoint, startPoint.add(vec));
+      tossLine(suggestion);
     }
-    canvas.line(startPoint, startPoint.add(vec));
+    else
+    {
+      tossPattern(suggestion);
+    }
     
     return true;
   }

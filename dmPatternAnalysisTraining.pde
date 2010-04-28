@@ -152,13 +152,10 @@ class dmPatternAnalysisTraining extends dmAbstractTraining
     if (!this.manualMode)
     {
       Vec3D energy = this.trainingField.getSum();      
-      float orientation = energy.angleBetween(new Vec3D(1,0,0), true) * 180 / PI;
-
-      if (energy.y > 0) orientation = 360 - orientation;
       
       Hashtable patternProperties = new Hashtable();
       
-      patternProperties.put("orientation", orientation);
+      patternProperties.put("orientation", getOrientation(energy));
       patternProperties.put("aspectRatio", pattern.getWidth() / pattern.getHeight());
       patternProperties.put("power", energy.magnitude());
       

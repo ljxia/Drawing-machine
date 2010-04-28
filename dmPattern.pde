@@ -40,6 +40,7 @@ class dmPattern extends dmAbstractMemory
 
   public float getWidth(){return max(this.bottomRight.x - this.topLeft.x, 1); }
   public float getHeight(){return max(this.bottomRight.y - this.topLeft.y, 1); }
+  public float getArea(){return getWidth() * getHeight(); }
   
   public float getDensity()
   {
@@ -196,6 +197,15 @@ class dmPattern extends dmAbstractMemory
   {
     Hashtable params = new Hashtable();
     params.put("random","1");
+    return this.recallSelf(params);
+  }
+  
+  dmPattern recall(Vec3D suggestion)
+  {
+    Hashtable params = new Hashtable();
+    params.put("power",suggestion.magnitude());
+    params.put("orientation", getOrientation(suggestion));
+    
     return this.recallSelf(params);
   }
 
