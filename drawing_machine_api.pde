@@ -39,6 +39,7 @@ void setup()
   /*  sketch */
   
   size(screen.width - 250,screen.height - 60);
+  
   //size(1024,768);  
   //size(1440, 900);
 

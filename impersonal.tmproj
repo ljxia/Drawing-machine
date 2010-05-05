@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>ui.pde</string>
+	<string>drawing_machine_api.pde</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -16,7 +16,9 @@
 							<key>filename</key>
 							<string>drawing_machine_api.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-27T21:28:16Z</date>
+							<date>2010-05-05T03:28:00Z</date>
+							<key>selected</key>
+							<true/>
 						</dict>
 						<dict>
 							<key>children</key>
@@ -25,7 +27,7 @@
 									<key>filename</key>
 									<string>config.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-28T02:44:53Z</date>
+									<date>2010-05-04T20:49:28Z</date>
 								</dict>
 								<dict>
 									<key>filename</key>
@@ -37,7 +39,13 @@
 									<key>filename</key>
 									<string>email.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-27T03:31:21Z</date>
+									<date>2010-05-03T20:41:09Z</date>
+								</dict>
+								<dict>
+									<key>filename</key>
+									<string>field.pde</string>
+									<key>lastUsed</key>
+									<date>2010-04-27T05:13:26Z</date>
 								</dict>
 								<dict>
 									<key>filename</key>
@@ -81,12 +89,6 @@
 									<key>lastUsed</key>
 									<date>2010-04-27T03:31:20Z</date>
 								</dict>
-								<dict>
-									<key>filename</key>
-									<string>field.pde</string>
-									<key>lastUsed</key>
-									<date>2010-04-27T05:13:26Z</date>
-								</dict>
 							</array>
 							<key>expanded</key>
 							<true/>
@@ -103,9 +105,7 @@
 							<key>filename</key>
 							<string>ui.pde</string>
 							<key>lastUsed</key>
-							<date>2010-04-28T02:44:53Z</date>
-							<key>selected</key>
-							<true/>
+							<date>2010-05-05T03:28:00Z</date>
 						</dict>
 					</array>
 					<key>expanded</key>
@@ -129,13 +129,13 @@
 									<key>filename</key>
 									<string>dmComposer.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-27T22:50:08Z</date>
+									<date>2010-04-28T07:03:49Z</date>
 								</dict>
 								<dict>
 									<key>filename</key>
 									<string>dmContext.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-27T06:59:07Z</date>
+									<date>2010-05-03T09:25:45Z</date>
 								</dict>
 							</array>
 							<key>expanded</key>
@@ -165,7 +165,7 @@
 											<key>filename</key>
 											<string>dmAsymmetryRule.pde</string>
 											<key>lastUsed</key>
-											<date>2010-04-27T03:31:29Z</date>
+											<date>2010-05-03T09:25:53Z</date>
 										</dict>
 										<dict>
 											<key>filename</key>
@@ -195,7 +195,7 @@
 											<key>filename</key>
 											<string>dmSymmetryRule.pde</string>
 											<key>lastUsed</key>
-											<date>2010-04-27T03:31:31Z</date>
+											<date>2010-05-03T09:27:30Z</date>
 										</dict>
 										<dict>
 											<key>filename</key>
@@ -226,15 +226,21 @@
 								</dict>
 								<dict>
 									<key>filename</key>
-									<string>dmInstinctiveStrategy.pde</string>
+									<string>dmInspirationDrivenStrategy.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-28T02:43:50Z</date>
+									<date>2010-05-03T09:27:31Z</date>
 								</dict>
 								<dict>
 									<key>filename</key>
-									<string>dmInspirationDrivenStrategy.pde</string>
+									<string>dmInstinctiveStrategy.pde</string>
 									<key>lastUsed</key>
-									<date>2010-04-27T23:46:17Z</date>
+									<date>2010-05-03T09:36:49Z</date>
+								</dict>
+								<dict>
+									<key>filename</key>
+									<string>dmSuggestion.pde</string>
+									<key>lastUsed</key>
+									<date>2010-05-03T20:38:26Z</date>
 								</dict>
 							</array>
 							<key>expanded</key>
@@ -374,9 +380,21 @@
 				</dict>
 				<dict>
 					<key>filename</key>
+					<string>dmImageTraining.pde</string>
+					<key>lastUsed</key>
+					<date>2010-04-28T02:44:49Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
 					<string>dmLineTraining.pde</string>
 					<key>lastUsed</key>
 					<date>2010-04-27T03:31:26Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>dmPatternAnalysisTraining.pde</string>
+					<key>lastUsed</key>
+					<date>2010-04-28T01:14:28Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -389,18 +407,6 @@
 					<string>dmStructureTraining.pde</string>
 					<key>lastUsed</key>
 					<date>2010-04-27T03:31:25Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>dmImageTraining.pde</string>
-					<key>lastUsed</key>
-					<date>2010-04-28T02:44:49Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>dmPatternAnalysisTraining.pde</string>
-					<key>lastUsed</key>
-					<date>2010-04-28T01:14:28Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -418,9 +424,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>58</integer>
 				<key>line</key>
-				<integer>4</integer>
+				<integer>3</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -483,6 +489,20 @@
 			<key>firstVisibleLine</key>
 			<integer>36</integer>
 		</dict>
+		<key>dmAsymmetryRule.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>dmCanvas.pde</key>
 		<dict>
 			<key>caret</key>
@@ -516,9 +536,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>12</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>271</integer>
+				<integer>239</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -586,14 +606,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>4</integer>
+				<integer>37</integer>
 				<key>line</key>
-				<integer>71</integer>
+				<integer>20</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>34</integer>
+			<integer>0</integer>
 		</dict>
 		<key>dmLine.pde</key>
 		<dict>
@@ -651,6 +671,34 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>dmSuggestion.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>dmSymmetryRule.pde</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>drawing_machine_api.pde</key>
 		<dict>
 			<key>caret</key>
@@ -658,28 +706,26 @@
 				<key>column</key>
 				<integer>4</integer>
 				<key>line</key>
-				<integer>107</integer>
+				<integer>40</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>57</integer>
-			<key>selectFrom</key>
+			<integer>31</integer>
+		</dict>
+		<key>email.pde</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>5</integer>
+				<integer>38</integer>
 				<key>line</key>
-				<integer>110</integer>
+				<integer>35</integer>
 			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>4</integer>
-				<key>line</key>
-				<integer>107</integer>
-			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>field.pde</key>
 		<dict>
@@ -744,9 +790,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>34</integer>
 				<key>line</key>
-				<integer>24</integer>
+				<integer>20</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -767,6 +813,8 @@
 		<string>dmComposer.pde</string>
 		<string>drawing_machine_api.pde</string>
 		<string>dmInstinctiveStrategy.pde</string>
+		<string>dmSuggestion.pde</string>
+		<string>email.pde</string>
 		<string>dmStroke.pde</string>
 		<string>dmAbstractStrategy.pde</string>
 		<string>dmImageTraining.pde</string>
@@ -774,6 +822,8 @@
 		<string>dmContours.pde</string>
 		<string>dmInspiration.pde</string>
 		<string>dmContext.pde</string>
+		<string>dmAsymmetryRule.pde</string>
+		<string>dmSymmetryRule.pde</string>
 		<string>dmLine.pde</string>
 		<string>helpers.pde</string>
 		<string>field.pde</string>
@@ -867,6 +917,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{-34, -756}, {2401, 1418}}</string>
+	<string>{{103, 0}, {2401, 1418}}</string>
 </dict>
 </plist>

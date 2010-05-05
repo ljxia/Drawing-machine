@@ -20,8 +20,7 @@ class dmInstinctiveStrategy extends dmAbstractStrategy
     {
       CTL_BRUSH_SIZE = random(10,25);
     }
-    
-    
+
     //chance to draw the line twice
     if (random(1) < 0.40)
     {

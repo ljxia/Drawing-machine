@@ -24,7 +24,7 @@ public float CTL_USE_TRAINED_INTERPOLATION = 0.95;
 public float CTL_BLOB_THRESHOLD = 50;
 
 public float CTL_VIDEO_WIDTH = 800;
-public boolean CTL_ENABLE_RECORDING = false;
+public boolean CTL_ENABLE_RECORDING = true;
 
 public boolean CTL_SAVE_STRUCTURE = false;
 
