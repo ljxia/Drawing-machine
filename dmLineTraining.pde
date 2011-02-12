@@ -153,7 +153,7 @@ class dmLineTraining extends dmAbstractTraining
     {
       for (int i = 0; i < this.trail.size() ; i++)
       {
-        Vec3D segment = this.trail.get(i);
+        Vec3D segment = (Vec3D)this.trail.get(i);
         dev += sin(vector.angleBetween(segment, true)) * segment.magnitude();
       }
       

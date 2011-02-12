@@ -214,12 +214,12 @@ class dmPattern extends dmAbstractMemory
     this.display(c, this.topLeft.copy().scaleSelf(-1), false);
   }
   
-  public void display(dmCanvas c, Vec3D offset)
+  public void display(dmCanvas c, ReadonlyVec3D offset)
   {
     this.display(c,offset,true);
   }
 
-  public void display(dmCanvas c, Vec3D offset, boolean useOriginalBrush)
+  public void display(dmCanvas c, ReadonlyVec3D offset, boolean useOriginalBrush)
   {
     if (useOriginalBrush)
       c.setPlaybackMode(true);

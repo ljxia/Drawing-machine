@@ -263,7 +263,7 @@ public class dmBrush extends dmAbstractBrush
     {
       if (this.trail.size() > 0)
       {
-        Vec3D pos = this.trail.remove(0);
+        Vec3D pos = (Vec3D)this.trail.remove(0);
         this.setPos(pos.add(this._offset));
         this.motion.stopAt(pos.x + this._offset.x, pos.y + this._offset.y);
       }

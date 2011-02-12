@@ -209,7 +209,7 @@ PointList rotatePointList(PointList pl, Vec3D origin, Vec3D target)
   pl = pl.scaleSelf(factor);
   for (int i = 0; i < pl.size() ; i++)
   {
-    Vec3D pnt = pl.get(i);
+    Vec3D pnt = (Vec3D)pl.get(i);
     pnt = pnt.rotateZ(radians(angle));
   }
   

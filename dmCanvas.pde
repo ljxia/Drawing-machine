@@ -189,17 +189,17 @@ class dmCanvas
 
     for (; to < pl.size(); to ++)
     {
-      if (pl.get(to).z > 0) //found a pause
+      if (((Vec3D)pl.get(to)).z > 0) //found a pause
       {
         //this.moveTo(pl.get(from).add(offset));
-        this.moveTo(pl.get(from), offset);
+        this.moveTo(((Vec3D)pl.get(from)), offset);
 
         cmd = new dmCommand("trace");
         segment = new PointList();
         for (int i = from; i < to; i++)
         {
           //segment.add(pl.get(i).add(offset));
-          segment.add(pl.get(i));
+          segment.add((Vec3D)pl.get(i));
         }
         cmd.params.put("trace", segment);
         cmd.params.put("offset", offset.copy());
@@ -213,13 +213,13 @@ class dmCanvas
 
     if (from < to)
     {
-      this.moveTo(pl.get(from), offset);
+      this.moveTo((Vec3D)pl.get(from), offset);
 
       cmd = new dmCommand("trace");
       segment = new PointList();
       for (int i = from; i < to; i++)
       {
-        segment.add(pl.get(i));
+        segment.add((Vec3D)pl.get(i));
       }
       cmd.params.put("trace", segment);
       cmd.params.put("offset", offset.copy());
@@ -383,11 +383,11 @@ class dmCanvas
             // go through the point list to find segments
             for (; to < pl.size(); to ++)
             {
-              if (pl.get(to).z > 0) //found a pause
+              if (((Vec3D)pl.get(to)).z > 0) //found a pause
               {
                 // move to first point
                 newCmd = new dmCommand("move");
-                newCmd.params.put("target", pl.get(from));
+                newCmd.params.put("target", (Vec3D)pl.get(from));
                 newCmd.params.put("offset", fromPos);
                 newCommands.add(newCmd);
 
@@ -396,7 +396,7 @@ class dmCanvas
                 segment = new PointList();
                 for (int i = from; i < to; i++)
                 {
-                  segment.add(pl.get(i));
+                  segment.add((Vec3D)pl.get(i));
                 }
                 newCmd.params.put("trace", segment);
                 newCmd.params.put("offset", fromPos.copy());

@@ -65,7 +65,7 @@ class dmInstinctiveStrategy extends dmAbstractStrategy
         {
           s.trail.scaleSelf(random(1, 5));
         }
-        s.trail.get(0).z = 1;
+        ((Vec3D)s.trail.get(0)).z = 1;
       }
     }
     
