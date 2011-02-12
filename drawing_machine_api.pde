@@ -5,7 +5,7 @@ import processing.opengl.*;
 import toxi.color.*;
 import toxi.color.theory.*;
 import toxi.geom.*;
-import toxi.geom.util.*;
+import toxi.util.*;
 import toxi.physics.*;
 import toxi.physics.constraints.*;
 
